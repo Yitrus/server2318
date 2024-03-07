@@ -1,0 +1,21 @@
+
+sudo damo record --numa_node 0 --ops paddr -r "4294967296-23622320127" --monitoring_nr_regions 400 5000 -s 5000 -a 200000 -u 1000000
+
+sudo damo record --numa_node 0 --ops paddr -r "4294967296-23622320127" --monitoring_nr_regions 1000 5000 -s 5000 -a 200000 -u 1000000
+
+sudo damo record --numa_node 0 --ops paddr -r "4294967296-23622320127" --monitoring_nr_regions 10000 20000 -s 5000 -a 200000 -u 1000000
+
+
+
+sudo damo record --numa_node 0 --ops paddr -r "4294967296-23622320127" --monitoring_nr_regions 1000 20000 -s 5000 -a 200000 -u 1000000
+
+
+sudo damo record $(pidof masim)
+
+sudo damo report heats --abs_addr --heatmap xsb_dram.png -i xsb
+
+sudo damo report heats --heatmap test.png --abs_addr
+
+numactl --membind=0 ./masim ./configs/zigzag.cfg --silent
+
+sudo damo report wss --range 0 101 1 --sortby time --plot capa.jpg -i XSB.data

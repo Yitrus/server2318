@@ -1,0 +1,56 @@
+这是0-stab3的数据
+Date: 202312311629
+---------Collaction 5361------------
+Total threads used: 20
+iter   1  #CD cycles 1
+iter   2  #CD cycles 1
+iter   3  #CD cycles 1
+iter   4  #CD cycles 1
+iter   5  #CD cycles 3
+iter   6  #CD cycles 1
+iter   7  #CD cycles 5
+iter   8  #CD cycles 1
+iter   9  #CD cycles 39
+=========================
+optimization finished, #iter = 9
+Objective value = 23440452.581391
+#nonzeros/#features = 436971/54686452
+execution time 3429.88 (s)
+
+========================================================================
+Read Time:           113.70851
+Graph has 536870911 nodes and 8493563827 undirected edges for degree: 15
+Trial Time:          1.14680
+Trial Time:          1.55404
+Trial Time:          0.27353
+Trial Time:          1.06882
+Trial Time:          1.06342
+Trial Time:          1.04841
+Trial Time:          1.23751
+Trial Time:          1.19248
+Trial Time:          1.12306
+Trial Time:          0.94359
+Trial Time:          0.19705
+Trial Time:          1.17984
+Trial Time:          1.49889
+Trial Time:          0.20891
+Trial Time:          0.20380
+Trial Time:          0.20043
+Average Time:        0.88378
+
+
+
+cat /proc/cpuinfo | grep processor
+
+perf script | /home/xmu/Documents/yi/tools/FlameGraph/stackcollapse-perf.pl | /home/xmu/Documents/yi/tools/FlameGraph/flamegraph.pl > liblinear-52G-basic3.svg
+
+ndctl destroy-namespace --force namespace0.0
+ndctl create-namespace --mode=devdax --map=mem --size=30G --region=1
+ndctl create-namespace --mode=devdax --map=mem --size=30G --region=0
+daxctl reconfigure-device dax1.0 --mode=system-ram
+
+/home/xmu/Documents/yi/workload/gapbs/tc -f /home/xmu/Documents/yi/workload/gapbs/benchmark/graphs/twitter.sg -i1000 -t1e-4 -n20
+tc接收的图不是这个Input graph is directed but tc requires undirected，得自己找一个，缓缓吧
+
+cd /usr/local/sunlogin/bin/
+sudo ./sunloginclient_desktop

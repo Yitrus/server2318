@@ -1,0 +1,194 @@
+[12293.241588] pebs disable
+[12323.542051] run_node.sh (25085): drop_caches: 3
+[12325.587766] pebs_init
+[12325.684031] perf: interrupt took too long (9512 > 2500), lowering kernel.perf_event_max_sample_rate to 21000
+[12326.364488] perf: interrupt took too long (12357 > 11890), lowering kernel.perf_event_max_sample_rate to 16000
+[12327.054872] perf: interrupt took too long (15727 > 15446), lowering kernel.perf_event_max_sample_rate to 12500
+[12327.902777] perf: interrupt took too long (19908 > 19658), lowering kernel.perf_event_max_sample_rate to 10000
+[12329.249388] perf: interrupt took too long (31284 > 24885), lowering kernel.perf_event_max_sample_rate to 6250
+[12349.295397] total_accesses: 100953 max_dram_hits: 100947 cur_hits: 100953 
+[12372.599309] total_accesses: 150210 max_dram_hits: 150207 cur_hits: 150210 
+[12450.123023] total_accesses: 554533 max_dram_hits: 444804 cur_hits: 554533 
+[12531.674726] total_accesses: 733219 max_dram_hits: 665095 cur_hits: 733219 
+[12614.590430] total_accesses: 775377 max_dram_hits: 729741 cur_hits: 775377 
+[12633.370364] total_accesses: 469427 max_dram_hits: 407395 cur_hits: 459729 
+[12653.390287] total_accesses: 311674 max_dram_hits: 204264 cur_hits: 306686 
+[12680.894197] total_accesses: 231161 max_dram_hits: 176748 cur_hits: 228304 
+[12690.228049] warn_alloc: 3039 callbacks suppressed
+[12690.228052] train: page allocation failure: order:0, mode:0x1300dca(GFP_HIGHUSER_MOVABLE|__GFP_ZERO|__GFP_THISNODE), nodemask=(null),cpuset=htmm,mems_allowed=0-3
+[12690.228065] CPU: 2 PID: 25264 Comm: train Tainted: G      D    OE     5.15.19-htmm #1
+[12690.228068] Hardware name: Dell Inc. PowerEdge R750/0K8F35, BIOS 1.10.2 03/03/2023
+[12690.228070] Call Trace:
+[12690.228072]  <TASK>
+[12690.228075]  dump_stack_lvl+0x4a/0x5f
+[12690.228081]  dump_stack+0x10/0x12
+[12690.228083]  warn_alloc+0x112/0x180
+[12690.228088]  __alloc_pages_slowpath.constprop.119+0xd43/0xd80
+[12690.228091]  __alloc_pages+0x2db/0x320
+[12690.228093]  alloc_pages_vma+0x26b/0x440
+[12690.228096]  __handle_mm_fault+0xa28/0x1310
+[12690.228102]  handle_mm_fault+0xd9/0x2b0
+[12690.228104]  ? sched_clock+0x9/0x10
+[12690.228110]  do_user_addr_fault+0x1e0/0x6f0
+[12690.228115]  exc_page_fault+0x76/0x150
+[12690.228118]  ? asm_exc_page_fault+0x8/0x30
+[12690.228122]  asm_exc_page_fault+0x1e/0x30
+[12690.228124] RIP: 0033:0x55a8c4c07197
+[12690.228128] Code: 00 00 00 83 ea 01 f2 0f 10 46 08 48 63 d2 48 83 c6 10 49 8d 3c d6 48 8b 17 48 89 d1 48 83 c2 01 48 c1 e1 04 48 89 17 48 01 c1 <44> 89 11 8b 16 f2 0f 11 41 08 83 fa ff 75 ca 49 83 c3 08 45 39 d7
+[12690.228131] RSP: 002b:00007ffebeec9200 EFLAGS: 00010206
+[12690.228133] RAX: 00007fc0ea596010 RBX: 00007ffebeec9610 RCX: 00007fc6ebaaf000
+[12690.228134] RDX: 0000000060151900 RSI: 00007fcdbe95ecc0 RDI: 00007fc7b18bfa18
+[12690.228136] RBP: 00000000034272f4 R08: 00000000ffffffff R09: 0000000000000000
+[12690.228137] R10: 0000000008cc9a93 R11: 00007fc8aaf6a4a0 R12: 00007fc7a1b59010
+[12690.228138] R13: 00000000034272f4 R14: 00007fc7a1b59010 R15: 0000000008eb4fc1
+[12690.228140]  </TASK>
+[12690.228141] Mem-Info:
+[12690.228150] active_anon:11232186 inactive_anon:3312342 isolated_anon:0
+                active_file:6730 inactive_file:4474622 isolated_file:0
+                unevictable:0 dirty:12 writeback:0
+                slab_reclaimable:135293 slab_unreclaimable:136315
+                mapped:78442 shmem:1533 pagetables:42698 bounce:0
+                kernel_misc_reclaimable:0
+                free:270382279 free_pcp:1364 free_cma:0
+[12690.228156] Node 0 active_anon:39248696kB inactive_anon:9949624kB active_file:392kB inactive_file:88kB unevictable:0kB isolated(anon):0kB isolated(file):0kB mapped:4028kB dirty:0kB writeback:0kB shmem:5164kB shmem_thp: 0kB shmem_pmdmapped: 0kB anon_thp: 0kB writeback_tmp:0kB kernel_stack:15672kB pagetables:144532kB all_unreclaimable? no
+[12690.228161] Node 1 active_anon:208kB inactive_anon:1009832kB active_file:26100kB inactive_file:276300kB unevictable:0kB isolated(anon):0kB isolated(file):0kB mapped:274780kB dirty:48kB writeback:0kB shmem:968kB shmem_thp: 0kB shmem_pmdmapped: 0kB anon_thp: 47104kB writeback_tmp:0kB kernel_stack:17128kB pagetables:26176kB all_unreclaimable? yes
+[12690.228164] Node 2 active_anon:5679840kB inactive_anon:2289912kB active_file:428kB inactive_file:17622100kB unevictable:0kB isolated(anon):0kB isolated(file):0kB mapped:34960kB dirty:0kB writeback:0kB shmem:0kB shmem_thp: 0kB shmem_pmdmapped: 0kB anon_thp: 0kB writeback_tmp:0kB kernel_stack:0kB pagetables:84kB all_unreclaimable? yes
+[12690.228168] Node 3 active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB isolated(anon):0kB isolated(file):0kB mapped:0kB dirty:0kB writeback:0kB shmem:0kB shmem_thp: 0kB shmem_pmdmapped: 0kB anon_thp: 0kB writeback_tmp:0kB kernel_stack:0kB pagetables:0kB all_unreclaimable? yes
+[12690.228171] Node 0 DMA free:11264kB min:0kB low:12kB high:24kB reserved_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:15992kB managed:15360kB mlocked:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[12690.228175] lowmem_reserve[]: 0 1416 63873 63873 63873
+[12690.228179] Node 0 DMA32 free:249772kB min:168kB low:1616kB high:3064kB reserved_highatomic:0KB active_anon:965360kB inactive_anon:2876kB active_file:16kB inactive_file:16kB unevictable:0kB writepending:0kB present:1517032kB managed:1450844kB mlocked:0kB bounce:0kB free_pcp:248kB local_pcp:248kB free_cma:0kB
+[12690.228183] lowmem_reserve[]: 0 0 62456 62456 62456
+[12690.228187] Node 0 Normal free:7276kB min:7424kB low:71376kB high:135328kB reserved_highatomic:0KB active_anon:38283336kB inactive_anon:9947012kB active_file:364kB inactive_file:88kB unevictable:0kB writepending:0kB present:65011712kB managed:63955400kB mlocked:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[12690.228191] lowmem_reserve[]: 0 0 0 0 0
+[12690.228195] Node 1 Normal free:55230432kB min:7664kB low:73676kB high:139688kB reserved_highatomic:0KB active_anon:208kB inactive_anon:1009832kB active_file:26100kB inactive_file:276300kB unevictable:0kB writepending:48kB present:67108864kB managed:66013928kB mlocked:0kB bounce:0kB free_pcp:252kB local_pcp:0kB free_cma:0kB
+[12690.228199] lowmem_reserve[]: 0 0 0 0 0
+[12690.228202] Node 2 Normal free:499650644kB min:61116kB low:587500kB high:1113884kB reserved_highatomic:0KB active_anon:5679840kB inactive_anon:2289912kB active_file:428kB inactive_file:17621596kB unevictable:0kB writepending:0kB present:526385152kB managed:526385152kB mlocked:0kB bounce:0kB free_pcp:444kB local_pcp:0kB free_cma:0kB
+[12690.228206] lowmem_reserve[]: 0 0 0 0 0
+[12690.228209] Node 3 Normal free:526384768kB min:61116kB low:587500kB high:1113884kB reserved_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:526385152kB managed:526385152kB mlocked:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[12690.228212] lowmem_reserve[]: 0 0 0 0 0
+[12690.228215] Node 0 DMA: 0*4kB 0*8kB 0*16kB 0*32kB 0*64kB 0*128kB 0*256kB 0*512kB 1*1024kB (U) 1*2048kB (M) 2*4096kB (M) = 11264kB
+[12690.228223] Node 0 DMA32: 2*4kB (UE) 3*8kB (UM) 5*16kB (UME) 8*32kB (UME) 4*64kB (UME) 7*128kB (UE) 12*256kB (UM) 13*512kB (UME) 9*1024kB (UME) 6*2048kB (UME) 53*4096kB (UM) = 249840kB
+[12690.228234] Node 0 Normal: 164*4kB (UME) 278*8kB (UME) 177*16kB (UME) 106*32kB (UE) 22*64kB (UE) 13*128kB (UME) 7*256kB (UME) 4*512kB (ME) 2*1024kB (ME) 1*2048kB (U) 0*4096kB = 20112kB
+[12690.228243] Node 1 Normal: 9190*4kB (UME) 10198*8kB (UME) 5850*16kB (UME) 5895*32kB (UME) 3707*64kB (UME) 2577*128kB (UME) 1338*256kB (UME) 1031*512kB (UME) 702*1024kB (UME) 342*2048kB (UME) 12691*4096kB (UME) = 55239688kB
+[12690.228253] Node 2 Normal: 6049*4kB (M) 7891*8kB (UM) 7656*16kB (UM) 7462*32kB (UM) 7241*64kB (UM) 6823*128kB (UM) 4934*256kB (UM) 1424*512kB (UM) 94*1024kB (UM) 19*2048kB (UM) 121031*4096kB (M) = 499655708kB
+[12690.228263] Node 3 Normal: 0*4kB 0*8kB 0*16kB 0*32kB 1*64kB (U) 0*128kB 1*256kB (U) 1*512kB (U) 1*1024kB (U) 1*2048kB (U) 128511*4096kB (M) = 526384960kB
+[12690.228271] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[12690.228273] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=2048kB
+[12690.228274] Node 1 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[12690.228275] Node 1 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=2048kB
+[12690.228276] Node 2 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[12690.228277] Node 2 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=2048kB
+[12690.228278] Node 3 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[12690.228279] Node 3 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=2048kB
+[12690.228280] 4482325 total pagecache pages
+[12690.228281] 0 pages in swap cache
+[12690.228282] Swap cache stats: add 0, delete 0, find 0/0
+[12690.228284] Free swap  = 0kB
+[12690.228284] Total swap = 0kB
+[12690.228285] 296605976 pages RAM
+[12690.228286] 0 pages HighMem/MovableOnly
+[12690.228287] 554517 pages reserved
+[12690.228287] 0 pages cma reserved
+[12690.228288] 0 pages hwpoisoned
+[12690.228289] pagefault_out_of_memory: 1452 callbacks suppressed
+[12690.228290] Huh VM_FAULT_OOM leaked out to the #PF handler. Retrying PF
+[12690.252883] Huh VM_FAULT_OOM leaked out to the #PF handler. Retrying PF
+[12690.276998] Huh VM_FAULT_OOM leaked out to the #PF handler. Retrying PF
+[12690.545251] Huh VM_FAULT_OOM leaked out to the #PF handler. Retrying PF
+[12690.546778] Huh VM_FAULT_OOM leaked out to the #PF handler. Retrying PF
+[12690.548282] Huh VM_FAULT_OOM leaked out to the #PF handler. Retrying PF
+[12690.549717] Huh VM_FAULT_OOM leaked out to the #PF handler. Retrying PF
+[12690.551195] Huh VM_FAULT_OOM leaked out to the #PF handler. Retrying PF
+[12690.552641] Huh VM_FAULT_OOM leaked out to the #PF handler. Retrying PF
+[12690.554072] Huh VM_FAULT_OOM leaked out to the #PF handler. Retrying PF
+[12726.030058] total_accesses: 336720 max_dram_hits: 136887 cur_hits: 262579 
+[12823.740047] warn_alloc: 1890 callbacks suppressed
+[12823.740050] train: page allocation failure: order:0, mode:0x1300dca(GFP_HIGHUSER_MOVABLE|__GFP_ZERO|__GFP_THISNODE), nodemask=(null),cpuset=htmm,mems_allowed=0-3
+[12823.740063] CPU: 6 PID: 25264 Comm: train Tainted: G      D    OE     5.15.19-htmm #1
+[12823.740066] Hardware name: Dell Inc. PowerEdge R750/0K8F35, BIOS 1.10.2 03/03/2023
+[12823.740067] Call Trace:
+[12823.740070]  <TASK>
+[12823.740072]  dump_stack_lvl+0x4a/0x5f
+[12823.740079]  dump_stack+0x10/0x12
+[12823.740081]  warn_alloc+0x112/0x180
+[12823.740087]  __alloc_pages_slowpath.constprop.119+0xd43/0xd80
+[12823.740090]  __alloc_pages+0x2db/0x320
+[12823.740092]  alloc_pages_vma+0x26b/0x440
+[12823.740096]  __handle_mm_fault+0xa28/0x1310
+[12823.740101]  handle_mm_fault+0xd9/0x2b0
+[12823.740104]  do_user_addr_fault+0x1e0/0x6f0
+[12823.740110]  exc_page_fault+0x76/0x150
+[12823.740113]  ? asm_exc_page_fault+0x8/0x30
+[12823.740118]  asm_exc_page_fault+0x1e/0x30
+[12823.740120] RIP: 0033:0x55a8c4c0bc86
+[12823.740123] Code: 48 8b 94 24 10 02 00 00 4d 63 31 4a 8d 2c f5 00 00 00 00 4d 89 f7 4a 8b 1c f2 4c 8d 2c 28 48 8b 05 e7 ad 00 00 48 03 6c 24 18 <49> 89 45 00 48 8b 44 24 08 48 c7 45 00 00 00 00 00 42 81 3c b0 f3
+[12823.740125] RSP: 002b:00007ffebeec9260 EFLAGS: 00010206
+[12823.740128] RAX: 3d719799812dea11 RBX: 00007fc5b37ae400 RCX: 0000000000137dc0
+[12823.740129] RDX: 00007fc740477010 RSI: 0000000000000000 RDI: 0000000000000000
+[12823.740131] RBP: 00007fc0b6903000 R08: 00007fbf1d466010 R09: 00007fc7aeee6808
+[12823.740132] R10: 00007fc7aebf6010 R11: 00007fc0820ae010 R12: 00000000000bc1fe
+[12823.740133] R13: 00007fc0d0a3d000 R14: 00000000000bc1fe R15: 00000000000bc1fe
+[12823.740135]  </TASK>
+[12823.740136] Mem-Info:
+[12823.740156] active_anon:6284522 inactive_anon:9806542 isolated_anon:0
+                active_file:6829 inactive_file:78945 isolated_file:0
+                unevictable:0 dirty:42 writeback:0
+                slab_reclaimable:123747 slab_unreclaimable:138553
+                mapped:78577 shmem:1533 pagetables:45018 bounce:0
+                kernel_misc_reclaimable:0
+                free:273613993 free_pcp:312 free_cma:0
+[12823.740161] Node 0 active_anon:23147144kB inactive_anon:26434460kB active_file:136kB inactive_file:0kB unevictable:0kB isolated(anon):0kB isolated(file):0kB mapped:3864kB dirty:0kB writeback:0kB shmem:5164kB shmem_thp: 0kB shmem_pmdmapped: 0kB anon_thp: 0kB writeback_tmp:0kB kernel_stack:15960kB pagetables:153532kB all_unreclaimable? yes
+[12823.740166] Node 1 active_anon:208kB inactive_anon:1010988kB active_file:26752kB inactive_file:280084kB unevictable:0kB isolated(anon):0kB isolated(file):0kB mapped:275484kB dirty:168kB writeback:0kB shmem:968kB shmem_thp: 0kB shmem_pmdmapped: 0kB anon_thp: 47104kB writeback_tmp:0kB kernel_stack:17144kB pagetables:26180kB all_unreclaimable? yes
+[12823.740169] Node 2 active_anon:1990736kB inactive_anon:11780720kB active_file:428kB inactive_file:35700kB unevictable:0kB isolated(anon):0kB isolated(file):0kB mapped:34960kB dirty:0kB writeback:0kB shmem:0kB shmem_thp: 0kB shmem_pmdmapped: 0kB anon_thp: 0kB writeback_tmp:0kB kernel_stack:0kB pagetables:360kB all_unreclaimable? yes
+[12823.740173] Node 3 active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB isolated(anon):0kB isolated(file):0kB mapped:0kB dirty:0kB writeback:0kB shmem:0kB shmem_thp: 0kB shmem_pmdmapped: 0kB anon_thp: 0kB writeback_tmp:0kB kernel_stack:0kB pagetables:0kB all_unreclaimable? yes
+[12823.740177] Node 0 DMA free:11264kB min:0kB low:12kB high:24kB reserved_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:15992kB managed:15360kB mlocked:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[12823.740181] lowmem_reserve[]: 0 1416 63873 63873 63873
+[12823.740185] Node 0 DMA32 free:249896kB min:168kB low:1616kB high:3064kB reserved_highatomic:0KB active_anon:820352kB inactive_anon:363660kB active_file:100kB inactive_file:4kB unevictable:0kB writepending:0kB present:1517032kB managed:1450844kB mlocked:0kB bounce:0kB free_pcp:248kB local_pcp:248kB free_cma:0kB
+[12823.740189] lowmem_reserve[]: 0 0 62456 62456 62456
+[12823.740193] Node 0 Normal free:9116kB min:9472kB low:73424kB high:137376kB reserved_highatomic:0KB active_anon:22328808kB inactive_anon:26070864kB active_file:36kB inactive_file:0kB unevictable:0kB writepending:0kB present:65011712kB managed:63955400kB mlocked:0kB bounce:0kB free_pcp:248kB local_pcp:248kB free_cma:0kB
+[12823.740197] lowmem_reserve[]: 0 0 0 0 0
+[12823.740202] Node 1 Normal free:55227744kB min:7664kB low:73676kB high:139688kB reserved_highatomic:0KB active_anon:208kB inactive_anon:1010988kB active_file:26752kB inactive_file:280084kB unevictable:0kB writepending:168kB present:67108864kB managed:66013928kB mlocked:0kB bounce:0kB free_pcp:504kB local_pcp:0kB free_cma:0kB
+[12823.740205] lowmem_reserve[]: 0 0 0 0 0
+[12823.740208] Node 2 Normal free:512572992kB min:61116kB low:587500kB high:1113884kB reserved_highatomic:0KB active_anon:1990736kB inactive_anon:11780720kB active_file:428kB inactive_file:35700kB unevictable:0kB writepending:0kB present:526385152kB managed:526385152kB mlocked:0kB bounce:0kB free_pcp:248kB local_pcp:248kB free_cma:0kB
+[12823.740213] lowmem_reserve[]: 0 0 0 0 0
+[12823.740216] Node 3 Normal free:526384960kB min:61116kB low:587500kB high:1113884kB reserved_highatomic:0KB active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:526385152kB managed:526385152kB mlocked:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
+[12823.740219] lowmem_reserve[]: 0 0 0 0 0
+[12823.740222] Node 0 DMA: 0*4kB 0*8kB 0*16kB 0*32kB 0*64kB 0*128kB 0*256kB 0*512kB 1*1024kB (U) 1*2048kB (M) 2*4096kB (M) = 11264kB
+[12823.740229] Node 0 DMA32: 4*4kB (UME) 4*8kB (UM) 7*16kB (UME) 5*32kB (UE) 6*64kB (UE) 5*128kB (UME) 37*256kB (UM) 2*512kB (ME) 9*1024kB (UME) 6*2048kB (UME) 53*4096kB (UM) = 250432kB
+[12823.740239] Node 0 Normal: 82*4kB (UME) 149*8kB (ME) 104*16kB (E) 143*32kB (ME) 44*64kB (E) 4*128kB (ME) 1*256kB (E) 0*512kB 0*1024kB 0*2048kB 0*4096kB = 11344kB
+[12823.740248] Node 1 Normal: 7496*4kB (UME) 10308*8kB (UME) 5856*16kB (UME) 5895*32kB (UME) 3707*64kB (UME) 2577*128kB (UME) 1338*256kB (UME) 1031*512kB (UME) 702*1024kB (UME) 342*2048kB (UME) 12691*4096kB (UME) = 55233888kB
+[12823.740258] Node 2 Normal: 42651*4kB (UM) 16764*8kB (UM) 5569*16kB (UM) 733*32kB (UM) 451*64kB (UM) 139*128kB (UM) 25*256kB (UM) 20*512kB (UM) 17*1024kB (UM) 136*2048kB (UM) 124951*4096kB (M) = 512575804kB
+[12823.740268] Node 3 Normal: 0*4kB 0*8kB 0*16kB 0*32kB 1*64kB (U) 0*128kB 1*256kB (U) 1*512kB (U) 1*1024kB (U) 1*2048kB (U) 128511*4096kB (M) = 526384960kB
+[12823.740276] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[12823.740278] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=2048kB
+[12823.740280] Node 1 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[12823.740281] Node 1 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=2048kB
+[12823.740282] Node 2 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[12823.740284] Node 2 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=2048kB
+[12823.740285] Node 3 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+[12823.740286] Node 3 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=2048kB
+[12823.740287] 87253 total pagecache pages
+[12823.740288] 0 pages in swap cache
+[12823.740288] Swap cache stats: add 0, delete 0, find 0/0
+[12823.740290] Free swap  = 0kB
+[12823.740291] Total swap = 0kB
+[12823.740292] 296605976 pages RAM
+[12823.740292] 0 pages HighMem/MovableOnly
+[12823.740293] 554517 pages reserved
+[12823.740294] 0 pages cma reserved
+[12823.740294] 0 pages hwpoisoned
+[12823.740296] pagefault_out_of_memory: 1881 callbacks suppressed
+[12823.740297] Huh VM_FAULT_OOM leaked out to the #PF handler. Retrying PF
+[12823.750617] Huh VM_FAULT_OOM leaked out to the #PF handler. Retrying PF
+[12823.760554] Huh VM_FAULT_OOM leaked out to the #PF handler. Retrying PF
+[12823.770387] Huh VM_FAULT_OOM leaked out to the #PF handler. Retrying PF
+[12823.780244] Huh VM_FAULT_OOM leaked out to the #PF handler. Retrying PF
+[12823.790112] Huh VM_FAULT_OOM leaked out to the #PF handler. Retrying PF
+[12823.800005] Huh VM_FAULT_OOM leaked out to the #PF handler. Retrying PF
+[12823.809850] Huh VM_FAULT_OOM leaked out to the #PF handler. Retrying PF
+[12823.819718] Huh VM_FAULT_OOM leaked out to the #PF handler. Retrying PF
+[12823.910029] Huh VM_FAULT_OOM leaked out to the #PF handler. Retrying PF
+[13153.835932] total_accesses: 2168360 max_dram_hits: 1384252 cur_hits: 1858448 
+[13417.570764] nr_sampled: 5222727, nr_throttled: 340752, nr_lost: 0
+[13417.570778] total runtime: 28140447668 ns, total cputime: 1091988000 us, cpu usage: 25
+[13417.570797] pebs disable
