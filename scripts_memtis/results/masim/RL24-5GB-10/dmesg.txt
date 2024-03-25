@@ -1,0 +1,650 @@
+[  832.345862] BUG: kernel NULL pointer dereference, address: 0000000000000000
+[  832.345868] #PF: supervisor read access in kernel mode
+[  832.345870] #PF: error_code(0x0000) - not-present page
+[  832.345872] PGD 0 P4D 0 
+[  832.345875] Oops: 0000 [#1] SMP NOPTI
+[  832.345877] CPU: 13 PID: 9120 Comm: kill_ksampled Tainted: G           OE     5.15.19-RL0.24+ #1
+[  832.345880] Hardware name: Dell Inc. PowerEdge R750/0K8F35, BIOS 1.10.2 03/03/2023
+[  832.345881] RIP: 0010:ksamplingd_exit+0x34/0x60
+[  832.345888] Code: 65 10 02 48 89 e5 41 54 53 48 85 ff 74 10 e8 73 8d da ff 48 c7 05 20 65 10 02 00 00 00 00 31 db 45 31 e4 48 8b 05 0c 65 10 02 <48> 8b 04 18 4a 8b 3c 20 48 85 ff 74 05 e8 ca db f1 ff 49 83 c4 08
+[  832.345890] RSP: 0018:ffff9ece20367f10 EFLAGS: 00010246
+[  832.345892] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000000
+[  832.345894] RDX: ffffffffffffffff RSI: 00000000000001c2 RDI: 0000000000000000
+[  832.345895] RBP: ffff9ece20367f20 R08: 0000000000000000 R09: 0000000000000000
+[  832.345896] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000000
+[  832.345897] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[  832.345898] FS:  00007fa413834500(0000) GS:ffff8e69dbd80000(0000) knlGS:0000000000000000
+[  832.345900] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  832.345902] CR2: 0000000000000000 CR3: 0000001085654005 CR4: 0000000000770ee0
+[  832.345903] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[  832.345904] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[  832.345905] PKRU: 55555554
+[  832.345906] Call Trace:
+[  832.345908]  <TASK>
+[  832.345911]  __x64_sys_htmm_end+0x9/0x10
+[  832.345917]  do_syscall_64+0x37/0xb0
+[  832.345921]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[  832.345925] RIP: 0033:0x7fa41335a539
+[  832.345928] Code: 00 f3 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 1f f9 2c 00 f7 d8 64 89 01 48
+[  832.345930] RSP: 002b:00007fffd36003f8 EFLAGS: 00000246 ORIG_RAX: 00000000000001c2
+[  832.345932] RAX: ffffffffffffffda RBX: 0000000000000000 RCX: 00007fa41335a539
+[  832.345933] RDX: 0000000000000000 RSI: 00007fa41362c8c0 RDI: 00000000ffffffff
+[  832.345934] RBP: 0000561b876009a0 R08: 0000000000000000 R09: 0000561b876009a0
+[  832.345935] R10: 0000000000000000 R11: 0000000000000246 R12: 0000561b87600860
+[  832.345936] R13: 00007fffd3600500 R14: 0000000000000000 R15: 0000000000000000
+[  832.345938]  </TASK>
+[  832.345940] Modules linked in: socwatch2_15(OE) vtsspp(OE) sep5(OE) socperf3(OE) pax(OE) kmem intel_rapl_msr intel_rapl_common device_dax nd_pmem dax_pmem i10nm_edac nd_btt dax_pmem_core xt_tcpudp xt_mark xt_conntrack xt_MASQUERADE nf_conntrack_netlink xfrm_user xfrm_algo xt_addrtype br_netfilter bridge stp llc nf_tables nfnetlink ip6table_nat ip6table_filter ip6_tables iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter overlay uio_pci_generic uio cuse nls_iso8859_1 x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm ipmi_ssif drm_kms_helper cec crct10dif_pclmul crc32_pclmul drm ghash_clmulni_intel aesni_intel crypto_simd cryptd binfmt_misc rapl i2c_algo_bit cdc_ether fb_sys_fops acpi_ipmi usbnet syscopyarea intel_cstate mii ipmi_si mei_me wmi_bmof efi_pstore sysfillrect mei isst_if_mbox_pci isst_if_mmio sysimgblt isst_if_common ipmi_devintf intel_pch_thermal ipmi_msghandler nfit acpi_power_meter mac_hid sch_fq_codel knem(OE)
+[  832.345991]  parport_pc ppdev lp parport ip_tables x_tables autofs4 ahci tg3 megaraid_sas libahci wmi
+[  832.346002] CR2: 0000000000000000
+[  832.346004] ---[ end trace 494102d62771038f ]---
+[  832.357805] RIP: 0010:ksamplingd_exit+0x34/0x60
+[  832.357809] Code: 65 10 02 48 89 e5 41 54 53 48 85 ff 74 10 e8 73 8d da ff 48 c7 05 20 65 10 02 00 00 00 00 31 db 45 31 e4 48 8b 05 0c 65 10 02 <48> 8b 04 18 4a 8b 3c 20 48 85 ff 74 05 e8 ca db f1 ff 49 83 c4 08
+[  832.357811] RSP: 0018:ffff9ece20367f10 EFLAGS: 00010246
+[  832.357813] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000000
+[  832.357814] RDX: ffffffffffffffff RSI: 00000000000001c2 RDI: 0000000000000000
+[  832.357815] RBP: ffff9ece20367f20 R08: 0000000000000000 R09: 0000000000000000
+[  832.357816] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000000
+[  832.357817] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[  832.357818] FS:  00007fa413834500(0000) GS:ffff8e69dbd80000(0000) knlGS:0000000000000000
+[  832.357820] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  832.357821] CR2: 0000000000000000 CR3: 0000001085654005 CR4: 0000000000770ee0
+[  832.357823] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[  832.357824] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[  832.357825] PKRU: 55555554
+[  832.435334] ___-get the promoted 0-___
+[  832.435337] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  832.435340] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  834.469360] ___-get the promoted 0-___
+[  834.469365] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  834.469366] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  836.485294] ___-get the promoted 0-___
+[  836.485302] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  836.485306] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  838.501216] ___-get the promoted 0-___
+[  838.501220] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  838.501224] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  840.517143] ___-get the promoted 0-___
+[  840.517149] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  840.517153] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  842.533065] ___-get the promoted 0-___
+[  842.533070] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  842.533072] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  842.888039] run_node.sh (9088): drop_caches: 3
+[  844.548982] ___-get the promoted 0-___
+[  844.548984] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  844.548986] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  844.942091] bw 0 cyc 0 ins 0
+[  845.394031] perf: interrupt took too long (2570 > 2500), lowering kernel.perf_event_max_sample_rate to 77750
+[  845.461065] perf: interrupt took too long (3825 > 3212), lowering kernel.perf_event_max_sample_rate to 52250
+[  845.504761] perf: interrupt took too long (4974 > 4781), lowering kernel.perf_event_max_sample_rate to 40000
+[  845.593934] perf: interrupt took too long (6725 > 6217), lowering kernel.perf_event_max_sample_rate to 29500
+[  845.690757] perf: interrupt took too long (8450 > 8406), lowering kernel.perf_event_max_sample_rate to 23500
+[  845.824809] perf: interrupt took too long (10652 > 10562), lowering kernel.perf_event_max_sample_rate to 18750
+[  845.981714] perf: interrupt took too long (13770 > 13315), lowering kernel.perf_event_max_sample_rate to 14500
+[  846.156306] perf: interrupt took too long (17611 > 17212), lowering kernel.perf_event_max_sample_rate to 11250
+[  846.374342] perf: interrupt took too long (22067 > 22013), lowering kernel.perf_event_max_sample_rate to 9000
+[  846.564914] ___-get the promoted 0-___
+[  846.564917] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  846.564922] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  846.759852] perf: interrupt took too long (27633 > 27583), lowering kernel.perf_event_max_sample_rate to 7000
+[  848.580839] BEFORE the lru mesg active_anon 2 inactive_anon 1310482 active_file 20 inactive_file 34
+[  848.584084] AFTER the lru mesg active_anon 2 inactive_anon 1310034 active_file 2 inactive_file 0
+[  848.584087] ___-get the promoted 500-___
+[  848.584088] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 35262 active_file 18 inactive_file 34
+[  848.584093] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 35264 active_file 18 inactive_file 34
+[  850.515488] perf_duration_warn: 2 callbacks suppressed
+[  850.515491] perf: interrupt took too long (54321 > 54300), lowering kernel.perf_event_max_sample_rate to 3500
+[  850.596769] BEFORE the lru mesg active_anon 2 inactive_anon 1310733 active_file 0 inactive_file 2
+[  850.600456] AFTER the lru mesg active_anon 2 inactive_anon 1310221 active_file 0 inactive_file 0
+[  850.600459] ___-get the promoted 500-___
+[  850.600461] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 395332 active_file 18 inactive_file 36
+[  850.600466] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 395334 active_file 18 inactive_file 36
+[  852.612710] BEFORE the lru mesg active_anon 2 inactive_anon 1310221 active_file 0 inactive_file 0
+[  852.619067] AFTER the lru mesg active_anon 2 inactive_anon 1310480 active_file 0 inactive_file 0
+[  852.619070] ___-get the promoted 500-___
+[  852.619072] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 795445 active_file 18 inactive_file 36
+[  852.619079] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 795459 active_file 18 inactive_file 36
+[  854.628616] BEFORE the lru mesg active_anon 2 inactive_anon 1310480 active_file 0 inactive_file 0
+[  854.631437] AFTER the lru mesg active_anon 2 inactive_anon 1310480 active_file 0 inactive_file 0
+[  854.631440] ___-get the promoted 500-___
+[  854.631441] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 1113923 active_file 18 inactive_file 36
+[  854.631447] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 1113923 active_file 18 inactive_file 36
+[  855.144418] bw 114777033230593822 cyc 6574251721841185271 ins 1783133145585272795
+[  855.837250] perf: interrupt took too long (67924 > 67901), lowering kernel.perf_event_max_sample_rate to 2750
+[  856.644547] BEFORE the lru mesg active_anon 2 inactive_anon 1310480 active_file 0 inactive_file 0
+[  856.647451] AFTER the lru mesg active_anon 2 inactive_anon 1310480 active_file 0 inactive_file 0
+[  856.647453] ___-get the promoted 500-___
+[  856.647457] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 1440579 active_file 18 inactive_file 36
+[  856.647461] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 1440579 active_file 18 inactive_file 36
+[  858.660420] BEFORE the lru mesg active_anon 2 inactive_anon 1310480 active_file 0 inactive_file 0
+[  858.664232] AFTER the lru mesg active_anon 2 inactive_anon 1309968 active_file 0 inactive_file 0
+[  858.664235] ___-get the promoted 500-___
+[  858.664235] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 1804611 active_file 18 inactive_file 36
+[  858.664241] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 1804611 active_file 18 inactive_file 36
+[  860.676363] BEFORE the lru mesg active_anon 2 inactive_anon 1310480 active_file 0 inactive_file 0
+[  860.678273] AFTER the lru mesg active_anon 2 inactive_anon 1309968 active_file 0 inactive_file 0
+[  860.678275] ___-get the promoted 500-___
+[  860.678276] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 2099523 active_file 18 inactive_file 36
+[  860.678281] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 2099523 active_file 18 inactive_file 36
+[  862.692280] BEFORE the lru mesg active_anon 2 inactive_anon 1310480 active_file 0 inactive_file 0
+[  862.694068] AFTER the lru mesg active_anon 2 inactive_anon 1309968 active_file 0 inactive_file 0
+[  862.694070] ___-get the promoted 500-___
+[  862.694072] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 2361667 active_file 18 inactive_file 36
+[  862.694076] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 2361667 active_file 18 inactive_file 36
+[  864.708179] BEFORE the lru mesg active_anon 2 inactive_anon 1310480 active_file 0 inactive_file 0
+[  864.710025] AFTER the lru mesg active_anon 2 inactive_anon 1309968 active_file 0 inactive_file 0
+[  864.710027] ___-get the promoted 500-___
+[  864.710028] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 2754883 active_file 18 inactive_file 36
+[  864.710079] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 2754883 active_file 18 inactive_file 36
+[  865.383536] bw 101992696660891070 cyc 5877223315706234895 ins 1569747503723363123
+[  866.724100] BEFORE the lru mesg active_anon 2 inactive_anon 1310480 active_file 0 inactive_file 0
+[  866.725890] AFTER the lru mesg active_anon 2 inactive_anon 1309968 active_file 0 inactive_file 0
+[  866.725893] ___-get the promoted 500-___
+[  866.725894] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 3115331 active_file 18 inactive_file 36
+[  866.725899] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 3115331 active_file 18 inactive_file 36
+[  868.739996] BEFORE the lru mesg active_anon 2 inactive_anon 1310480 active_file 0 inactive_file 0
+[  868.741743] AFTER the lru mesg active_anon 2 inactive_anon 1309968 active_file 0 inactive_file 0
+[  868.741746] ___-get the promoted 500-___
+[  868.741747] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 3410243 active_file 18 inactive_file 36
+[  868.741751] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 3410243 active_file 18 inactive_file 36
+[  870.755913] BEFORE the lru mesg active_anon 2 inactive_anon 1310480 active_file 0 inactive_file 0
+[  870.758728] AFTER the lru mesg active_anon 2 inactive_anon 1309968 active_file 0 inactive_file 0
+[  870.758731] ___-get the promoted 500-___
+[  870.758732] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 3712835 active_file 18 inactive_file 36
+[  870.758737] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 3712835 active_file 18 inactive_file 36
+[  872.771836] BEFORE the lru mesg active_anon 2 inactive_anon 1310480 active_file 0 inactive_file 0
+[  872.773503] AFTER the lru mesg active_anon 2 inactive_anon 1309968 active_file 0 inactive_file 0
+[  872.773505] ___-get the promoted 500-___
+[  872.773507] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 4065603 active_file 18 inactive_file 36
+[  872.773511] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 4065603 active_file 18 inactive_file 36
+[  874.787749] BEFORE the lru mesg active_anon 2 inactive_anon 1310480 active_file 0 inactive_file 0
+[  874.790597] AFTER the lru mesg active_anon 2 inactive_anon 1310480 active_file 0 inactive_file 0
+[  874.790599] ___-get the promoted 500-___
+[  874.790600] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 4399427 active_file 18 inactive_file 36
+[  874.790606] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 4399427 active_file 18 inactive_file 36
+[  875.623274] bw 106598818445576490 cyc 6139678296851000157 ins 1637993308125003277
+[  876.803658] BEFORE the lru mesg active_anon 2 inactive_anon 1310480 active_file 0 inactive_file 0
+[  876.806683] AFTER the lru mesg active_anon 2 inactive_anon 1310480 active_file 0 inactive_file 0
+[  876.806686] ___-get the promoted 500-___
+[  876.806687] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 4672835 active_file 18 inactive_file 36
+[  876.806692] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 4672835 active_file 18 inactive_file 36
+[  878.819567] BEFORE the lru mesg active_anon 2 inactive_anon 1310480 active_file 0 inactive_file 0
+[  878.822105] AFTER the lru mesg active_anon 2 inactive_anon 1310480 active_file 0 inactive_file 0
+[  878.822107] ___-get the promoted 500-___
+[  878.822108] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 4953411 active_file 18 inactive_file 36
+[  878.822113] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 4953411 active_file 18 inactive_file 36
+[  880.835476] BEFORE the lru mesg active_anon 2 inactive_anon 1310480 active_file 0 inactive_file 0
+[  880.838498] AFTER the lru mesg active_anon 2 inactive_anon 1310480 active_file 0 inactive_file 0
+[  880.838500] ___-get the promoted 500-___
+[  880.838504] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 5234499 active_file 18 inactive_file 36
+[  880.838509] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 5234499 active_file 18 inactive_file 36
+[  882.851387] BEFORE the lru mesg active_anon 2 inactive_anon 1310480 active_file 0 inactive_file 0
+[  882.854275] AFTER the lru mesg active_anon 2 inactive_anon 1309968 active_file 0 inactive_file 0
+[  882.854277] ___-get the promoted 500-___
+[  882.854278] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 5465923 active_file 18 inactive_file 36
+[  882.854283] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 5465923 active_file 18 inactive_file 36
+[  884.867311] BEFORE the lru mesg active_anon 2 inactive_anon 1310480 active_file 0 inactive_file 0
+[  884.869083] AFTER the lru mesg active_anon 2 inactive_anon 1309968 active_file 0 inactive_file 0
+[  884.869086] ___-get the promoted 500-___
+[  884.869087] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 5769539 active_file 18 inactive_file 36
+[  884.869092] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 5769539 active_file 18 inactive_file 36
+[  885.863205] bw 118349127675860194 cyc 6808599952626165014 ins 1812273916059801940
+[  886.883207] BEFORE the lru mesg active_anon 2 inactive_anon 1310480 active_file 0 inactive_file 0
+[  886.884974] AFTER the lru mesg active_anon 2 inactive_anon 1309968 active_file 0 inactive_file 0
+[  886.884977] ___-get the promoted 500-___
+[  886.884978] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 6129987 active_file 18 inactive_file 36
+[  886.884983] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 6129987 active_file 18 inactive_file 36
+[  888.899114] BEFORE the lru mesg active_anon 2 inactive_anon 1310720 active_file 0 inactive_file 0
+[  888.900843] AFTER the lru mesg active_anon 2 inactive_anon 1310208 active_file 0 inactive_file 0
+[  888.900846] ___-get the promoted 500-___
+[  888.900847] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 6424460 active_file 18 inactive_file 36
+[  888.900852] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 6424460 active_file 18 inactive_file 36
+[  890.915035] BEFORE the lru mesg active_anon 2 inactive_anon 1310208 active_file 0 inactive_file 0
+[  890.917715] AFTER the lru mesg active_anon 2 inactive_anon 1309696 active_file 0 inactive_file 0
+[  890.917717] ___-get the promoted 500-___
+[  890.917718] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 6703500 active_file 18 inactive_file 36
+[  890.917724] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 6703500 active_file 18 inactive_file 36
+[  892.930938] BEFORE the lru mesg active_anon 2 inactive_anon 1310523 active_file 0 inactive_file 0
+[  892.932802] AFTER the lru mesg active_anon 2 inactive_anon 1310011 active_file 0 inactive_file 0
+[  892.932804] ___-get the promoted 500-___
+[  892.932805] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 6981516 active_file 18 inactive_file 36
+[  892.932810] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 6981516 active_file 18 inactive_file 36
+[  894.946837] BEFORE the lru mesg active_anon 2 inactive_anon 1310718 active_file 0 inactive_file 0
+[  894.948624] AFTER the lru mesg active_anon 2 inactive_anon 1310206 active_file 0 inactive_file 0
+[  894.948626] ___-get the promoted 500-___
+[  894.948628] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7079413 active_file 18 inactive_file 36
+[  894.948632] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7079413 active_file 18 inactive_file 36
+[  896.103461] bw 138841670938374010 cyc 8140051204984254406 ins 2113739886743129677
+[  896.962743] BEFORE the lru mesg active_anon 2 inactive_anon 1310206 active_file 0 inactive_file 0
+[  896.964496] AFTER the lru mesg active_anon 2 inactive_anon 1309694 active_file 0 inactive_file 0
+[  896.964499] ___-get the promoted 500-___
+[  896.964500] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7079925 active_file 18 inactive_file 36
+[  896.964506] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7079925 active_file 18 inactive_file 36
+[  898.978648] BEFORE the lru mesg active_anon 2 inactive_anon 1309694 active_file 0 inactive_file 0
+[  898.980466] AFTER the lru mesg active_anon 2 inactive_anon 1309182 active_file 0 inactive_file 0
+[  898.980468] ___-get the promoted 500-___
+[  898.980469] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7080437 active_file 18 inactive_file 36
+[  898.980473] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7080437 active_file 18 inactive_file 36
+[  900.994556] BEFORE the lru mesg active_anon 2 inactive_anon 1309182 active_file 0 inactive_file 0
+[  900.996407] AFTER the lru mesg active_anon 2 inactive_anon 1308670 active_file 0 inactive_file 0
+[  900.996409] ___-get the promoted 500-___
+[  900.996410] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7080949 active_file 18 inactive_file 36
+[  900.996415] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7080949 active_file 18 inactive_file 36
+[  903.010458] BEFORE the lru mesg active_anon 2 inactive_anon 1308670 active_file 0 inactive_file 0
+[  903.012324] AFTER the lru mesg active_anon 2 inactive_anon 1308158 active_file 0 inactive_file 0
+[  903.012326] ___-get the promoted 500-___
+[  903.012327] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7081472 active_file 18 inactive_file 36
+[  903.012331] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7081472 active_file 18 inactive_file 36
+[  905.030366] BEFORE the lru mesg active_anon 2 inactive_anon 1308158 active_file 0 inactive_file 0
+[  905.032113] AFTER the lru mesg active_anon 2 inactive_anon 1307646 active_file 0 inactive_file 0
+[  905.032116] ___-get the promoted 500-___
+[  905.032117] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7081984 active_file 18 inactive_file 36
+[  905.032123] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7081984 active_file 18 inactive_file 36
+[  906.345247] bw 203421378409371086 cyc 12409174026041895615 ins 3130000756421160877
+[  907.042269] BEFORE the lru mesg active_anon 2 inactive_anon 1307646 active_file 0 inactive_file 0
+[  907.044257] AFTER the lru mesg active_anon 2 inactive_anon 1307134 active_file 0 inactive_file 0
+[  907.044260] ___-get the promoted 500-___
+[  907.044261] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7082496 active_file 18 inactive_file 36
+[  907.044266] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7082496 active_file 18 inactive_file 36
+[  909.058201] BEFORE the lru mesg active_anon 2 inactive_anon 1307134 active_file 0 inactive_file 0
+[  909.059952] AFTER the lru mesg active_anon 2 inactive_anon 1306622 active_file 0 inactive_file 0
+[  909.059955] ___-get the promoted 500-___
+[  909.059957] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7083008 active_file 18 inactive_file 36
+[  909.059962] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7083008 active_file 18 inactive_file 36
+[  911.074074] BEFORE the lru mesg active_anon 2 inactive_anon 1306622 active_file 0 inactive_file 0
+[  911.076004] AFTER the lru mesg active_anon 2 inactive_anon 1306110 active_file 0 inactive_file 0
+[  911.076006] ___-get the promoted 500-___
+[  911.076008] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7083520 active_file 18 inactive_file 36
+[  911.076013] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7083520 active_file 18 inactive_file 36
+[  913.089968] BEFORE the lru mesg active_anon 2 inactive_anon 1306110 active_file 0 inactive_file 0
+[  913.091965] AFTER the lru mesg active_anon 2 inactive_anon 1305598 active_file 0 inactive_file 0
+[  913.091967] ___-get the promoted 500-___
+[  913.091968] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7084032 active_file 18 inactive_file 36
+[  913.091973] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7084032 active_file 18 inactive_file 36
+[  915.105876] BEFORE the lru mesg active_anon 2 inactive_anon 1305598 active_file 0 inactive_file 0
+[  915.107667] AFTER the lru mesg active_anon 2 inactive_anon 1305086 active_file 0 inactive_file 0
+[  915.107670] ___-get the promoted 500-___
+[  915.107671] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7084544 active_file 18 inactive_file 36
+[  915.107691] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7084544 active_file 18 inactive_file 36
+[  916.584832] bw 198627251653882310 cyc 12412182105574685715 ins 3087511633019567808
+[  917.121805] BEFORE the lru mesg active_anon 2 inactive_anon 1305086 active_file 0 inactive_file 0
+[  917.123581] AFTER the lru mesg active_anon 2 inactive_anon 1304574 active_file 0 inactive_file 0
+[  917.123583] ___-get the promoted 500-___
+[  917.123585] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7085056 active_file 18 inactive_file 36
+[  917.123589] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7085056 active_file 18 inactive_file 36
+[  919.137748] BEFORE the lru mesg active_anon 2 inactive_anon 1304574 active_file 0 inactive_file 0
+[  919.139525] AFTER the lru mesg active_anon 2 inactive_anon 1304062 active_file 0 inactive_file 0
+[  919.139527] ___-get the promoted 500-___
+[  919.139528] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7085568 active_file 18 inactive_file 36
+[  919.139533] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7085568 active_file 18 inactive_file 36
+[  921.153597] BEFORE the lru mesg active_anon 2 inactive_anon 1304062 active_file 0 inactive_file 0
+[  921.155383] AFTER the lru mesg active_anon 2 inactive_anon 1303550 active_file 0 inactive_file 0
+[  921.155385] ___-get the promoted 500-___
+[  921.155386] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7086080 active_file 18 inactive_file 36
+[  921.155391] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7086080 active_file 18 inactive_file 36
+[  923.169515] BEFORE the lru mesg active_anon 2 inactive_anon 1303550 active_file 0 inactive_file 0
+[  923.171286] AFTER the lru mesg active_anon 2 inactive_anon 1303038 active_file 0 inactive_file 0
+[  923.171288] ___-get the promoted 500-___
+[  923.171289] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7086592 active_file 18 inactive_file 36
+[  923.171294] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7086592 active_file 18 inactive_file 36
+[  925.185389] BEFORE the lru mesg active_anon 2 inactive_anon 1303038 active_file 0 inactive_file 0
+[  925.187162] AFTER the lru mesg active_anon 2 inactive_anon 1302526 active_file 0 inactive_file 0
+[  925.187164] ___-get the promoted 500-___
+[  925.187164] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7087104 active_file 18 inactive_file 36
+[  925.187169] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7087104 active_file 18 inactive_file 36
+[  926.824364] bw 205207425632005030 cyc 12403815932056836752 ins 3186496250147580534
+[  927.201292] BEFORE the lru mesg active_anon 2 inactive_anon 1302526 active_file 0 inactive_file 0
+[  927.203084] AFTER the lru mesg active_anon 2 inactive_anon 1302014 active_file 0 inactive_file 0
+[  927.203087] ___-get the promoted 500-___
+[  927.203088] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7087616 active_file 18 inactive_file 36
+[  927.203093] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7087616 active_file 18 inactive_file 36
+[  929.221178] BEFORE the lru mesg active_anon 2 inactive_anon 1302014 active_file 0 inactive_file 0
+[  929.222852] AFTER the lru mesg active_anon 2 inactive_anon 1301502 active_file 0 inactive_file 0
+[  929.222854] ___-get the promoted 500-___
+[  929.222855] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7088128 active_file 18 inactive_file 36
+[  929.222860] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7088128 active_file 18 inactive_file 36
+[  931.233076] BEFORE the lru mesg active_anon 2 inactive_anon 1301502 active_file 0 inactive_file 0
+[  931.234859] AFTER the lru mesg active_anon 2 inactive_anon 1300990 active_file 0 inactive_file 0
+[  931.234861] ___-get the promoted 500-___
+[  931.234862] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7088640 active_file 18 inactive_file 36
+[  931.234867] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7088640 active_file 18 inactive_file 36
+[  933.248973] BEFORE the lru mesg active_anon 2 inactive_anon 1300990 active_file 0 inactive_file 0
+[  933.250871] AFTER the lru mesg active_anon 2 inactive_anon 1300478 active_file 0 inactive_file 0
+[  933.250873] ___-get the promoted 500-___
+[  933.250874] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7089152 active_file 18 inactive_file 36
+[  933.250879] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7089152 active_file 18 inactive_file 36
+[  935.264872] BEFORE the lru mesg active_anon 2 inactive_anon 1300478 active_file 0 inactive_file 0
+[  935.266652] AFTER the lru mesg active_anon 2 inactive_anon 1299966 active_file 0 inactive_file 0
+[  935.266654] ___-get the promoted 500-___
+[  935.266655] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7089664 active_file 18 inactive_file 36
+[  935.266660] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7089664 active_file 18 inactive_file 36
+[  937.063773] bw 203139370953169535 cyc 12399021779292523038 ins 3144947151600018017
+[  937.280769] BEFORE the lru mesg active_anon 2 inactive_anon 1299966 active_file 0 inactive_file 0
+[  937.282732] AFTER the lru mesg active_anon 2 inactive_anon 1299454 active_file 0 inactive_file 0
+[  937.282734] ___-get the promoted 500-___
+[  937.282735] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7090176 active_file 18 inactive_file 36
+[  937.282740] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7090176 active_file 18 inactive_file 36
+[  939.296685] BEFORE the lru mesg active_anon 2 inactive_anon 1299454 active_file 0 inactive_file 0
+[  939.298550] AFTER the lru mesg active_anon 2 inactive_anon 1298942 active_file 0 inactive_file 0
+[  939.298553] ___-get the promoted 500-___
+[  939.298554] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7090688 active_file 18 inactive_file 36
+[  939.298558] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7090688 active_file 18 inactive_file 36
+[  941.312612] BEFORE the lru mesg active_anon 2 inactive_anon 1298942 active_file 0 inactive_file 0
+[  941.314276] AFTER the lru mesg active_anon 2 inactive_anon 1298430 active_file 0 inactive_file 0
+[  941.314278] ___-get the promoted 500-___
+[  941.314279] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7091200 active_file 18 inactive_file 36
+[  941.314284] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7091200 active_file 18 inactive_file 36
+[  943.328475] BEFORE the lru mesg active_anon 2 inactive_anon 1298430 active_file 0 inactive_file 0
+[  943.330316] AFTER the lru mesg active_anon 2 inactive_anon 1297918 active_file 0 inactive_file 0
+[  943.330318] ___-get the promoted 500-___
+[  943.330318] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7091712 active_file 18 inactive_file 36
+[  943.330323] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7091712 active_file 18 inactive_file 36
+[  945.344358] BEFORE the lru mesg active_anon 2 inactive_anon 1297918 active_file 0 inactive_file 0
+[  945.346137] AFTER the lru mesg active_anon 2 inactive_anon 1297406 active_file 0 inactive_file 0
+[  945.346139] ___-get the promoted 500-___
+[  945.346140] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7092224 active_file 18 inactive_file 36
+[  945.346145] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7092224 active_file 18 inactive_file 36
+[  947.303243] bw 202387351069952655 cyc 12383417345041787508 ins 3131598798672974093
+[  947.360257] BEFORE the lru mesg active_anon 2 inactive_anon 1297406 active_file 0 inactive_file 0
+[  947.362051] AFTER the lru mesg active_anon 2 inactive_anon 1296894 active_file 0 inactive_file 0
+[  947.362054] ___-get the promoted 500-___
+[  947.362055] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7092736 active_file 18 inactive_file 36
+[  947.362059] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7092736 active_file 18 inactive_file 36
+[  949.376169] BEFORE the lru mesg active_anon 2 inactive_anon 1296894 active_file 0 inactive_file 0
+[  949.377974] AFTER the lru mesg active_anon 2 inactive_anon 1296382 active_file 0 inactive_file 0
+[  949.377975] ___-get the promoted 500-___
+[  949.377976] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7093248 active_file 18 inactive_file 36
+[  949.377981] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7093248 active_file 18 inactive_file 36
+[  951.392055] BEFORE the lru mesg active_anon 2 inactive_anon 1296382 active_file 0 inactive_file 0
+[  951.394004] AFTER the lru mesg active_anon 2 inactive_anon 1295870 active_file 0 inactive_file 0
+[  951.394006] ___-get the promoted 500-___
+[  951.394007] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7093760 active_file 18 inactive_file 36
+[  951.394012] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7093760 active_file 18 inactive_file 36
+[  953.407960] BEFORE the lru mesg active_anon 2 inactive_anon 1295870 active_file 0 inactive_file 0
+[  953.409779] AFTER the lru mesg active_anon 2 inactive_anon 1295358 active_file 0 inactive_file 0
+[  953.409781] ___-get the promoted 500-___
+[  953.409783] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7094272 active_file 18 inactive_file 36
+[  953.409787] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7094272 active_file 18 inactive_file 36
+[  955.423829] BEFORE the lru mesg active_anon 2 inactive_anon 1295358 active_file 0 inactive_file 0
+[  955.425798] AFTER the lru mesg active_anon 2 inactive_anon 1294846 active_file 0 inactive_file 0
+[  955.425800] ___-get the promoted 500-___
+[  955.425801] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7094784 active_file 18 inactive_file 36
+[  955.425807] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7094784 active_file 18 inactive_file 36
+[  957.439726] BEFORE the lru mesg active_anon 2 inactive_anon 1294846 active_file 0 inactive_file 0
+[  957.441601] AFTER the lru mesg active_anon 2 inactive_anon 1294334 active_file 0 inactive_file 0
+[  957.441603] ___-get the promoted 500-___
+[  957.441603] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7095296 active_file 18 inactive_file 36
+[  957.441608] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7095296 active_file 18 inactive_file 36
+[  957.542833] bw 206053448000620175 cyc 12418104283828990294 ins 3206988791965152645
+[  959.455627] BEFORE the lru mesg active_anon 2 inactive_anon 1294334 active_file 0 inactive_file 0
+[  959.457529] AFTER the lru mesg active_anon 2 inactive_anon 1293822 active_file 0 inactive_file 0
+[  959.457532] ___-get the promoted 500-___
+[  959.457533] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7095808 active_file 18 inactive_file 36
+[  959.457538] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7095808 active_file 18 inactive_file 36
+[  961.471520] BEFORE the lru mesg active_anon 2 inactive_anon 1293822 active_file 0 inactive_file 0
+[  961.473338] AFTER the lru mesg active_anon 2 inactive_anon 1293310 active_file 0 inactive_file 0
+[  961.473340] ___-get the promoted 500-___
+[  961.473341] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7096320 active_file 18 inactive_file 36
+[  961.473346] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7096320 active_file 18 inactive_file 36
+[  963.487411] BEFORE the lru mesg active_anon 2 inactive_anon 1293310 active_file 0 inactive_file 0
+[  963.489406] AFTER the lru mesg active_anon 2 inactive_anon 1292798 active_file 0 inactive_file 0
+[  963.489408] ___-get the promoted 500-___
+[  963.489409] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7096832 active_file 18 inactive_file 36
+[  963.489414] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7096832 active_file 18 inactive_file 36
+[  965.503298] BEFORE the lru mesg active_anon 2 inactive_anon 1292798 active_file 0 inactive_file 0
+[  965.505080] AFTER the lru mesg active_anon 2 inactive_anon 1292286 active_file 0 inactive_file 0
+[  965.505082] ___-get the promoted 500-___
+[  965.505083] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7097344 active_file 18 inactive_file 36
+[  965.505088] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7097344 active_file 18 inactive_file 36
+[  967.519188] BEFORE the lru mesg active_anon 2 inactive_anon 1292286 active_file 0 inactive_file 0
+[  967.521359] AFTER the lru mesg active_anon 2 inactive_anon 1291774 active_file 0 inactive_file 0
+[  967.521361] ___-get the promoted 500-___
+[  967.521362] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7097856 active_file 18 inactive_file 36
+[  967.521367] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7097856 active_file 18 inactive_file 36
+[  967.782323] bw 203609383380176055 cyc 12381819325908971425 ins 3149929283326311427
+[  969.535085] BEFORE the lru mesg active_anon 2 inactive_anon 1291774 active_file 0 inactive_file 0
+[  969.537203] AFTER the lru mesg active_anon 2 inactive_anon 1291262 active_file 0 inactive_file 0
+[  969.537205] ___-get the promoted 500-___
+[  969.537206] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7098368 active_file 18 inactive_file 36
+[  969.537210] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7098368 active_file 18 inactive_file 36
+[  971.550973] BEFORE the lru mesg active_anon 2 inactive_anon 1291262 active_file 0 inactive_file 0
+[  971.553009] AFTER the lru mesg active_anon 2 inactive_anon 1290750 active_file 0 inactive_file 0
+[  971.553011] ___-get the promoted 500-___
+[  971.553012] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7098880 active_file 18 inactive_file 36
+[  971.553016] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7098880 active_file 18 inactive_file 36
+[  973.566902] BEFORE the lru mesg active_anon 2 inactive_anon 1290750 active_file 0 inactive_file 0
+[  973.568749] AFTER the lru mesg active_anon 2 inactive_anon 1290238 active_file 0 inactive_file 0
+[  973.568752] ___-get the promoted 500-___
+[  973.568753] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7099392 active_file 18 inactive_file 36
+[  973.568758] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7099392 active_file 18 inactive_file 36
+[  975.582762] BEFORE the lru mesg active_anon 2 inactive_anon 1290238 active_file 0 inactive_file 0
+[  975.584611] AFTER the lru mesg active_anon 2 inactive_anon 1289726 active_file 0 inactive_file 0
+[  975.584614] ___-get the promoted 500-___
+[  975.584615] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7099904 active_file 18 inactive_file 36
+[  975.584620] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7099904 active_file 18 inactive_file 36
+[  977.598650] BEFORE the lru mesg active_anon 2 inactive_anon 1289726 active_file 0 inactive_file 0
+[  977.600534] AFTER the lru mesg active_anon 2 inactive_anon 1289214 active_file 0 inactive_file 0
+[  977.600536] ___-get the promoted 500-___
+[  977.600537] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7100416 active_file 18 inactive_file 36
+[  977.600542] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7100416 active_file 18 inactive_file 36
+[  978.021569] bw 201353322285598688 cyc 12397047727099085197 ins 3125958649548874345
+[  979.614540] BEFORE the lru mesg active_anon 2 inactive_anon 1289214 active_file 0 inactive_file 0
+[  979.616359] AFTER the lru mesg active_anon 2 inactive_anon 1288702 active_file 0 inactive_file 0
+[  979.616361] ___-get the promoted 500-___
+[  979.616363] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7100928 active_file 18 inactive_file 36
+[  979.616367] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7100928 active_file 18 inactive_file 36
+[  981.630451] BEFORE the lru mesg active_anon 2 inactive_anon 1288702 active_file 0 inactive_file 0
+[  981.633839] AFTER the lru mesg active_anon 2 inactive_anon 1287990 active_file 0 inactive_file 0
+[  981.633842] ___-get the promoted 500-___
+[  981.633843] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7101632 active_file 18 inactive_file 36
+[  981.633849] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7101640 active_file 18 inactive_file 36
+[  983.646343] BEFORE the lru mesg active_anon 2 inactive_anon 1287990 active_file 0 inactive_file 0
+[  983.648224] AFTER the lru mesg active_anon 2 inactive_anon 1287478 active_file 0 inactive_file 0
+[  983.648226] ___-get the promoted 500-___
+[  983.648227] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7102152 active_file 18 inactive_file 36
+[  983.648232] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7102152 active_file 18 inactive_file 36
+[  985.662216] BEFORE the lru mesg active_anon 2 inactive_anon 1287478 active_file 0 inactive_file 0
+[  985.664049] AFTER the lru mesg active_anon 2 inactive_anon 1286966 active_file 0 inactive_file 0
+[  985.664051] ___-get the promoted 500-___
+[  985.664053] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7102664 active_file 18 inactive_file 36
+[  985.664058] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7102664 active_file 18 inactive_file 36
+[  987.678137] BEFORE the lru mesg active_anon 2 inactive_anon 1286966 active_file 0 inactive_file 0
+[  987.679953] AFTER the lru mesg active_anon 2 inactive_anon 1286454 active_file 0 inactive_file 0
+[  987.679955] ___-get the promoted 500-___
+[  987.679955] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7103176 active_file 18 inactive_file 36
+[  987.679960] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7103176 active_file 18 inactive_file 36
+[  988.261344] bw 201635329741805073 cyc 12421958362611573444 ins 3144383136687598758
+[  989.693995] BEFORE the lru mesg active_anon 2 inactive_anon 1286454 active_file 0 inactive_file 0
+[  989.695830] AFTER the lru mesg active_anon 2 inactive_anon 1285942 active_file 0 inactive_file 0
+[  989.695832] ___-get the promoted 500-___
+[  989.695833] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7103688 active_file 18 inactive_file 36
+[  989.695838] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7103688 active_file 18 inactive_file 36
+[  991.709920] BEFORE the lru mesg active_anon 2 inactive_anon 1285942 active_file 0 inactive_file 0
+[  991.711741] AFTER the lru mesg active_anon 2 inactive_anon 1285430 active_file 0 inactive_file 0
+[  991.711743] ___-get the promoted 500-___
+[  991.711745] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7104200 active_file 18 inactive_file 36
+[  991.711749] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7104200 active_file 18 inactive_file 36
+[  993.725775] BEFORE the lru mesg active_anon 2 inactive_anon 1285430 active_file 0 inactive_file 0
+[  993.727636] AFTER the lru mesg active_anon 2 inactive_anon 1284918 active_file 0 inactive_file 0
+[  993.727638] ___-get the promoted 500-___
+[  993.727639] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7104712 active_file 18 inactive_file 36
+[  993.727643] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7104712 active_file 18 inactive_file 36
+[  995.741649] ___-get the promoted 0-___
+[  995.741653] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[  995.741655] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[  997.757546] ___-get the promoted 0-___
+[  997.757552] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[  997.757557] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[  999.773433] ___-get the promoted 0-___
+[  999.773438] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[  999.773441] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1001.789322] ___-get the promoted 0-___
+[ 1001.789326] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1001.789330] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1003.809206] ___-get the promoted 0-___
+[ 1003.809210] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1003.809213] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1005.821095] ___-get the promoted 0-___
+[ 1005.821100] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1005.821103] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1007.836984] ___-get the promoted 0-___
+[ 1007.836989] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1007.836992] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1009.852871] ___-get the promoted 0-___
+[ 1009.852876] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1009.852880] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1011.868757] ___-get the promoted 0-___
+[ 1011.868762] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1011.868765] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1013.884645] ___-get the promoted 0-___
+[ 1013.884651] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1013.884654] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1015.900535] ___-get the promoted 0-___
+[ 1015.900544] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1015.900550] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1017.916420] ___-get the promoted 0-___
+[ 1017.916429] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1017.916434] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1019.936302] ___-get the promoted 0-___
+[ 1019.936308] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1019.936312] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1021.948181] ___-get the promoted 0-___
+[ 1021.948183] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1021.948185] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1023.964074] ___-get the promoted 0-___
+[ 1023.964079] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1023.964082] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1025.979959] ___-get the promoted 0-___
+[ 1025.979964] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1025.979967] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1027.999844] ___-get the promoted 0-___
+[ 1027.999849] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1027.999853] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1030.011730] ___-get the promoted 0-___
+[ 1030.011735] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1030.011739] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1032.031616] ___-get the promoted 0-___
+[ 1032.031621] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1032.031624] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1034.043499] ___-get the promoted 0-___
+[ 1034.043504] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1034.043508] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1036.059386] ___-get the promoted 0-___
+[ 1036.059392] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1036.059397] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1038.075269] ___-get the promoted 0-___
+[ 1038.075274] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1038.075278] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1040.091155] ___-get the promoted 0-___
+[ 1040.091159] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1040.091163] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1042.111038] ___-get the promoted 0-___
+[ 1042.111042] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1042.111046] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1044.122922] ___-get the promoted 0-___
+[ 1044.122927] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1044.122930] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1046.138808] ___-get the promoted 0-___
+[ 1046.138813] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1046.138817] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1048.154690] ___-get the promoted 0-___
+[ 1048.154695] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1048.154698] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1050.170574] ___-get the promoted 0-___
+[ 1050.170578] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1050.170582] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1052.186672] ___-get the promoted 0-___
+[ 1052.186675] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1052.186677] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1054.202795] ___-get the promoted 0-___
+[ 1054.202799] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1054.202801] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1056.218921] ___-get the promoted 0-___
+[ 1056.218926] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1056.218930] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1058.239035] ___-get the promoted 0-___
+[ 1058.239040] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1058.239044] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1060.251150] ___-get the promoted 0-___
+[ 1060.251154] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1060.251158] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1062.267264] ___-get the promoted 0-___
+[ 1062.267270] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1062.267274] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1064.283381] ___-get the promoted 0-___
+[ 1064.283388] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1064.283390] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1066.299485] ___-get the promoted 0-___
+[ 1066.299490] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1066.299494] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1068.315593] ___-get the promoted 0-___
+[ 1068.315598] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1068.315602] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1070.331701] ___-get the promoted 0-___
+[ 1070.331705] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1070.331709] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1072.347808] ___-get the promoted 0-___
+[ 1072.347813] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1072.347817] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1074.363906] ___-get the promoted 0-___
+[ 1074.363911] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1074.363914] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1076.380001] ___-get the promoted 0-___
+[ 1076.380003] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1076.380004] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1078.396110] ___-get the promoted 0-___
+[ 1078.396114] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1078.396117] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1080.412207] ___-get the promoted 0-___
+[ 1080.412212] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1080.412215] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1082.428304] ___-get the promoted 0-___
+[ 1082.428310] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1082.428315] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1084.444401] ___-get the promoted 0-___
+[ 1084.444406] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1084.444410] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1086.460493] ___-get the promoted 0-___
+[ 1086.460497] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1086.460501] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1088.476580] ___-get the promoted 0-___
+[ 1088.476582] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1088.476584] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1090.492677] ___-get the promoted 0-___
+[ 1090.492681] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1090.492684] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1092.508766] ___-get the promoted 0-___
+[ 1092.508770] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1092.508773] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1094.524854] ___-get the promoted 0-___
+[ 1094.524859] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1094.524862] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1096.540941] ___-get the promoted 0-___
+[ 1096.540945] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1096.540948] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1098.557019] ___-get the promoted 0-___
+[ 1098.557021] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1098.557022] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1100.573118] ___-get the promoted 0-___
+[ 1100.573127] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1100.573133] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1102.589195] ___-get the promoted 0-___
+[ 1102.589199] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1102.589203] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1104.605272] ___-get the promoted 0-___
+[ 1104.605278] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1104.605282] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1106.621351] ___-get the promoted 0-___
+[ 1106.621356] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1106.621359] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1108.637430] ___-get the promoted 0-___
+[ 1108.637435] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1108.637439] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1110.653514] ___-get the promoted 0-___
+[ 1110.653522] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1110.653526] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1112.669582] ___-get the promoted 0-___
+[ 1112.669586] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1112.669590] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36
+[ 1114.685657] ___-get the promoted 0-___
+[ 1114.685661] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 18 inactive_file 36

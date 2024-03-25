@@ -1,0 +1,102 @@
+[ 1399.082437] BUG: kernel NULL pointer dereference, address: 0000000000000000
+[ 1399.082443] #PF: supervisor read access in kernel mode
+[ 1399.082445] #PF: error_code(0x0000) - not-present page
+[ 1399.082447] PGD 0 P4D 0 
+[ 1399.082450] Oops: 0000 [#1] SMP NOPTI
+[ 1399.082453] CPU: 44 PID: 6071 Comm: kill_ksampled Tainted: G           OE     5.15.19-RL0.28+ #1
+[ 1399.082456] Hardware name: Dell Inc. PowerEdge R750/0K8F35, BIOS 1.10.2 03/03/2023
+[ 1399.082457] RIP: 0010:ksamplingd_exit+0x34/0x70
+[ 1399.082465] Code: 66 10 02 48 89 e5 41 54 53 48 85 ff 74 10 e8 33 8f da ff 48 c7 05 e0 66 10 02 00 00 00 00 31 db 45 31 e4 48 8b 05 cc 66 10 02 <48> 8b 04 18 4a 8b 3c 20 48 85 ff 74 05 e8 8a dd f1 ff 49 83 c4 08
+[ 1399.082467] RSP: 0018:ffffa0c0a104ff10 EFLAGS: 00010246
+[ 1399.082469] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000000
+[ 1399.082471] RDX: ffffffffffffffff RSI: 00000000000001c2 RDI: 0000000000000000
+[ 1399.082472] RBP: ffffa0c0a104ff20 R08: 0000000000000000 R09: 0000000000000000
+[ 1399.082473] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000000
+[ 1399.082474] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[ 1399.082475] FS:  00007ff1e17e7500(0000) GS:ffff8d6dbfb80000(0000) knlGS:0000000000000000
+[ 1399.082477] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1399.082478] CR2: 0000000000000000 CR3: 000000016c068003 CR4: 0000000000770ee0
+[ 1399.082480] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 1399.082481] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 1399.082482] PKRU: 55555554
+[ 1399.082483] Call Trace:
+[ 1399.082485]  <TASK>
+[ 1399.082488]  __x64_sys_htmm_end+0x9/0x10
+[ 1399.082494]  do_syscall_64+0x37/0xb0
+[ 1399.082498]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[ 1399.082502] RIP: 0033:0x7ff1e130d539
+[ 1399.082504] Code: 00 f3 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 1f f9 2c 00 f7 d8 64 89 01 48
+[ 1399.082506] RSP: 002b:00007ffced88ea08 EFLAGS: 00000246 ORIG_RAX: 00000000000001c2
+[ 1399.082508] RAX: ffffffffffffffda RBX: 0000000000000000 RCX: 00007ff1e130d539
+[ 1399.082509] RDX: 0000000000000000 RSI: 00007ff1e15df8c0 RDI: 00000000ffffffff
+[ 1399.082511] RBP: 00005649374009a0 R08: 0000000000000000 R09: 00005649374009a0
+[ 1399.082512] R10: 0000000000000000 R11: 0000000000000246 R12: 0000564937400860
+[ 1399.082513] R13: 00007ffced88eb10 R14: 0000000000000000 R15: 0000000000000000
+[ 1399.082515]  </TASK>
+[ 1399.082516] Modules linked in: kmem intel_rapl_msr intel_rapl_common device_dax nd_pmem nd_btt dax_pmem dax_pmem_core i10nm_edac xt_tcpudp xt_mark xt_conntrack xt_MASQUERADE nf_conntrack_netlink xfrm_user xfrm_algo xt_addrtype br_netfilter bridge stp llc socwatch2_15(OE) vtsspp(OE) sep5(OE) socperf3(OE) uio_pci_generic overlay uio cuse nf_tables nfnetlink ip6table_nat ip6table_filter ip6_tables iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter pax(OE) nls_iso8859_1 x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm drm_kms_helper ipmi_ssif crct10dif_pclmul cec crc32_pclmul ghash_clmulni_intel drm aesni_intel crypto_simd cryptd binfmt_misc cdc_ether usbnet mii joydev input_leds wmi_bmof rapl i2c_algo_bit acpi_ipmi fb_sys_fops intel_cstate syscopyarea mei_me sysfillrect efi_pstore ipmi_si sysimgblt isst_if_mbox_pci mei isst_if_mmio isst_if_common intel_pch_thermal ipmi_devintf ipmi_msghandler nfit acpi_power_meter mac_hid
+[ 1399.082569]  sch_fq_codel knem(OE) parport_pc ppdev lp parport ip_tables x_tables autofs4 hid_generic usbhid ahci tg3 megaraid_sas hid libahci wmi
+[ 1399.082581] CR2: 0000000000000000
+[ 1399.082583] ---[ end trace 6251a42f5fc57c72 ]---
+[ 1399.094488] RIP: 0010:ksamplingd_exit+0x34/0x70
+[ 1399.094492] Code: 66 10 02 48 89 e5 41 54 53 48 85 ff 74 10 e8 33 8f da ff 48 c7 05 e0 66 10 02 00 00 00 00 31 db 45 31 e4 48 8b 05 cc 66 10 02 <48> 8b 04 18 4a 8b 3c 20 48 85 ff 74 05 e8 8a dd f1 ff 49 83 c4 08
+[ 1399.094495] RSP: 0018:ffffa0c0a104ff10 EFLAGS: 00010246
+[ 1399.094498] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000000
+[ 1399.094500] RDX: ffffffffffffffff RSI: 00000000000001c2 RDI: 0000000000000000
+[ 1399.094502] RBP: ffffa0c0a104ff20 R08: 0000000000000000 R09: 0000000000000000
+[ 1399.094503] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000000
+[ 1399.094504] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[ 1399.094506] FS:  00007ff1e17e7500(0000) GS:ffff8d6dbfb80000(0000) knlGS:0000000000000000
+[ 1399.094509] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1399.094511] CR2: 0000000000000000 CR3: 000000016c068003 CR4: 0000000000770ee0
+[ 1399.094513] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 1399.094514] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 1399.094516] PKRU: 55555554
+[ 1409.771730] run_node.sh (6039): drop_caches: 3
+[ 1411.840619] bw 0 cyc 0 ins 0
+[ 1412.282586] perf: interrupt took too long (2660 > 2500), lowering kernel.perf_event_max_sample_rate to 75000
+[ 1412.349618] perf: interrupt took too long (3901 > 3325), lowering kernel.perf_event_max_sample_rate to 51250
+[ 1412.393158] perf: interrupt took too long (5055 > 4876), lowering kernel.perf_event_max_sample_rate to 39500
+[ 1412.481806] perf: interrupt took too long (6828 > 6318), lowering kernel.perf_event_max_sample_rate to 29250
+[ 1412.570530] perf: interrupt took too long (8539 > 8535), lowering kernel.perf_event_max_sample_rate to 23250
+[ 1412.704473] perf: interrupt took too long (10805 > 10673), lowering kernel.perf_event_max_sample_rate to 18500
+[ 1412.858423] perf: interrupt took too long (13911 > 13506), lowering kernel.perf_event_max_sample_rate to 14250
+[ 1413.039470] perf: interrupt took too long (17789 > 17388), lowering kernel.perf_event_max_sample_rate to 11000
+[ 1413.256651] perf: interrupt took too long (22247 > 22236), lowering kernel.perf_event_max_sample_rate to 8750
+[ 1413.654803] perf: interrupt took too long (27846 > 27808), lowering kernel.perf_event_max_sample_rate to 7000
+[ 1417.300756] will do promote_node
+[ 1417.761845] perf_duration_warn: 2 callbacks suppressed
+[ 1417.761849] perf: interrupt took too long (55274 > 55232), lowering kernel.perf_event_max_sample_rate to 3500
+[ 1419.320505] will do promote_node
+[ 1421.336450] will do promote_node
+[ 1422.038831] bw 116188730963107166 cyc 6561156728135823021 ins 1809170370379461528
+[ 1423.937429] perf: interrupt took too long (69239 > 69092), lowering kernel.perf_event_max_sample_rate to 2750
+[ 1432.277913] bw 103394702675977857 cyc 5875870553996248603 ins 1594704548055278705
+[ 1442.518082] bw 110123413849208229 cyc 6251256949442670222 ins 1692886868836477913
+[ 1452.758399] bw 120074322979690108 cyc 6812488286688377212 ins 1840539432327899186
+[ 1462.999397] bw 146420545952692377 cyc 8483198880296228716 ins 2244925496780967614
+[ 1469.998754] have been write train_action 256
+[ 1469.998760] Value pointed by ptr_action: 256
+[ 1469.998761] have been write nr_action 256
+[ 1473.241576] bw 205367846653387751 cyc 12507252454273287693 ins 3185713043494282474
+[ 1483.481514] bw 202809040995961981 cyc 12494363600861469326 ins 3130935648309395034
+[ 1493.721533] bw 207452799411288630 cyc 12487350634252694585 ins 3217176876022610690
+[ 1503.961633] bw 205367846653388351 cyc 12511138106113020447 ins 3170454980129630584
+[ 1514.201561] bw 206031240712719695 cyc 12507062941265491016 ins 3186092125813899754
+[ 1517.952672] have been write train_action 256
+[ 1517.952678] Value pointed by ptr_action: 256
+[ 1517.952679] have been write nr_action 256
+[ 1522.813932] have been write train_action 256
+[ 1522.813939] Value pointed by ptr_action: 256
+[ 1522.813940] have been write nr_action 256
+[ 1524.441577] bw 209537752169191728 cyc 12505451843166627971 ins 3248735479130863840
+[ 1534.681664] bw 205178305493577559 cyc 12525448463678594160 ins 3181258826238760642
+[ 1542.989730] have been write train_action 256
+[ 1542.989736] Value pointed by ptr_action: 256
+[ 1542.989737] have been write nr_action 256
+[ 1544.921725] bw 202524729256247657 cyc 12497870166862678116 ins 3132736289327585438
+[ 1555.161629] bw 205367846653387388 cyc 12508674034085887062 ins 3171686997668388477
+[ 1634.051622] have been write train_action 256
+[ 1634.051628] Value pointed by ptr_action: 256
+[ 1634.051629] have been write nr_action 256
+[ 1663.464914] have been write train_action 256
+[ 1663.464919] Value pointed by ptr_action: 256

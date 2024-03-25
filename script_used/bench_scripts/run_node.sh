@@ -47,30 +47,30 @@ function func_collaction(){
 
 
 function func_memtis_setting() {
-    echo 199 | tee /sys/kernel/mm/htmm/htmm_sample_period
-    echo 100007 | tee /sys/kernel/mm/htmm/htmm_inst_sample_period
-    echo 1 | tee /sys/kernel/mm/htmm/htmm_thres_hot
-    echo 2 | tee /sys/kernel/mm/htmm/htmm_split_period
-    echo 100000 | tee /sys/kernel/mm/htmm/htmm_adaptation_period
-    echo 2000000 | tee /sys/kernel/mm/htmm/htmm_cooling_period
+    # echo 199 | tee /sys/kernel/mm/htmm/htmm_sample_period
+    # echo 100007 | tee /sys/kernel/mm/htmm/htmm_inst_sample_period
+    # echo 1 | tee /sys/kernel/mm/htmm/htmm_thres_hot
+    # echo 2 | tee /sys/kernel/mm/htmm/htmm_split_period
+    # echo 100000 | tee /sys/kernel/mm/htmm/htmm_adaptation_period
+    # echo 2000000 | tee /sys/kernel/mm/htmm/htmm_cooling_period
     echo 2 | tee /sys/kernel/mm/htmm/htmm_mode
-    echo 500 | tee /sys/kernel/mm/htmm/htmm_demotion_period_in_ms
-    echo 500 | tee /sys/kernel/mm/htmm/htmm_promotion_period_in_ms
+    # echo 500 | tee /sys/kernel/mm/htmm/htmm_demotion_period_in_ms
+    # echo 500 | tee /sys/kernel/mm/htmm/htmm_promotion_period_in_ms
     echo 4 | tee /sys/kernel/mm/htmm/htmm_gamma
     ###  cpu cap (per mille) for ksampled
     echo 30 | tee /sys/kernel/mm/htmm/ksampled_soft_cpu_quota
 
-    if [[ "x${CONFIG_NS}" == "xoff" ]]; then
-	echo 1 | tee /sys/kernel/mm/htmm/htmm_thres_split
-    else
-	echo 0 | tee /sys/kernel/mm/htmm/htmm_thres_split
-    fi
+    # if [[ "x${CONFIG_NS}" == "xoff" ]]; then
+	# echo 1 | tee /sys/kernel/mm/htmm/htmm_thres_split
+    # else
+	# echo 0 | tee /sys/kernel/mm/htmm/htmm_thres_split
+    # fi
 
-    if [[ "x${CONFIG_NW}" == "xoff" ]]; then
-	echo 0 | tee /sys/kernel/mm/htmm/htmm_nowarm
-    else
-	echo 1 | tee /sys/kernel/mm/htmm/htmm_nowarm
-    fi
+    # if [[ "x${CONFIG_NW}" == "xoff" ]]; then
+	# echo 0 | tee /sys/kernel/mm/htmm/htmm_nowarm
+    # else
+	# echo 1 | tee /sys/kernel/mm/htmm/htmm_nowarm
+    # fi
 
     if [[ "x${CONFIG_CXL_MODE}" == "xon" ]]; then
 	${DIR}/bench_scripts/set_uncore_freq.sh on
@@ -135,6 +135,7 @@ function func_main() {
     sudo ${DIR}/bench_scripts/set_htmm_memcg.sh htmm $$ enable
 
     sudo ${DIR}/bench_scripts/set_mem_size.sh htmm 0 ${NODE0}
+    
 
     echo "set cgroup sleep 30 sec"
     sleep 30
