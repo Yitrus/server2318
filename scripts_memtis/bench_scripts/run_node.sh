@@ -81,10 +81,10 @@ function func_memtis_setting() {
 	echo "disabled" | tee /sys/kernel/mm/htmm/htmm_cxl_mode
     fi
 
-	# echo "never" | tee /sys/kernel/mm/transparent_hugepage/enabled
-    echo "always" | tee /sys/kernel/mm/transparent_hugepage/enabled
+	echo "never" | tee /sys/kernel/mm/transparent_hugepage/enabled
+    # echo "always" | tee /sys/kernel/mm/transparent_hugepage/enabled
 	# 它控制内核是否应该积极使用内存压缩来提供更多的大页面可用
-    echo "always" | tee /sys/kernel/mm/transparent_hugepage/defrag
+    # echo "always" | tee /sys/kernel/mm/transparent_hugepage/defrag
 }
 
 function func_prepare() {
@@ -137,7 +137,7 @@ function func_main() {
     sudo ${DIR}/bench_scripts/set_htmm_memcg.sh htmm $$ enable
 
     sudo ${DIR}/bench_scripts/set_mem_size.sh htmm 0 ${DRAM_SIZE}
-    sudo ${DIR}/bench_scripts/set_mem_size.sh htmm 2 "30GB"
+    # sudo ${DIR}/bench_scripts/set_mem_size.sh htmm 2 "30GB"
 
     echo "set cgroup sleep 10 sec"
     sleep 10

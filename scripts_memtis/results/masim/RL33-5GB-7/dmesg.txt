@@ -1,0 +1,3188 @@
+[  204.052766] BUG: kernel NULL pointer dereference, address: 0000000000000000
+[  204.052773] #PF: supervisor read access in kernel mode
+[  204.052774] #PF: error_code(0x0000) - not-present page
+[  204.052776] PGD 0 P4D 0 
+[  204.052778] Oops: 0000 [#1] SMP NOPTI
+[  204.052781] CPU: 64 PID: 8935 Comm: kill_ksampled Tainted: G           OE     5.15.19-RL0.35+ #1
+[  204.052783] Hardware name: Dell Inc. PowerEdge R750/0K8F35, BIOS 1.10.2 03/03/2023
+[  204.052785] RIP: 0010:ksamplingd_exit+0x34/0x70
+[  204.052791] Code: 65 10 02 48 89 e5 41 54 53 48 85 ff 74 10 e8 b3 8d da ff 48 c7 05 60 65 10 02 00 00 00 00 31 db 45 31 e4 48 8b 05 4c 65 10 02 <48> 8b 04 18 4a 8b 3c 20 48 85 ff 74 05 e8 0a dc f1 ff 49 83 c4 08
+[  204.052793] RSP: 0018:ffffb36120887f10 EFLAGS: 00010246
+[  204.052796] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000000
+[  204.052797] RDX: ffffffffffffffff RSI: 00000000000001c2 RDI: 0000000000000000
+[  204.052798] RBP: ffffb36120887f20 R08: 0000000000000000 R09: 0000000000000000
+[  204.052800] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000000
+[  204.052800] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[  204.052801] FS:  00007ff7b4018500(0000) GS:ffff8da53fe00000(0000) knlGS:0000000000000000
+[  204.052803] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  204.052805] CR2: 0000000000000000 CR3: 00000001105b4006 CR4: 0000000000770ee0
+[  204.052806] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[  204.052807] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[  204.052808] PKRU: 55555554
+[  204.052809] Call Trace:
+[  204.052811]  <TASK>
+[  204.052814]  __x64_sys_htmm_end+0x9/0x10
+[  204.052819]  do_syscall_64+0x37/0xb0
+[  204.052823]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[  204.052827] RIP: 0033:0x7ff7b3b3e539
+[  204.052830] Code: 00 f3 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 1f f9 2c 00 f7 d8 64 89 01 48
+[  204.052832] RSP: 002b:00007fff25e97d58 EFLAGS: 00000246 ORIG_RAX: 00000000000001c2
+[  204.052834] RAX: ffffffffffffffda RBX: 0000000000000000 RCX: 00007ff7b3b3e539
+[  204.052835] RDX: 0000000000000000 RSI: 00007ff7b3e108c0 RDI: 00000000ffffffff
+[  204.052836] RBP: 000055d7c34009a0 R08: 0000000000000000 R09: 000055d7c34009a0
+[  204.052837] R10: 0000000000000000 R11: 0000000000000246 R12: 000055d7c3400860
+[  204.052838] R13: 00007fff25e97e60 R14: 0000000000000000 R15: 0000000000000000
+[  204.052840]  </TASK>
+[  204.052841] Modules linked in: socwatch2_15(OE) vtsspp(OE) sep5(OE) socperf3(OE) pax(OE) kmem intel_rapl_msr intel_rapl_common device_dax nd_pmem dax_pmem i10nm_edac nd_btt dax_pmem_core xt_tcpudp xt_mark xt_conntrack xt_MASQUERADE nf_conntrack_netlink xfrm_user xfrm_algo xt_addrtype br_netfilter bridge stp llc nf_tables nfnetlink ip6table_nat ip6table_filter ip6_tables iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter overlay uio_pci_generic uio cuse nls_iso8859_1 x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm drm_kms_helper cec drm ipmi_ssif crct10dif_pclmul crc32_pclmul ghash_clmulni_intel aesni_intel binfmt_misc crypto_simd cryptd cdc_ether usbnet rapl joydev input_leds i2c_algo_bit mii acpi_ipmi wmi_bmof fb_sys_fops intel_cstate mei_me syscopyarea ipmi_si efi_pstore sysfillrect mei isst_if_mbox_pci isst_if_mmio sysimgblt isst_if_common ipmi_devintf intel_pch_thermal ipmi_msghandler nfit acpi_power_meter mac_hid
+[  204.052892]  sch_fq_codel knem(OE) parport_pc ppdev lp parport ip_tables x_tables autofs4 hid_generic usbhid ahci tg3 megaraid_sas hid libahci wmi
+[  204.052905] CR2: 0000000000000000
+[  204.052907] ---[ end trace bdd7b0797a88a220 ]---
+[  204.064794] RIP: 0010:ksamplingd_exit+0x34/0x70
+[  204.064798] Code: 65 10 02 48 89 e5 41 54 53 48 85 ff 74 10 e8 b3 8d da ff 48 c7 05 60 65 10 02 00 00 00 00 31 db 45 31 e4 48 8b 05 4c 65 10 02 <48> 8b 04 18 4a 8b 3c 20 48 85 ff 74 05 e8 0a dc f1 ff 49 83 c4 08
+[  204.064800] RSP: 0018:ffffb36120887f10 EFLAGS: 00010246
+[  204.064802] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000000
+[  204.064804] RDX: ffffffffffffffff RSI: 00000000000001c2 RDI: 0000000000000000
+[  204.064805] RBP: ffffb36120887f20 R08: 0000000000000000 R09: 0000000000000000
+[  204.064806] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000000
+[  204.064807] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[  204.064808] FS:  00007ff7b4018500(0000) GS:ffff8da53fe00000(0000) knlGS:0000000000000000
+[  204.064810] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  204.064811] CR2: 0000000000000000 CR3: 00000001105b4006 CR4: 0000000000770ee0
+[  204.064813] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[  204.064814] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[  204.064815] PKRU: 55555554
+[  204.127616] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  204.127620] nr of each time isolate 0
+[  204.127623] nr of each time isolate 0
+[  204.127624] nr of each time isolate 0
+[  204.127626] nr of each time isolate 0
+[  204.127626] nr of each time isolate 0
+[  204.127627] nr of each time isolate 0
+[  204.127628] nr of each time isolate 0
+[  204.127629] nr of each time isolate 0
+[  204.127630] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  206.161859] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  206.161863] nr of each time isolate 0
+[  206.161864] nr of each time isolate 0
+[  206.161865] nr of each time isolate 0
+[  206.161866] nr of each time isolate 0
+[  206.161866] nr of each time isolate 0
+[  206.161867] nr of each time isolate 0
+[  206.161867] nr of each time isolate 0
+[  206.161868] nr of each time isolate 0
+[  206.161869] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  208.178101] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  208.178106] nr of each time isolate 0
+[  208.178107] nr of each time isolate 0
+[  208.178108] nr of each time isolate 0
+[  208.178109] nr of each time isolate 0
+[  208.178110] nr of each time isolate 0
+[  208.178111] nr of each time isolate 0
+[  208.178111] nr of each time isolate 0
+[  208.178112] nr of each time isolate 0
+[  208.178113] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  210.194345] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  210.194348] nr of each time isolate 0
+[  210.194349] nr of each time isolate 0
+[  210.194350] nr of each time isolate 0
+[  210.194351] nr of each time isolate 0
+[  210.194351] nr of each time isolate 0
+[  210.194352] nr of each time isolate 0
+[  210.194352] nr of each time isolate 0
+[  210.194353] nr of each time isolate 0
+[  210.194354] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  212.210587] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  212.210592] nr of each time isolate 0
+[  212.210593] nr of each time isolate 0
+[  212.210593] nr of each time isolate 0
+[  212.210595] nr of each time isolate 0
+[  212.210595] nr of each time isolate 0
+[  212.210596] nr of each time isolate 0
+[  212.210599] nr of each time isolate 0
+[  212.210599] nr of each time isolate 0
+[  212.210600] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  214.226835] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  214.226841] nr of each time isolate 0
+[  214.226842] nr of each time isolate 0
+[  214.226843] nr of each time isolate 0
+[  214.226844] nr of each time isolate 0
+[  214.226844] nr of each time isolate 0
+[  214.226845] nr of each time isolate 0
+[  214.226846] nr of each time isolate 0
+[  214.226846] nr of each time isolate 0
+[  214.226847] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  214.774481] run_node.sh (8905): drop_caches: 3
+[  216.243081] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  216.243085] nr of each time isolate 0
+[  216.243087] nr of each time isolate 0
+[  216.243089] nr of each time isolate 0
+[  216.243090] nr of each time isolate 0
+[  216.243090] nr of each time isolate 0
+[  216.243091] nr of each time isolate 0
+[  216.243092] nr of each time isolate 0
+[  216.243093] nr of each time isolate 0
+[  216.243093] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  217.469294] perf: interrupt took too long (3072 > 2500), lowering kernel.perf_event_max_sample_rate to 65000
+[  217.550274] perf: interrupt took too long (4316 > 3840), lowering kernel.perf_event_max_sample_rate to 46250
+[  217.652575] perf: interrupt took too long (5861 > 5395), lowering kernel.perf_event_max_sample_rate to 34000
+[  217.755140] perf: interrupt took too long (7626 > 7326), lowering kernel.perf_event_max_sample_rate to 26000
+[  217.879225] perf: interrupt took too long (9882 > 9532), lowering kernel.perf_event_max_sample_rate to 20000
+[  218.067295] perf: interrupt took too long (12694 > 12352), lowering kernel.perf_event_max_sample_rate to 15750
+[  218.256097] perf: interrupt took too long (16008 > 15867), lowering kernel.perf_event_max_sample_rate to 12250
+[  218.259321] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  218.259325] nr of each time isolate 0
+[  218.259326] nr of each time isolate 0
+[  218.259327] nr of each time isolate 0
+[  218.259328] nr of each time isolate 0
+[  218.259328] nr of each time isolate 0
+[  218.259329] nr of each time isolate 0
+[  218.259329] nr of each time isolate 0
+[  218.259330] nr of each time isolate 0
+[  218.259331] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  218.448125] perf: interrupt took too long (20301 > 20010), lowering kernel.perf_event_max_sample_rate to 9750
+[  218.795000] perf: interrupt took too long (25635 > 25376), lowering kernel.perf_event_max_sample_rate to 7750
+[  219.364268] perf: interrupt took too long (32247 > 32043), lowering kernel.perf_event_max_sample_rate to 6000
+[  220.275560] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  220.275563] nr of each time isolate 0
+[  220.275566] nr of each time isolate 0
+[  220.275566] nr of each time isolate 0
+[  220.275567] nr of each time isolate 0
+[  220.275568] nr of each time isolate 0
+[  220.275569] nr of each time isolate 0
+[  220.275570] nr of each time isolate 0
+[  220.275570] nr of each time isolate 0
+[  220.275571] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  222.291806] BEFORE the lru mesg active_anon 4 inactive_anon 1309950 active_file 233 inactive_file 536
+[  222.295170] AFTER the lru mesg active_anon 4 inactive_anon 1309950 active_file 24 inactive_file 222
+[  222.295174] will do promote_node
+[  222.295175] PM NODE BEFORE the lru mesg active_anon 1 inactive_anon 264067 active_file 209 inactive_file 313
+[  222.295177] nr of each time isolate 1
+[  222.295179] nr of each time isolate 3
+[  222.295181] nr of each time isolate 7
+[  222.295182] nr of each time isolate 15
+[  222.295185] nr of each time isolate 31
+[  222.295190] nr of each time isolate 62
+[  222.295199] nr of each time isolate 125
+[  222.295216] nr of each time isolate 250
+[  222.295234] PM NODE AFTER the lru mesg active_anon 1 inactive_anon 264067 active_file 209 inactive_file 314
+[  224.308047] BEFORE the lru mesg active_anon 4 inactive_anon 1310480 active_file 24 inactive_file 222
+[  224.311707] AFTER the lru mesg active_anon 4 inactive_anon 1310711 active_file 3 inactive_file 7
+[  224.311709] will do promote_node
+[  224.311710] PM NODE BEFORE the lru mesg active_anon 1 inactive_anon 624669 active_file 230 inactive_file 529
+[  224.311712] nr of each time isolate 1
+[  224.311713] nr of each time isolate 3
+[  224.311715] nr of each time isolate 7
+[  224.311716] nr of each time isolate 15
+[  224.311719] nr of each time isolate 31
+[  224.311724] nr of each time isolate 62
+[  224.311732] nr of each time isolate 125
+[  224.311749] nr of each time isolate 250
+[  224.311768] PM NODE AFTER the lru mesg active_anon 1 inactive_anon 624686 active_file 230 inactive_file 529
+[  226.015110] perf_duration_warn: 2 callbacks suppressed
+[  226.015113] perf: interrupt took too long (63424 > 63376), lowering kernel.perf_event_max_sample_rate to 3000
+[  226.324296] BEFORE the lru mesg active_anon 4 inactive_anon 1310711 active_file 3 inactive_file 7
+[  226.327835] AFTER the lru mesg active_anon 4 inactive_anon 1310725 active_file 3 inactive_file 1
+[  226.327839] will do promote_node
+[  226.327840] PM NODE BEFORE the lru mesg active_anon 1 inactive_anon 1013116 active_file 227 inactive_file 538
+[  226.327841] nr of each time isolate 1
+[  226.327843] nr of each time isolate 3
+[  226.327844] nr of each time isolate 7
+[  226.327846] nr of each time isolate 15
+[  226.327850] nr of each time isolate 31
+[  226.327855] nr of each time isolate 62
+[  226.327863] nr of each time isolate 125
+[  226.327879] nr of each time isolate 250
+[  226.327897] PM NODE AFTER the lru mesg active_anon 1 inactive_anon 1013133 active_file 227 inactive_file 538
+[  228.340534] BEFORE the lru mesg active_anon 4 inactive_anon 1310724 active_file 3 inactive_file 1
+[  228.343992] AFTER the lru mesg active_anon 4 inactive_anon 1310711 active_file 3 inactive_file 1
+[  228.343996] will do promote_node
+[  228.343996] PM NODE BEFORE the lru mesg active_anon 1 inactive_anon 1348341 active_file 227 inactive_file 538
+[  228.343999] nr of each time isolate 1
+[  228.344000] nr of each time isolate 3
+[  228.344002] nr of each time isolate 7
+[  228.344003] nr of each time isolate 15
+[  228.344006] nr of each time isolate 31
+[  228.344011] nr of each time isolate 62
+[  228.344019] nr of each time isolate 125
+[  228.344036] nr of each time isolate 250
+[  228.344054] PM NODE AFTER the lru mesg active_anon 1 inactive_anon 1348358 active_file 227 inactive_file 538
+[  230.356780] BEFORE the lru mesg active_anon 4 inactive_anon 1310711 active_file 3 inactive_file 1
+[  230.360019] AFTER the lru mesg active_anon 4 inactive_anon 1310721 active_file 2 inactive_file 1
+[  230.360023] will do promote_node
+[  230.360023] PM NODE BEFORE the lru mesg active_anon 1 inactive_anon 1739042 active_file 228 inactive_file 538
+[  230.360025] nr of each time isolate 1
+[  230.360027] nr of each time isolate 3
+[  230.360028] nr of each time isolate 7
+[  230.360030] nr of each time isolate 15
+[  230.360032] nr of each time isolate 31
+[  230.360037] nr of each time isolate 62
+[  230.360046] nr of each time isolate 125
+[  230.360062] nr of each time isolate 250
+[  230.360081] PM NODE AFTER the lru mesg active_anon 1 inactive_anon 1739059 active_file 228 inactive_file 538
+[  232.373023] BEFORE the lru mesg active_anon 4 inactive_anon 1310721 active_file 2 inactive_file 1
+[  232.376030] AFTER the lru mesg active_anon 4 inactive_anon 1310209 active_file 2 inactive_file 1
+[  232.376034] will do promote_node
+[  232.376035] PM NODE BEFORE the lru mesg active_anon 1 inactive_anon 2033273 active_file 228 inactive_file 538
+[  232.376037] nr of each time isolate 1
+[  232.376038] nr of each time isolate 3
+[  232.376040] nr of each time isolate 7
+[  232.376041] nr of each time isolate 15
+[  232.376044] nr of each time isolate 31
+[  232.376049] nr of each time isolate 62
+[  232.376057] nr of each time isolate 125
+[  232.376073] nr of each time isolate 250
+[  232.376091] PM NODE AFTER the lru mesg active_anon 1 inactive_anon 2033275 active_file 228 inactive_file 538
+[  234.389260] BEFORE the lru mesg active_anon 4 inactive_anon 1310712 active_file 2 inactive_file 1
+[  234.392298] AFTER the lru mesg active_anon 4 inactive_anon 1310200 active_file 2 inactive_file 1
+[  234.392301] will do promote_node
+[  234.392302] PM NODE BEFORE the lru mesg active_anon 1 inactive_anon 2360964 active_file 228 inactive_file 538
+[  234.392304] nr of each time isolate 1
+[  234.392305] nr of each time isolate 3
+[  234.392306] nr of each time isolate 7
+[  234.392308] nr of each time isolate 15
+[  234.392311] nr of each time isolate 31
+[  234.392315] nr of each time isolate 62
+[  234.392324] nr of each time isolate 125
+[  234.392341] nr of each time isolate 250
+[  234.392359] PM NODE AFTER the lru mesg active_anon 1 inactive_anon 2360966 active_file 228 inactive_file 538
+[  236.405507] BEFORE the lru mesg active_anon 4 inactive_anon 1310713 active_file 2 inactive_file 1
+[  236.408698] AFTER the lru mesg active_anon 4 inactive_anon 1310719 active_file 2 inactive_file 1
+[  236.408702] will do promote_node
+[  236.408703] PM NODE BEFORE the lru mesg active_anon 1 inactive_anon 2731552 active_file 226 inactive_file 540
+[  236.408705] nr of each time isolate 1
+[  236.408707] nr of each time isolate 3
+[  236.408708] nr of each time isolate 7
+[  236.408710] nr of each time isolate 15
+[  236.408713] nr of each time isolate 31
+[  236.408717] nr of each time isolate 62
+[  236.408726] nr of each time isolate 125
+[  236.408742] nr of each time isolate 250
+[  236.408760] PM NODE AFTER the lru mesg active_anon 1 inactive_anon 2731554 active_file 226 inactive_file 540
+[  238.421741] BEFORE the lru mesg active_anon 4 inactive_anon 1310719 active_file 3 inactive_file 1
+[  238.424817] AFTER the lru mesg active_anon 4 inactive_anon 1310207 active_file 2 inactive_file 1
+[  238.424820] will do promote_node
+[  238.424821] PM NODE BEFORE the lru mesg active_anon 1 inactive_anon 3114631 active_file 227 inactive_file 540
+[  238.424823] nr of each time isolate 1
+[  238.424824] nr of each time isolate 3
+[  238.424825] nr of each time isolate 7
+[  238.424827] nr of each time isolate 15
+[  238.424830] nr of each time isolate 31
+[  238.424834] nr of each time isolate 62
+[  238.424842] nr of each time isolate 125
+[  238.424858] nr of each time isolate 250
+[  238.424875] PM NODE AFTER the lru mesg active_anon 1 inactive_anon 3114633 active_file 227 inactive_file 540
+[  240.437980] BEFORE the lru mesg active_anon 4 inactive_anon 1310716 active_file 2 inactive_file 1
+[  240.441215] AFTER the lru mesg active_anon 4 inactive_anon 1310715 active_file 2 inactive_file 1
+[  240.441219] will do promote_node
+[  240.441219] PM NODE BEFORE the lru mesg active_anon 1 inactive_anon 3435453 active_file 227 inactive_file 540
+[  240.441221] nr of each time isolate 1
+[  240.441222] nr of each time isolate 3
+[  240.441224] nr of each time isolate 7
+[  240.441225] nr of each time isolate 15
+[  240.441228] nr of each time isolate 31
+[  240.441233] nr of each time isolate 62
+[  240.441241] nr of each time isolate 125
+[  240.441257] nr of each time isolate 250
+[  240.441275] PM NODE AFTER the lru mesg active_anon 1 inactive_anon 3435470 active_file 227 inactive_file 540
+[  242.454225] BEFORE the lru mesg active_anon 4 inactive_anon 1310715 active_file 2 inactive_file 1
+[  242.457559] AFTER the lru mesg active_anon 4 inactive_anon 1310717 active_file 2 inactive_file 1
+[  242.457562] will do promote_node
+[  242.457563] PM NODE BEFORE the lru mesg active_anon 1 inactive_anon 3744748 active_file 227 inactive_file 540
+[  242.457565] nr of each time isolate 1
+[  242.457566] nr of each time isolate 3
+[  242.457567] nr of each time isolate 7
+[  242.457569] nr of each time isolate 15
+[  242.457572] nr of each time isolate 31
+[  242.457577] nr of each time isolate 62
+[  242.457585] nr of each time isolate 125
+[  242.457601] nr of each time isolate 250
+[  242.457618] PM NODE AFTER the lru mesg active_anon 1 inactive_anon 3744750 active_file 227 inactive_file 540
+[  244.470461] BEFORE the lru mesg active_anon 4 inactive_anon 1310717 active_file 2 inactive_file 1
+[  244.473754] AFTER the lru mesg active_anon 4 inactive_anon 1310720 active_file 2 inactive_file 1
+[  244.473757] will do promote_node
+[  244.473759] PM NODE BEFORE the lru mesg active_anon 1 inactive_anon 4125040 active_file 227 inactive_file 540
+[  244.473761] nr of each time isolate 1
+[  244.473762] nr of each time isolate 3
+[  244.473764] nr of each time isolate 7
+[  244.473766] nr of each time isolate 15
+[  244.473769] nr of each time isolate 31
+[  244.473773] nr of each time isolate 62
+[  244.473782] nr of each time isolate 125
+[  244.473799] nr of each time isolate 250
+[  244.473817] PM NODE AFTER the lru mesg active_anon 1 inactive_anon 4125057 active_file 227 inactive_file 540
+[  246.486707] BEFORE the lru mesg active_anon 4 inactive_anon 1310720 active_file 2 inactive_file 1
+[  246.489595] AFTER the lru mesg active_anon 4 inactive_anon 1310208 active_file 2 inactive_file 1
+[  246.489598] will do promote_node
+[  246.489599] PM NODE BEFORE the lru mesg active_anon 1 inactive_anon 4458107 active_file 227 inactive_file 540
+[  246.489600] nr of each time isolate 1
+[  246.489602] nr of each time isolate 3
+[  246.489603] nr of each time isolate 7
+[  246.489605] nr of each time isolate 15
+[  246.489608] nr of each time isolate 31
+[  246.489612] nr of each time isolate 62
+[  246.489621] nr of each time isolate 125
+[  246.489637] nr of each time isolate 250
+[  246.489654] PM NODE AFTER the lru mesg active_anon 1 inactive_anon 4458109 active_file 227 inactive_file 540
+[  248.502946] BEFORE the lru mesg active_anon 4 inactive_anon 1310719 active_file 2 inactive_file 1
+[  248.505931] AFTER the lru mesg active_anon 4 inactive_anon 1310207 active_file 2 inactive_file 1
+[  248.505935] will do promote_node
+[  248.505936] PM NODE BEFORE the lru mesg active_anon 1 inactive_anon 4753020 active_file 227 inactive_file 540
+[  248.505938] nr of each time isolate 1
+[  248.505939] nr of each time isolate 3
+[  248.505940] nr of each time isolate 7
+[  248.505942] nr of each time isolate 15
+[  248.505945] nr of each time isolate 31
+[  248.505949] nr of each time isolate 62
+[  248.505958] nr of each time isolate 125
+[  248.505974] nr of each time isolate 250
+[  248.505991] PM NODE AFTER the lru mesg active_anon 1 inactive_anon 4753022 active_file 227 inactive_file 540
+[  250.519185] BEFORE the lru mesg active_anon 4 inactive_anon 1310721 active_file 2 inactive_file 1
+[  250.522182] AFTER the lru mesg active_anon 4 inactive_anon 1310209 active_file 2 inactive_file 1
+[  250.522185] will do promote_node
+[  250.522186] PM NODE BEFORE the lru mesg active_anon 1 inactive_anon 5080711 active_file 227 inactive_file 540
+[  250.522188] nr of each time isolate 1
+[  250.522189] nr of each time isolate 3
+[  250.522191] nr of each time isolate 7
+[  250.522192] nr of each time isolate 15
+[  250.522195] nr of each time isolate 31
+[  250.522200] nr of each time isolate 62
+[  250.522208] nr of each time isolate 125
+[  250.522224] nr of each time isolate 250
+[  250.522241] PM NODE AFTER the lru mesg active_anon 1 inactive_anon 5080713 active_file 227 inactive_file 540
+[  252.535424] BEFORE the lru mesg active_anon 4 inactive_anon 1310718 active_file 2 inactive_file 1
+[  252.538468] AFTER the lru mesg active_anon 4 inactive_anon 1310206 active_file 2 inactive_file 1
+[  252.538471] will do promote_node
+[  252.538473] PM NODE BEFORE the lru mesg active_anon 1 inactive_anon 5342853 active_file 224 inactive_file 543
+[  252.538475] nr of each time isolate 1
+[  252.538476] nr of each time isolate 3
+[  252.538478] nr of each time isolate 7
+[  252.538479] nr of each time isolate 15
+[  252.538482] nr of each time isolate 31
+[  252.538487] nr of each time isolate 62
+[  252.538495] nr of each time isolate 125
+[  252.538511] nr of each time isolate 250
+[  252.538528] PM NODE AFTER the lru mesg active_anon 1 inactive_anon 5342855 active_file 224 inactive_file 543
+[  254.551664] BEFORE the lru mesg active_anon 4 inactive_anon 1310726 active_file 2 inactive_file 1
+[  254.554949] AFTER the lru mesg active_anon 4 inactive_anon 1310719 active_file 2 inactive_file 1
+[  254.554952] will do promote_node
+[  254.554953] PM NODE BEFORE the lru mesg active_anon 1 inactive_anon 5608905 active_file 224 inactive_file 543
+[  254.554954] nr of each time isolate 1
+[  254.554956] nr of each time isolate 3
+[  254.554957] nr of each time isolate 7
+[  254.554959] nr of each time isolate 15
+[  254.554962] nr of each time isolate 31
+[  254.554966] nr of each time isolate 62
+[  254.554975] nr of each time isolate 125
+[  254.554992] nr of each time isolate 250
+[  254.555010] PM NODE AFTER the lru mesg active_anon 1 inactive_anon 5608922 active_file 224 inactive_file 543
+[  256.567903] BEFORE the lru mesg active_anon 4 inactive_anon 1310719 active_file 2 inactive_file 1
+[  256.570935] AFTER the lru mesg active_anon 4 inactive_anon 1310207 active_file 2 inactive_file 1
+[  256.570937] will do promote_node
+[  256.570938] PM NODE BEFORE the lru mesg active_anon 1 inactive_anon 5965442 active_file 224 inactive_file 543
+[  256.570940] nr of each time isolate 1
+[  256.570941] nr of each time isolate 3
+[  256.570942] nr of each time isolate 7
+[  256.570944] nr of each time isolate 15
+[  256.570947] nr of each time isolate 31
+[  256.570951] nr of each time isolate 62
+[  256.570960] nr of each time isolate 125
+[  256.570976] nr of each time isolate 250
+[  256.570994] PM NODE AFTER the lru mesg active_anon 1 inactive_anon 5965444 active_file 224 inactive_file 543
+[  258.584144] BEFORE the lru mesg active_anon 4 inactive_anon 1310725 active_file 2 inactive_file 1
+[  258.586970] AFTER the lru mesg active_anon 4 inactive_anon 1310213 active_file 2 inactive_file 1
+[  258.586973] will do promote_node
+[  258.586974] PM NODE BEFORE the lru mesg active_anon 1 inactive_anon 6325882 active_file 224 inactive_file 543
+[  258.586975] nr of each time isolate 1
+[  258.586977] nr of each time isolate 3
+[  258.586978] nr of each time isolate 7
+[  258.586979] nr of each time isolate 15
+[  258.586982] nr of each time isolate 31
+[  258.586986] nr of each time isolate 62
+[  258.586995] nr of each time isolate 125
+[  258.587011] nr of each time isolate 250
+[  258.587029] PM NODE AFTER the lru mesg active_anon 1 inactive_anon 6325884 active_file 224 inactive_file 543
+[  260.600383] BEFORE the lru mesg active_anon 4 inactive_anon 1310718 active_file 2 inactive_file 1
+[  260.603762] AFTER the lru mesg active_anon 4 inactive_anon 1310725 active_file 2 inactive_file 1
+[  260.603765] will do promote_node
+[  260.603766] PM NODE BEFORE the lru mesg active_anon 1 inactive_anon 6548525 active_file 224 inactive_file 543
+[  260.603768] nr of each time isolate 1
+[  260.603769] nr of each time isolate 3
+[  260.603770] nr of each time isolate 7
+[  260.603773] nr of each time isolate 15
+[  260.603776] nr of each time isolate 31
+[  260.603780] nr of each time isolate 62
+[  260.603789] nr of each time isolate 125
+[  260.603806] nr of each time isolate 250
+[  260.603823] PM NODE AFTER the lru mesg active_anon 1 inactive_anon 6548542 active_file 224 inactive_file 543
+[  262.616628] BEFORE the lru mesg active_anon 4 inactive_anon 1310725 active_file 3 inactive_file 1
+[  262.619545] AFTER the lru mesg active_anon 4 inactive_anon 1310213 active_file 2 inactive_file 1
+[  262.619548] will do promote_node
+[  262.619549] PM NODE BEFORE the lru mesg active_anon 1 inactive_anon 6915694 active_file 225 inactive_file 543
+[  262.619551] nr of each time isolate 1
+[  262.619553] nr of each time isolate 3
+[  262.619554] nr of each time isolate 7
+[  262.619556] nr of each time isolate 15
+[  262.619558] nr of each time isolate 31
+[  262.619563] nr of each time isolate 62
+[  262.619572] nr of each time isolate 125
+[  262.619588] nr of each time isolate 250
+[  262.619605] PM NODE AFTER the lru mesg active_anon 1 inactive_anon 6915696 active_file 225 inactive_file 543
+[  264.632861] BEFORE the lru mesg active_anon 4 inactive_anon 1310724 active_file 2 inactive_file 1
+[  264.635949] AFTER the lru mesg active_anon 4 inactive_anon 1310212 active_file 2 inactive_file 1
+[  264.635952] will do promote_node
+[  264.635953] PM NODE BEFORE the lru mesg active_anon 1 inactive_anon 7079548 active_file 225 inactive_file 543
+[  264.635955] nr of each time isolate 1
+[  264.635956] nr of each time isolate 3
+[  264.635957] nr of each time isolate 7
+[  264.635959] nr of each time isolate 15
+[  264.635962] nr of each time isolate 31
+[  264.635966] nr of each time isolate 62
+[  264.635974] nr of each time isolate 125
+[  264.635990] nr of each time isolate 250
+[  264.636007] PM NODE AFTER the lru mesg active_anon 1 inactive_anon 7079550 active_file 225 inactive_file 543
+[  266.649098] BEFORE the lru mesg active_anon 4 inactive_anon 1310212 active_file 2 inactive_file 1
+[  266.652133] AFTER the lru mesg active_anon 4 inactive_anon 1309700 active_file 2 inactive_file 1
+[  266.652135] will do promote_node
+[  266.652136] PM NODE BEFORE the lru mesg active_anon 1 inactive_anon 7080060 active_file 225 inactive_file 543
+[  266.652138] nr of each time isolate 1
+[  266.652139] nr of each time isolate 3
+[  266.652140] nr of each time isolate 7
+[  266.652142] nr of each time isolate 15
+[  266.652144] nr of each time isolate 31
+[  266.652149] nr of each time isolate 62
+[  266.652157] nr of each time isolate 125
+[  266.652174] nr of each time isolate 250
+[  266.652191] PM NODE AFTER the lru mesg active_anon 1 inactive_anon 7080062 active_file 225 inactive_file 543
+[  268.665340] BEFORE the lru mesg active_anon 5 inactive_anon 1309724 active_file 2 inactive_file 1
+[  268.667963] AFTER the lru mesg active_anon 5 inactive_anon 1309212 active_file 2 inactive_file 1
+[  268.667966] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7080540 active_file 225 inactive_file 543
+[  268.667968] nr of each time isolate 1
+[  268.667969] nr of each time isolate 3
+[  268.667970] nr of each time isolate 7
+[  268.667972] nr of each time isolate 15
+[  268.667974] nr of each time isolate 31
+[  268.667979] nr of each time isolate 62
+[  268.667987] nr of each time isolate 125
+[  268.668003] nr of each time isolate 250
+[  268.668021] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7080542 active_file 225 inactive_file 543
+[  270.681575] BEFORE the lru mesg active_anon 5 inactive_anon 1309212 active_file 2 inactive_file 1
+[  270.684162] AFTER the lru mesg active_anon 5 inactive_anon 1308700 active_file 2 inactive_file 1
+[  270.684165] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7081052 active_file 225 inactive_file 543
+[  270.684167] nr of each time isolate 1
+[  270.684168] nr of each time isolate 3
+[  270.684169] nr of each time isolate 7
+[  270.684171] nr of each time isolate 15
+[  270.684173] nr of each time isolate 31
+[  270.684178] nr of each time isolate 62
+[  270.684186] nr of each time isolate 125
+[  270.684202] nr of each time isolate 250
+[  270.684221] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7081054 active_file 225 inactive_file 543
+[  272.697817] BEFORE the lru mesg active_anon 5 inactive_anon 1308730 active_file 2 inactive_file 1
+[  272.700325] AFTER the lru mesg active_anon 5 inactive_anon 1308218 active_file 2 inactive_file 1
+[  272.700328] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7081539 active_file 225 inactive_file 543
+[  272.700330] nr of each time isolate 1
+[  272.700332] nr of each time isolate 3
+[  272.700333] nr of each time isolate 7
+[  272.700335] nr of each time isolate 15
+[  272.700338] nr of each time isolate 31
+[  272.700342] nr of each time isolate 62
+[  272.700351] nr of each time isolate 125
+[  272.700367] nr of each time isolate 250
+[  272.700384] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7081541 active_file 225 inactive_file 543
+[  274.714061] BEFORE the lru mesg active_anon 5 inactive_anon 1308218 active_file 2 inactive_file 1
+[  274.716640] AFTER the lru mesg active_anon 5 inactive_anon 1307706 active_file 2 inactive_file 1
+[  274.716642] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7082051 active_file 225 inactive_file 543
+[  274.716643] nr of each time isolate 1
+[  274.716645] nr of each time isolate 3
+[  274.716646] nr of each time isolate 7
+[  274.716648] nr of each time isolate 15
+[  274.716650] nr of each time isolate 31
+[  274.716655] nr of each time isolate 62
+[  274.716663] nr of each time isolate 125
+[  274.716679] nr of each time isolate 250
+[  274.716697] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7082053 active_file 225 inactive_file 543
+[  276.730294] BEFORE the lru mesg active_anon 5 inactive_anon 1307706 active_file 2 inactive_file 1
+[  276.732797] AFTER the lru mesg active_anon 5 inactive_anon 1307194 active_file 2 inactive_file 1
+[  276.732799] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7082563 active_file 225 inactive_file 543
+[  276.732801] nr of each time isolate 1
+[  276.732802] nr of each time isolate 3
+[  276.732803] nr of each time isolate 7
+[  276.732805] nr of each time isolate 15
+[  276.732807] nr of each time isolate 31
+[  276.732812] nr of each time isolate 62
+[  276.732820] nr of each time isolate 125
+[  276.732836] nr of each time isolate 250
+[  276.732854] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7082565 active_file 225 inactive_file 543
+[  278.746536] BEFORE the lru mesg active_anon 5 inactive_anon 1307215 active_file 2 inactive_file 1
+[  278.748941] AFTER the lru mesg active_anon 5 inactive_anon 1306703 active_file 2 inactive_file 1
+[  278.748943] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7083045 active_file 225 inactive_file 543
+[  278.748944] nr of each time isolate 1
+[  278.748945] nr of each time isolate 3
+[  278.748946] nr of each time isolate 7
+[  278.748948] nr of each time isolate 15
+[  278.748951] nr of each time isolate 31
+[  278.748955] nr of each time isolate 62
+[  278.748964] nr of each time isolate 125
+[  278.748980] nr of each time isolate 250
+[  278.748997] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7083047 active_file 225 inactive_file 543
+[  280.762582] BEFORE the lru mesg active_anon 5 inactive_anon 1306715 active_file 2 inactive_file 1
+[  280.764950] AFTER the lru mesg active_anon 5 inactive_anon 1306203 active_file 2 inactive_file 1
+[  280.764953] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7083557 active_file 223 inactive_file 545
+[  280.764955] nr of each time isolate 1
+[  280.764956] nr of each time isolate 3
+[  280.764957] nr of each time isolate 7
+[  280.764959] nr of each time isolate 15
+[  280.764962] nr of each time isolate 31
+[  280.764967] nr of each time isolate 62
+[  280.764975] nr of each time isolate 125
+[  280.764991] nr of each time isolate 250
+[  280.765008] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7083559 active_file 223 inactive_file 545
+[  282.778218] BEFORE the lru mesg active_anon 5 inactive_anon 1306226 active_file 2 inactive_file 1
+[  282.781533] AFTER the lru mesg active_anon 5 inactive_anon 1305714 active_file 2 inactive_file 1
+[  282.781536] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7084036 active_file 223 inactive_file 545
+[  282.781538] nr of each time isolate 1
+[  282.781539] nr of each time isolate 3
+[  282.781540] nr of each time isolate 7
+[  282.781542] nr of each time isolate 15
+[  282.781545] nr of each time isolate 31
+[  282.781549] nr of each time isolate 62
+[  282.781558] nr of each time isolate 125
+[  282.781574] nr of each time isolate 250
+[  282.781591] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7084038 active_file 223 inactive_file 545
+[  284.793753] BEFORE the lru mesg active_anon 5 inactive_anon 1305714 active_file 2 inactive_file 1
+[  284.797172] AFTER the lru mesg active_anon 5 inactive_anon 1305202 active_file 2 inactive_file 1
+[  284.797174] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7084548 active_file 223 inactive_file 545
+[  284.797176] nr of each time isolate 1
+[  284.797177] nr of each time isolate 3
+[  284.797178] nr of each time isolate 7
+[  284.797180] nr of each time isolate 15
+[  284.797183] nr of each time isolate 31
+[  284.797187] nr of each time isolate 62
+[  284.797196] nr of each time isolate 125
+[  284.797212] nr of each time isolate 250
+[  284.797230] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7084550 active_file 223 inactive_file 545
+[  286.813099] BEFORE the lru mesg active_anon 5 inactive_anon 1305202 active_file 2 inactive_file 1
+[  286.815567] AFTER the lru mesg active_anon 5 inactive_anon 1304690 active_file 2 inactive_file 1
+[  286.815569] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7085060 active_file 223 inactive_file 545
+[  286.815571] nr of each time isolate 1
+[  286.815572] nr of each time isolate 3
+[  286.815573] nr of each time isolate 7
+[  286.815575] nr of each time isolate 15
+[  286.815578] nr of each time isolate 31
+[  286.815582] nr of each time isolate 62
+[  286.815591] nr of each time isolate 125
+[  286.815607] nr of each time isolate 250
+[  286.815624] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7085062 active_file 223 inactive_file 545
+[  288.824677] BEFORE the lru mesg active_anon 5 inactive_anon 1304719 active_file 3 inactive_file 1
+[  288.827055] AFTER the lru mesg active_anon 5 inactive_anon 1304207 active_file 2 inactive_file 1
+[  288.827057] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7085549 active_file 224 inactive_file 545
+[  288.827059] nr of each time isolate 1
+[  288.827060] nr of each time isolate 3
+[  288.827061] nr of each time isolate 7
+[  288.827063] nr of each time isolate 15
+[  288.827065] nr of each time isolate 31
+[  288.827070] nr of each time isolate 62
+[  288.827078] nr of each time isolate 125
+[  288.827094] nr of each time isolate 250
+[  288.827111] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7085551 active_file 224 inactive_file 545
+[  290.840263] BEFORE the lru mesg active_anon 5 inactive_anon 1304207 active_file 2 inactive_file 1
+[  290.842695] AFTER the lru mesg active_anon 5 inactive_anon 1303695 active_file 2 inactive_file 1
+[  290.842697] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7086061 active_file 224 inactive_file 545
+[  290.842698] nr of each time isolate 1
+[  290.842699] nr of each time isolate 3
+[  290.842700] nr of each time isolate 7
+[  290.842702] nr of each time isolate 15
+[  290.842704] nr of each time isolate 31
+[  290.842709] nr of each time isolate 62
+[  290.842717] nr of each time isolate 125
+[  290.842734] nr of each time isolate 250
+[  290.842752] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7086063 active_file 224 inactive_file 545
+[  292.855872] BEFORE the lru mesg active_anon 5 inactive_anon 1303726 active_file 2 inactive_file 1
+[  292.858197] AFTER the lru mesg active_anon 5 inactive_anon 1303214 active_file 2 inactive_file 1
+[  292.858200] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7086544 active_file 224 inactive_file 545
+[  292.858202] nr of each time isolate 1
+[  292.858204] nr of each time isolate 3
+[  292.858205] nr of each time isolate 7
+[  292.858207] nr of each time isolate 15
+[  292.858210] nr of each time isolate 31
+[  292.858214] nr of each time isolate 62
+[  292.858223] nr of each time isolate 125
+[  292.858239] nr of each time isolate 250
+[  292.858256] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7086546 active_file 224 inactive_file 545
+[  294.871500] BEFORE the lru mesg active_anon 5 inactive_anon 1303214 active_file 2 inactive_file 1
+[  294.873921] AFTER the lru mesg active_anon 5 inactive_anon 1302702 active_file 2 inactive_file 1
+[  294.873923] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7087056 active_file 224 inactive_file 545
+[  294.873925] nr of each time isolate 1
+[  294.873926] nr of each time isolate 3
+[  294.873927] nr of each time isolate 7
+[  294.873929] nr of each time isolate 15
+[  294.873932] nr of each time isolate 31
+[  294.873937] nr of each time isolate 62
+[  294.873945] nr of each time isolate 125
+[  294.873961] nr of each time isolate 250
+[  294.873978] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7087058 active_file 224 inactive_file 545
+[  296.891123] BEFORE the lru mesg active_anon 5 inactive_anon 1302724 active_file 2 inactive_file 1
+[  296.893449] AFTER the lru mesg active_anon 5 inactive_anon 1302212 active_file 2 inactive_file 1
+[  296.893452] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7087537 active_file 224 inactive_file 545
+[  296.893453] nr of each time isolate 1
+[  296.893454] nr of each time isolate 3
+[  296.893456] nr of each time isolate 7
+[  296.893457] nr of each time isolate 15
+[  296.893460] nr of each time isolate 31
+[  296.893464] nr of each time isolate 62
+[  296.893473] nr of each time isolate 125
+[  296.893489] nr of each time isolate 250
+[  296.893506] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7087539 active_file 224 inactive_file 545
+[  298.902798] BEFORE the lru mesg active_anon 5 inactive_anon 1302212 active_file 2 inactive_file 1
+[  298.905172] AFTER the lru mesg active_anon 5 inactive_anon 1301700 active_file 2 inactive_file 1
+[  298.905174] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7088049 active_file 224 inactive_file 545
+[  298.905177] nr of each time isolate 1
+[  298.905178] nr of each time isolate 3
+[  298.905179] nr of each time isolate 7
+[  298.905181] nr of each time isolate 15
+[  298.905183] nr of each time isolate 31
+[  298.905188] nr of each time isolate 62
+[  298.905196] nr of each time isolate 125
+[  298.905212] nr of each time isolate 250
+[  298.905230] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7088051 active_file 224 inactive_file 545
+[  300.918465] BEFORE the lru mesg active_anon 5 inactive_anon 1301700 active_file 2 inactive_file 1
+[  300.922145] AFTER the lru mesg active_anon 5 inactive_anon 1301188 active_file 2 inactive_file 1
+[  300.922148] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7088561 active_file 224 inactive_file 545
+[  300.922149] nr of each time isolate 1
+[  300.922150] nr of each time isolate 3
+[  300.922151] nr of each time isolate 7
+[  300.922153] nr of each time isolate 15
+[  300.922155] nr of each time isolate 31
+[  300.922160] nr of each time isolate 62
+[  300.922168] nr of each time isolate 125
+[  300.922184] nr of each time isolate 250
+[  300.922201] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7088563 active_file 224 inactive_file 545
+[  302.934154] BEFORE the lru mesg active_anon 5 inactive_anon 1301215 active_file 2 inactive_file 1
+[  302.936724] AFTER the lru mesg active_anon 5 inactive_anon 1300703 active_file 2 inactive_file 1
+[  302.936727] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7089051 active_file 224 inactive_file 545
+[  302.936729] nr of each time isolate 1
+[  302.936731] nr of each time isolate 3
+[  302.936732] nr of each time isolate 7
+[  302.936734] nr of each time isolate 15
+[  302.936737] nr of each time isolate 31
+[  302.936741] nr of each time isolate 62
+[  302.936750] nr of each time isolate 125
+[  302.936766] nr of each time isolate 250
+[  302.936783] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7089053 active_file 224 inactive_file 545
+[  304.949859] BEFORE the lru mesg active_anon 5 inactive_anon 1300703 active_file 2 inactive_file 1
+[  304.952349] AFTER the lru mesg active_anon 5 inactive_anon 1300191 active_file 2 inactive_file 1
+[  304.952352] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7089563 active_file 224 inactive_file 545
+[  304.952354] nr of each time isolate 1
+[  304.952355] nr of each time isolate 3
+[  304.952356] nr of each time isolate 7
+[  304.952358] nr of each time isolate 15
+[  304.952361] nr of each time isolate 31
+[  304.952366] nr of each time isolate 62
+[  304.952375] nr of each time isolate 125
+[  304.952391] nr of each time isolate 250
+[  304.952408] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7089565 active_file 224 inactive_file 545
+[  306.969551] BEFORE the lru mesg active_anon 5 inactive_anon 1300225 active_file 3 inactive_file 1
+[  306.971874] AFTER the lru mesg active_anon 5 inactive_anon 1299713 active_file 2 inactive_file 1
+[  306.971876] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7090048 active_file 225 inactive_file 545
+[  306.971878] nr of each time isolate 1
+[  306.971880] nr of each time isolate 3
+[  306.971881] nr of each time isolate 7
+[  306.971882] nr of each time isolate 15
+[  306.971885] nr of each time isolate 31
+[  306.971890] nr of each time isolate 62
+[  306.971898] nr of each time isolate 125
+[  306.971914] nr of each time isolate 250
+[  306.971931] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7090050 active_file 225 inactive_file 545
+[  308.981306] BEFORE the lru mesg active_anon 5 inactive_anon 1299713 active_file 2 inactive_file 1
+[  308.983773] AFTER the lru mesg active_anon 5 inactive_anon 1299201 active_file 2 inactive_file 1
+[  308.983775] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7090560 active_file 225 inactive_file 545
+[  308.983776] nr of each time isolate 1
+[  308.983777] nr of each time isolate 3
+[  308.983778] nr of each time isolate 7
+[  308.983780] nr of each time isolate 15
+[  308.983783] nr of each time isolate 31
+[  308.983787] nr of each time isolate 62
+[  308.983796] nr of each time isolate 125
+[  308.983812] nr of each time isolate 250
+[  308.983830] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7090562 active_file 225 inactive_file 545
+[  310.997033] BEFORE the lru mesg active_anon 5 inactive_anon 1299201 active_file 2 inactive_file 1
+[  310.999448] AFTER the lru mesg active_anon 5 inactive_anon 1298689 active_file 2 inactive_file 1
+[  310.999450] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7091072 active_file 225 inactive_file 545
+[  310.999452] nr of each time isolate 1
+[  310.999453] nr of each time isolate 3
+[  310.999454] nr of each time isolate 7
+[  310.999456] nr of each time isolate 15
+[  310.999459] nr of each time isolate 31
+[  310.999463] nr of each time isolate 62
+[  310.999472] nr of each time isolate 125
+[  310.999488] nr of each time isolate 250
+[  310.999505] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7091074 active_file 225 inactive_file 545
+[  313.012804] BEFORE the lru mesg active_anon 5 inactive_anon 1298722 active_file 2 inactive_file 1
+[  313.015155] AFTER the lru mesg active_anon 5 inactive_anon 1298210 active_file 2 inactive_file 1
+[  313.015157] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7091550 active_file 225 inactive_file 545
+[  313.015159] nr of each time isolate 1
+[  313.015161] nr of each time isolate 3
+[  313.015162] nr of each time isolate 7
+[  313.015164] nr of each time isolate 15
+[  313.015166] nr of each time isolate 31
+[  313.015171] nr of each time isolate 62
+[  313.015179] nr of each time isolate 125
+[  313.015195] nr of each time isolate 250
+[  313.015213] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7091552 active_file 225 inactive_file 545
+[  315.028553] BEFORE the lru mesg active_anon 5 inactive_anon 1298210 active_file 2 inactive_file 1
+[  315.031088] AFTER the lru mesg active_anon 5 inactive_anon 1297698 active_file 2 inactive_file 1
+[  315.031090] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7092062 active_file 225 inactive_file 545
+[  315.031092] nr of each time isolate 1
+[  315.031093] nr of each time isolate 3
+[  315.031094] nr of each time isolate 7
+[  315.031096] nr of each time isolate 15
+[  315.031098] nr of each time isolate 31
+[  315.031103] nr of each time isolate 62
+[  315.031111] nr of each time isolate 125
+[  315.031127] nr of each time isolate 250
+[  315.031144] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7092064 active_file 225 inactive_file 545
+[  317.044329] BEFORE the lru mesg active_anon 5 inactive_anon 1297732 active_file 2 inactive_file 1
+[  317.046640] AFTER the lru mesg active_anon 5 inactive_anon 1297220 active_file 2 inactive_file 1
+[  317.046643] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7092541 active_file 225 inactive_file 545
+[  317.046644] nr of each time isolate 1
+[  317.046646] nr of each time isolate 3
+[  317.046647] nr of each time isolate 7
+[  317.046648] nr of each time isolate 15
+[  317.046651] nr of each time isolate 31
+[  317.046656] nr of each time isolate 62
+[  317.046664] nr of each time isolate 125
+[  317.046680] nr of each time isolate 250
+[  317.046698] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7092543 active_file 225 inactive_file 545
+[  319.060144] BEFORE the lru mesg active_anon 5 inactive_anon 1297220 active_file 2 inactive_file 1
+[  319.062514] AFTER the lru mesg active_anon 5 inactive_anon 1296708 active_file 2 inactive_file 1
+[  319.062516] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7093053 active_file 225 inactive_file 545
+[  319.062518] nr of each time isolate 1
+[  319.062519] nr of each time isolate 3
+[  319.062520] nr of each time isolate 7
+[  319.062522] nr of each time isolate 15
+[  319.062525] nr of each time isolate 31
+[  319.062529] nr of each time isolate 62
+[  319.062537] nr of each time isolate 125
+[  319.062553] nr of each time isolate 250
+[  319.062571] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7093055 active_file 225 inactive_file 545
+[  321.075942] BEFORE the lru mesg active_anon 5 inactive_anon 1296708 active_file 2 inactive_file 1
+[  321.079554] AFTER the lru mesg active_anon 5 inactive_anon 1296196 active_file 2 inactive_file 1
+[  321.079556] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7093565 active_file 225 inactive_file 545
+[  321.079558] nr of each time isolate 1
+[  321.079559] nr of each time isolate 3
+[  321.079560] nr of each time isolate 7
+[  321.079562] nr of each time isolate 15
+[  321.079564] nr of each time isolate 31
+[  321.079569] nr of each time isolate 62
+[  321.079577] nr of each time isolate 125
+[  321.079593] nr of each time isolate 250
+[  321.079610] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7093567 active_file 225 inactive_file 545
+[  323.091757] BEFORE the lru mesg active_anon 5 inactive_anon 1296217 active_file 2 inactive_file 1
+[  323.094111] AFTER the lru mesg active_anon 5 inactive_anon 1295705 active_file 2 inactive_file 1
+[  323.094114] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7094043 active_file 225 inactive_file 545
+[  323.094115] nr of each time isolate 1
+[  323.094117] nr of each time isolate 3
+[  323.094118] nr of each time isolate 7
+[  323.094119] nr of each time isolate 15
+[  323.094122] nr of each time isolate 31
+[  323.094127] nr of each time isolate 62
+[  323.094135] nr of each time isolate 125
+[  323.094151] nr of each time isolate 250
+[  323.094168] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7094045 active_file 225 inactive_file 545
+[  325.107582] BEFORE the lru mesg active_anon 5 inactive_anon 1295711 active_file 2 inactive_file 1
+[  325.109966] AFTER the lru mesg active_anon 5 inactive_anon 1295199 active_file 2 inactive_file 1
+[  325.109969] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7094555 active_file 225 inactive_file 545
+[  325.109971] nr of each time isolate 1
+[  325.109973] nr of each time isolate 3
+[  325.109974] nr of each time isolate 7
+[  325.109976] nr of each time isolate 15
+[  325.109979] nr of each time isolate 31
+[  325.109984] nr of each time isolate 62
+[  325.109992] nr of each time isolate 125
+[  325.110008] nr of each time isolate 250
+[  325.110026] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7094557 active_file 225 inactive_file 545
+[  327.123403] BEFORE the lru mesg active_anon 5 inactive_anon 1295231 active_file 2 inactive_file 1
+[  327.126358] AFTER the lru mesg active_anon 5 inactive_anon 1294719 active_file 2 inactive_file 1
+[  327.126362] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7095040 active_file 225 inactive_file 545
+[  327.126364] nr of each time isolate 1
+[  327.126366] nr of each time isolate 3
+[  327.126367] nr of each time isolate 7
+[  327.126369] nr of each time isolate 15
+[  327.126372] nr of each time isolate 31
+[  327.126376] nr of each time isolate 62
+[  327.126385] nr of each time isolate 125
+[  327.126401] nr of each time isolate 250
+[  327.126418] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7095042 active_file 225 inactive_file 545
+[  329.139254] BEFORE the lru mesg active_anon 5 inactive_anon 1294719 active_file 2 inactive_file 1
+[  329.141655] AFTER the lru mesg active_anon 5 inactive_anon 1294207 active_file 2 inactive_file 1
+[  329.141658] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7095552 active_file 225 inactive_file 545
+[  329.141659] nr of each time isolate 1
+[  329.141660] nr of each time isolate 3
+[  329.141662] nr of each time isolate 7
+[  329.141663] nr of each time isolate 15
+[  329.141666] nr of each time isolate 31
+[  329.141671] nr of each time isolate 62
+[  329.141679] nr of each time isolate 125
+[  329.141695] nr of each time isolate 250
+[  329.141712] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7095554 active_file 225 inactive_file 545
+[  331.155139] BEFORE the lru mesg active_anon 5 inactive_anon 1294207 active_file 2 inactive_file 1
+[  331.157539] AFTER the lru mesg active_anon 5 inactive_anon 1293695 active_file 2 inactive_file 1
+[  331.157541] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7096064 active_file 225 inactive_file 545
+[  331.157543] nr of each time isolate 1
+[  331.157544] nr of each time isolate 3
+[  331.157545] nr of each time isolate 7
+[  331.157547] nr of each time isolate 15
+[  331.157550] nr of each time isolate 31
+[  331.157554] nr of each time isolate 62
+[  331.157563] nr of each time isolate 125
+[  331.157579] nr of each time isolate 250
+[  331.157596] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7096066 active_file 225 inactive_file 545
+[  333.170973] BEFORE the lru mesg active_anon 5 inactive_anon 1293728 active_file 3 inactive_file 1
+[  333.173542] AFTER the lru mesg active_anon 5 inactive_anon 1293216 active_file 2 inactive_file 1
+[  333.173544] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7096544 active_file 226 inactive_file 545
+[  333.173545] nr of each time isolate 1
+[  333.173547] nr of each time isolate 3
+[  333.173548] nr of each time isolate 7
+[  333.173549] nr of each time isolate 15
+[  333.173552] nr of each time isolate 31
+[  333.173557] nr of each time isolate 62
+[  333.173565] nr of each time isolate 125
+[  333.173581] nr of each time isolate 250
+[  333.173598] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7096546 active_file 226 inactive_file 545
+[  335.186871] BEFORE the lru mesg active_anon 5 inactive_anon 1293216 active_file 2 inactive_file 1
+[  335.189284] AFTER the lru mesg active_anon 5 inactive_anon 1292704 active_file 2 inactive_file 1
+[  335.189287] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7097056 active_file 226 inactive_file 545
+[  335.189288] nr of each time isolate 1
+[  335.189289] nr of each time isolate 3
+[  335.189290] nr of each time isolate 7
+[  335.189292] nr of each time isolate 15
+[  335.189295] nr of each time isolate 31
+[  335.189299] nr of each time isolate 62
+[  335.189307] nr of each time isolate 125
+[  335.189323] nr of each time isolate 250
+[  335.189341] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7097058 active_file 226 inactive_file 545
+[  337.202728] BEFORE the lru mesg active_anon 5 inactive_anon 1292723 active_file 2 inactive_file 1
+[  337.205224] AFTER the lru mesg active_anon 5 inactive_anon 1292211 active_file 2 inactive_file 1
+[  337.205227] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7097535 active_file 226 inactive_file 545
+[  337.205228] nr of each time isolate 1
+[  337.205229] nr of each time isolate 3
+[  337.205231] nr of each time isolate 7
+[  337.205232] nr of each time isolate 15
+[  337.205235] nr of each time isolate 31
+[  337.205239] nr of each time isolate 62
+[  337.205248] nr of each time isolate 125
+[  337.205263] nr of each time isolate 250
+[  337.205281] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7097537 active_file 226 inactive_file 545
+[  339.218635] BEFORE the lru mesg active_anon 5 inactive_anon 1292211 active_file 2 inactive_file 1
+[  339.221212] AFTER the lru mesg active_anon 5 inactive_anon 1291699 active_file 2 inactive_file 1
+[  339.221214] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7098047 active_file 226 inactive_file 545
+[  339.221216] nr of each time isolate 1
+[  339.221217] nr of each time isolate 3
+[  339.221218] nr of each time isolate 7
+[  339.221220] nr of each time isolate 15
+[  339.221223] nr of each time isolate 31
+[  339.221227] nr of each time isolate 62
+[  339.221236] nr of each time isolate 125
+[  339.221251] nr of each time isolate 250
+[  339.221269] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7098049 active_file 226 inactive_file 545
+[  341.234516] BEFORE the lru mesg active_anon 5 inactive_anon 1291699 active_file 2 inactive_file 1
+[  341.236957] AFTER the lru mesg active_anon 5 inactive_anon 1291187 active_file 2 inactive_file 1
+[  341.236959] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7098559 active_file 226 inactive_file 545
+[  341.236960] nr of each time isolate 1
+[  341.236961] nr of each time isolate 3
+[  341.236963] nr of each time isolate 7
+[  341.236964] nr of each time isolate 15
+[  341.236967] nr of each time isolate 31
+[  341.236971] nr of each time isolate 62
+[  341.236980] nr of each time isolate 125
+[  341.236996] nr of each time isolate 250
+[  341.237013] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7098561 active_file 226 inactive_file 545
+[  343.250443] BEFORE the lru mesg active_anon 5 inactive_anon 1291207 active_file 2 inactive_file 1
+[  343.254001] AFTER the lru mesg active_anon 5 inactive_anon 1290695 active_file 2 inactive_file 1
+[  343.254003] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7099052 active_file 226 inactive_file 545
+[  343.254004] nr of each time isolate 1
+[  343.254005] nr of each time isolate 3
+[  343.254007] nr of each time isolate 7
+[  343.254008] nr of each time isolate 15
+[  343.254011] nr of each time isolate 31
+[  343.254015] nr of each time isolate 62
+[  343.254024] nr of each time isolate 125
+[  343.254040] nr of each time isolate 250
+[  343.254057] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7099054 active_file 226 inactive_file 545
+[  345.266334] BEFORE the lru mesg active_anon 5 inactive_anon 1290695 active_file 2 inactive_file 1
+[  345.268718] AFTER the lru mesg active_anon 5 inactive_anon 1290183 active_file 2 inactive_file 1
+[  345.268720] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7099564 active_file 226 inactive_file 545
+[  345.268721] nr of each time isolate 1
+[  345.268722] nr of each time isolate 3
+[  345.268723] nr of each time isolate 7
+[  345.268725] nr of each time isolate 15
+[  345.268728] nr of each time isolate 31
+[  345.268732] nr of each time isolate 62
+[  345.268741] nr of each time isolate 125
+[  345.268757] nr of each time isolate 250
+[  345.268774] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7099566 active_file 226 inactive_file 545
+[  347.282276] BEFORE the lru mesg active_anon 5 inactive_anon 1290203 active_file 2 inactive_file 1
+[  347.284712] AFTER the lru mesg active_anon 5 inactive_anon 1289691 active_file 2 inactive_file 1
+[  347.284715] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7100056 active_file 226 inactive_file 545
+[  347.284716] nr of each time isolate 1
+[  347.284717] nr of each time isolate 3
+[  347.284718] nr of each time isolate 7
+[  347.284720] nr of each time isolate 15
+[  347.284723] nr of each time isolate 31
+[  347.284727] nr of each time isolate 62
+[  347.284735] nr of each time isolate 125
+[  347.284751] nr of each time isolate 250
+[  347.284768] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7100058 active_file 226 inactive_file 545
+[  349.298184] BEFORE the lru mesg active_anon 5 inactive_anon 1289691 active_file 2 inactive_file 1
+[  349.300848] AFTER the lru mesg active_anon 5 inactive_anon 1289179 active_file 2 inactive_file 1
+[  349.300850] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7100568 active_file 226 inactive_file 545
+[  349.300851] nr of each time isolate 1
+[  349.300852] nr of each time isolate 3
+[  349.300854] nr of each time isolate 7
+[  349.300855] nr of each time isolate 15
+[  349.300858] nr of each time isolate 31
+[  349.300862] nr of each time isolate 62
+[  349.300871] nr of each time isolate 125
+[  349.300887] nr of each time isolate 250
+[  349.300904] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7100570 active_file 226 inactive_file 545
+[  351.314115] BEFORE the lru mesg active_anon 5 inactive_anon 1289179 active_file 2 inactive_file 1
+[  351.316703] AFTER the lru mesg active_anon 5 inactive_anon 1288667 active_file 2 inactive_file 1
+[  351.316705] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7101080 active_file 226 inactive_file 545
+[  351.316707] nr of each time isolate 1
+[  351.316708] nr of each time isolate 3
+[  351.316709] nr of each time isolate 7
+[  351.316710] nr of each time isolate 15
+[  351.316713] nr of each time isolate 31
+[  351.316718] nr of each time isolate 62
+[  351.316726] nr of each time isolate 125
+[  351.316742] nr of each time isolate 250
+[  351.316759] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7101082 active_file 226 inactive_file 545
+[  353.330063] BEFORE the lru mesg active_anon 5 inactive_anon 1288701 active_file 3 inactive_file 1
+[  353.333714] AFTER the lru mesg active_anon 5 inactive_anon 1288189 active_file 2 inactive_file 1
+[  353.333717] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7101572 active_file 227 inactive_file 545
+[  353.333719] nr of each time isolate 1
+[  353.333720] nr of each time isolate 3
+[  353.333721] nr of each time isolate 7
+[  353.333723] nr of each time isolate 15
+[  353.333725] nr of each time isolate 31
+[  353.333730] nr of each time isolate 62
+[  353.333738] nr of each time isolate 125
+[  353.333754] nr of each time isolate 250
+[  353.333771] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7101574 active_file 227 inactive_file 545
+[  355.346023] BEFORE the lru mesg active_anon 5 inactive_anon 1288189 active_file 2 inactive_file 1
+[  355.348401] AFTER the lru mesg active_anon 5 inactive_anon 1287677 active_file 2 inactive_file 1
+[  355.348403] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7102084 active_file 227 inactive_file 545
+[  355.348404] nr of each time isolate 1
+[  355.348405] nr of each time isolate 3
+[  355.348407] nr of each time isolate 7
+[  355.348408] nr of each time isolate 15
+[  355.348411] nr of each time isolate 31
+[  355.348415] nr of each time isolate 62
+[  355.348424] nr of each time isolate 125
+[  355.348440] nr of each time isolate 250
+[  355.348457] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7102086 active_file 227 inactive_file 545
+[  357.361968] BEFORE the lru mesg active_anon 5 inactive_anon 1287698 active_file 3 inactive_file 1
+[  357.364354] AFTER the lru mesg active_anon 5 inactive_anon 1287186 active_file 2 inactive_file 1
+[  357.364356] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7102562 active_file 228 inactive_file 545
+[  357.364358] nr of each time isolate 1
+[  357.364359] nr of each time isolate 3
+[  357.364360] nr of each time isolate 7
+[  357.364362] nr of each time isolate 15
+[  357.364365] nr of each time isolate 31
+[  357.364369] nr of each time isolate 62
+[  357.364377] nr of each time isolate 125
+[  357.364393] nr of each time isolate 250
+[  357.364411] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7102564 active_file 228 inactive_file 545
+[  359.377941] BEFORE the lru mesg active_anon 5 inactive_anon 1287186 active_file 2 inactive_file 1
+[  359.381485] AFTER the lru mesg active_anon 5 inactive_anon 1286674 active_file 2 inactive_file 1
+[  359.381487] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7103074 active_file 228 inactive_file 545
+[  359.381489] nr of each time isolate 1
+[  359.381490] nr of each time isolate 3
+[  359.381491] nr of each time isolate 7
+[  359.381493] nr of each time isolate 15
+[  359.381496] nr of each time isolate 31
+[  359.381500] nr of each time isolate 62
+[  359.381509] nr of each time isolate 125
+[  359.381525] nr of each time isolate 250
+[  359.381542] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7103076 active_file 228 inactive_file 545
+[  361.393898] BEFORE the lru mesg active_anon 5 inactive_anon 1286674 active_file 2 inactive_file 1
+[  361.396312] AFTER the lru mesg active_anon 5 inactive_anon 1286162 active_file 2 inactive_file 1
+[  361.396315] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7103586 active_file 228 inactive_file 545
+[  361.396318] nr of each time isolate 1
+[  361.396319] nr of each time isolate 3
+[  361.396320] nr of each time isolate 7
+[  361.396321] nr of each time isolate 15
+[  361.396324] nr of each time isolate 31
+[  361.396328] nr of each time isolate 62
+[  361.396337] nr of each time isolate 125
+[  361.396353] nr of each time isolate 250
+[  361.396370] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7103588 active_file 228 inactive_file 545
+[  363.409881] BEFORE the lru mesg active_anon 5 inactive_anon 1286195 active_file 2 inactive_file 1
+[  363.413417] AFTER the lru mesg active_anon 5 inactive_anon 1285683 active_file 2 inactive_file 1
+[  363.413420] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7104077 active_file 228 inactive_file 545
+[  363.413421] nr of each time isolate 1
+[  363.413422] nr of each time isolate 3
+[  363.413423] nr of each time isolate 7
+[  363.413425] nr of each time isolate 15
+[  363.413427] nr of each time isolate 31
+[  363.413433] nr of each time isolate 62
+[  363.413441] nr of each time isolate 125
+[  363.413457] nr of each time isolate 250
+[  363.413474] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7104079 active_file 228 inactive_file 545
+[  365.425854] BEFORE the lru mesg active_anon 5 inactive_anon 1285683 active_file 2 inactive_file 1
+[  365.428311] AFTER the lru mesg active_anon 5 inactive_anon 1285171 active_file 2 inactive_file 1
+[  365.428313] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7104589 active_file 228 inactive_file 545
+[  365.428315] nr of each time isolate 1
+[  365.428316] nr of each time isolate 3
+[  365.428317] nr of each time isolate 7
+[  365.428319] nr of each time isolate 15
+[  365.428322] nr of each time isolate 31
+[  365.428326] nr of each time isolate 62
+[  365.428334] nr of each time isolate 125
+[  365.428350] nr of each time isolate 250
+[  365.428368] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7104591 active_file 228 inactive_file 545
+[  367.441843] BEFORE the lru mesg active_anon 5 inactive_anon 1285204 active_file 2 inactive_file 1
+[  367.444289] AFTER the lru mesg active_anon 5 inactive_anon 1284692 active_file 2 inactive_file 1
+[  367.444291] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7105068 active_file 228 inactive_file 545
+[  367.444293] nr of each time isolate 1
+[  367.444294] nr of each time isolate 3
+[  367.444295] nr of each time isolate 7
+[  367.444296] nr of each time isolate 15
+[  367.444299] nr of each time isolate 31
+[  367.444304] nr of each time isolate 62
+[  367.444312] nr of each time isolate 125
+[  367.444328] nr of each time isolate 250
+[  367.444345] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7105070 active_file 228 inactive_file 545
+[  369.457826] BEFORE the lru mesg active_anon 5 inactive_anon 1284692 active_file 2 inactive_file 1
+[  369.460213] AFTER the lru mesg active_anon 5 inactive_anon 1284180 active_file 2 inactive_file 1
+[  369.460216] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7105580 active_file 228 inactive_file 545
+[  369.460217] nr of each time isolate 1
+[  369.460218] nr of each time isolate 3
+[  369.460219] nr of each time isolate 7
+[  369.460221] nr of each time isolate 15
+[  369.460223] nr of each time isolate 31
+[  369.460228] nr of each time isolate 62
+[  369.460236] nr of each time isolate 125
+[  369.460252] nr of each time isolate 250
+[  369.460269] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7105582 active_file 228 inactive_file 545
+[  371.473831] BEFORE the lru mesg active_anon 5 inactive_anon 1284180 active_file 2 inactive_file 1
+[  371.477149] AFTER the lru mesg active_anon 5 inactive_anon 1283668 active_file 2 inactive_file 1
+[  371.477153] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7106092 active_file 228 inactive_file 545
+[  371.477155] nr of each time isolate 1
+[  371.477157] nr of each time isolate 3
+[  371.477158] nr of each time isolate 7
+[  371.477160] nr of each time isolate 15
+[  371.477162] nr of each time isolate 31
+[  371.477167] nr of each time isolate 62
+[  371.477176] nr of each time isolate 125
+[  371.477192] nr of each time isolate 250
+[  371.477209] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7106094 active_file 228 inactive_file 545
+[  373.489823] BEFORE the lru mesg active_anon 5 inactive_anon 1283701 active_file 2 inactive_file 1
+[  373.492218] AFTER the lru mesg active_anon 5 inactive_anon 1283189 active_file 2 inactive_file 1
+[  373.492220] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7106571 active_file 228 inactive_file 545
+[  373.492222] nr of each time isolate 1
+[  373.492223] nr of each time isolate 3
+[  373.492224] nr of each time isolate 7
+[  373.492226] nr of each time isolate 15
+[  373.492228] nr of each time isolate 31
+[  373.492233] nr of each time isolate 62
+[  373.492241] nr of each time isolate 125
+[  373.492257] nr of each time isolate 250
+[  373.492274] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7106573 active_file 228 inactive_file 545
+[  375.505832] BEFORE the lru mesg active_anon 5 inactive_anon 1283189 active_file 2 inactive_file 1
+[  375.508262] AFTER the lru mesg active_anon 5 inactive_anon 1282677 active_file 2 inactive_file 1
+[  375.508265] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7107083 active_file 228 inactive_file 545
+[  375.508267] nr of each time isolate 1
+[  375.508269] nr of each time isolate 3
+[  375.508270] nr of each time isolate 7
+[  375.508272] nr of each time isolate 15
+[  375.508274] nr of each time isolate 31
+[  375.508279] nr of each time isolate 62
+[  375.508287] nr of each time isolate 125
+[  375.508304] nr of each time isolate 250
+[  375.508321] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7107085 active_file 228 inactive_file 545
+[  377.521842] BEFORE the lru mesg active_anon 4 inactive_anon 1282696 active_file 2 inactive_file 1
+[  377.524227] AFTER the lru mesg active_anon 4 inactive_anon 1282184 active_file 2 inactive_file 1
+[  377.524230] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7107562 active_file 228 inactive_file 545
+[  377.524232] nr of each time isolate 1
+[  377.524233] nr of each time isolate 3
+[  377.524235] nr of each time isolate 7
+[  377.524236] nr of each time isolate 15
+[  377.524239] nr of each time isolate 31
+[  377.524244] nr of each time isolate 62
+[  377.524252] nr of each time isolate 125
+[  377.524268] nr of each time isolate 250
+[  377.524286] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7107564 active_file 228 inactive_file 545
+[  379.537861] BEFORE the lru mesg active_anon 4 inactive_anon 1282184 active_file 2 inactive_file 1
+[  379.540236] AFTER the lru mesg active_anon 4 inactive_anon 1281672 active_file 2 inactive_file 1
+[  379.540238] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7108074 active_file 228 inactive_file 545
+[  379.540240] nr of each time isolate 1
+[  379.540241] nr of each time isolate 3
+[  379.540242] nr of each time isolate 7
+[  379.540244] nr of each time isolate 15
+[  379.540247] nr of each time isolate 31
+[  379.540251] nr of each time isolate 62
+[  379.540260] nr of each time isolate 125
+[  379.540276] nr of each time isolate 250
+[  379.540293] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7108076 active_file 228 inactive_file 545
+[  381.553878] BEFORE the lru mesg active_anon 4 inactive_anon 1281672 active_file 2 inactive_file 1
+[  381.556266] AFTER the lru mesg active_anon 4 inactive_anon 1281160 active_file 2 inactive_file 1
+[  381.556269] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7108586 active_file 228 inactive_file 545
+[  381.556271] nr of each time isolate 1
+[  381.556272] nr of each time isolate 3
+[  381.556273] nr of each time isolate 7
+[  381.556275] nr of each time isolate 15
+[  381.556277] nr of each time isolate 31
+[  381.556282] nr of each time isolate 62
+[  381.556290] nr of each time isolate 125
+[  381.556306] nr of each time isolate 250
+[  381.556324] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7108588 active_file 228 inactive_file 545
+[  383.569906] BEFORE the lru mesg active_anon 5 inactive_anon 1281179 active_file 2 inactive_file 1
+[  383.572338] AFTER the lru mesg active_anon 5 inactive_anon 1280667 active_file 2 inactive_file 1
+[  383.572341] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7109079 active_file 228 inactive_file 545
+[  383.572343] nr of each time isolate 1
+[  383.572344] nr of each time isolate 3
+[  383.572346] nr of each time isolate 7
+[  383.572347] nr of each time isolate 15
+[  383.572350] nr of each time isolate 31
+[  383.572355] nr of each time isolate 62
+[  383.572364] nr of each time isolate 125
+[  383.572380] nr of each time isolate 250
+[  383.572398] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7109081 active_file 228 inactive_file 545
+[  385.585933] BEFORE the lru mesg active_anon 5 inactive_anon 1280667 active_file 2 inactive_file 1
+[  385.588508] AFTER the lru mesg active_anon 5 inactive_anon 1280155 active_file 2 inactive_file 1
+[  385.588511] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7109591 active_file 228 inactive_file 545
+[  385.588512] nr of each time isolate 1
+[  385.588514] nr of each time isolate 3
+[  385.588515] nr of each time isolate 7
+[  385.588517] nr of each time isolate 15
+[  385.588520] nr of each time isolate 31
+[  385.588524] nr of each time isolate 62
+[  385.588532] nr of each time isolate 125
+[  385.588548] nr of each time isolate 250
+[  385.588565] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7109593 active_file 228 inactive_file 545
+[  387.601967] BEFORE the lru mesg active_anon 5 inactive_anon 1280189 active_file 2 inactive_file 1
+[  387.605376] AFTER the lru mesg active_anon 5 inactive_anon 1279677 active_file 2 inactive_file 1
+[  387.605379] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7110084 active_file 228 inactive_file 545
+[  387.605381] nr of each time isolate 1
+[  387.605382] nr of each time isolate 3
+[  387.605383] nr of each time isolate 7
+[  387.605385] nr of each time isolate 15
+[  387.605387] nr of each time isolate 31
+[  387.605392] nr of each time isolate 62
+[  387.605400] nr of each time isolate 125
+[  387.605417] nr of each time isolate 250
+[  387.605434] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7110086 active_file 228 inactive_file 545
+[  389.618001] BEFORE the lru mesg active_anon 5 inactive_anon 1279677 active_file 2 inactive_file 1
+[  389.620397] AFTER the lru mesg active_anon 5 inactive_anon 1279165 active_file 2 inactive_file 1
+[  389.620400] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7110596 active_file 228 inactive_file 545
+[  389.620401] nr of each time isolate 1
+[  389.620402] nr of each time isolate 3
+[  389.620403] nr of each time isolate 7
+[  389.620405] nr of each time isolate 15
+[  389.620408] nr of each time isolate 31
+[  389.620412] nr of each time isolate 62
+[  389.620421] nr of each time isolate 125
+[  389.620437] nr of each time isolate 250
+[  389.620454] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7110598 active_file 228 inactive_file 545
+[  391.634042] BEFORE the lru mesg active_anon 5 inactive_anon 1279165 active_file 2 inactive_file 1
+[  391.636446] AFTER the lru mesg active_anon 5 inactive_anon 1278653 active_file 2 inactive_file 1
+[  391.636448] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7111108 active_file 228 inactive_file 545
+[  391.636450] nr of each time isolate 1
+[  391.636451] nr of each time isolate 3
+[  391.636452] nr of each time isolate 7
+[  391.636454] nr of each time isolate 15
+[  391.636457] nr of each time isolate 31
+[  391.636461] nr of each time isolate 62
+[  391.636470] nr of each time isolate 125
+[  391.636486] nr of each time isolate 250
+[  391.636504] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7111110 active_file 228 inactive_file 545
+[  393.650085] BEFORE the lru mesg active_anon 5 inactive_anon 1278673 active_file 2 inactive_file 1
+[  393.652681] AFTER the lru mesg active_anon 5 inactive_anon 1278161 active_file 2 inactive_file 1
+[  393.652684] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7111586 active_file 228 inactive_file 545
+[  393.652686] nr of each time isolate 1
+[  393.652688] nr of each time isolate 3
+[  393.652689] nr of each time isolate 7
+[  393.652691] nr of each time isolate 15
+[  393.652693] nr of each time isolate 31
+[  393.652698] nr of each time isolate 62
+[  393.652706] nr of each time isolate 125
+[  393.652722] nr of each time isolate 250
+[  393.652740] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7111588 active_file 228 inactive_file 545
+[  395.666134] BEFORE the lru mesg active_anon 5 inactive_anon 1278175 active_file 2 inactive_file 1
+[  395.668541] AFTER the lru mesg active_anon 5 inactive_anon 1277663 active_file 2 inactive_file 1
+[  395.668543] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7112098 active_file 228 inactive_file 545
+[  395.668545] nr of each time isolate 1
+[  395.668547] nr of each time isolate 3
+[  395.668548] nr of each time isolate 7
+[  395.668549] nr of each time isolate 15
+[  395.668552] nr of each time isolate 31
+[  395.668557] nr of each time isolate 62
+[  395.668565] nr of each time isolate 125
+[  395.668582] nr of each time isolate 250
+[  395.668600] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7112100 active_file 228 inactive_file 545
+[  397.682189] BEFORE the lru mesg active_anon 5 inactive_anon 1277691 active_file 2 inactive_file 1
+[  397.684542] AFTER the lru mesg active_anon 5 inactive_anon 1277179 active_file 2 inactive_file 1
+[  397.684546] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7112576 active_file 228 inactive_file 545
+[  397.684548] nr of each time isolate 1
+[  397.684550] nr of each time isolate 3
+[  397.684551] nr of each time isolate 7
+[  397.684552] nr of each time isolate 15
+[  397.684555] nr of each time isolate 31
+[  397.684560] nr of each time isolate 62
+[  397.684568] nr of each time isolate 125
+[  397.684584] nr of each time isolate 250
+[  397.684602] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7112578 active_file 228 inactive_file 545
+[  399.698234] BEFORE the lru mesg active_anon 5 inactive_anon 1277179 active_file 2 inactive_file 1
+[  399.700609] AFTER the lru mesg active_anon 5 inactive_anon 1276667 active_file 2 inactive_file 1
+[  399.700612] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7113088 active_file 228 inactive_file 545
+[  399.700614] nr of each time isolate 1
+[  399.700615] nr of each time isolate 3
+[  399.700616] nr of each time isolate 7
+[  399.700618] nr of each time isolate 15
+[  399.700621] nr of each time isolate 31
+[  399.700625] nr of each time isolate 62
+[  399.700634] nr of each time isolate 125
+[  399.700650] nr of each time isolate 250
+[  399.700668] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7113090 active_file 228 inactive_file 545
+[  401.714295] BEFORE the lru mesg active_anon 5 inactive_anon 1276667 active_file 2 inactive_file 1
+[  401.716643] AFTER the lru mesg active_anon 5 inactive_anon 1276155 active_file 2 inactive_file 1
+[  401.716646] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7113600 active_file 228 inactive_file 545
+[  401.716647] nr of each time isolate 1
+[  401.716649] nr of each time isolate 3
+[  401.716650] nr of each time isolate 7
+[  401.716651] nr of each time isolate 15
+[  401.716654] nr of each time isolate 31
+[  401.716659] nr of each time isolate 62
+[  401.716667] nr of each time isolate 125
+[  401.716683] nr of each time isolate 250
+[  401.716700] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7113602 active_file 228 inactive_file 545
+[  403.730352] BEFORE the lru mesg active_anon 5 inactive_anon 1276182 active_file 3 inactive_file 1
+[  403.732715] AFTER the lru mesg active_anon 5 inactive_anon 1275670 active_file 2 inactive_file 1
+[  403.732718] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7114084 active_file 229 inactive_file 545
+[  403.732720] nr of each time isolate 1
+[  403.732721] nr of each time isolate 3
+[  403.732723] nr of each time isolate 7
+[  403.732724] nr of each time isolate 15
+[  403.732727] nr of each time isolate 31
+[  403.732732] nr of each time isolate 62
+[  403.732740] nr of each time isolate 125
+[  403.732756] nr of each time isolate 250
+[  403.732774] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7114086 active_file 229 inactive_file 545
+[  405.746417] BEFORE the lru mesg active_anon 5 inactive_anon 1275670 active_file 2 inactive_file 1
+[  405.748884] AFTER the lru mesg active_anon 5 inactive_anon 1275158 active_file 2 inactive_file 1
+[  405.748887] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7114596 active_file 229 inactive_file 545
+[  405.748889] nr of each time isolate 1
+[  405.748890] nr of each time isolate 3
+[  405.748891] nr of each time isolate 7
+[  405.748893] nr of each time isolate 15
+[  405.748895] nr of each time isolate 31
+[  405.748900] nr of each time isolate 62
+[  405.748908] nr of each time isolate 125
+[  405.748924] nr of each time isolate 250
+[  405.748942] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7114598 active_file 229 inactive_file 545
+[  407.762481] BEFORE the lru mesg active_anon 5 inactive_anon 1275194 active_file 2 inactive_file 1
+[  407.764943] AFTER the lru mesg active_anon 5 inactive_anon 1274682 active_file 2 inactive_file 1
+[  407.764946] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7115081 active_file 229 inactive_file 545
+[  407.764948] nr of each time isolate 1
+[  407.764949] nr of each time isolate 3
+[  407.764951] nr of each time isolate 7
+[  407.764952] nr of each time isolate 15
+[  407.764955] nr of each time isolate 31
+[  407.764960] nr of each time isolate 62
+[  407.764968] nr of each time isolate 125
+[  407.764984] nr of each time isolate 250
+[  407.765001] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7115083 active_file 229 inactive_file 545
+[  409.778556] BEFORE the lru mesg active_anon 5 inactive_anon 1274682 active_file 2 inactive_file 1
+[  409.780983] AFTER the lru mesg active_anon 5 inactive_anon 1274170 active_file 2 inactive_file 1
+[  409.780987] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7115593 active_file 229 inactive_file 545
+[  409.780989] nr of each time isolate 1
+[  409.780991] nr of each time isolate 3
+[  409.780993] nr of each time isolate 7
+[  409.780994] nr of each time isolate 15
+[  409.780997] nr of each time isolate 31
+[  409.781002] nr of each time isolate 62
+[  409.781010] nr of each time isolate 125
+[  409.781027] nr of each time isolate 250
+[  409.781044] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7115595 active_file 229 inactive_file 545
+[  411.794623] BEFORE the lru mesg active_anon 5 inactive_anon 1274170 active_file 2 inactive_file 1
+[  411.797007] AFTER the lru mesg active_anon 5 inactive_anon 1273658 active_file 2 inactive_file 1
+[  411.797010] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7116105 active_file 229 inactive_file 545
+[  411.797012] nr of each time isolate 1
+[  411.797013] nr of each time isolate 3
+[  411.797014] nr of each time isolate 7
+[  411.797016] nr of each time isolate 15
+[  411.797019] nr of each time isolate 31
+[  411.797024] nr of each time isolate 62
+[  411.797032] nr of each time isolate 125
+[  411.797048] nr of each time isolate 250
+[  411.797065] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7116107 active_file 229 inactive_file 545
+[  413.810696] BEFORE the lru mesg active_anon 5 inactive_anon 1273688 active_file 2 inactive_file 1
+[  413.813171] AFTER the lru mesg active_anon 5 inactive_anon 1273176 active_file 2 inactive_file 1
+[  413.813176] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7116581 active_file 229 inactive_file 545
+[  413.813178] nr of each time isolate 1
+[  413.813179] nr of each time isolate 3
+[  413.813180] nr of each time isolate 7
+[  413.813182] nr of each time isolate 15
+[  413.813185] nr of each time isolate 31
+[  413.813189] nr of each time isolate 62
+[  413.813197] nr of each time isolate 125
+[  413.813213] nr of each time isolate 250
+[  413.813231] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7116583 active_file 229 inactive_file 545
+[  415.826776] BEFORE the lru mesg active_anon 5 inactive_anon 1273176 active_file 2 inactive_file 1
+[  415.829236] AFTER the lru mesg active_anon 5 inactive_anon 1272664 active_file 2 inactive_file 1
+[  415.829240] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7117093 active_file 229 inactive_file 545
+[  415.829242] nr of each time isolate 1
+[  415.829244] nr of each time isolate 3
+[  415.829245] nr of each time isolate 7
+[  415.829247] nr of each time isolate 15
+[  415.829250] nr of each time isolate 31
+[  415.829254] nr of each time isolate 62
+[  415.829263] nr of each time isolate 125
+[  415.829279] nr of each time isolate 250
+[  415.829296] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7117095 active_file 229 inactive_file 545
+[  417.842852] BEFORE the lru mesg active_anon 5 inactive_anon 1272693 active_file 2 inactive_file 1
+[  417.845195] AFTER the lru mesg active_anon 5 inactive_anon 1272181 active_file 2 inactive_file 1
+[  417.845198] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7117575 active_file 229 inactive_file 545
+[  417.845200] nr of each time isolate 1
+[  417.845202] nr of each time isolate 3
+[  417.845203] nr of each time isolate 7
+[  417.845205] nr of each time isolate 15
+[  417.845208] nr of each time isolate 31
+[  417.845213] nr of each time isolate 62
+[  417.845221] nr of each time isolate 125
+[  417.845237] nr of each time isolate 250
+[  417.845254] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7117577 active_file 229 inactive_file 545
+[  419.858933] BEFORE the lru mesg active_anon 5 inactive_anon 1272181 active_file 2 inactive_file 1
+[  419.861333] AFTER the lru mesg active_anon 5 inactive_anon 1271669 active_file 2 inactive_file 1
+[  419.861335] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118087 active_file 229 inactive_file 545
+[  419.861337] nr of each time isolate 1
+[  419.861339] nr of each time isolate 3
+[  419.861340] nr of each time isolate 7
+[  419.861342] nr of each time isolate 15
+[  419.861345] nr of each time isolate 31
+[  419.861350] nr of each time isolate 62
+[  419.861359] nr of each time isolate 125
+[  419.861374] nr of each time isolate 250
+[  419.861392] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118089 active_file 229 inactive_file 545
+[  421.875019] BEFORE the lru mesg active_anon 5 inactive_anon 1271669 active_file 2 inactive_file 1
+[  421.878446] AFTER the lru mesg active_anon 5 inactive_anon 1271157 active_file 2 inactive_file 1
+[  421.878449] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118599 active_file 229 inactive_file 545
+[  421.878452] nr of each time isolate 1
+[  421.878454] nr of each time isolate 3
+[  421.878455] nr of each time isolate 7
+[  421.878457] nr of each time isolate 15
+[  421.878460] nr of each time isolate 31
+[  421.878464] nr of each time isolate 62
+[  421.878473] nr of each time isolate 125
+[  421.878489] nr of each time isolate 250
+[  421.878506] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118601 active_file 229 inactive_file 545
+[  423.891106] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  423.891115] nr of each time isolate 1
+[  423.891117] nr of each time isolate 3
+[  423.891119] nr of each time isolate 7
+[  423.891121] nr of each time isolate 15
+[  423.891124] nr of each time isolate 31
+[  423.891129] nr of each time isolate 62
+[  423.891138] nr of each time isolate 125
+[  423.891155] nr of each time isolate 250
+[  423.891172] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  425.907193] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  425.907200] nr of each time isolate 1
+[  425.907202] nr of each time isolate 3
+[  425.907203] nr of each time isolate 7
+[  425.907205] nr of each time isolate 15
+[  425.907208] nr of each time isolate 31
+[  425.907213] nr of each time isolate 62
+[  425.907222] nr of each time isolate 125
+[  425.907239] nr of each time isolate 250
+[  425.907257] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  427.923285] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  427.923291] nr of each time isolate 1
+[  427.923293] nr of each time isolate 3
+[  427.923295] nr of each time isolate 7
+[  427.923297] nr of each time isolate 15
+[  427.923301] nr of each time isolate 31
+[  427.923305] nr of each time isolate 62
+[  427.923314] nr of each time isolate 125
+[  427.923331] nr of each time isolate 250
+[  427.923349] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  429.939376] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  429.939383] nr of each time isolate 1
+[  429.939386] nr of each time isolate 3
+[  429.939387] nr of each time isolate 7
+[  429.939389] nr of each time isolate 15
+[  429.939392] nr of each time isolate 31
+[  429.939397] nr of each time isolate 62
+[  429.939406] nr of each time isolate 125
+[  429.939424] nr of each time isolate 250
+[  429.939441] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  431.955472] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  431.955477] nr of each time isolate 1
+[  431.955479] nr of each time isolate 3
+[  431.955481] nr of each time isolate 7
+[  431.955483] nr of each time isolate 15
+[  431.955486] nr of each time isolate 31
+[  431.955491] nr of each time isolate 62
+[  431.955499] nr of each time isolate 125
+[  431.955518] nr of each time isolate 250
+[  431.955535] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  433.971569] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  433.971575] nr of each time isolate 1
+[  433.971577] nr of each time isolate 3
+[  433.971578] nr of each time isolate 7
+[  433.971580] nr of each time isolate 15
+[  433.971583] nr of each time isolate 31
+[  433.971588] nr of each time isolate 62
+[  433.971597] nr of each time isolate 125
+[  433.971615] nr of each time isolate 250
+[  433.971632] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  435.987667] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  435.987673] nr of each time isolate 1
+[  435.987674] nr of each time isolate 3
+[  435.987676] nr of each time isolate 7
+[  435.987678] nr of each time isolate 15
+[  435.987681] nr of each time isolate 31
+[  435.987686] nr of each time isolate 62
+[  435.987694] nr of each time isolate 125
+[  435.987711] nr of each time isolate 250
+[  435.987728] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  438.003768] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  438.003775] nr of each time isolate 1
+[  438.003778] nr of each time isolate 3
+[  438.003779] nr of each time isolate 7
+[  438.003781] nr of each time isolate 15
+[  438.003784] nr of each time isolate 31
+[  438.003789] nr of each time isolate 62
+[  438.003798] nr of each time isolate 125
+[  438.003815] nr of each time isolate 250
+[  438.003833] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  440.019870] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  440.019876] nr of each time isolate 1
+[  440.019878] nr of each time isolate 3
+[  440.019880] nr of each time isolate 7
+[  440.019882] nr of each time isolate 15
+[  440.019885] nr of each time isolate 31
+[  440.019889] nr of each time isolate 62
+[  440.019898] nr of each time isolate 125
+[  440.019915] nr of each time isolate 250
+[  440.019933] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  442.035974] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  442.035978] nr of each time isolate 1
+[  442.035980] nr of each time isolate 3
+[  442.035981] nr of each time isolate 7
+[  442.035983] nr of each time isolate 15
+[  442.035986] nr of each time isolate 31
+[  442.035991] nr of each time isolate 62
+[  442.035999] nr of each time isolate 125
+[  442.036016] nr of each time isolate 250
+[  442.036033] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  444.052078] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  444.052085] nr of each time isolate 1
+[  444.052088] nr of each time isolate 3
+[  444.052090] nr of each time isolate 7
+[  444.052092] nr of each time isolate 15
+[  444.052094] nr of each time isolate 31
+[  444.052099] nr of each time isolate 62
+[  444.052107] nr of each time isolate 125
+[  444.052125] nr of each time isolate 250
+[  444.052142] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  446.068186] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  446.068192] nr of each time isolate 1
+[  446.068194] nr of each time isolate 3
+[  446.068195] nr of each time isolate 7
+[  446.068197] nr of each time isolate 15
+[  446.068200] nr of each time isolate 31
+[  446.068205] nr of each time isolate 62
+[  446.068213] nr of each time isolate 125
+[  446.068230] nr of each time isolate 250
+[  446.068247] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  448.084296] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  448.084302] nr of each time isolate 1
+[  448.084304] nr of each time isolate 3
+[  448.084306] nr of each time isolate 7
+[  448.084308] nr of each time isolate 15
+[  448.084311] nr of each time isolate 31
+[  448.084316] nr of each time isolate 62
+[  448.084325] nr of each time isolate 125
+[  448.084342] nr of each time isolate 250
+[  448.084359] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  450.100404] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  450.100411] nr of each time isolate 1
+[  450.100413] nr of each time isolate 3
+[  450.100414] nr of each time isolate 7
+[  450.100416] nr of each time isolate 15
+[  450.100419] nr of each time isolate 31
+[  450.100424] nr of each time isolate 62
+[  450.100433] nr of each time isolate 125
+[  450.100450] nr of each time isolate 250
+[  450.100467] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  452.116516] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  452.116522] nr of each time isolate 1
+[  452.116524] nr of each time isolate 3
+[  452.116525] nr of each time isolate 7
+[  452.116527] nr of each time isolate 15
+[  452.116530] nr of each time isolate 31
+[  452.116535] nr of each time isolate 62
+[  452.116544] nr of each time isolate 125
+[  452.116560] nr of each time isolate 250
+[  452.116578] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  454.132629] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  454.132636] nr of each time isolate 1
+[  454.132638] nr of each time isolate 3
+[  454.132639] nr of each time isolate 7
+[  454.132641] nr of each time isolate 15
+[  454.132644] nr of each time isolate 31
+[  454.132650] nr of each time isolate 62
+[  454.132659] nr of each time isolate 125
+[  454.132676] nr of each time isolate 250
+[  454.132694] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  456.148743] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  456.148748] nr of each time isolate 1
+[  456.148750] nr of each time isolate 3
+[  456.148752] nr of each time isolate 7
+[  456.148754] nr of each time isolate 15
+[  456.148757] nr of each time isolate 31
+[  456.148762] nr of each time isolate 62
+[  456.148771] nr of each time isolate 125
+[  456.148787] nr of each time isolate 250
+[  456.148805] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  458.164856] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  458.164862] nr of each time isolate 1
+[  458.164864] nr of each time isolate 3
+[  458.164866] nr of each time isolate 7
+[  458.164868] nr of each time isolate 15
+[  458.164871] nr of each time isolate 31
+[  458.164876] nr of each time isolate 62
+[  458.164885] nr of each time isolate 125
+[  458.164902] nr of each time isolate 250
+[  458.164920] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  460.180976] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  460.180981] nr of each time isolate 1
+[  460.180983] nr of each time isolate 3
+[  460.180984] nr of each time isolate 7
+[  460.180986] nr of each time isolate 15
+[  460.180989] nr of each time isolate 31
+[  460.180994] nr of each time isolate 62
+[  460.181003] nr of each time isolate 125
+[  460.181019] nr of each time isolate 250
+[  460.181037] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  462.197094] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  462.197100] nr of each time isolate 1
+[  462.197102] nr of each time isolate 3
+[  462.197104] nr of each time isolate 7
+[  462.197106] nr of each time isolate 15
+[  462.197109] nr of each time isolate 31
+[  462.197114] nr of each time isolate 62
+[  462.197123] nr of each time isolate 125
+[  462.197140] nr of each time isolate 250
+[  462.197158] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  464.213212] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  464.213218] nr of each time isolate 1
+[  464.213219] nr of each time isolate 3
+[  464.213221] nr of each time isolate 7
+[  464.213223] nr of each time isolate 15
+[  464.213226] nr of each time isolate 31
+[  464.213230] nr of each time isolate 62
+[  464.213239] nr of each time isolate 125
+[  464.213256] nr of each time isolate 250
+[  464.213273] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  466.229332] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  466.229338] nr of each time isolate 1
+[  466.229340] nr of each time isolate 3
+[  466.229342] nr of each time isolate 7
+[  466.229344] nr of each time isolate 15
+[  466.229346] nr of each time isolate 31
+[  466.229351] nr of each time isolate 62
+[  466.229361] nr of each time isolate 125
+[  466.229378] nr of each time isolate 250
+[  466.229396] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  468.245458] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  468.245465] nr of each time isolate 1
+[  468.245467] nr of each time isolate 3
+[  468.245469] nr of each time isolate 7
+[  468.245471] nr of each time isolate 15
+[  468.245474] nr of each time isolate 31
+[  468.245479] nr of each time isolate 62
+[  468.245487] nr of each time isolate 125
+[  468.245504] nr of each time isolate 250
+[  468.245521] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  470.261580] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  470.261586] nr of each time isolate 1
+[  470.261588] nr of each time isolate 3
+[  470.261589] nr of each time isolate 7
+[  470.261591] nr of each time isolate 15
+[  470.261594] nr of each time isolate 31
+[  470.261599] nr of each time isolate 62
+[  470.261607] nr of each time isolate 125
+[  470.261625] nr of each time isolate 250
+[  470.261642] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  472.277702] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  472.277708] nr of each time isolate 1
+[  472.277710] nr of each time isolate 3
+[  472.277712] nr of each time isolate 7
+[  472.277714] nr of each time isolate 15
+[  472.277717] nr of each time isolate 31
+[  472.277723] nr of each time isolate 62
+[  472.277731] nr of each time isolate 125
+[  472.277749] nr of each time isolate 250
+[  472.277766] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  474.293830] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  474.293836] nr of each time isolate 1
+[  474.293838] nr of each time isolate 3
+[  474.293840] nr of each time isolate 7
+[  474.293843] nr of each time isolate 15
+[  474.293846] nr of each time isolate 31
+[  474.293850] nr of each time isolate 62
+[  474.293859] nr of each time isolate 125
+[  474.293876] nr of each time isolate 250
+[  474.293893] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  476.309951] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  476.309957] nr of each time isolate 1
+[  476.309959] nr of each time isolate 3
+[  476.309960] nr of each time isolate 7
+[  476.309962] nr of each time isolate 15
+[  476.309966] nr of each time isolate 31
+[  476.309971] nr of each time isolate 62
+[  476.309980] nr of each time isolate 125
+[  476.309997] nr of each time isolate 250
+[  476.310015] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  478.326080] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  478.326086] nr of each time isolate 1
+[  478.326088] nr of each time isolate 3
+[  478.326089] nr of each time isolate 7
+[  478.326091] nr of each time isolate 15
+[  478.326094] nr of each time isolate 31
+[  478.326100] nr of each time isolate 62
+[  478.326109] nr of each time isolate 125
+[  478.326125] nr of each time isolate 250
+[  478.326143] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  480.342206] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  480.342213] nr of each time isolate 1
+[  480.342215] nr of each time isolate 3
+[  480.342217] nr of each time isolate 7
+[  480.342219] nr of each time isolate 15
+[  480.342222] nr of each time isolate 31
+[  480.342228] nr of each time isolate 62
+[  480.342237] nr of each time isolate 125
+[  480.342254] nr of each time isolate 250
+[  480.342272] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  482.358334] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  482.358341] nr of each time isolate 1
+[  482.358343] nr of each time isolate 3
+[  482.358345] nr of each time isolate 7
+[  482.358347] nr of each time isolate 15
+[  482.358350] nr of each time isolate 31
+[  482.358355] nr of each time isolate 62
+[  482.358364] nr of each time isolate 125
+[  482.358380] nr of each time isolate 250
+[  482.358398] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  484.374465] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  484.374472] nr of each time isolate 1
+[  484.374474] nr of each time isolate 3
+[  484.374475] nr of each time isolate 7
+[  484.374478] nr of each time isolate 15
+[  484.374480] nr of each time isolate 31
+[  484.374485] nr of each time isolate 62
+[  484.374494] nr of each time isolate 125
+[  484.374511] nr of each time isolate 250
+[  484.374528] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  486.390594] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  486.390601] nr of each time isolate 1
+[  486.390604] nr of each time isolate 3
+[  486.390606] nr of each time isolate 7
+[  486.390607] nr of each time isolate 15
+[  486.390611] nr of each time isolate 31
+[  486.390615] nr of each time isolate 62
+[  486.390624] nr of each time isolate 125
+[  486.390641] nr of each time isolate 250
+[  486.390658] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  488.406727] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  488.406734] nr of each time isolate 1
+[  488.406736] nr of each time isolate 3
+[  488.406738] nr of each time isolate 7
+[  488.406740] nr of each time isolate 15
+[  488.406742] nr of each time isolate 31
+[  488.406747] nr of each time isolate 62
+[  488.406756] nr of each time isolate 125
+[  488.406774] nr of each time isolate 250
+[  488.406791] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  490.422860] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  490.422865] nr of each time isolate 1
+[  490.422867] nr of each time isolate 3
+[  490.422869] nr of each time isolate 7
+[  490.422871] nr of each time isolate 15
+[  490.422874] nr of each time isolate 31
+[  490.422879] nr of each time isolate 62
+[  490.422887] nr of each time isolate 125
+[  490.422904] nr of each time isolate 250
+[  490.422921] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  492.438990] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  492.438997] nr of each time isolate 1
+[  492.438999] nr of each time isolate 3
+[  492.439001] nr of each time isolate 7
+[  492.439004] nr of each time isolate 15
+[  492.439006] nr of each time isolate 31
+[  492.439011] nr of each time isolate 62
+[  492.439020] nr of each time isolate 125
+[  492.439037] nr of each time isolate 250
+[  492.439055] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  494.455123] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  494.455128] nr of each time isolate 1
+[  494.455130] nr of each time isolate 3
+[  494.455132] nr of each time isolate 7
+[  494.455133] nr of each time isolate 15
+[  494.455136] nr of each time isolate 31
+[  494.455141] nr of each time isolate 62
+[  494.455150] nr of each time isolate 125
+[  494.455167] nr of each time isolate 250
+[  494.455184] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  496.471258] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  496.471265] nr of each time isolate 1
+[  496.471267] nr of each time isolate 3
+[  496.471269] nr of each time isolate 7
+[  496.471271] nr of each time isolate 15
+[  496.471274] nr of each time isolate 31
+[  496.471279] nr of each time isolate 62
+[  496.471288] nr of each time isolate 125
+[  496.471305] nr of each time isolate 250
+[  496.471322] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  498.487393] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  498.487399] nr of each time isolate 1
+[  498.487401] nr of each time isolate 3
+[  498.487403] nr of each time isolate 7
+[  498.487405] nr of each time isolate 15
+[  498.487408] nr of each time isolate 31
+[  498.487412] nr of each time isolate 62
+[  498.487421] nr of each time isolate 125
+[  498.487438] nr of each time isolate 250
+[  498.487455] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  500.503530] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  500.503534] nr of each time isolate 1
+[  500.503536] nr of each time isolate 3
+[  500.503537] nr of each time isolate 7
+[  500.503539] nr of each time isolate 15
+[  500.503542] nr of each time isolate 31
+[  500.503547] nr of each time isolate 62
+[  500.503555] nr of each time isolate 125
+[  500.503572] nr of each time isolate 250
+[  500.503589] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  502.519665] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  502.519672] nr of each time isolate 1
+[  502.519675] nr of each time isolate 3
+[  502.519676] nr of each time isolate 7
+[  502.519678] nr of each time isolate 15
+[  502.519681] nr of each time isolate 31
+[  502.519686] nr of each time isolate 62
+[  502.519695] nr of each time isolate 125
+[  502.519712] nr of each time isolate 250
+[  502.519729] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  504.535801] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  504.535807] nr of each time isolate 1
+[  504.535808] nr of each time isolate 3
+[  504.535810] nr of each time isolate 7
+[  504.535812] nr of each time isolate 15
+[  504.535815] nr of each time isolate 31
+[  504.535820] nr of each time isolate 62
+[  504.535829] nr of each time isolate 125
+[  504.535847] nr of each time isolate 250
+[  504.535865] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  506.551940] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  506.551946] nr of each time isolate 1
+[  506.551948] nr of each time isolate 3
+[  506.551950] nr of each time isolate 7
+[  506.551953] nr of each time isolate 15
+[  506.551956] nr of each time isolate 31
+[  506.551960] nr of each time isolate 62
+[  506.551969] nr of each time isolate 125
+[  506.551986] nr of each time isolate 250
+[  506.552003] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  508.568077] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  508.568086] nr of each time isolate 1
+[  508.568088] nr of each time isolate 3
+[  508.568090] nr of each time isolate 7
+[  508.568092] nr of each time isolate 15
+[  508.568095] nr of each time isolate 31
+[  508.568100] nr of each time isolate 62
+[  508.568109] nr of each time isolate 125
+[  508.568125] nr of each time isolate 250
+[  508.568143] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  510.584216] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  510.584222] nr of each time isolate 1
+[  510.584225] nr of each time isolate 3
+[  510.584226] nr of each time isolate 7
+[  510.584229] nr of each time isolate 15
+[  510.584231] nr of each time isolate 31
+[  510.584236] nr of each time isolate 62
+[  510.584245] nr of each time isolate 125
+[  510.584262] nr of each time isolate 250
+[  510.584280] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  512.600354] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  512.600361] nr of each time isolate 1
+[  512.600364] nr of each time isolate 3
+[  512.600366] nr of each time isolate 7
+[  512.600367] nr of each time isolate 15
+[  512.600371] nr of each time isolate 31
+[  512.600376] nr of each time isolate 62
+[  512.600384] nr of each time isolate 125
+[  512.600402] nr of each time isolate 250
+[  512.600420] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  514.616494] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  514.616502] nr of each time isolate 1
+[  514.616504] nr of each time isolate 3
+[  514.616505] nr of each time isolate 7
+[  514.616507] nr of each time isolate 15
+[  514.616510] nr of each time isolate 31
+[  514.616515] nr of each time isolate 62
+[  514.616524] nr of each time isolate 125
+[  514.616541] nr of each time isolate 250
+[  514.616558] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  516.632633] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  516.632642] nr of each time isolate 1
+[  516.632644] nr of each time isolate 3
+[  516.632646] nr of each time isolate 7
+[  516.632648] nr of each time isolate 15
+[  516.632651] nr of each time isolate 31
+[  516.632656] nr of each time isolate 62
+[  516.632664] nr of each time isolate 125
+[  516.632681] nr of each time isolate 250
+[  516.632699] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  518.648777] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  518.648786] nr of each time isolate 1
+[  518.648789] nr of each time isolate 3
+[  518.648790] nr of each time isolate 7
+[  518.648792] nr of each time isolate 15
+[  518.648796] nr of each time isolate 31
+[  518.648801] nr of each time isolate 62
+[  518.648810] nr of each time isolate 125
+[  518.648827] nr of each time isolate 250
+[  518.648845] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  520.664916] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  520.664923] nr of each time isolate 1
+[  520.664925] nr of each time isolate 3
+[  520.664927] nr of each time isolate 7
+[  520.664929] nr of each time isolate 15
+[  520.664933] nr of each time isolate 31
+[  520.664938] nr of each time isolate 62
+[  520.664947] nr of each time isolate 125
+[  520.664964] nr of each time isolate 250
+[  520.664981] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  522.685056] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  522.685063] nr of each time isolate 1
+[  522.685066] nr of each time isolate 3
+[  522.685067] nr of each time isolate 7
+[  522.685069] nr of each time isolate 15
+[  522.685072] nr of each time isolate 31
+[  522.685077] nr of each time isolate 62
+[  522.685086] nr of each time isolate 125
+[  522.685103] nr of each time isolate 250
+[  522.685121] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  524.697200] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  524.697206] nr of each time isolate 1
+[  524.697208] nr of each time isolate 3
+[  524.697209] nr of each time isolate 7
+[  524.697212] nr of each time isolate 15
+[  524.697214] nr of each time isolate 31
+[  524.697219] nr of each time isolate 62
+[  524.697228] nr of each time isolate 125
+[  524.697245] nr of each time isolate 250
+[  524.697263] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  526.713344] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  526.713350] nr of each time isolate 1
+[  526.713352] nr of each time isolate 3
+[  526.713354] nr of each time isolate 7
+[  526.713356] nr of each time isolate 15
+[  526.713360] nr of each time isolate 31
+[  526.713364] nr of each time isolate 62
+[  526.713373] nr of each time isolate 125
+[  526.713390] nr of each time isolate 250
+[  526.713407] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  528.729485] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  528.729492] nr of each time isolate 1
+[  528.729494] nr of each time isolate 3
+[  528.729496] nr of each time isolate 7
+[  528.729498] nr of each time isolate 15
+[  528.729501] nr of each time isolate 31
+[  528.729506] nr of each time isolate 62
+[  528.729515] nr of each time isolate 125
+[  528.729532] nr of each time isolate 250
+[  528.729549] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  530.745631] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  530.745637] nr of each time isolate 1
+[  530.745639] nr of each time isolate 3
+[  530.745640] nr of each time isolate 7
+[  530.745642] nr of each time isolate 15
+[  530.745645] nr of each time isolate 31
+[  530.745650] nr of each time isolate 62
+[  530.745658] nr of each time isolate 125
+[  530.745674] nr of each time isolate 250
+[  530.745692] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  532.761773] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  532.761778] nr of each time isolate 1
+[  532.761780] nr of each time isolate 3
+[  532.761782] nr of each time isolate 7
+[  532.761784] nr of each time isolate 15
+[  532.761787] nr of each time isolate 31
+[  532.761792] nr of each time isolate 62
+[  532.761801] nr of each time isolate 125
+[  532.761818] nr of each time isolate 250
+[  532.761836] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  534.777923] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  534.777930] nr of each time isolate 1
+[  534.777932] nr of each time isolate 3
+[  534.777934] nr of each time isolate 7
+[  534.777936] nr of each time isolate 15
+[  534.777940] nr of each time isolate 31
+[  534.777945] nr of each time isolate 62
+[  534.777954] nr of each time isolate 125
+[  534.777971] nr of each time isolate 250
+[  534.777989] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  536.793951] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  536.793953] nr of each time isolate 1
+[  536.793955] nr of each time isolate 3
+[  536.793957] nr of each time isolate 7
+[  536.793959] nr of each time isolate 15
+[  536.793962] nr of each time isolate 31
+[  536.793967] nr of each time isolate 62
+[  536.793975] nr of each time isolate 125
+[  536.793992] nr of each time isolate 250
+[  536.794009] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  538.809766] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  538.809770] nr of each time isolate 1
+[  538.809772] nr of each time isolate 3
+[  538.809773] nr of each time isolate 7
+[  538.809776] nr of each time isolate 15
+[  538.809778] nr of each time isolate 31
+[  538.809784] nr of each time isolate 62
+[  538.809793] nr of each time isolate 125
+[  538.809809] nr of each time isolate 250
+[  538.809827] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  540.825587] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  540.825591] nr of each time isolate 1
+[  540.825592] nr of each time isolate 3
+[  540.825594] nr of each time isolate 7
+[  540.825596] nr of each time isolate 15
+[  540.825599] nr of each time isolate 31
+[  540.825603] nr of each time isolate 62
+[  540.825612] nr of each time isolate 125
+[  540.825629] nr of each time isolate 250
+[  540.825646] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  542.841415] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  542.841423] nr of each time isolate 1
+[  542.841425] nr of each time isolate 3
+[  542.841427] nr of each time isolate 7
+[  542.841428] nr of each time isolate 15
+[  542.841432] nr of each time isolate 31
+[  542.841437] nr of each time isolate 62
+[  542.841446] nr of each time isolate 125
+[  542.841463] nr of each time isolate 250
+[  542.841481] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  544.857309] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  544.857313] nr of each time isolate 1
+[  544.857316] nr of each time isolate 3
+[  544.857318] nr of each time isolate 7
+[  544.857319] nr of each time isolate 15
+[  544.857322] nr of each time isolate 31
+[  544.857327] nr of each time isolate 62
+[  544.857336] nr of each time isolate 125
+[  544.857352] nr of each time isolate 250
+[  544.857370] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  546.873115] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  546.873118] nr of each time isolate 1
+[  546.873120] nr of each time isolate 3
+[  546.873121] nr of each time isolate 7
+[  546.873123] nr of each time isolate 15
+[  546.873126] nr of each time isolate 31
+[  546.873130] nr of each time isolate 62
+[  546.873140] nr of each time isolate 125
+[  546.873157] nr of each time isolate 250
+[  546.873174] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  548.888975] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  548.888978] nr of each time isolate 1
+[  548.888980] nr of each time isolate 3
+[  548.888981] nr of each time isolate 7
+[  548.888983] nr of each time isolate 15
+[  548.888985] nr of each time isolate 31
+[  548.888990] nr of each time isolate 62
+[  548.888999] nr of each time isolate 125
+[  548.889016] nr of each time isolate 250
+[  548.889034] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  550.904769] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  550.904775] nr of each time isolate 1
+[  550.904778] nr of each time isolate 3
+[  550.904780] nr of each time isolate 7
+[  550.904782] nr of each time isolate 15
+[  550.904785] nr of each time isolate 31
+[  550.904789] nr of each time isolate 62
+[  550.904798] nr of each time isolate 125
+[  550.904816] nr of each time isolate 250
+[  550.904834] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  552.920738] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  552.920741] nr of each time isolate 1
+[  552.920742] nr of each time isolate 3
+[  552.920744] nr of each time isolate 7
+[  552.920746] nr of each time isolate 15
+[  552.920749] nr of each time isolate 31
+[  552.920753] nr of each time isolate 62
+[  552.920762] nr of each time isolate 125
+[  552.920779] nr of each time isolate 250
+[  552.920796] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  554.936535] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  554.936539] nr of each time isolate 1
+[  554.936541] nr of each time isolate 3
+[  554.936542] nr of each time isolate 7
+[  554.936544] nr of each time isolate 15
+[  554.936547] nr of each time isolate 31
+[  554.936552] nr of each time isolate 62
+[  554.936560] nr of each time isolate 125
+[  554.936578] nr of each time isolate 250
+[  554.936595] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  556.952288] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  556.952291] nr of each time isolate 1
+[  556.952292] nr of each time isolate 3
+[  556.952293] nr of each time isolate 7
+[  556.952296] nr of each time isolate 15
+[  556.952298] nr of each time isolate 31
+[  556.952303] nr of each time isolate 62
+[  556.952312] nr of each time isolate 125
+[  556.952329] nr of each time isolate 250
+[  556.952346] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  558.968290] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  558.968293] nr of each time isolate 1
+[  558.968295] nr of each time isolate 3
+[  558.968297] nr of each time isolate 7
+[  558.968298] nr of each time isolate 15
+[  558.968301] nr of each time isolate 31
+[  558.968306] nr of each time isolate 62
+[  558.968315] nr of each time isolate 125
+[  558.968331] nr of each time isolate 250
+[  558.968349] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  560.984010] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  560.984015] nr of each time isolate 1
+[  560.984016] nr of each time isolate 3
+[  560.984018] nr of each time isolate 7
+[  560.984020] nr of each time isolate 15
+[  560.984023] nr of each time isolate 31
+[  560.984028] nr of each time isolate 62
+[  560.984037] nr of each time isolate 125
+[  560.984054] nr of each time isolate 250
+[  560.984071] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  563.000011] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  563.000014] nr of each time isolate 1
+[  563.000015] nr of each time isolate 3
+[  563.000017] nr of each time isolate 7
+[  563.000019] nr of each time isolate 15
+[  563.000022] nr of each time isolate 31
+[  563.000026] nr of each time isolate 62
+[  563.000035] nr of each time isolate 125
+[  563.000052] nr of each time isolate 250
+[  563.000070] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  565.015750] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  565.015756] nr of each time isolate 1
+[  565.015759] nr of each time isolate 3
+[  565.015760] nr of each time isolate 7
+[  565.015762] nr of each time isolate 15
+[  565.015765] nr of each time isolate 31
+[  565.015770] nr of each time isolate 62
+[  565.015778] nr of each time isolate 125
+[  565.015796] nr of each time isolate 250
+[  565.015813] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  567.031747] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  567.031750] nr of each time isolate 1
+[  567.031752] nr of each time isolate 3
+[  567.031753] nr of each time isolate 7
+[  567.031755] nr of each time isolate 15
+[  567.031757] nr of each time isolate 31
+[  567.031762] nr of each time isolate 62
+[  567.031771] nr of each time isolate 125
+[  567.031788] nr of each time isolate 250
+[  567.031806] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  569.047502] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  569.047505] nr of each time isolate 1
+[  569.047506] nr of each time isolate 3
+[  569.047508] nr of each time isolate 7
+[  569.047510] nr of each time isolate 15
+[  569.047513] nr of each time isolate 31
+[  569.047518] nr of each time isolate 62
+[  569.047527] nr of each time isolate 125
+[  569.047544] nr of each time isolate 250
+[  569.047561] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  571.063501] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  571.063504] nr of each time isolate 1
+[  571.063505] nr of each time isolate 3
+[  571.063506] nr of each time isolate 7
+[  571.063508] nr of each time isolate 15
+[  571.063511] nr of each time isolate 31
+[  571.063516] nr of each time isolate 62
+[  571.063525] nr of each time isolate 125
+[  571.063542] nr of each time isolate 250
+[  571.063559] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  573.079265] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  573.079268] nr of each time isolate 1
+[  573.079269] nr of each time isolate 3
+[  573.079271] nr of each time isolate 7
+[  573.079273] nr of each time isolate 15
+[  573.079276] nr of each time isolate 31
+[  573.079280] nr of each time isolate 62
+[  573.079289] nr of each time isolate 125
+[  573.079306] nr of each time isolate 250
+[  573.079323] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  575.095267] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  575.095269] nr of each time isolate 1
+[  575.095270] nr of each time isolate 3
+[  575.095271] nr of each time isolate 7
+[  575.095273] nr of each time isolate 15
+[  575.095276] nr of each time isolate 31
+[  575.095280] nr of each time isolate 62
+[  575.095289] nr of each time isolate 125
+[  575.095306] nr of each time isolate 250
+[  575.095323] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  577.111054] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  577.111057] nr of each time isolate 1
+[  577.111059] nr of each time isolate 3
+[  577.111061] nr of each time isolate 7
+[  577.111063] nr of each time isolate 15
+[  577.111066] nr of each time isolate 31
+[  577.111070] nr of each time isolate 62
+[  577.111079] nr of each time isolate 125
+[  577.111096] nr of each time isolate 250
+[  577.111113] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  579.126954] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  579.126958] nr of each time isolate 1
+[  579.126959] nr of each time isolate 3
+[  579.126960] nr of each time isolate 7
+[  579.126962] nr of each time isolate 15
+[  579.126965] nr of each time isolate 31
+[  579.126970] nr of each time isolate 62
+[  579.126979] nr of each time isolate 125
+[  579.126997] nr of each time isolate 250
+[  579.127015] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  581.142854] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  581.142857] nr of each time isolate 1
+[  581.142859] nr of each time isolate 3
+[  581.142860] nr of each time isolate 7
+[  581.142863] nr of each time isolate 15
+[  581.142865] nr of each time isolate 31
+[  581.142870] nr of each time isolate 62
+[  581.142879] nr of each time isolate 125
+[  581.142897] nr of each time isolate 250
+[  581.142914] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  583.158755] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  583.158758] nr of each time isolate 1
+[  583.158759] nr of each time isolate 3
+[  583.158760] nr of each time isolate 7
+[  583.158762] nr of each time isolate 15
+[  583.158765] nr of each time isolate 31
+[  583.158769] nr of each time isolate 62
+[  583.158778] nr of each time isolate 125
+[  583.158795] nr of each time isolate 250
+[  583.158813] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  585.174666] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  585.174668] nr of each time isolate 1
+[  585.174669] nr of each time isolate 3
+[  585.174671] nr of each time isolate 7
+[  585.174672] nr of each time isolate 15
+[  585.174675] nr of each time isolate 31
+[  585.174680] nr of each time isolate 62
+[  585.174689] nr of each time isolate 125
+[  585.174706] nr of each time isolate 250
+[  585.174724] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  587.190572] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  587.190575] nr of each time isolate 1
+[  587.190577] nr of each time isolate 3
+[  587.190579] nr of each time isolate 7
+[  587.190580] nr of each time isolate 15
+[  587.190583] nr of each time isolate 31
+[  587.190588] nr of each time isolate 62
+[  587.190597] nr of each time isolate 125
+[  587.190614] nr of each time isolate 250
+[  587.190632] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  589.206489] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  589.206491] nr of each time isolate 1
+[  589.206493] nr of each time isolate 3
+[  589.206494] nr of each time isolate 7
+[  589.206497] nr of each time isolate 15
+[  589.206500] nr of each time isolate 31
+[  589.206505] nr of each time isolate 62
+[  589.206514] nr of each time isolate 125
+[  589.206531] nr of each time isolate 250
+[  589.206548] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  591.222404] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  591.222406] nr of each time isolate 1
+[  591.222408] nr of each time isolate 3
+[  591.222410] nr of each time isolate 7
+[  591.222412] nr of each time isolate 15
+[  591.222415] nr of each time isolate 31
+[  591.222420] nr of each time isolate 62
+[  591.222428] nr of each time isolate 125
+[  591.222445] nr of each time isolate 250
+[  591.222463] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  593.238326] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  593.238329] nr of each time isolate 1
+[  593.238331] nr of each time isolate 3
+[  593.238332] nr of each time isolate 7
+[  593.238334] nr of each time isolate 15
+[  593.238337] nr of each time isolate 31
+[  593.238342] nr of each time isolate 62
+[  593.238351] nr of each time isolate 125
+[  593.238368] nr of each time isolate 250
+[  593.238385] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  595.254248] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  595.254251] nr of each time isolate 1
+[  595.254252] nr of each time isolate 3
+[  595.254254] nr of each time isolate 7
+[  595.254255] nr of each time isolate 15
+[  595.254258] nr of each time isolate 31
+[  595.254263] nr of each time isolate 62
+[  595.254271] nr of each time isolate 125
+[  595.254288] nr of each time isolate 250
+[  595.254305] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  597.270175] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  597.270177] nr of each time isolate 1
+[  597.270179] nr of each time isolate 3
+[  597.270180] nr of each time isolate 7
+[  597.270182] nr of each time isolate 15
+[  597.270185] nr of each time isolate 31
+[  597.270189] nr of each time isolate 62
+[  597.270199] nr of each time isolate 125
+[  597.270215] nr of each time isolate 250
+[  597.270233] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  599.286101] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  599.286104] nr of each time isolate 1
+[  599.286105] nr of each time isolate 3
+[  599.286106] nr of each time isolate 7
+[  599.286108] nr of each time isolate 15
+[  599.286112] nr of each time isolate 31
+[  599.286116] nr of each time isolate 62
+[  599.286125] nr of each time isolate 125
+[  599.286142] nr of each time isolate 250
+[  599.286159] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  601.302036] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  601.302042] nr of each time isolate 1
+[  601.302043] nr of each time isolate 3
+[  601.302046] nr of each time isolate 7
+[  601.302048] nr of each time isolate 15
+[  601.302051] nr of each time isolate 31
+[  601.302056] nr of each time isolate 62
+[  601.302066] nr of each time isolate 125
+[  601.302083] nr of each time isolate 250
+[  601.302101] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  603.317970] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  603.317973] nr of each time isolate 1
+[  603.317975] nr of each time isolate 3
+[  603.317977] nr of each time isolate 7
+[  603.317979] nr of each time isolate 15
+[  603.317982] nr of each time isolate 31
+[  603.317987] nr of each time isolate 62
+[  603.317996] nr of each time isolate 125
+[  603.318012] nr of each time isolate 250
+[  603.318029] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  605.333905] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  605.333907] nr of each time isolate 1
+[  605.333909] nr of each time isolate 3
+[  605.333910] nr of each time isolate 7
+[  605.333912] nr of each time isolate 15
+[  605.333915] nr of each time isolate 31
+[  605.333919] nr of each time isolate 62
+[  605.333929] nr of each time isolate 125
+[  605.333945] nr of each time isolate 250
+[  605.333963] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  607.349851] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  607.349854] nr of each time isolate 1
+[  607.349856] nr of each time isolate 3
+[  607.349857] nr of each time isolate 7
+[  607.349859] nr of each time isolate 15
+[  607.349862] nr of each time isolate 31
+[  607.349867] nr of each time isolate 62
+[  607.349876] nr of each time isolate 125
+[  607.349892] nr of each time isolate 250
+[  607.349910] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  609.365788] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  609.365792] nr of each time isolate 1
+[  609.365793] nr of each time isolate 3
+[  609.365795] nr of each time isolate 7
+[  609.365797] nr of each time isolate 15
+[  609.365800] nr of each time isolate 31
+[  609.365804] nr of each time isolate 62
+[  609.365813] nr of each time isolate 125
+[  609.365830] nr of each time isolate 250
+[  609.365847] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  611.381737] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  611.381739] nr of each time isolate 1
+[  611.381741] nr of each time isolate 3
+[  611.381742] nr of each time isolate 7
+[  611.381745] nr of each time isolate 15
+[  611.381748] nr of each time isolate 31
+[  611.381752] nr of each time isolate 62
+[  611.381761] nr of each time isolate 125
+[  611.381777] nr of each time isolate 250
+[  611.381795] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  613.397687] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  613.397690] nr of each time isolate 1
+[  613.397692] nr of each time isolate 3
+[  613.397694] nr of each time isolate 7
+[  613.397696] nr of each time isolate 15
+[  613.397699] nr of each time isolate 31
+[  613.397703] nr of each time isolate 62
+[  613.397713] nr of each time isolate 125
+[  613.397729] nr of each time isolate 250
+[  613.397747] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  615.413634] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  615.413637] nr of each time isolate 1
+[  615.413639] nr of each time isolate 3
+[  615.413641] nr of each time isolate 7
+[  615.413643] nr of each time isolate 15
+[  615.413645] nr of each time isolate 31
+[  615.413650] nr of each time isolate 62
+[  615.413659] nr of each time isolate 125
+[  615.413675] nr of each time isolate 250
+[  615.413692] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  617.429592] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  617.429596] nr of each time isolate 1
+[  617.429597] nr of each time isolate 3
+[  617.429600] nr of each time isolate 7
+[  617.429602] nr of each time isolate 15
+[  617.429604] nr of each time isolate 31
+[  617.429609] nr of each time isolate 62
+[  617.429618] nr of each time isolate 125
+[  617.429636] nr of each time isolate 250
+[  617.429654] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  619.445542] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  619.445546] nr of each time isolate 1
+[  619.445547] nr of each time isolate 3
+[  619.445548] nr of each time isolate 7
+[  619.445551] nr of each time isolate 15
+[  619.445554] nr of each time isolate 31
+[  619.445559] nr of each time isolate 62
+[  619.445570] nr of each time isolate 125
+[  619.445586] nr of each time isolate 250
+[  619.445604] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  621.461509] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  621.461515] nr of each time isolate 1
+[  621.461517] nr of each time isolate 3
+[  621.461519] nr of each time isolate 7
+[  621.461521] nr of each time isolate 15
+[  621.461524] nr of each time isolate 31
+[  621.461528] nr of each time isolate 62
+[  621.461537] nr of each time isolate 125
+[  621.461555] nr of each time isolate 250
+[  621.461573] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  623.477462] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  623.477468] nr of each time isolate 1
+[  623.477470] nr of each time isolate 3
+[  623.477472] nr of each time isolate 7
+[  623.477474] nr of each time isolate 15
+[  623.477477] nr of each time isolate 31
+[  623.477482] nr of each time isolate 62
+[  623.477490] nr of each time isolate 125
+[  623.477508] nr of each time isolate 250
+[  623.477525] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  625.493422] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  625.493425] nr of each time isolate 1
+[  625.493426] nr of each time isolate 3
+[  625.493428] nr of each time isolate 7
+[  625.493430] nr of each time isolate 15
+[  625.493432] nr of each time isolate 31
+[  625.493437] nr of each time isolate 62
+[  625.493445] nr of each time isolate 125
+[  625.493461] nr of each time isolate 250
+[  625.493479] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  627.509392] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  627.509397] nr of each time isolate 1
+[  627.509399] nr of each time isolate 3
+[  627.509400] nr of each time isolate 7
+[  627.509402] nr of each time isolate 15
+[  627.509405] nr of each time isolate 31
+[  627.509410] nr of each time isolate 62
+[  627.509419] nr of each time isolate 125
+[  627.509435] nr of each time isolate 250
+[  627.509452] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  629.525356] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  629.525359] nr of each time isolate 1
+[  629.525361] nr of each time isolate 3
+[  629.525362] nr of each time isolate 7
+[  629.525364] nr of each time isolate 15
+[  629.525367] nr of each time isolate 31
+[  629.525372] nr of each time isolate 62
+[  629.525381] nr of each time isolate 125
+[  629.525398] nr of each time isolate 250
+[  629.525415] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  631.541330] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  631.541334] nr of each time isolate 1
+[  631.541335] nr of each time isolate 3
+[  631.541337] nr of each time isolate 7
+[  631.541339] nr of each time isolate 15
+[  631.541342] nr of each time isolate 31
+[  631.541347] nr of each time isolate 62
+[  631.541356] nr of each time isolate 125
+[  631.541373] nr of each time isolate 250
+[  631.541391] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  633.557303] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  633.557308] nr of each time isolate 1
+[  633.557310] nr of each time isolate 3
+[  633.557311] nr of each time isolate 7
+[  633.557313] nr of each time isolate 15
+[  633.557316] nr of each time isolate 31
+[  633.557321] nr of each time isolate 62
+[  633.557329] nr of each time isolate 125
+[  633.557346] nr of each time isolate 250
+[  633.557364] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  635.573276] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  635.573280] nr of each time isolate 1
+[  635.573281] nr of each time isolate 3
+[  635.573283] nr of each time isolate 7
+[  635.573285] nr of each time isolate 15
+[  635.573288] nr of each time isolate 31
+[  635.573293] nr of each time isolate 62
+[  635.573302] nr of each time isolate 125
+[  635.573319] nr of each time isolate 250
+[  635.573337] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  637.589256] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  637.589262] nr of each time isolate 1
+[  637.589264] nr of each time isolate 3
+[  637.589266] nr of each time isolate 7
+[  637.589268] nr of each time isolate 15
+[  637.589271] nr of each time isolate 31
+[  637.589275] nr of each time isolate 62
+[  637.589284] nr of each time isolate 125
+[  637.589300] nr of each time isolate 250
+[  637.589318] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  639.605238] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  639.605243] nr of each time isolate 1
+[  639.605245] nr of each time isolate 3
+[  639.605247] nr of each time isolate 7
+[  639.605249] nr of each time isolate 15
+[  639.605252] nr of each time isolate 31
+[  639.605257] nr of each time isolate 62
+[  639.605266] nr of each time isolate 125
+[  639.605283] nr of each time isolate 250
+[  639.605301] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  641.621218] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  641.621222] nr of each time isolate 1
+[  641.621223] nr of each time isolate 3
+[  641.621224] nr of each time isolate 7
+[  641.621226] nr of each time isolate 15
+[  641.621229] nr of each time isolate 31
+[  641.621233] nr of each time isolate 62
+[  641.621242] nr of each time isolate 125
+[  641.621258] nr of each time isolate 250
+[  641.621275] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  643.637202] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  643.637206] nr of each time isolate 1
+[  643.637209] nr of each time isolate 3
+[  643.637210] nr of each time isolate 7
+[  643.637212] nr of each time isolate 15
+[  643.637215] nr of each time isolate 31
+[  643.637219] nr of each time isolate 62
+[  643.637228] nr of each time isolate 125
+[  643.637245] nr of each time isolate 250
+[  643.637262] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  645.653188] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  645.653192] nr of each time isolate 1
+[  645.653193] nr of each time isolate 3
+[  645.653195] nr of each time isolate 7
+[  645.653197] nr of each time isolate 15
+[  645.653200] nr of each time isolate 31
+[  645.653205] nr of each time isolate 62
+[  645.653214] nr of each time isolate 125
+[  645.653231] nr of each time isolate 250
+[  645.653249] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  647.669175] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  647.669180] nr of each time isolate 1
+[  647.669182] nr of each time isolate 3
+[  647.669183] nr of each time isolate 7
+[  647.669186] nr of each time isolate 15
+[  647.669189] nr of each time isolate 31
+[  647.669194] nr of each time isolate 62
+[  647.669203] nr of each time isolate 125
+[  647.669220] nr of each time isolate 250
+[  647.669238] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  649.685167] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  649.685170] nr of each time isolate 1
+[  649.685172] nr of each time isolate 3
+[  649.685174] nr of each time isolate 7
+[  649.685175] nr of each time isolate 15
+[  649.685178] nr of each time isolate 31
+[  649.685183] nr of each time isolate 62
+[  649.685192] nr of each time isolate 125
+[  649.685209] nr of each time isolate 250
+[  649.685226] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  651.701159] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  651.701163] nr of each time isolate 1
+[  651.701165] nr of each time isolate 3
+[  651.701166] nr of each time isolate 7
+[  651.701168] nr of each time isolate 15
+[  651.701171] nr of each time isolate 31
+[  651.701176] nr of each time isolate 62
+[  651.701185] nr of each time isolate 125
+[  651.701202] nr of each time isolate 250
+[  651.701220] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  653.717158] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  653.717163] nr of each time isolate 1
+[  653.717166] nr of each time isolate 3
+[  653.717167] nr of each time isolate 7
+[  653.717169] nr of each time isolate 15
+[  653.717172] nr of each time isolate 31
+[  653.717177] nr of each time isolate 62
+[  653.717186] nr of each time isolate 125
+[  653.717203] nr of each time isolate 250
+[  653.717220] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  655.733153] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  655.733158] nr of each time isolate 1
+[  655.733160] nr of each time isolate 3
+[  655.733161] nr of each time isolate 7
+[  655.733163] nr of each time isolate 15
+[  655.733166] nr of each time isolate 31
+[  655.733172] nr of each time isolate 62
+[  655.733181] nr of each time isolate 125
+[  655.733198] nr of each time isolate 250
+[  655.733216] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  657.749156] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  657.749160] nr of each time isolate 1
+[  657.749162] nr of each time isolate 3
+[  657.749164] nr of each time isolate 7
+[  657.749166] nr of each time isolate 15
+[  657.749169] nr of each time isolate 31
+[  657.749174] nr of each time isolate 62
+[  657.749183] nr of each time isolate 125
+[  657.749200] nr of each time isolate 250
+[  657.749217] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  659.765151] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  659.765155] nr of each time isolate 1
+[  659.765157] nr of each time isolate 3
+[  659.765158] nr of each time isolate 7
+[  659.765160] nr of each time isolate 15
+[  659.765163] nr of each time isolate 31
+[  659.765168] nr of each time isolate 62
+[  659.765177] nr of each time isolate 125
+[  659.765193] nr of each time isolate 250
+[  659.765211] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  661.781158] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  661.781162] nr of each time isolate 1
+[  661.781164] nr of each time isolate 3
+[  661.781166] nr of each time isolate 7
+[  661.781168] nr of each time isolate 15
+[  661.781171] nr of each time isolate 31
+[  661.781176] nr of each time isolate 62
+[  661.781185] nr of each time isolate 125
+[  661.781201] nr of each time isolate 250
+[  661.781218] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  663.797160] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  663.797165] nr of each time isolate 1
+[  663.797167] nr of each time isolate 3
+[  663.797168] nr of each time isolate 7
+[  663.797170] nr of each time isolate 15
+[  663.797173] nr of each time isolate 31
+[  663.797178] nr of each time isolate 62
+[  663.797187] nr of each time isolate 125
+[  663.797204] nr of each time isolate 250
+[  663.797221] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  665.813163] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  665.813168] nr of each time isolate 1
+[  665.813170] nr of each time isolate 3
+[  665.813172] nr of each time isolate 7
+[  665.813174] nr of each time isolate 15
+[  665.813177] nr of each time isolate 31
+[  665.813182] nr of each time isolate 62
+[  665.813191] nr of each time isolate 125
+[  665.813208] nr of each time isolate 250
+[  665.813225] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 7118572 active_file 229 inactive_file 545
+[  667.829170] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 3194981 active_file 229 inactive_file 545
+[  667.829177] nr of each time isolate 1
+[  667.829180] nr of each time isolate 3
+[  667.829181] nr of each time isolate 7
+[  667.829183] nr of each time isolate 15
+[  667.829186] nr of each time isolate 31
+[  667.829191] nr of each time isolate 62
+[  667.829200] nr of each time isolate 125
+[  667.829217] nr of each time isolate 250
+[  667.829235] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 3194981 active_file 229 inactive_file 545
+[  669.845187] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  669.845199] nr of each time isolate 0
+[  669.845202] nr of each time isolate 0
+[  669.845205] nr of each time isolate 0
+[  669.845207] nr of each time isolate 0
+[  669.845209] nr of each time isolate 0
+[  669.845211] nr of each time isolate 0
+[  669.845213] nr of each time isolate 0
+[  669.845215] nr of each time isolate 0
+[  669.845217] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  671.861196] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  671.861205] nr of each time isolate 0
+[  671.861209] nr of each time isolate 0
+[  671.861211] nr of each time isolate 0
+[  671.861213] nr of each time isolate 0
+[  671.861215] nr of each time isolate 0
+[  671.861218] nr of each time isolate 0
+[  671.861220] nr of each time isolate 0
+[  671.861221] nr of each time isolate 0
+[  671.861224] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  673.877211] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  673.877219] nr of each time isolate 0
+[  673.877222] nr of each time isolate 0
+[  673.877224] nr of each time isolate 0
+[  673.877226] nr of each time isolate 0
+[  673.877228] nr of each time isolate 0
+[  673.877230] nr of each time isolate 0
+[  673.877232] nr of each time isolate 0
+[  673.877234] nr of each time isolate 0
+[  673.877236] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  675.893224] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  675.893234] nr of each time isolate 0
+[  675.893238] nr of each time isolate 0
+[  675.893240] nr of each time isolate 0
+[  675.893243] nr of each time isolate 0
+[  675.893245] nr of each time isolate 0
+[  675.893247] nr of each time isolate 0
+[  675.893249] nr of each time isolate 0
+[  675.893251] nr of each time isolate 0
+[  675.893253] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  677.909239] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  677.909248] nr of each time isolate 0
+[  677.909251] nr of each time isolate 0
+[  677.909252] nr of each time isolate 0
+[  677.909252] nr of each time isolate 0
+[  677.909253] nr of each time isolate 0
+[  677.909254] nr of each time isolate 0
+[  677.909254] nr of each time isolate 0
+[  677.909255] nr of each time isolate 0
+[  677.909255] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  679.925255] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  679.925264] nr of each time isolate 0
+[  679.925266] nr of each time isolate 0
+[  679.925268] nr of each time isolate 0
+[  679.925271] nr of each time isolate 0
+[  679.925272] nr of each time isolate 0
+[  679.925274] nr of each time isolate 0
+[  679.925276] nr of each time isolate 0
+[  679.925278] nr of each time isolate 0
+[  679.925280] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  681.941274] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  681.941280] nr of each time isolate 0
+[  681.941282] nr of each time isolate 0
+[  681.941283] nr of each time isolate 0
+[  681.941284] nr of each time isolate 0
+[  681.941285] nr of each time isolate 0
+[  681.941285] nr of each time isolate 0
+[  681.941286] nr of each time isolate 0
+[  681.941287] nr of each time isolate 0
+[  681.941287] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  683.957289] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  683.957291] nr of each time isolate 0
+[  683.957292] nr of each time isolate 0
+[  683.957293] nr of each time isolate 0
+[  683.957294] nr of each time isolate 0
+[  683.957294] nr of each time isolate 0
+[  683.957295] nr of each time isolate 0
+[  683.957296] nr of each time isolate 0
+[  683.957296] nr of each time isolate 0
+[  683.957297] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  685.973325] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  685.973332] nr of each time isolate 0
+[  685.973335] nr of each time isolate 0
+[  685.973337] nr of each time isolate 0
+[  685.973339] nr of each time isolate 0
+[  685.973341] nr of each time isolate 0
+[  685.973343] nr of each time isolate 0
+[  685.973345] nr of each time isolate 0
+[  685.973347] nr of each time isolate 0
+[  685.973349] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  687.989347] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  687.989354] nr of each time isolate 0
+[  687.989357] nr of each time isolate 0
+[  687.989359] nr of each time isolate 0
+[  687.989361] nr of each time isolate 0
+[  687.989362] nr of each time isolate 0
+[  687.989363] nr of each time isolate 0
+[  687.989364] nr of each time isolate 0
+[  687.989364] nr of each time isolate 0
+[  687.989365] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  690.005362] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  690.005365] nr of each time isolate 0
+[  690.005366] nr of each time isolate 0
+[  690.005367] nr of each time isolate 0
+[  690.005368] nr of each time isolate 0
+[  690.005369] nr of each time isolate 0
+[  690.005370] nr of each time isolate 0
+[  690.005370] nr of each time isolate 0
+[  690.005371] nr of each time isolate 0
+[  690.005372] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  692.021414] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  692.021418] nr of each time isolate 0
+[  692.021419] nr of each time isolate 0
+[  692.021420] nr of each time isolate 0
+[  692.021422] nr of each time isolate 0
+[  692.021423] nr of each time isolate 0
+[  692.021424] nr of each time isolate 0
+[  692.021426] nr of each time isolate 0
+[  692.021427] nr of each time isolate 0
+[  692.021428] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  694.037443] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  694.037452] nr of each time isolate 0
+[  694.037454] nr of each time isolate 0
+[  694.037455] nr of each time isolate 0
+[  694.037457] nr of each time isolate 0
+[  694.037458] nr of each time isolate 0
+[  694.037459] nr of each time isolate 0
+[  694.037460] nr of each time isolate 0
+[  694.037461] nr of each time isolate 0
+[  694.037461] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  696.053461] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  696.053467] nr of each time isolate 0
+[  696.053468] nr of each time isolate 0
+[  696.053469] nr of each time isolate 0
+[  696.053470] nr of each time isolate 0
+[  696.053471] nr of each time isolate 0
+[  696.053471] nr of each time isolate 0
+[  696.053472] nr of each time isolate 0
+[  696.053473] nr of each time isolate 0
+[  696.053473] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  698.069488] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  698.069495] nr of each time isolate 0
+[  698.069498] nr of each time isolate 0
+[  698.069500] nr of each time isolate 0
+[  698.069502] nr of each time isolate 0
+[  698.069504] nr of each time isolate 0
+[  698.069506] nr of each time isolate 0
+[  698.069508] nr of each time isolate 0
+[  698.069510] nr of each time isolate 0
+[  698.069512] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  700.085519] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  700.085525] nr of each time isolate 0
+[  700.085527] nr of each time isolate 0
+[  700.085528] nr of each time isolate 0
+[  700.085529] nr of each time isolate 0
+[  700.085529] nr of each time isolate 0
+[  700.085530] nr of each time isolate 0
+[  700.085531] nr of each time isolate 0
+[  700.085531] nr of each time isolate 0
+[  700.085532] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  702.101551] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  702.101559] nr of each time isolate 0
+[  702.101562] nr of each time isolate 0
+[  702.101564] nr of each time isolate 0
+[  702.101566] nr of each time isolate 0
+[  702.101568] nr of each time isolate 0
+[  702.101570] nr of each time isolate 0
+[  702.101572] nr of each time isolate 0
+[  702.101574] nr of each time isolate 0
+[  702.101576] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  704.117585] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  704.117593] nr of each time isolate 0
+[  704.117596] nr of each time isolate 0
+[  704.117598] nr of each time isolate 0
+[  704.117600] nr of each time isolate 0
+[  704.117602] nr of each time isolate 0
+[  704.117604] nr of each time isolate 0
+[  704.117606] nr of each time isolate 0
+[  704.117608] nr of each time isolate 0
+[  704.117610] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  706.133620] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  706.133628] nr of each time isolate 0
+[  706.133631] nr of each time isolate 0
+[  706.133633] nr of each time isolate 0
+[  706.133635] nr of each time isolate 0
+[  706.133637] nr of each time isolate 0
+[  706.133639] nr of each time isolate 0
+[  706.133640] nr of each time isolate 0
+[  706.133642] nr of each time isolate 0
+[  706.133645] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  708.149665] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  708.149688] nr of each time isolate 0
+[  708.149692] nr of each time isolate 0
+[  708.149694] nr of each time isolate 0
+[  708.149696] nr of each time isolate 0
+[  708.149698] nr of each time isolate 0
+[  708.149700] nr of each time isolate 0
+[  708.149701] nr of each time isolate 0
+[  708.149701] nr of each time isolate 0
+[  708.149702] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  710.165699] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  710.165704] nr of each time isolate 0
+[  710.165705] nr of each time isolate 0
+[  710.165706] nr of each time isolate 0
+[  710.165707] nr of each time isolate 0
+[  710.165708] nr of each time isolate 0
+[  710.165709] nr of each time isolate 0
+[  710.165709] nr of each time isolate 0
+[  710.165710] nr of each time isolate 0
+[  710.165711] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  712.181745] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  712.181758] nr of each time isolate 0
+[  712.181762] nr of each time isolate 0
+[  712.181764] nr of each time isolate 0
+[  712.181767] nr of each time isolate 0
+[  712.181769] nr of each time isolate 0
+[  712.181770] nr of each time isolate 0
+[  712.181770] nr of each time isolate 0
+[  712.181771] nr of each time isolate 0
+[  712.181772] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 226 inactive_file 548
+[  714.197782] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  714.197789] nr of each time isolate 0
+[  714.197792] nr of each time isolate 0
+[  714.197795] nr of each time isolate 0
+[  714.197797] nr of each time isolate 0
+[  714.197799] nr of each time isolate 0
+[  714.197801] nr of each time isolate 0
+[  714.197803] nr of each time isolate 0
+[  714.197805] nr of each time isolate 0
+[  714.197807] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  716.213821] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  716.213824] nr of each time isolate 0
+[  716.213825] nr of each time isolate 0
+[  716.213826] nr of each time isolate 0
+[  716.213827] nr of each time isolate 0
+[  716.213827] nr of each time isolate 0
+[  716.213828] nr of each time isolate 0
+[  716.213829] nr of each time isolate 0
+[  716.213829] nr of each time isolate 0
+[  716.213830] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  718.229867] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  718.229873] nr of each time isolate 0
+[  718.229876] nr of each time isolate 0
+[  718.229878] nr of each time isolate 0
+[  718.229881] nr of each time isolate 0
+[  718.229883] nr of each time isolate 0
+[  718.229885] nr of each time isolate 0
+[  718.229887] nr of each time isolate 0
+[  718.229889] nr of each time isolate 0
+[  718.229891] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  720.245905] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  720.245914] nr of each time isolate 0
+[  720.245916] nr of each time isolate 0
+[  720.245916] nr of each time isolate 0
+[  720.245917] nr of each time isolate 0
+[  720.245918] nr of each time isolate 0
+[  720.245919] nr of each time isolate 0
+[  720.245920] nr of each time isolate 0
+[  720.245920] nr of each time isolate 0
+[  720.245921] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  722.261963] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  722.261974] nr of each time isolate 0
+[  722.261978] nr of each time isolate 0
+[  722.261981] nr of each time isolate 0
+[  722.261981] nr of each time isolate 0
+[  722.261982] nr of each time isolate 0
+[  722.261983] nr of each time isolate 0
+[  722.261984] nr of each time isolate 0
+[  722.261984] nr of each time isolate 0
+[  722.261985] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  724.278013] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  724.278022] nr of each time isolate 0
+[  724.278025] nr of each time isolate 0
+[  724.278026] nr of each time isolate 0
+[  724.278027] nr of each time isolate 0
+[  724.278028] nr of each time isolate 0
+[  724.278028] nr of each time isolate 0
+[  724.278029] nr of each time isolate 0
+[  724.278030] nr of each time isolate 0
+[  724.278030] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  726.294054] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  726.294074] nr of each time isolate 0
+[  726.294078] nr of each time isolate 0
+[  726.294080] nr of each time isolate 0
+[  726.294082] nr of each time isolate 0
+[  726.294084] nr of each time isolate 0
+[  726.294086] nr of each time isolate 0
+[  726.294087] nr of each time isolate 0
+[  726.294088] nr of each time isolate 0
+[  726.294089] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  728.310101] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  728.310109] nr of each time isolate 0
+[  728.310112] nr of each time isolate 0
+[  728.310114] nr of each time isolate 0
+[  728.310117] nr of each time isolate 0
+[  728.310118] nr of each time isolate 0
+[  728.310120] nr of each time isolate 0
+[  728.310122] nr of each time isolate 0
+[  728.310124] nr of each time isolate 0
+[  728.310126] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  730.326156] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  730.326163] nr of each time isolate 0
+[  730.326166] nr of each time isolate 0
+[  730.326168] nr of each time isolate 0
+[  730.326170] nr of each time isolate 0
+[  730.326172] nr of each time isolate 0
+[  730.326174] nr of each time isolate 0
+[  730.326176] nr of each time isolate 0
+[  730.326178] nr of each time isolate 0
+[  730.326181] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  732.342207] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  732.342223] nr of each time isolate 0
+[  732.342226] nr of each time isolate 0
+[  732.342229] nr of each time isolate 0
+[  732.342231] nr of each time isolate 0
+[  732.342233] nr of each time isolate 0
+[  732.342235] nr of each time isolate 0
+[  732.342237] nr of each time isolate 0
+[  732.342239] nr of each time isolate 0
+[  732.342240] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  734.358265] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  734.358278] nr of each time isolate 0
+[  734.358282] nr of each time isolate 0
+[  734.358284] nr of each time isolate 0
+[  734.358286] nr of each time isolate 0
+[  734.358288] nr of each time isolate 0
+[  734.358290] nr of each time isolate 0
+[  734.358292] nr of each time isolate 0
+[  734.358294] nr of each time isolate 0
+[  734.358294] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  736.374315] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  736.374324] nr of each time isolate 0
+[  736.374326] nr of each time isolate 0
+[  736.374329] nr of each time isolate 0
+[  736.374331] nr of each time isolate 0
+[  736.374333] nr of each time isolate 0
+[  736.374334] nr of each time isolate 0
+[  736.374336] nr of each time isolate 0
+[  736.374338] nr of each time isolate 0
+[  736.374340] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  738.390368] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  738.390386] nr of each time isolate 0
+[  738.390390] nr of each time isolate 0
+[  738.390392] nr of each time isolate 0
+[  738.390394] nr of each time isolate 0
+[  738.390396] nr of each time isolate 0
+[  738.390398] nr of each time isolate 0
+[  738.390400] nr of each time isolate 0
+[  738.390401] nr of each time isolate 0
+[  738.390402] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  740.406421] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  740.406431] nr of each time isolate 0
+[  740.406434] nr of each time isolate 0
+[  740.406437] nr of each time isolate 0
+[  740.406439] nr of each time isolate 0
+[  740.406441] nr of each time isolate 0
+[  740.406443] nr of each time isolate 0
+[  740.406445] nr of each time isolate 0
+[  740.406447] nr of each time isolate 0
+[  740.406449] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  742.422473] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  742.422480] nr of each time isolate 0
+[  742.422482] nr of each time isolate 0
+[  742.422484] nr of each time isolate 0
+[  742.422486] nr of each time isolate 0
+[  742.422488] nr of each time isolate 0
+[  742.422490] nr of each time isolate 0
+[  742.422492] nr of each time isolate 0
+[  742.422494] nr of each time isolate 0
+[  742.422496] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  744.438530] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  744.438546] nr of each time isolate 0
+[  744.438550] nr of each time isolate 0
+[  744.438552] nr of each time isolate 0
+[  744.438554] nr of each time isolate 0
+[  744.438557] nr of each time isolate 0
+[  744.438559] nr of each time isolate 0
+[  744.438561] nr of each time isolate 0
+[  744.438562] nr of each time isolate 0
+[  744.438563] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  746.454588] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  746.454596] nr of each time isolate 0
+[  746.454598] nr of each time isolate 0
+[  746.454601] nr of each time isolate 0
+[  746.454603] nr of each time isolate 0
+[  746.454605] nr of each time isolate 0
+[  746.454607] nr of each time isolate 0
+[  746.454609] nr of each time isolate 0
+[  746.454611] nr of each time isolate 0
+[  746.454613] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  748.470652] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  748.470663] nr of each time isolate 0
+[  748.470666] nr of each time isolate 0
+[  748.470669] nr of each time isolate 0
+[  748.470671] nr of each time isolate 0
+[  748.470673] nr of each time isolate 0
+[  748.470675] nr of each time isolate 0
+[  748.470677] nr of each time isolate 0
+[  748.470678] nr of each time isolate 0
+[  748.470679] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  750.486716] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  750.486726] nr of each time isolate 0
+[  750.486730] nr of each time isolate 0
+[  750.486732] nr of each time isolate 0
+[  750.486734] nr of each time isolate 0
+[  750.486736] nr of each time isolate 0
+[  750.486738] nr of each time isolate 0
+[  750.486739] nr of each time isolate 0
+[  750.486739] nr of each time isolate 0
+[  750.486740] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  752.502770] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  752.502775] nr of each time isolate 0
+[  752.502778] nr of each time isolate 0
+[  752.502780] nr of each time isolate 0
+[  752.502782] nr of each time isolate 0
+[  752.502784] nr of each time isolate 0
+[  752.502786] nr of each time isolate 0
+[  752.502788] nr of each time isolate 0
+[  752.502790] nr of each time isolate 0
+[  752.502792] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  754.518824] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  754.518827] nr of each time isolate 0
+[  754.518828] nr of each time isolate 0
+[  754.518829] nr of each time isolate 0
+[  754.518829] nr of each time isolate 0
+[  754.518830] nr of each time isolate 0
+[  754.518831] nr of each time isolate 0
+[  754.518832] nr of each time isolate 0
+[  754.518833] nr of each time isolate 0
+[  754.518833] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  756.534894] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  756.534900] nr of each time isolate 0
+[  756.534902] nr of each time isolate 0
+[  756.534904] nr of each time isolate 0
+[  756.534906] nr of each time isolate 0
+[  756.534908] nr of each time isolate 0
+[  756.534910] nr of each time isolate 0
+[  756.534912] nr of each time isolate 0
+[  756.534914] nr of each time isolate 0
+[  756.534916] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  758.550960] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  758.550965] nr of each time isolate 0
+[  758.550967] nr of each time isolate 0
+[  758.550969] nr of each time isolate 0
+[  758.550971] nr of each time isolate 0
+[  758.550973] nr of each time isolate 0
+[  758.550975] nr of each time isolate 0
+[  758.550977] nr of each time isolate 0
+[  758.550979] nr of each time isolate 0
+[  758.550981] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  760.567023] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  760.567030] nr of each time isolate 0
+[  760.567032] nr of each time isolate 0
+[  760.567034] nr of each time isolate 0
+[  760.567036] nr of each time isolate 0
+[  760.567038] nr of each time isolate 0
+[  760.567040] nr of each time isolate 0
+[  760.567042] nr of each time isolate 0
+[  760.567044] nr of each time isolate 0
+[  760.567046] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  762.583089] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  762.583094] nr of each time isolate 0
+[  762.583096] nr of each time isolate 0
+[  762.583098] nr of each time isolate 0
+[  762.583100] nr of each time isolate 0
+[  762.583102] nr of each time isolate 0
+[  762.583105] nr of each time isolate 0
+[  762.583107] nr of each time isolate 0
+[  762.583109] nr of each time isolate 0
+[  762.583111] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  764.599156] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  764.599161] nr of each time isolate 0
+[  764.599163] nr of each time isolate 0
+[  764.599165] nr of each time isolate 0
+[  764.599167] nr of each time isolate 0
+[  764.599169] nr of each time isolate 0
+[  764.599171] nr of each time isolate 0
+[  764.599173] nr of each time isolate 0
+[  764.599175] nr of each time isolate 0
+[  764.599177] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  766.615221] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  766.615226] nr of each time isolate 0
+[  766.615228] nr of each time isolate 0
+[  766.615230] nr of each time isolate 0
+[  766.615232] nr of each time isolate 0
+[  766.615234] nr of each time isolate 0
+[  766.615236] nr of each time isolate 0
+[  766.615238] nr of each time isolate 0
+[  766.615240] nr of each time isolate 0
+[  766.615243] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  768.631299] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  768.631306] nr of each time isolate 0
+[  768.631307] nr of each time isolate 0
+[  768.631308] nr of each time isolate 0
+[  768.631308] nr of each time isolate 0
+[  768.631309] nr of each time isolate 0
+[  768.631310] nr of each time isolate 0
+[  768.631310] nr of each time isolate 0
+[  768.631311] nr of each time isolate 0
+[  768.631311] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  770.647358] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  770.647364] nr of each time isolate 0
+[  770.647366] nr of each time isolate 0
+[  770.647368] nr of each time isolate 0
+[  770.647371] nr of each time isolate 0
+[  770.647373] nr of each time isolate 0
+[  770.647375] nr of each time isolate 0
+[  770.647377] nr of each time isolate 0
+[  770.647379] nr of each time isolate 0
+[  770.647381] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  772.663430] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  772.663436] nr of each time isolate 0
+[  772.663439] nr of each time isolate 0
+[  772.663441] nr of each time isolate 0
+[  772.663443] nr of each time isolate 0
+[  772.663445] nr of each time isolate 0
+[  772.663447] nr of each time isolate 0
+[  772.663449] nr of each time isolate 0
+[  772.663451] nr of each time isolate 0
+[  772.663453] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  774.679499] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  774.679504] nr of each time isolate 0
+[  774.679507] nr of each time isolate 0
+[  774.679509] nr of each time isolate 0
+[  774.679511] nr of each time isolate 0
+[  774.679513] nr of each time isolate 0
+[  774.679515] nr of each time isolate 0
+[  774.679517] nr of each time isolate 0
+[  774.679519] nr of each time isolate 0
+[  774.679521] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  776.695568] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  776.695574] nr of each time isolate 0
+[  776.695576] nr of each time isolate 0
+[  776.695578] nr of each time isolate 0
+[  776.695580] nr of each time isolate 0
+[  776.695582] nr of each time isolate 0
+[  776.695584] nr of each time isolate 0
+[  776.695586] nr of each time isolate 0
+[  776.695588] nr of each time isolate 0
+[  776.695590] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  778.711637] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  778.711640] nr of each time isolate 0
+[  778.711640] nr of each time isolate 0
+[  778.711641] nr of each time isolate 0
+[  778.711642] nr of each time isolate 0
+[  778.711642] nr of each time isolate 0
+[  778.711643] nr of each time isolate 0
+[  778.711644] nr of each time isolate 0
+[  778.711644] nr of each time isolate 0
+[  778.711645] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  780.727707] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  780.727709] nr of each time isolate 0
+[  780.727710] nr of each time isolate 0
+[  780.727710] nr of each time isolate 0
+[  780.727711] nr of each time isolate 0
+[  780.727711] nr of each time isolate 0
+[  780.727712] nr of each time isolate 0
+[  780.727713] nr of each time isolate 0
+[  780.727713] nr of each time isolate 0
+[  780.727714] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  782.743785] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  782.743791] nr of each time isolate 0
+[  782.743793] nr of each time isolate 0
+[  782.743795] nr of each time isolate 0
+[  782.743798] nr of each time isolate 0
+[  782.743800] nr of each time isolate 0
+[  782.743802] nr of each time isolate 0
+[  782.743804] nr of each time isolate 0
+[  782.743806] nr of each time isolate 0
+[  782.743808] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  784.759861] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  784.759867] nr of each time isolate 0
+[  784.759870] nr of each time isolate 0
+[  784.759872] nr of each time isolate 0
+[  784.759872] nr of each time isolate 0
+[  784.759873] nr of each time isolate 0
+[  784.759874] nr of each time isolate 0
+[  784.759875] nr of each time isolate 0
+[  784.759875] nr of each time isolate 0
+[  784.759876] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  786.775935] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 225 inactive_file 549
+[  786.775941] nr of each time isolate 0
+[  786.775943] nr of each time isolate 0
+[  786.775945] nr of each time isolate 0
+[  786.775947] nr of each time isolate 0
+[  786.775949] nr of each time isolate 0
+[  786.775951] nr of each time isolate 0
+[  786.775953] nr of each time isolate 0
+[  786.775955] nr of each time isolate 0
