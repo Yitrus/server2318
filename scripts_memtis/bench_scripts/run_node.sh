@@ -12,6 +12,7 @@ CGROUP_NAME="htmm"
 ###### update DIR!
 DIR=/home/xmu/Documents/yi/scripts_memtis
 
+TOP_NAME=""
 CONFIG_PERF=off
 CONFIG_NS=off
 CONFIG_NW=off
@@ -21,8 +22,8 @@ DATE=""
 VER=""
 
 function func_cache_flush() {
-	# killall liblinear
-    # killall perf
+	killall ${TOP_NAME}
+    killall perf
 	swapoff -a 
     echo 3 > /proc/sys/vm/drop_caches
     free
@@ -31,9 +32,16 @@ function func_cache_flush() {
 
 function func_collaction(){
     sleep 3
-    PID=$(pgrep -o XSBench)
+    PID=$(pgrep -o ${TOP_NAME})
     echo "---------Collaction ${PID}------------"
-    perf script record -D --data --phys-data --data-page-size --pid=${PID}  -e mem:load,mem:store
+    # 这个时间段怎么控制？
+    perf script record -D --data --phys-data --pid=${PID} -F 100 -e mem:load,mem:store -o ${LOG_DIR}/mem.data
+    # 5s输出一次？
+    perf stat -e page-faults -I 5000 -a --pid=${PID} -o ${LOG_DIR}/sample.txt
+    # 1s 1次用于画火焰图来着
+    perf record -F 10 -o ${LOG_DIR}/cpu.data -a -g --pid=${PID}
+
+
     # PID=$(pgrep -o train)
     # echo "---------Collaction ${PID}------------"
 
@@ -48,30 +56,30 @@ function func_collaction(){
 
 
 function func_memtis_setting() {
-    # echo 199 | tee /sys/kernel/mm/htmm/htmm_sample_period
-    # echo 100007 | tee /sys/kernel/mm/htmm/htmm_inst_sample_period
-    # echo 1 | tee /sys/kernel/mm/htmm/htmm_thres_hot
-    # echo 2 | tee /sys/kernel/mm/htmm/htmm_split_period
-    # echo 100000 | tee /sys/kernel/mm/htmm/htmm_adaptation_period
-    # echo 2000000 | tee /sys/kernel/mm/htmm/htmm_cooling_period
+    echo 199 | tee /sys/kernel/mm/htmm/htmm_sample_period
+    echo 100007 | tee /sys/kernel/mm/htmm/htmm_inst_sample_period
+    echo 1 | tee /sys/kernel/mm/htmm/htmm_thres_hot
+    echo 2 | tee /sys/kernel/mm/htmm/htmm_split_period
+    echo 100000 | tee /sys/kernel/mm/htmm/htmm_adaptation_period
+    echo 2000000 | tee /sys/kernel/mm/htmm/htmm_cooling_period
     echo 2 | tee /sys/kernel/mm/htmm/htmm_mode
-    # echo 500 | tee /sys/kernel/mm/htmm/htmm_demotion_period_in_ms
-    # echo 500 | tee /sys/kernel/mm/htmm/htmm_promotion_period_in_ms
+    echo 500 | tee /sys/kernel/mm/htmm/htmm_demotion_period_in_ms
+    echo 500 | tee /sys/kernel/mm/htmm/htmm_promotion_period_in_ms
     echo 4 | tee /sys/kernel/mm/htmm/htmm_gamma
-    ###  cpu cap (per mille) for ksampled
+    ##  cpu cap (per mille) for ksampled
     echo 30 | tee /sys/kernel/mm/htmm/ksampled_soft_cpu_quota
 
-    # if [[ "x${CONFIG_NS}" == "xoff" ]]; then
-	# echo 1 | tee /sys/kernel/mm/htmm/htmm_thres_split
-    # else
-	# echo 0 | tee /sys/kernel/mm/htmm/htmm_thres_split
-    # fi
+    if [[ "x${CONFIG_NS}" == "xoff" ]]; then
+	echo 1 | tee /sys/kernel/mm/htmm/htmm_thres_split
+    else
+	echo 0 | tee /sys/kernel/mm/htmm/htmm_thres_split
+    fi
 
-    # if [[ "x${CONFIG_NW}" == "xoff" ]]; then
-	# echo 0 | tee /sys/kernel/mm/htmm/htmm_nowarm
-    # else
-	# echo 1 | tee /sys/kernel/mm/htmm/htmm_nowarm
-    # fi
+    if [[ "x${CONFIG_NW}" == "xoff" ]]; then
+	echo 0 | tee /sys/kernel/mm/htmm/htmm_nowarm
+    else
+	echo 1 | tee /sys/kernel/mm/htmm/htmm_nowarm
+    fi
 
     if [[ "x${CONFIG_CXL_MODE}" == "xon" ]]; then
 	${DIR}/bench_scripts/set_uncore_freq.sh on
@@ -81,10 +89,10 @@ function func_memtis_setting() {
 	echo "disabled" | tee /sys/kernel/mm/htmm/htmm_cxl_mode
     fi
 
-	echo "never" | tee /sys/kernel/mm/transparent_hugepage/enabled
-    # echo "always" | tee /sys/kernel/mm/transparent_hugepage/enabled
+	# echo "never" | tee /sys/kernel/mm/transparent_hugepage/enabled
+    echo "always" | tee /sys/kernel/mm/transparent_hugepage/enabled
 	# 它控制内核是否应该积极使用内存压缩来提供更多的大页面可用
-    # echo "always" | tee /sys/kernel/mm/transparent_hugepage/defrag
+    echo "always" | tee /sys/kernel/mm/transparent_hugepage/defrag
 }
 
 function func_prepare() {
@@ -152,8 +160,8 @@ function func_main() {
     ${DIR}/bench_scripts/memory_stat.sh ${LOG_DIR} &
 	${TIME} -f "execution time %e (s)" \
 	    ${PINNING} ${DIR}/bin/launch_bench ${BENCH_RUN} 2>&1 \
-	    | tee ${LOG_DIR}/output.log 
-    # func_collaction
+	    | tee ${LOG_DIR}/output.log &
+    func_collaction
 
     sudo killall -9 memory_stat.sh
     cat /proc/vmstat | grep -e thp -e htmm -e pgmig > ${LOG_DIR}/after_vmstat.log
