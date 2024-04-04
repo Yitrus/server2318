@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BIN=/home/xmu/playground/yi/workloads/XSBench/openmp-threading
+BIN=/home/xmu/playground/yi/workload/XSBench/openmp-threading
 BENCH_RUN="${BIN}/XSBench -t 20 -g 130000 -p 30000000"
 #BENCH_DRAM=""
 

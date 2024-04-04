@@ -1,3 +1,5 @@
+perf script record --data --phys-data --pid=${PID} -F 1 -e mem-loads,mem-stores -o ${TARGET}/perf.data
+
 dmesg -w | grep -E 'BEFORE|AFTER' 
 
 sudo mount /dev/sda /mnt/mydrive
@@ -6,6 +8,11 @@ https://mp.csdn.net/mp_blog/manage/article?spm=1010.2135.3001.5416
 
 sudo ndctl destroy-namespace --force namespace1.0
 sudo ndctl destroy-namespace -f namespace0.0
+
+df -h 查看目前挂载情况
+mount /dev/vdb1 /mnt/data 挂载我一般挂hdd
+umount /mnt/pmem1 把fs实验的删除
+lsof /mnt/pmem1 删除不成功，查看相关进程，kill -9 PID
 
 sudo ndctl create-namespace --mode=devdax --map=mem
 sudo daxctl list

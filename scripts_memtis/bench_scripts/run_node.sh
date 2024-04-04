@@ -21,50 +21,16 @@ STATIC_DRAM=""
 DATE=""
 VER=""
 
-function func_cache_flush() {
-	killall ${TOP_NAME}
-    killall perf
-	swapoff -a 
-    echo 3 > /proc/sys/vm/drop_caches
-    free
-    return
-}
-
-function func_collaction(){
-    sleep 3
-    PID=$(pgrep -o ${TOP_NAME})
-    echo "---------Collaction ${PID}------------"
-    # 这个时间段怎么控制？
-    perf script record -D --data --phys-data --pid=${PID} -F 100 -e mem:load,mem:store -o ${LOG_DIR}/mem.data
-    # 5s输出一次？
-    perf stat -e page-faults -I 5000 -a --pid=${PID} -o ${LOG_DIR}/sample.txt
-    # 1s 1次用于画火焰图来着
-    perf record -F 10 -o ${LOG_DIR}/cpu.data -a -g --pid=${PID}
-
-
-    # PID=$(pgrep -o train)
-    # echo "---------Collaction ${PID}------------"
-
-    # perf record -F 1 -o ${LOG_DIR}/perf.data -a -g & 
-    # perf_pid=$(pgrep -o -f "perf record")
-    # while kill -0 "${PID}" >/dev/null 2>&1
-    # do
-    #     sleep 10
-    # done
-	# kill -SIGINT "$perf_pid"
-}
-
-
 function func_memtis_setting() {
-    echo 199 | tee /sys/kernel/mm/htmm/htmm_sample_period
-    echo 100007 | tee /sys/kernel/mm/htmm/htmm_inst_sample_period
-    echo 1 | tee /sys/kernel/mm/htmm/htmm_thres_hot
-    echo 2 | tee /sys/kernel/mm/htmm/htmm_split_period
-    echo 100000 | tee /sys/kernel/mm/htmm/htmm_adaptation_period
-    echo 2000000 | tee /sys/kernel/mm/htmm/htmm_cooling_period
+    # echo 199 | tee /sys/kernel/mm/htmm/htmm_sample_period
+    # echo 100007 | tee /sys/kernel/mm/htmm/htmm_inst_sample_period
+    # echo 1 | tee /sys/kernel/mm/htmm/htmm_thres_hot
+    # echo 2 | tee /sys/kernel/mm/htmm/htmm_split_period
+    # echo 100000 | tee /sys/kernel/mm/htmm/htmm_adaptation_period
+    # echo 2000000 | tee /sys/kernel/mm/htmm/htmm_cooling_period
     echo 2 | tee /sys/kernel/mm/htmm/htmm_mode
-    echo 500 | tee /sys/kernel/mm/htmm/htmm_demotion_period_in_ms
-    echo 500 | tee /sys/kernel/mm/htmm/htmm_promotion_period_in_ms
+    # echo 500 | tee /sys/kernel/mm/htmm/htmm_demotion_period_in_ms
+    # echo 500 | tee /sys/kernel/mm/htmm/htmm_promotion_period_in_ms
     echo 4 | tee /sys/kernel/mm/htmm/htmm_gamma
     ##  cpu cap (per mille) for ksampled
     echo 30 | tee /sys/kernel/mm/htmm/ksampled_soft_cpu_quota
@@ -96,12 +62,16 @@ function func_memtis_setting() {
 }
 
 function func_prepare() {
-    echo "Preparing benchmark start..."
-
-	sudo sysctl kernel.perf_event_max_sample_rate=100000
+	sysctl kernel.perf_event_max_sample_rate=100000
+    # killall ${TOP_NAME}
+    # killall perf
+    modprobe msr
+	swapoff -a 
+    echo 3 > /proc/sys/vm/drop_caches
+    free
 
 	# disable automatic numa balancing
-	sudo echo 0 > /proc/sys/kernel/numa_balancing
+	echo 0 > /proc/sys/kernel/numa_balancing
 	# set configs
 	func_memtis_setting
 	
@@ -116,6 +86,30 @@ function func_prepare() {
 	    echo "ERROR: ${BENCH_NAME}.sh does not exist."
 	    exit -1
 	fi
+}
+
+function cleanup(){
+    # memory_stat_pid=$(pgrep -o -f "memory_stat.sh")
+    # kill -9 $memory_stat_pid
+
+    # killall '${TOP_NAME}'
+    # perf_pid=$(pgrep -o -f "perf record")
+    # kill -SIGINT "$perf_pid"
+
+    # kill -TERM $perf_all_pid
+    # killall -9 perf_all.sh
+    # wait $perf_all_pid
+
+    # cat /proc/vmstat | grep -e thp -e htmm -e pgmig > ${LOG_DIR}/after_vmstat.log
+	# cat /proc/meminfo >>  ${LOG_DIR}/after_vmstat.log
+    # sleep 120
+
+    # perf_all_pid=$(pgrep -o -f "perf_all.sh")
+    # kill -9 $perf_all_pid
+
+    dmesg -c > ${LOG_DIR}/dmesg.txt
+    # disable htmm
+    ${DIR}/bench_scripts/set_htmm_memcg.sh htmm $$ disable
 }
 
 function func_main() {
@@ -141,36 +135,30 @@ function func_main() {
     LOG_DIR=${DIR}/results/${BENCH_NAME}/${VER}
 
     # set memcg for htmm
-    sudo ${DIR}/bench_scripts/set_htmm_memcg.sh htmm remove
-    sudo ${DIR}/bench_scripts/set_htmm_memcg.sh htmm $$ enable
+    ${DIR}/bench_scripts/set_htmm_memcg.sh htmm remove
+    ${DIR}/bench_scripts/set_htmm_memcg.sh htmm $$ enable
 
-    sudo ${DIR}/bench_scripts/set_mem_size.sh htmm 0 ${DRAM_SIZE}
-    # sudo ${DIR}/bench_scripts/set_mem_size.sh htmm 2 "30GB"
+    ${DIR}/bench_scripts/set_mem_size.sh htmm 0 ${DRAM_SIZE}
 
-    echo "set cgroup sleep 10 sec"
-    sleep 10
+    # ${DIR}/bench_scripts/memory_stat.sh ${LOG_DIR} 
+    
+    # trap 'cleanup' EXIT
+    for i in {1..20};
+    do
+        cat /proc/vmstat | grep -e thp -e htmm -e pgmig > ${LOG_DIR}/before_vmstat${i}.log 
+	    cat /proc/meminfo >> ${LOG_DIR}/before_vmstat${i}.log 
 
-    cat /proc/vmstat | grep -e thp -e htmm -e pgmig > ${LOG_DIR}/before_vmstat.log 
-	cat /proc/meminfo >> ${LOG_DIR}/before_vmstat.log 
-    # flush cache
-    func_cache_flush
-    sleep 2
+        ${TIME} -f "execution time %e (s)" \
+            ${PINNING} ${DIR}/bin/launch_bench ${BENCH_RUN} 2>&1 \
+            | tee ${LOG_DIR}/output${i}.log 
 
-	# 在这里加上对 node 0 的限制 numactl --membind=0,2
-    ${DIR}/bench_scripts/memory_stat.sh ${LOG_DIR} &
-	${TIME} -f "execution time %e (s)" \
-	    ${PINNING} ${DIR}/bin/launch_bench ${BENCH_RUN} 2>&1 \
-	    | tee ${LOG_DIR}/output.log &
-    func_collaction
-
-    sudo killall -9 memory_stat.sh
-    cat /proc/vmstat | grep -e thp -e htmm -e pgmig > ${LOG_DIR}/after_vmstat.log
-	cat /proc/meminfo >>  ${LOG_DIR}/after_vmstat.log
-    sleep 120
-
-    sudo dmesg -c > ${LOG_DIR}/dmesg.txt
-    # disable htmm
-    sudo ${DIR}/bench_scripts/set_htmm_memcg.sh htmm $$ disable
+        cat /proc/vmstat | grep -e thp -e htmm -e pgmig > ${LOG_DIR}/after_vmstat${i}.log
+	    cat /proc/meminfo >>  ${LOG_DIR}/after_vmstat${i}.log
+    done 
+        # ${DIR}/bench_scripts/perf_all.sh ${LOG_DIR} ${TOP_NAME}
+   
+    # wait $(pgrep -o ${TOP_NAME})
+    cleanup
 }
 
 function func_usage() {
@@ -202,6 +190,7 @@ while (( "$#" )); do
 	-B|--benchmark)
 	    if [ -n "$2" ] && [ ${2:0:1} != "-" ]; then
 		BENCH_NAME=( "$2" )
+        TOP_NAME=("$2")
 		shift 2
 	    else
 		echo "Error: Argument for $1 is missing" >&2

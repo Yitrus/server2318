@@ -8,9 +8,9 @@ MAX=18446744073709551615
 
 # 只可能出现针对node 0 内存不够用的情况，然后手动改改
 
-echo "要限制的NUMA node ${NODE_ID}"
+# echo "要限制的NUMA node ${NODE_ID}"
 # echo "使用的cgroup目录 ${CGROUP_NAME}"
-echo "设置的限制大小 ${NODE_SIZE}"
+# echo "设置的限制大小 ${NODE_SIZE}"
 
 if [ $# -ne 3 ]; then
     echo "Not enough parameters........................................................"
@@ -40,9 +40,9 @@ else
     fi
 fi
 
-echo "-----${MEM_IN_BYTES}------"
+# echo "-----${MEM_IN_BYTES}------"
 echo ${MEM_IN_BYTES} | sudo tee ${CGROUP_DIR}/${CGROUP_NAME}/memory.max_at_node${NODE_ID}
 # check if be set
-echo "最后限制的大小为："
-cat ${CGROUP_DIR}/${CGROUP_NAME}/memory.max_at_node${NODE_ID}
-echo "-------------------------"
+# echo "最后限制的大小为："
+# cat ${CGROUP_DIR}/${CGROUP_NAME}/memory.max_at_node${NODE_ID}
+# echo "-------------------------"
