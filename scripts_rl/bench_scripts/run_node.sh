@@ -10,7 +10,7 @@ MEM_NODES=($(ls /sys/devices/system/node | grep node | awk -F 'node' '{print $NF
 
 CGROUP_NAME="htmm"
 ###### update DIR!
-DIR=/home/xmu/Documents/yi/scripts_memtis
+DIR=/home/xmu/Documents/yi/scripts_rl
 
 TOP_NAME=""
 CONFIG_PERF=off
@@ -22,15 +22,7 @@ DATE=""
 VER=""
 
 function func_memtis_setting() {
-    echo 199 | tee /sys/kernel/mm/htmm/htmm_sample_period
-    echo 100007 | tee /sys/kernel/mm/htmm/htmm_inst_sample_period
-    echo 1 | tee /sys/kernel/mm/htmm/htmm_thres_hot
-    echo 2 | tee /sys/kernel/mm/htmm/htmm_split_period
-    echo 100000 | tee /sys/kernel/mm/htmm/htmm_adaptation_period
-    echo 2000000 | tee /sys/kernel/mm/htmm/htmm_cooling_period
     echo 2 | tee /sys/kernel/mm/htmm/htmm_mode
-    echo 500 | tee /sys/kernel/mm/htmm/htmm_demotion_period_in_ms
-    echo 500 | tee /sys/kernel/mm/htmm/htmm_promotion_period_in_ms
     echo 4 | tee /sys/kernel/mm/htmm/htmm_gamma
     ##  cpu cap (per mille) for ksampled
     echo 30 | tee /sys/kernel/mm/htmm/ksampled_soft_cpu_quota
@@ -63,10 +55,8 @@ function func_memtis_setting() {
 
 function func_prepare() {
 	sysctl kernel.perf_event_max_sample_rate=100000
-    # killall ${TOP_NAME}
-    # killall perf
-    # modprobe msr
-	# swapoff -a 
+    # modprobe msr #pcm用的
+	swapoff -a 
     echo 3 > /proc/sys/vm/drop_caches
     free
 
@@ -89,24 +79,6 @@ function func_prepare() {
 }
 
 function cleanup(){
-    # memory_stat_pid=$(pgrep -o -f "memory_stat.sh")
-    # kill -9 $memory_stat_pid
-
-    # killall '${TOP_NAME}'
-    # perf_pid=$(pgrep -o -f "perf record")
-    # kill -SIGINT "$perf_pid"
-
-    # kill -TERM $perf_all_pid
-    # killall -9 perf_all.sh
-    # wait $perf_all_pid
-
-    # cat /proc/vmstat | grep -e thp -e htmm -e pgmig > ${LOG_DIR}/after_vmstat.log
-	# cat /proc/meminfo >>  ${LOG_DIR}/after_vmstat.log
-    # sleep 120
-
-    # perf_all_pid=$(pgrep -o -f "perf_all.sh")
-    # kill -9 $perf_all_pid
-
     dmesg -c > ${LOG_DIR}/dmesg.txt
     # disable htmm
     ${DIR}/bench_scripts/set_htmm_memcg.sh htmm $$ disable
@@ -139,11 +111,9 @@ function func_main() {
     ${DIR}/bench_scripts/set_htmm_memcg.sh htmm $$ enable
 
     ${DIR}/bench_scripts/set_mem_size.sh htmm 0 ${DRAM_SIZE}
-    #${DIR}/bench_scripts/set_mem_size.sh htmm 0 ${DRAM_SIZE}
 
     # ${DIR}/bench_scripts/memory_stat.sh ${LOG_DIR} 
     
-    # trap 'cleanup' EXIT
     for i in {1..20};
     do
         cat /proc/vmstat | grep -e thp -e htmm -e pgmig > ${LOG_DIR}/before_vmstat${i}.log 
