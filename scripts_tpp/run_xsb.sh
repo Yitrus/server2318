@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DIR=/home/xmu/Documents/yi
+DIR=/home/xmu/Documents/yi/scripts_tpp
 BIN=/home/xmu/Documents/yi/workload/XSBench/openmp-threading
 BENCH_RUN="numactl --membind=0,2 ${BIN}/XSBench -t 20 -g 130000 -p 30000000"
 BENCH_NAME="XSBench"
@@ -9,15 +9,16 @@ BENCH_NAME="XSBench"
 # BENCH_NAME="gapbs-DRAM"
 CMD_NAME="XSBench"
 DATE=""
-VER="no_migrate_strategy_2"
+VER="collect-noswap"
 PID=""
 LOG_DIR=""
 
 function func_prepare() {
-    killall perf
+    # killall perf
     killall XSBench
-	echo "Preparing benchmark start..."
-	echo 0 > /proc/sys/kernel/numa_balancing
+	# echo "Preparing benchmark start..."
+	echo 1 > /sys/kernel/mm/numa/demotion_enabled
+    echo 3 > /proc/sys/kernel/numa_balancing
     # 禁止Swap
     swapoff -a 
     # 清空cache的缓存
@@ -61,9 +62,9 @@ function func_main() {
 	cat /proc/meminfo >>  ${LOG_DIR}/after_vmstat.log    
 
     dmesg -c > ${LOG_DIR}/dmesg.txt
-    sleep 120
+    # sleep 120
     killall ${CMD_NAME}
-    killall perf
+    # killall perf
 }
 
 ################################ Main ##################################

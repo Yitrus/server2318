@@ -139,23 +139,23 @@ function func_main() {
     ${DIR}/bench_scripts/set_htmm_memcg.sh htmm $$ enable
 
     ${DIR}/bench_scripts/set_mem_size.sh htmm 0 ${DRAM_SIZE}
-    #${DIR}/bench_scripts/set_mem_size.sh htmm 0 ${DRAM_SIZE}
+    ${DIR}/bench_scripts/set_mem_size.sh htmm 2 70GB
 
     # ${DIR}/bench_scripts/memory_stat.sh ${LOG_DIR} 
     
     # trap 'cleanup' EXIT
-    for i in {1..20};
-    do
-        cat /proc/vmstat | grep -e thp -e htmm -e pgmig > ${LOG_DIR}/before_vmstat${i}.log 
-	    cat /proc/meminfo >> ${LOG_DIR}/before_vmstat${i}.log 
+    # for i in {1..20};
+    # do
+    cat /proc/vmstat | grep -e thp -e htmm -e pgmig > ${LOG_DIR}/before_vmstat${i}.log 
+	cat /proc/meminfo >> ${LOG_DIR}/before_vmstat${i}.log 
 
-        ${TIME} -f "execution time %e (s)" \
-            ${PINNING} ${DIR}/bin/launch_bench ${BENCH_RUN} 2>&1 \
-            | tee ${LOG_DIR}/output${i}.log 
+    ${TIME} -f "execution time %e (s)" \
+        ${PINNING} ${DIR}/bin/launch_bench ${BENCH_RUN} 2>&1 \
+        | tee ${LOG_DIR}/output${i}.log 
 
-        cat /proc/vmstat | grep -e thp -e htmm -e pgmig > ${LOG_DIR}/after_vmstat${i}.log
-	    cat /proc/meminfo >>  ${LOG_DIR}/after_vmstat${i}.log
-    done 
+    cat /proc/vmstat | grep -e thp -e htmm -e pgmig > ${LOG_DIR}/after_vmstat${i}.log
+	cat /proc/meminfo >>  ${LOG_DIR}/after_vmstat${i}.log
+    # done 
         # ${DIR}/bench_scripts/perf_all.sh ${LOG_DIR} ${TOP_NAME}
    
     # wait $(pgrep -o ${TOP_NAME})

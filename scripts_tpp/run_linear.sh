@@ -1,18 +1,19 @@
 #!/bin/bash
 
-DIR=/home/xmu/Documents/yi
+DIR=/home/xmu/Documents/yi/scripts_tpp
 BIN=/home/xmu/Documents/yi/workload/liblinear-multicore-2.47
 BENCH_RUN="numactl -N 0 ${BIN}/train -s 6 -m 20 ${BIN}/datasets/kdd12"
 DATE=""
 VER=""
 PID=""
 LOG_DIR=""
-BENCH_NAME="liblinear-mix" # 如果用两个PM会比用一个好吗？
+BENCH_NAME="liblinear" # 如果用两个PM会比用一个好吗？
 
 function func_prepare() {
-	echo "Preparing benchmark start..."
+	# echo "Preparing benchmark start..."
     killall train
-    killall perf
+    # killall perf
+    echo 1 > /sys/kernel/mm/numa/demotion_enabled
 	echo 3 > /proc/sys/kernel/numa_balancing
     # 禁止Swap
     swapoff -a 
@@ -49,8 +50,9 @@ function func_main() {
 
     # 对于机器学习要让他可以输出到这里
     ${TIME} -f "execution time %e (s)" \
-    ${BENCH_RUN} 2>&1 | tee ${LOG_DIR}/output.log &
-    func_collaction
+    ${BENCH_RUN} 2>&1 | tee ${LOG_DIR}/output.log 
+    # &
+    # func_collaction
 
     cat /proc/vmstat | grep -e thp -e pgmig >> ${LOG_DIR}/after_vmstat.log
 	cat /proc/meminfo >>  ${LOG_DIR}/after_vmstat.log    
@@ -62,7 +64,7 @@ function func_main() {
 
 ################################ Main ##################################
 
-for i in {1..3};
+for i in {1..2};
 do
 	VER="stab${i}"
 	func_prepare

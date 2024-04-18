@@ -1,348 +1,106 @@
-[ 8050.755264] run_node.sh (12751): drop_caches: 3
-[ 8050.805885] BUG: kernel NULL pointer dereference, address: 0000000000000000
-[ 8050.805891] #PF: supervisor read access in kernel mode
-[ 8050.805893] #PF: error_code(0x0000) - not-present page
-[ 8050.805895] PGD 0 P4D 0 
-[ 8050.805897] Oops: 0000 [#1] SMP NOPTI
-[ 8050.805900] CPU: 69 PID: 12814 Comm: kill_ksampled Tainted: G           OE     5.15.19-RL1.1+ #1
-[ 8050.805903] Hardware name: Dell Inc. PowerEdge R750/0K8F35, BIOS 1.10.2 03/03/2023
-[ 8050.805904] RIP: 0010:ksamplingd_exit+0x34/0x70
-[ 8050.805910] Code: 63 10 02 48 89 e5 41 54 53 48 85 ff 74 10 e8 13 8c da ff 48 c7 05 c0 63 10 02 00 00 00 00 31 db 45 31 e4 48 8b 05 ac 63 10 02 <48> 8b 04 18 4a 8b 3c 20 48 85 ff 74 05 e8 6a da f1 ff 49 83 c4 08
-[ 8050.805912] RSP: 0018:ffffa19487a0ff10 EFLAGS: 00010246
-[ 8050.805914] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000000
-[ 8050.805915] RDX: ffffffffffffffff RSI: 00000000000001c2 RDI: 0000000000000000
-[ 8050.805917] RBP: ffffa19487a0ff20 R08: 0000000000000000 R09: 0000000000000000
-[ 8050.805918] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000000
-[ 8050.805919] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
-[ 8050.805920] FS:  00007f9747c10500(0000) GS:ffff96811c480000(0000) knlGS:0000000000000000
-[ 8050.805921] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[ 8050.805923] CR2: 0000000000000000 CR3: 00000010cd03a004 CR4: 0000000000770ee0
-[ 8050.805924] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-[ 8050.805925] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
-[ 8050.805926] PKRU: 55555554
-[ 8050.805927] Call Trace:
-[ 8050.805928]  <TASK>
-[ 8050.805932]  __x64_sys_htmm_end+0x9/0x10
-[ 8050.805936]  do_syscall_64+0x37/0xb0
-[ 8050.805939]  entry_SYSCALL_64_after_hwframe+0x44/0xae
-[ 8050.805943] RIP: 0033:0x7f9747736539
-[ 8050.805945] Code: 00 f3 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 1f f9 2c 00 f7 d8 64 89 01 48
-[ 8050.805947] RSP: 002b:00007ffdc0838768 EFLAGS: 00000246 ORIG_RAX: 00000000000001c2
-[ 8050.805949] RAX: ffffffffffffffda RBX: 0000000000000000 RCX: 00007f9747736539
-[ 8050.805950] RDX: 0000000000000000 RSI: 00007f9747a088c0 RDI: 00000000ffffffff
-[ 8050.805951] RBP: 000055a59f4009a0 R08: 0000000000000000 R09: 000055a59f4009a0
-[ 8050.805952] R10: 0000000000000000 R11: 0000000000000246 R12: 000055a59f400860
-[ 8050.805953] R13: 00007ffdc0838870 R14: 0000000000000000 R15: 0000000000000000
-[ 8050.805955]  </TASK>
-[ 8050.805956] Modules linked in: msr kmem device_dax socwatch2_15(OE) vtsspp(OE) sep5(OE) socperf3(OE) pax(OE) intel_rapl_msr intel_rapl_common dax_pmem nd_pmem i10nm_edac nd_btt dax_pmem_core xt_tcpudp xt_mark xt_conntrack xt_MASQUERADE nf_conntrack_netlink xfrm_user xfrm_algo xt_addrtype br_netfilter bridge stp llc nf_tables nfnetlink ip6table_nat ip6table_filter ip6_tables iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter overlay uio_pci_generic uio cuse nls_iso8859_1 x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm drm_kms_helper crct10dif_pclmul crc32_pclmul ghash_clmulni_intel aesni_intel cec ipmi_ssif drm crypto_simd cryptd binfmt_misc cdc_ether i2c_algo_bit rapl fb_sys_fops joydev usbnet input_leds acpi_ipmi syscopyarea mii mei_me sysfillrect ipmi_si intel_cstate isst_if_mbox_pci sysimgblt mei isst_if_mmio wmi_bmof efi_pstore isst_if_common ipmi_devintf intel_pch_thermal ipmi_msghandler nfit acpi_power_meter mac_hid
-[ 8050.806011]  sch_fq_codel knem(OE) parport_pc ppdev lp parport ip_tables x_tables autofs4 hid_generic usbhid ahci tg3 megaraid_sas hid libahci wmi
-[ 8050.806024] CR2: 0000000000000000
-[ 8050.806025] ---[ end trace abd66c16d38a8d12 ]---
-[ 8050.818159] RIP: 0010:ksamplingd_exit+0x34/0x70
-[ 8050.818162] Code: 63 10 02 48 89 e5 41 54 53 48 85 ff 74 10 e8 13 8c da ff 48 c7 05 c0 63 10 02 00 00 00 00 31 db 45 31 e4 48 8b 05 ac 63 10 02 <48> 8b 04 18 4a 8b 3c 20 48 85 ff 74 05 e8 6a da f1 ff 49 83 c4 08
-[ 8050.818164] RSP: 0018:ffffa19487a0ff10 EFLAGS: 00010246
-[ 8050.818166] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000000
-[ 8050.818167] RDX: ffffffffffffffff RSI: 00000000000001c2 RDI: 0000000000000000
-[ 8050.818168] RBP: ffffa19487a0ff20 R08: 0000000000000000 R09: 0000000000000000
-[ 8050.818169] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000000
-[ 8050.818170] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
-[ 8050.818171] FS:  00007f9747c10500(0000) GS:ffff96811c480000(0000) knlGS:0000000000000000
-[ 8050.818173] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[ 8050.818174] CR2: 0000000000000000 CR3: 00000010cd03a004 CR4: 0000000000770ee0
-[ 8050.818176] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-[ 8050.818177] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
-[ 8050.818178] PKRU: 55555554
-[ 8051.000560] perf: interrupt took too long (2895 > 2500), lowering kernel.perf_event_max_sample_rate to 69000
-[ 8051.039968] perf: interrupt took too long (4103 > 3618), lowering kernel.perf_event_max_sample_rate to 48750
-[ 8051.079623] perf: interrupt took too long (5302 > 5128), lowering kernel.perf_event_max_sample_rate to 37500
-[ 8051.138253] perf: interrupt took too long (7034 > 6627), lowering kernel.perf_event_max_sample_rate to 28250
-[ 8051.216080] perf: interrupt took too long (9319 > 8792), lowering kernel.perf_event_max_sample_rate to 21250
-[ 8051.313626] perf: interrupt took too long (12049 > 11648), lowering kernel.perf_event_max_sample_rate to 16500
-[ 8051.441908] perf: interrupt took too long (15235 > 15061), lowering kernel.perf_event_max_sample_rate to 13000
-[ 8051.598424] perf: interrupt took too long (19273 > 19043), lowering kernel.perf_event_max_sample_rate to 10250
-[ 8051.815159] perf: interrupt took too long (24353 > 24091), lowering kernel.perf_event_max_sample_rate to 8000
-[ 8052.064236] perf: interrupt took too long (30610 > 30441), lowering kernel.perf_event_max_sample_rate to 6500
-[ 8060.895202] perf_duration_warn: 3 callbacks suppressed
-[ 8060.895207] perf: interrupt took too long (75405 > 75393), lowering kernel.perf_event_max_sample_rate to 2500
-[ 8082.797276] promote success nr 512
-[ 8113.516107] promote success nr 512
-[ 8141.451210] perf: interrupt took too long (94267 > 94256), lowering kernel.perf_event_max_sample_rate to 2000
-[ 8144.235875] promote success nr 512
-[ 8174.955432] promote success nr 512
-[ 8205.675050] promote success nr 512
-[ 8236.396323] promote success nr 512
-[ 8267.116570] promote success nr 512
-[ 8297.836785] promote success nr 512
-[ 8328.556944] promote success nr 512
-[ 8359.277213] promote success nr 512
-[ 8420.718227] promote success nr 512
-[ 8451.437878] promote success nr 512
-[ 8482.157618] promote success nr 512
-[ 8512.877719] promote success nr 512
-[ 8543.597792] promote success nr 512
-[ 8574.317830] promote success nr 512
-[ 8605.037862] promote success nr 512
-[ 8635.762018] promote success nr 512
-[ 8666.478062] promote success nr 512
-[ 8677.605670] perf: interrupt took too long (118397 > 117833), lowering kernel.perf_event_max_sample_rate to 1500
-[ 8697.198045] promote success nr 512
-[ 8727.918654] promote success nr 512
-[ 8758.638538] promote success nr 512
-[ 8789.357935] promote success nr 512
-[ 8797.859914] nd_pmem pfn0.0: could not reserve region [mem 0x2080000000-0x9e7fffffff]
-[ 8797.859921] nd_pmem: probe of pfn0.0 failed with error -16
-[ 8798.831799] nd_pmem pfn1.0: could not reserve region [mem 0x9e80000000-0x11c7fffffff]
-[ 8798.831804] nd_pmem: probe of pfn1.0 failed with error -16
-[ 8820.077822] promote success nr 512
-[ 8850.797738] promote success nr 512
-[ 8881.517769] promote success nr 512
-[ 8912.237689] promote success nr 512
-[ 8942.957595] promote success nr 512
-[ 8973.677609] promote success nr 512
-[ 9004.397427] promote success nr 512
-[ 9065.838005] promote success nr 512
-[ 9096.557744] promote success nr 512
-[ 9127.277052] promote success nr 512
-[ 9157.996956] promote success nr 512
-[ 9188.716719] promote success nr 512
-[ 9219.436670] promote success nr 512
-[ 9250.156568] promote success nr 512
-[ 9280.876478] promote success nr 512
-[ 9311.596287] promote success nr 512
-[ 9342.316205] promote success nr 512
-[ 9373.036675] promote success nr 512
-[ 9403.756407] promote success nr 512
-[ 9434.476069] promote success nr 512
-[ 9465.195696] promote success nr 512
-[ 9495.915386] promote success nr 512
-[ 9526.635226] promote success nr 512
-[ 9557.355074] promote success nr 512
-[ 9588.074968] promote success nr 512
-[ 9618.794836] promote success nr 512
-[ 9649.514698] promote success nr 512
-[ 9710.955374] promote success nr 512
-[ 9741.674638] promote success nr 512
-[ 9772.393974] promote success nr 512
-[ 9803.113830] promote success nr 512
-[ 9833.833672] promote success nr 512
-[ 9864.553545] promote success nr 512
-[ 9895.273381] promote success nr 512
-[ 9925.993238] promote success nr 512
-[ 9956.713039] promote success nr 512
-[ 9987.432808] promote success nr 512
-[10018.153870] promote success nr 512
-[10048.872850] promote success nr 512
-[10079.592895] promote success nr 512
-[10110.312115] promote success nr 512
-[10141.032406] promote success nr 512
-[10171.751742] promote success nr 512
-[10202.471492] promote success nr 512
-[10233.191498] promote success nr 512
-[10240.429761] usb 1-13: USB disconnect, device number 3
-[10263.911237] promote success nr 512
-[10294.631168] promote success nr 512
-[10356.071803] promote success nr 512
-[10386.795744] promote success nr 512
-[10417.511079] promote success nr 512
-[10448.231031] promote success nr 512
-[10478.950962] promote success nr 512
-[10509.670920] promote success nr 512
-[10540.394894] promote success nr 512
-[10571.110769] promote success nr 512
-[10601.830623] promote success nr 512
-[10632.550580] promote success nr 512
-[10663.271428] promote success nr 512
-[10693.995334] promote success nr 512
-[10724.710671] promote success nr 512
-[10755.434316] promote success nr 512
-[10786.150083] promote success nr 512
-[10816.870025] promote success nr 512
-[10847.589909] promote success nr 512
-[10878.309738] promote success nr 512
-[10909.029690] promote success nr 512
-[10939.749468] promote success nr 512
-[11001.190678] promote success nr 512
-[11031.909893] promote success nr 512
-[11062.629120] promote success nr 512
-[11093.348923] promote success nr 512
-[11124.069234] promote success nr 512
-[11154.788639] promote success nr 512
-[11185.508558] promote success nr 512
-[11216.228369] promote success nr 512
-[11246.948264] promote success nr 512
-[11277.668105] promote success nr 512
-[11339.108391] promote success nr 512
-[11369.828204] promote success nr 512
-[11400.547508] promote success nr 512
-[11431.267341] promote success nr 512
-[11461.987240] promote success nr 512
-[11492.707110] promote success nr 512
-[11523.426883] promote success nr 512
-[11554.146738] promote success nr 512
-[11584.866615] promote success nr 512
-[11615.586439] promote success nr 512
-[11646.306952] promote success nr 512
-[11677.026625] promote success nr 512
-[11707.745900] promote success nr 512
-[11738.465791] promote success nr 512
-[11769.185620] promote success nr 512
-[11799.905449] promote success nr 512
-[11830.625313] promote success nr 512
-[11861.345159] promote success nr 512
-[11892.064921] promote success nr 512
-[11922.784810] promote success nr 512
-[11984.225797] promote success nr 512
-[12014.944715] promote success nr 512
-[12045.664208] promote success nr 512
-[12076.384047] promote success nr 512
-[12107.103860] promote success nr 512
-[12137.823690] promote success nr 512
-[12168.543524] promote success nr 512
-[12199.263371] promote success nr 512
-[12229.983220] promote success nr 512
-[12260.703061] promote success nr 512
-[12291.423864] promote success nr 512
-[12322.143988] promote success nr 512
-[12352.862829] promote success nr 512
-[12383.582944] promote success nr 512
-[12414.302945] promote success nr 512
-[12445.022878] promote success nr 512
-[12475.742935] promote success nr 512
-[12506.463115] promote success nr 512
-[12537.182972] promote success nr 512
-[12567.903151] promote success nr 512
-[12629.343706] promote success nr 512
-[12646.678014] nd_pmem pfn0.0: could not reserve region [mem 0x2080000000-0x9e7fffffff]
-[12646.678023] nd_pmem: probe of pfn0.0 failed with error -16
-[12647.695157] nd_pmem pfn1.0: could not reserve region [mem 0x9e80000000-0x11c7fffffff]
-[12647.695165] nd_pmem: probe of pfn1.0 failed with error -16
-[12660.063202] promote success nr 512
-[12690.782927] promote success nr 512
-[12721.502912] promote success nr 512
-[12752.222936] promote success nr 512
-[12782.942887] promote success nr 512
-[12813.662842] promote success nr 512
-[12844.382707] promote success nr 512
-[12875.102682] promote success nr 512
-[12905.822727] promote success nr 512
-[12936.543488] promote success nr 512
-[12963.849790] BUG: kernel NULL pointer dereference, address: 000000000000000c
-[12963.849796] #PF: supervisor read access in kernel mode
-[12963.849797] #PF: error_code(0x0000) - not-present page
-[12963.849799] PGD 0 P4D 0 
-[12963.849801] Oops: 0000 [#2] SMP NOPTI
-[12963.849803] CPU: 43 PID: 26184 Comm: cpptools Tainted: G      D    OE     5.15.19-RL1.1+ #1
-[12963.849806] Hardware name: Dell Inc. PowerEdge R750/0K8F35, BIOS 1.10.2 03/03/2023
-[12963.849808] RIP: 0010:remove_migration_pte+0x392/0x680
-[12963.849814] Code: 80 48 2b 15 c8 07 1b 01 48 01 ca 48 8b 35 ae 07 1b 01 25 f8 0f 00 00 48 c1 ea 0c 48 c1 e2 06 48 03 44 16 18 0f 84 48 fd ff ff <66> 83 78 04 00 0f 85 3d fd ff ff 4c 89 ff ba 00 10 00 00 48 29 f7
-[12963.849817] RSP: 0018:ffffa1948f48b978 EFLAGS: 00010202
-[12963.849819] RAX: 0000000000000008 RBX: ffffe9e6ccc48040 RCX: ffff96726ba4f008
-[12963.849821] RDX: 0000000043ae93c0 RSI: ffffe9e680000000 RDI: dffffffd99dbfc00
-[12963.849822] RBP: ffffa1948f48b9e0 R08: 0000000080000000 R09: fff0000000000fff
-[12963.849823] R10: 0000000000000000 R11: 0000000000000067 R12: ffffe9e6ccc48040
-[12963.849824] R13: ffff9671ec8e4fa0 R14: ffffa1948f48ba58 R15: ffffe9e6ccc48040
-[12963.849825] FS:  00007fe0dc8beb30(0000) GS:ffff96811c140000(0000) knlGS:0000000000000000
-[12963.849827] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[12963.849829] CR2: 000000000000000c CR3: 000000206a3b6003 CR4: 0000000000770ee0
-[12963.849830] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-[12963.849831] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
-[12963.849833] PKRU: 55555554
-[12963.849834] Call Trace:
-[12963.849835]  <TASK>
-[12963.849839]  rmap_walk_anon+0xea/0x270
-[12963.849843]  rmap_walk_locked+0x28/0x40
-[12963.849845]  remove_migration_ptes+0x5e/0x80
-[12963.849848]  ? try_to_unmap+0x41/0x70
-[12963.849851]  ? trace_event_raw_event_mm_migrate_pages_start+0xb0/0xb0
-[12963.849854]  split_huge_page_to_list+0x951/0xa60
-[12963.849856]  ? prep_new_page+0x54/0xa0
-[12963.849860]  madvise_free_huge_pmd+0x1a0/0x2f0
-[12963.849862]  madvise_free_pte_range+0x567/0x7e0
-[12963.849865]  ? kernel_init_free_pages.part.84+0x4a/0x60
-[12963.849868]  __walk_page_range+0x36e/0xa70
-[12963.849871]  walk_page_range+0x9a/0x120
-[12963.849873]  madvise_free_single_vma+0x12d/0x1a0
-[12963.849875]  ? find_vma+0x68/0x70
-[12963.849879]  do_madvise+0x762/0xeb0
-[12963.849882]  ? do_user_addr_fault+0x1e3/0x650
-[12963.849886]  ? ksys_mmap_pgoff+0x58/0x240
-[12963.849887]  __x64_sys_madvise+0x2a/0x30
-[12963.849890]  ? exc_page_fault+0x90/0x160
-[12963.849893]  ? __x64_sys_madvise+0x2a/0x30
-[12963.849896]  do_syscall_64+0x37/0xb0
-[12963.849897]  entry_SYSCALL_64_after_hwframe+0x44/0xae
-[12963.849901] RIP: 0033:0x7fe0e2191fa1
-[12963.849903] Code: 7c 24 24 31 f6 e8 82 8d 00 00 48 81 c4 b8 00 00 00 44 89 f8 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 63 d2 50 b8 1c 00 00 00 0f 05 <48> 89 c7 e8 b7 bd ff ff 5a c3 c3 41 56 41 55 41 54 55 53 48 83 ec
-[12963.849905] RSP: 002b:00007fe0dc8bc890 EFLAGS: 00000202 ORIG_RAX: 000000000000001c
-[12963.849907] RAX: ffffffffffffffda RBX: 00007fe0dc8beb64 RCX: 00007fe0e2191fa1
-[12963.849908] RDX: 0000000000000008 RSI: 0000000000001000 RDI: 00007fe0cbdc0000
-[12963.849909] RBP: 0000555556654608 R08: 00007fe0cbdbf710 R09: 0000000000000001
-[12963.849910] R10: 00007fe0dec1722c R11: 0000000000000202 R12: 0000000000000016
-[12963.849912] R13: 0000000000080000 R14: 0000000000001000 R15: 00007fe0cbdbf590
-[12963.849914]  </TASK>
-[12963.849915] Modules linked in: msr kmem device_dax socwatch2_15(OE) vtsspp(OE) sep5(OE) socperf3(OE) pax(OE) intel_rapl_msr intel_rapl_common dax_pmem nd_pmem i10nm_edac nd_btt dax_pmem_core xt_tcpudp xt_mark xt_conntrack xt_MASQUERADE nf_conntrack_netlink xfrm_user xfrm_algo xt_addrtype br_netfilter bridge stp llc nf_tables nfnetlink ip6table_nat ip6table_filter ip6_tables iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 libcrc32c iptable_filter bpfilter overlay uio_pci_generic uio cuse nls_iso8859_1 x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm drm_kms_helper crct10dif_pclmul crc32_pclmul ghash_clmulni_intel aesni_intel cec ipmi_ssif drm crypto_simd cryptd binfmt_misc cdc_ether i2c_algo_bit rapl fb_sys_fops joydev usbnet input_leds acpi_ipmi syscopyarea mii mei_me sysfillrect ipmi_si intel_cstate isst_if_mbox_pci sysimgblt mei isst_if_mmio wmi_bmof efi_pstore isst_if_common ipmi_devintf intel_pch_thermal ipmi_msghandler nfit acpi_power_meter mac_hid
-[12963.849970]  sch_fq_codel knem(OE) parport_pc ppdev lp parport ip_tables x_tables autofs4 hid_generic usbhid ahci tg3 megaraid_sas hid libahci wmi
-[12963.849983] CR2: 000000000000000c
-[12963.849985] ---[ end trace abd66c16d38a8d13 ]---
-[12963.951791] RIP: 0010:ksamplingd_exit+0x34/0x70
-[12963.951796] Code: 63 10 02 48 89 e5 41 54 53 48 85 ff 74 10 e8 13 8c da ff 48 c7 05 c0 63 10 02 00 00 00 00 31 db 45 31 e4 48 8b 05 ac 63 10 02 <48> 8b 04 18 4a 8b 3c 20 48 85 ff 74 05 e8 6a da f1 ff 49 83 c4 08
-[12963.951797] RSP: 0018:ffffa19487a0ff10 EFLAGS: 00010246
-[12963.951799] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000000
-[12963.951800] RDX: ffffffffffffffff RSI: 00000000000001c2 RDI: 0000000000000000
-[12963.951802] RBP: ffffa19487a0ff20 R08: 0000000000000000 R09: 0000000000000000
-[12963.951803] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000000
-[12963.951804] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
-[12963.951805] FS:  00007fe0dc8beb30(0000) GS:ffff96811c140000(0000) knlGS:0000000000000000
-[12963.951807] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[12963.951808] CR2: 000000000000000c CR3: 000000206a3b6003 CR4: 0000000000770ee0
-[12963.951810] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-[12963.951811] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
-[12963.951812] PKRU: 55555554
-[12967.263129] promote success nr 512
-[12997.982401] promote success nr 512
-[13028.702374] promote success nr 512
-[13059.422218] promote success nr 512
-[13090.142122] promote success nr 512
-[13120.862125] promote success nr 512
-[13151.581988] promote success nr 512
-[13182.301966] promote success nr 512
-[13213.021921] promote success nr 512
-[13274.462258] promote success nr 512
-[13305.182243] promote success nr 512
-[13335.901568] promote success nr 512
-[13366.621454] promote success nr 512
-[13397.341392] promote success nr 512
-[13428.061292] promote success nr 512
-[13458.781175] promote success nr 512
-[13489.500970] promote success nr 512
-[13520.220847] promote success nr 512
-[13550.940799] promote success nr 512
-[13581.661332] promote success nr 512
-[13612.380986] promote success nr 512
-[13643.100655] promote success nr 512
-[13673.820353] promote success nr 512
-[13704.540272] promote success nr 512
-[13735.260080] promote success nr 512
-[13765.979981] promote success nr 512
-[13796.699892] promote success nr 512
-[13827.419751] promote success nr 512
-[13858.139557] promote success nr 512
-[13919.580224] promote success nr 512
-[13950.299504] promote success nr 512
-[13981.019098] promote success nr 512
-[14011.738961] promote success nr 512
-[14042.458793] promote success nr 512
-[14073.178774] promote success nr 512
-[14103.898613] promote success nr 512
-[14134.618406] promote success nr 512
-[14165.338499] promote success nr 512
-[14196.058219] promote success nr 512
-[14226.778921] promote success nr 512
-[14257.502675] promote success nr 512
-[14288.218474] promote success nr 512
-[14318.937754] promote success nr 512
-[14349.657766] promote success nr 512
-[14380.377887] promote success nr 512
-[14411.098285] promote success nr 512
-[14441.818716] promote success nr 512
-[14472.539359] promote success nr 512
+[  205.729746] run_node.sh (5628): drop_caches: 3
+[  205.842585] ----------------kmigraterd run normally----------------
+[  205.842617] ----------------kmigraterd run normally----------------
+[  205.842622] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  205.842627] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  205.862715] in system call ksamplingd init
+[  205.901488] peb init ok then run ksamplingd
+[  205.901555] ------------ksamplingd run normally------------
+[  205.901579] one sample finished
+[  207.868043] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  207.868054] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  218.009229] have been write nr_action 8192
+[  221.084352] one sample finished
+[  236.189163] one sample finished
+[  237.469254] BEFORE the lru mesg active_anon 4 inactive_anon 1310382 active_file 175 inactive_file 116
+[  237.508685] AFTER the lru mesg active_anon 4 inactive_anon 1309870 active_file 0 inactive_file 0
+[  237.508688] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 3614720 active_file 175 inactive_file 116
+[  237.508690] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 3614720 active_file 175 inactive_file 116
+[  239.517396] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  239.517399] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  242.092425] have been write nr_action 65536
+[  251.294307] one sample finished
+[  262.126771] have been write nr_action 4096
+[  266.399659] one sample finished
+[  268.191826] BEFORE the lru mesg active_anon 4 inactive_anon 1310382 active_file 0 inactive_file 0
+[  268.215874] AFTER the lru mesg active_anon 4 inactive_anon 1310382 active_file 0 inactive_file 0
+[  268.215876] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 9950720 active_file 175 inactive_file 116
+[  268.215878] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 9950720 active_file 175 inactive_file 116
+[  270.240018] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  270.240021] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  281.505055] one sample finished
+[  282.159702] have been write nr_action 0
+[  296.602995] one sample finished
+[  302.178874] have been write nr_action 16384
+[  311.705375] one sample finished
+[  322.207609] have been write nr_action 65536
+[  326.801592] one sample finished
+[  329.616960] BEFORE the lru mesg active_anon 4 inactive_anon 1310727 active_file 0 inactive_file 0
+[  330.267302] AFTER the lru mesg active_anon 4 inactive_anon 1244846 active_file 0 inactive_file 0
+[  330.267309] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 15386041 active_file 175 inactive_file 116
+[  330.267311] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 15386041 active_file 175 inactive_file 116
+[  331.668461] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  331.668469] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  341.902718] one sample finished
+[  342.238314] have been write nr_action 16384
+[  357.004961] one sample finished
+[  360.332389] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 15386041 active_file 175 inactive_file 116
+[  360.332398] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 15386041 active_file 175 inactive_file 116
+[  362.257827] have been write nr_action 4096
+[  362.379947] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  362.379954] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  372.107168] one sample finished
+[  382.290748] have been write nr_action 16384
+[  387.209957] one sample finished
+[  391.049686] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 15386041 active_file 175 inactive_file 116
+[  391.049695] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 15386041 active_file 175 inactive_file 116
+[  393.097694] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  393.097701] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  402.317122] one sample finished
+[  402.326032] have been write nr_action 65536
+[  417.416757] one sample finished
+[  421.768594] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 15386041 active_file 175 inactive_file 116
+[  421.768600] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 15386041 active_file 175 inactive_file 116
+[  422.361789] have been write nr_action 32768
+[  423.820564] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  423.820572] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  432.520525] one sample finished
+[  442.398020] have been write nr_action 32768
+[  447.624495] one sample finished
+[  452.488487] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 15386041 active_file 175 inactive_file 116
+[  452.488493] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 15386041 active_file 175 inactive_file 116
+[  454.536501] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  454.536506] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  462.434289] have been write nr_action 65536
+[  462.728593] one sample finished
+[  477.832831] one sample finished
+[  482.470673] have been write nr_action 32768
+[  483.208934] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 15386041 active_file 175 inactive_file 116
+[  483.208940] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 15386041 active_file 175 inactive_file 116
+[  485.256979] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  485.256986] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  492.937188] one sample finished
+[  502.507507] have been write nr_action 32768
+[  508.041562] one sample finished
+[  513.929731] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 15386041 active_file 175 inactive_file 116
+[  513.929737] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 15386041 active_file 175 inactive_file 116
+[  515.977787] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  515.977790] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  522.544190] have been write nr_action 16384
+[  523.146015] one sample finished
+[  538.250559] one sample finished
+[  542.580945] have been write nr_action 32768
+[  544.650859] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 15386041 active_file 175 inactive_file 116
+[  544.650866] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 15386041 active_file 175 inactive_file 116
+[  546.698967] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  546.698972] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  553.355311] one sample finished
+[  562.618153] have been write nr_action 32768
+[  568.460110] one sample finished
+[  575.372430] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 15386041 active_file 175 inactive_file 116
+[  575.372435] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 15386041 active_file 175 inactive_file 116
+[  577.420533] PM NODE BEFORE the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  577.420537] PM NODE AFTER the lru mesg active_anon 0 inactive_anon 0 active_file 0 inactive_file 0
+[  582.653513] have been write nr_action 0
+[  583.564841] one sample finished
+[  586.372802] ------------ksamplingd exit normally------------

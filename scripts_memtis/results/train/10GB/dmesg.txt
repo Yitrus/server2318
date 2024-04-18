@@ -1,0 +1,102 @@
+[  632.008776] run_node.sh (6906): drop_caches: 3
+[  632.068558] pebs disable
+[  632.068563] BUG: kernel NULL pointer dereference, address: 0000000000000000
+[  632.068567] #PF: supervisor read access in kernel mode
+[  632.068569] #PF: error_code(0x0000) - not-present page
+[  632.068570] PGD 0 P4D 0 
+[  632.068573] Oops: 0000 [#1] SMP NOPTI
+[  632.068576] CPU: 83 PID: 6979 Comm: kill_ksampled Tainted: G           OE     5.15.19-htmm #1
+[  632.068578] Hardware name: Dell Inc. PowerEdge R750/0K8F35, BIOS 1.10.2 03/03/2023
+[  632.068580] RIP: 0010:ksamplingd_exit+0x40/0x70
+[  632.068587] Code: 74 10 e8 83 e4 d9 ff 48 c7 05 b0 d9 ae 01 00 00 00 00 48 c7 c7 43 79 3a b4 45 31 e4 e8 b4 2f 89 00 31 db 48 8b 05 90 d9 ae 01 <4a> 8b 04 20 48 8b 3c 18 48 85 ff 74 05 e8 0e b9 f1 ff 48 83 c3 08
+[  632.068589] RSP: 0018:ffffb287a1017f10 EFLAGS: 00010246
+[  632.068591] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000000
+[  632.068593] RDX: 0000000000000000 RSI: ffff9a8963860980 RDI: ffff9a8963860980
+[  632.068594] RBP: ffffb287a1017f20 R08: 0000000000000000 R09: 0000000000000001
+[  632.068595] R10: 0000000000000000 R11: ffffb287a1017ce8 R12: 0000000000000000
+[  632.068596] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[  632.068597] FS:  00007f47d5408500(0000) GS:ffff9a8963840000(0000) knlGS:0000000000000000
+[  632.068599] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  632.068600] CR2: 0000000000000000 CR3: 00000010d476a005 CR4: 0000000000770ee0
+[  632.068602] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[  632.068603] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[  632.068604] PKRU: 55555554
+[  632.068605] Call Trace:
+[  632.068607]  <TASK>
+[  632.068610]  __x64_sys_htmm_end+0x9/0x10
+[  632.068615]  do_syscall_64+0x37/0xb0
+[  632.068621]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[  632.068624] RIP: 0033:0x7f47d4f2e539
+[  632.068627] Code: 00 f3 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 1f f9 2c 00 f7 d8 64 89 01 48
+[  632.068629] RSP: 002b:00007fff7f274de8 EFLAGS: 00000246 ORIG_RAX: 00000000000001c2
+[  632.068631] RAX: ffffffffffffffda RBX: 0000000000000000 RCX: 00007f47d4f2e539
+[  632.068632] RDX: 0000000000000000 RSI: 00007f47d52008c0 RDI: 00000000ffffffff
+[  632.068633] RBP: 000055b4d08009a0 R08: 0000000000000000 R09: 000055b4d08009a0
+[  632.068634] R10: 0000000000000000 R11: 0000000000000246 R12: 000055b4d0800860
+[  632.068635] R13: 00007fff7f274ef0 R14: 0000000000000000 R15: 0000000000000000
+[  632.068638]  </TASK>
+[  632.068638] Modules linked in: kmem intel_rapl_msr intel_rapl_common device_dax dax_pmem nd_pmem dax_pmem_core i10nm_edac xt_tcpudp xt_mark xt_conntrack xt_MASQUERADE nf_conntrack_netlink xfrm_user xfrm_algo xt_addrtype br_netfilter bridge stp llc socwatch2_15(OE) vtsspp(OE) sep5(OE) socperf3(OE) nf_tables nfnetlink ip6table_nat ip6table_filter ip6_tables iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 iptable_filter bpfilter pax(OE) uio_pci_generic uio overlay cuse rdma_ucm(OE) rdma_cm(OE) iw_cm(OE) ib_ipoib(OE) ib_cm(OE) ib_umad(OE) mlx5_ib(OE) mlx5_core(OE) mlxdevm(OE) ib_uverbs(OE) ib_core(OE) mlxfw(OE) psample tls mlx_compat(OE) pci_hyperv_intf nls_iso8859_1 x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel ipmi_ssif kvm drm_kms_helper cec drm crct10dif_pclmul crc32_pclmul ghash_clmulni_intel aesni_intel crypto_simd cdc_ether i2c_algo_bit cryptd binfmt_misc usbnet fb_sys_fops syscopyarea rapl mii acpi_ipmi sysfillrect mei_me sysimgblt intel_cstate ipmi_si mei
+[  632.068692]  efi_pstore wmi_bmof ipmi_devintf intel_pch_thermal ipmi_msghandler nfit acpi_power_meter mac_hid sch_fq_codel knem(OE) parport_pc ppdev lp parport ip_tables x_tables autofs4 megaraid_sas tg3 ahci libahci wmi
+[  632.068708] CR2: 0000000000000000
+[  632.068710] ---[ end trace de9b6f80a62e3c86 ]---
+[  632.081223] RIP: 0010:ksamplingd_exit+0x40/0x70
+[  632.081228] Code: 74 10 e8 83 e4 d9 ff 48 c7 05 b0 d9 ae 01 00 00 00 00 48 c7 c7 43 79 3a b4 45 31 e4 e8 b4 2f 89 00 31 db 48 8b 05 90 d9 ae 01 <4a> 8b 04 20 48 8b 3c 18 48 85 ff 74 05 e8 0e b9 f1 ff 48 83 c3 08
+[  632.081230] RSP: 0018:ffffb287a1017f10 EFLAGS: 00010246
+[  632.081232] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000000
+[  632.081233] RDX: 0000000000000000 RSI: ffff9a8963860980 RDI: ffff9a8963860980
+[  632.081235] RBP: ffffb287a1017f20 R08: 0000000000000000 R09: 0000000000000001
+[  632.081236] R10: 0000000000000000 R11: ffffb287a1017ce8 R12: 0000000000000000
+[  632.081237] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[  632.081238] FS:  00007f47d5408500(0000) GS:ffff9a8963840000(0000) knlGS:0000000000000000
+[  632.081240] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  632.081242] CR2: 0000000000000000 CR3: 00000010d476a005 CR4: 0000000000770ee0
+[  632.081243] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[  632.081244] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[  632.081246] PKRU: 55555554
+[  632.166242] pebs_init
+[  632.772512] perf: interrupt took too long (2925 > 2500), lowering kernel.perf_event_max_sample_rate to 68250
+[  633.034573] perf: interrupt took too long (4079 > 3656), lowering kernel.perf_event_max_sample_rate to 49000
+[  633.446748] perf: interrupt took too long (5196 > 5098), lowering kernel.perf_event_max_sample_rate to 38250
+[  633.942164] perf: interrupt took too long (6873 > 6495), lowering kernel.perf_event_max_sample_rate to 29000
+[  634.257304] perf: interrupt took too long (9000 > 8591), lowering kernel.perf_event_max_sample_rate to 22000
+[  634.772747] perf: interrupt took too long (11543 > 11250), lowering kernel.perf_event_max_sample_rate to 17250
+[  635.374658] perf: interrupt took too long (14471 > 14428), lowering kernel.perf_event_max_sample_rate to 13750
+[  636.186951] perf: interrupt took too long (18169 > 18088), lowering kernel.perf_event_max_sample_rate to 11000
+[  637.181844] perf: interrupt took too long (22849 > 22711), lowering kernel.perf_event_max_sample_rate to 8750
+[  638.478869] perf: interrupt took too long (28699 > 28561), lowering kernel.perf_event_max_sample_rate to 6750
+[  640.629633] perf: interrupt took too long (35915 > 35873), lowering kernel.perf_event_max_sample_rate to 5500
+[  643.958093] perf: interrupt took too long (44979 > 44893), lowering kernel.perf_event_max_sample_rate to 4250
+[  652.306197] perf: interrupt took too long (56298 > 56223), lowering kernel.perf_event_max_sample_rate to 3500
+[  659.400839] total_accesses: 101419 max_dram_hits: 101413 cur_hits: 101419 
+[  669.346629] perf: interrupt took too long (70393 > 70372), lowering kernel.perf_event_max_sample_rate to 2750
+[  685.988849] total_accesses: 150557 max_dram_hits: 150554 cur_hits: 150557 
+[  775.684888] total_accesses: 700524 max_dram_hits: 587276 cur_hits: 700524 
+[  874.180936] total_accesses: 1035762 max_dram_hits: 960661 cur_hits: 1032475 
+[  945.213002] total_accesses: 1005868 max_dram_hits: 954861 cur_hits: 1003504 
+[  972.932988] total_accesses: 688271 max_dram_hits: 657771 cur_hits: 686308 
+[  995.485009] total_accesses: 811935 max_dram_hits: 590649 cur_hits: 551420 
+[ 1002.469003] total_accesses: 429908 max_dram_hits: 315517 cur_hits: 295826 
+[ 1032.029019] total_accesses: 551009 max_dram_hits: 457971 cur_hits: 444775 
+[ 1052.745294] total_accesses: 1262371 max_dram_hits: 863986 cur_hits: 1126206 
+[ 1059.901640] total_accesses: 2631185 max_dram_hits: 2419378 cur_hits: 2536370 
+[ 1079.894259] total_accesses: 3315592 max_dram_hits: 2742029 cur_hits: 3203455 
+[ 1102.874987] total_accesses: 3657796 max_dram_hits: 3192330 cur_hits: 3525855 
+[ 1104.806968] total_accesses: 1978153 max_dram_hits: 1720005 cur_hits: 1910783 
+[ 1130.019961] total_accesses: 2839821 max_dram_hits: 2436082 cur_hits: 2719178 
+[ 1155.244587] total_accesses: 3419910 max_dram_hits: 3041551 cur_hits: 3282546 
+[ 1182.973183] total_accesses: 3709955 max_dram_hits: 3364295 cur_hits: 3564960 
+[ 1208.249991] total_accesses: 3854977 max_dram_hits: 3552889 cur_hits: 3731188 
+[ 1233.090204] total_accesses: 3927488 max_dram_hits: 3720353 cur_hits: 3838570 
+[ 1258.794847] total_accesses: 3963744 max_dram_hits: 3760122 cur_hits: 3899893 
+[ 1286.219286] total_accesses: 3981872 max_dram_hits: 3807739 cur_hits: 3919614 
+[ 1312.983969] total_accesses: 3990936 max_dram_hits: 3811353 cur_hits: 3939003 
+[ 1336.516127] total_accesses: 3995468 max_dram_hits: 3848167 cur_hits: 3954564 
+[ 1366.480547] total_accesses: 3997734 max_dram_hits: 3895403 cur_hits: 3951879 
+[ 1397.180972] total_accesses: 3998867 max_dram_hits: 3944063 cur_hits: 3935039 
+[ 1430.537263] total_accesses: 3999433 max_dram_hits: 3971583 cur_hits: 3938544 
+[ 1464.165644] total_accesses: 3999716 max_dram_hits: 3964934 cur_hits: 3938786 
+[ 1497.233961] total_accesses: 3999858 max_dram_hits: 3971236 cur_hits: 3942751 
+[ 1535.198337] total_accesses: 3999929 max_dram_hits: 3964491 cur_hits: 3905399 
+[ 1566.619164] nr_sampled: 41374911, nr_throttled: 16360, nr_lost: 0
+[ 1566.619170] total runtime: 17193012133 ns, total cputime: 934416000 us, cpu usage: 18
+[ 1566.619178] pebs disable
