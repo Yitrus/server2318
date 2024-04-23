@@ -14,7 +14,7 @@ DIR=/home/xmu/Documents/yi/scripts_memtis
 
 TOP_NAME=""
 CONFIG_PERF=off
-CONFIG_NS=off
+CONFIG_NS=off  # on # off
 CONFIG_NW=off
 CONFIG_CXL_MODE=off
 STATIC_DRAM=""
@@ -55,10 +55,10 @@ function func_memtis_setting() {
 	echo "disabled" | tee /sys/kernel/mm/htmm/htmm_cxl_mode
     fi
 
-	# echo "never" | tee /sys/kernel/mm/transparent_hugepage/enabled
-    echo "always" | tee /sys/kernel/mm/transparent_hugepage/enabled
+	echo "never" | tee /sys/kernel/mm/transparent_hugepage/enabled
+    # echo "always" | tee /sys/kernel/mm/transparent_hugepage/enabled
 	# 它控制内核是否应该积极使用内存压缩来提供更多的大页面可用
-    echo "always" | tee /sys/kernel/mm/transparent_hugepage/defrag
+    # echo "always" | tee /sys/kernel/mm/transparent_hugepage/defrag
 }
 
 function func_prepare() {
