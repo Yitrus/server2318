@@ -3,7 +3,7 @@
 # 这个workload大小2:1, 1:1, 1:2, 45G,34G,23G
 # 实际情况，由于空间预留，每次需要多给11个G
 
-DIR=/home/xmu/Documents/yi/scripts_tpp
+DIR=/home/xmu/Documents/yi/scripts_multiclock
 BIN=/home/xmu/Documents/yi/workload/liblinear-multicore-2.47
 BENCH_RUN="numactl --membind=0,2 ${BIN}/train -s 6 -m 20 ${BIN}/datasets/kdd12"
 DATE=""
@@ -14,10 +14,7 @@ BENCH_NAME="liblinear"
 
 function func_prepare() {
     killall train
-
-    # 内核要开启的
-    echo 1 > /sys/kernel/mm/numa/demotion_enabled
-	echo 3 > /proc/sys/kernel/numa_balancing
+    # 内核要开启的,无
     
     echo 3 > /proc/sys/vm/drop_caches
 
@@ -27,22 +24,6 @@ function func_prepare() {
     mkdir -p ${DIR}/results/${BENCH_NAME}/${VER}
     LOG_DIR=${DIR}/results/${BENCH_NAME}/${VER}
 }
-
-# 不用
-# function func_collaction(){
-#     PID=$(pgrep -o train)
-#     echo "---------Collaction ${PID}------------"
-
-#     perf record -F 1 -o ${LOG_DIR}/perf.data -a -g & 
-#     perf_pid=$(pgrep -o -f "perf record")
-#     while kill -0 "${PID}" >/dev/null 2>&1
-#     do
-#         cat /proc/vmstat | grep pgmigrate_su >> ${LOG_DIR}/pgmig.txt
-#         numastat -m | grep -e Mem -e Dir -e PageTab -e Write -e FileP -e AnonP >> ${LOG_DIR}/numa_use.txt  
-#         sleep 5 
-#     done
-#     kill -SIGINT "$perf_pid"
-# }
 
 function func_main() {
     TIME="/usr/bin/time"
@@ -70,7 +51,7 @@ function func_main() {
 # 测量2次看看稳定否
 for i in {1..2};
 do
-	VER="23G-${i}"
+	VER="45G-${i}"
 	func_prepare
 	func_main
 done

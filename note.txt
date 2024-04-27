@@ -30,6 +30,7 @@ sudo ndctl create-namespace --mode=devdax --map=mem
 sudo daxctl list
 sudo daxctl reconfigure-device dax1.0 --mode=system-ram
 sudo daxctl reconfigure-device dax0.0 --mode=system-ram
+daxctl reconfigure-device dax2.0 --mode=system-ram
 
 echo off > /sys/devices/system/cpu/smt/control
 
@@ -46,6 +47,15 @@ cat /proc/sys/kernel/numa_balancing
 
 sudo echo 1 > /sys/kernel/mm/numa/demotion_enabled 
 sudo echo 3 > /proc/sys/kernel/numa_balancing 
+
+mpif.h in:
+/usr/include/mpich/
+mpich 库:
+/usr/bin
+
+ndctl create-namespace --mode=devdax --map=mem --size=30G --region=1
+ndctl create-namespace --mode=devdax --map=mem --size=30G --region=0
+daxctl reconfigure-device dax1.0 --mode=system-ram
 
 available: 3 nodes (0-2)
 node 0 cpus: 0 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46

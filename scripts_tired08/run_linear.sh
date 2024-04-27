@@ -3,7 +3,7 @@
 # 这个workload大小2:1, 1:1, 1:2, 45G,34G,23G
 # 实际情况，由于空间预留，每次需要多给11个G
 
-DIR=/home/xmu/Documents/yi/scripts_tpp
+DIR=/home/xmu/Documents/yi/scripts_tired08
 BIN=/home/xmu/Documents/yi/workload/liblinear-multicore-2.47
 BENCH_RUN="numactl --membind=0,2 ${BIN}/train -s 6 -m 20 ${BIN}/datasets/kdd12"
 DATE=""
@@ -14,10 +14,16 @@ BENCH_NAME="liblinear"
 
 function func_prepare() {
     killall train
-
     # 内核要开启的
-    echo 1 > /sys/kernel/mm/numa/demotion_enabled
-	echo 3 > /proc/sys/kernel/numa_balancing
+	echo 1 > /sys/kernel/mm/numa/demotion_enabled
+    ## enable numa balancing for promotion
+    echo 2 > /proc/sys/kernel/numa_balancing
+    echo 30 > /proc/sys/kernel/numa_balancing_rate_limit_mbps
+    ## enable early wakeup
+    echo 1 > /proc/sys/kernel/numa_balancing_wake_up_kswapd_early
+    ## enable decreasing hot threshold if the pages just demoted are hot
+    echo 1 > /proc/sys/kernel/numa_balancing_scan_demoted
+    echo 16 > /proc/sys/kernel/numa_balancing_demoted_threshold
     
     echo 3 > /proc/sys/vm/drop_caches
 
@@ -70,7 +76,7 @@ function func_main() {
 # 测量2次看看稳定否
 for i in {1..2};
 do
-	VER="23G-${i}"
+	VER="45G-${i}"
 	func_prepare
 	func_main
 done
