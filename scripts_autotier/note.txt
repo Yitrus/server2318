@@ -2,3 +2,10 @@
 ./run-bench.sh --benchmark liblinear -wss 70GB --max-threads 20 --iter 2 --socket 0 --sequence a --opm bg --thp
 
 ./run-bench.sh --benchmark liblinear -wss kdd12 --max-threads 20 --iter 2 --socket 0 --sequence a --opm bg --thp
+
+#GRUB_CMDLINE_LINUX="memmap=9G!55G" 
+#GRUB_CMDLINE_LINUX="memmap=19G!45G"
+#GRUB_CMDLINE_LINUX="memmap=30G!34G"
+
+memmap=保留用作PM的大小!保留开始的位置
+在DRAM0，从4G开始保留，因为好像本来会有4G左右被占用，memmap=16G!4G的设置，其实使得DRAM0被保留了20G；而DRAM1的设置memmap=45G!64G从64G开始保留45G，实际显示DRAM有20G左右，但是可用的只有10G左右，那么memmap=55G!64G差不多使得DRAM1为0可用
