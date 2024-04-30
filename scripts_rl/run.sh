@@ -1,8 +1,8 @@
 #!/bin/bash
 
-BENCHMARKS="train" 
-# DRAM_SIZE="5GB 14GB 31GB 40GB 47GB 55GB"
-DRAM_SIZE="45GB 34GB 23G"
+BENCHMARKS="masim"  # train
+# DRAM_SIZE="5GB 14GB 31GB 40GB 47GB 55GB 34GB 23G"
+DRAM_SIZE="16GB"
 dmesg -c 
 
 # for BENCH in ${BENCHMARKS};
@@ -22,7 +22,7 @@ for BENCH in ${BENCHMARKS};
 do
     for NR in ${DRAM_SIZE};
     do
-        ./bench_scripts/run_node.sh -B ${BENCH} -R ${NR} -V ${NR}-v23
+        ./bench_scripts/run_node.sh -B ${BENCH} -R ${NR} -V ${NR}-basic
         sleep 120
     done
 done
