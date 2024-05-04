@@ -1,3 +1,5 @@
+cat /sys/kernel/debug/tracing/trace 
+
 make -j56 && make modules_install && make install
 
 ./perf stat -e dtlb_store_misses.walk_pending,dtlb_load_misses.walk_pending,dTLB-store-misses,cycle_activity.stalls_total
@@ -15,7 +17,6 @@ dmesg -w | grep -E 'BEFORE|AFTER'
 
 sudo mount /dev/sda /mnt/mydrive
 
-https://mp.csdn.net/mp_blog/manage/article?spm=1010.2135.3001.5416
 切换clone分支git clone -b sosp-submission(某个分支) https://xxx.git
 
 sudo ndctl destroy-namespace --force namespace1.0
