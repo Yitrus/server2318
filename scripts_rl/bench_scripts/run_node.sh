@@ -10,6 +10,9 @@ CONFIG_CXL_MODE=off
 STATIC_DRAM=""
 DATE=""
 VER=""
+# PINNING="taskset -c $( seq 0 2 54 )"
+PINNING="taskset -c 0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54"
+
 
 function func_memtis_setting() {
     echo 2 | tee /sys/kernel/mm/htmm/htmm_mode
@@ -17,13 +20,13 @@ function func_memtis_setting() {
     ##  cpu cap (per mille) for ksampled 这个内核中已经默认写了，被我取消了
     # echo 30 | tee /sys/kernel/mm/htmm/ksampled_soft_cpu_quota
 
-	echo "--------set htmm mode and gamma--------"
+	# echo "--------set htmm mode and gamma--------"
 
     if [[ "x${CONFIG_CXL_MODE}" == "xon" ]]; then
-	${DIR}/bench_scripts/set_uncore_freq.sh on
+	# ${DIR}/bench_scripts/set_uncore_freq.sh on
 	echo "enabled" | tee /sys/kernel/mm/htmm/htmm_cxl_mode
     else
-	${DIR}/bench_scripts/set_uncore_freq.sh off
+	# ${DIR}/bench_scripts/set_uncore_freq.sh off
 	echo "disabled" | tee /sys/kernel/mm/htmm/htmm_cxl_mode
     fi
 
@@ -32,11 +35,14 @@ function func_memtis_setting() {
 	# 它控制内核是否应该积极使用内存压缩来提供更多的大页面可用
     echo "always" | tee /sys/kernel/mm/transparent_hugepage/defrag
 
-	echo "--------page size and cxl mode--------"
+	# echo "--------page size and cxl mode--------"
 }
 
 function func_prepare() {
-	echo "--------func prepare--------"
+	# echo "--------func prepare--------"
+	# 关闭超线程（试一试，看看效果）
+	# echo off > /sys/devices/system/cpu/smt/control 
+
 	sysctl kernel.perf_event_max_sample_rate=100000
     # modprobe msr #pcm用的
 	swapoff -a 
@@ -48,7 +54,7 @@ function func_prepare() {
 	# disable automatic numa balancing
 	echo 0 > /proc/sys/kernel/numa_balancing
 	# set configs
-	echo "--------func setting--------"
+	# echo "--------func setting--------"
 	func_memtis_setting
 	
 	DATE=$(date +%Y%m%d%H%M)
@@ -63,7 +69,7 @@ function func_prepare() {
 	    exit -1
 	fi
 
-	echo "--------get the bench cmd--------"
+	# echo "--------get the bench cmd--------"
 }
 
 function cleanup(){
@@ -84,12 +90,12 @@ function func_main() {
     LOG_DIR=${DIR}/results/${BENCH_NAME}/${VER}
 
     # set memcg for htmm
-	echo "--------remove htmm/--------"
+	# echo "--------remove htmm/--------"
     ${DIR}/bench_scripts/set_htmm_memcg.sh htmm remove
-	echo "--------enable htmm--------"
+	# echo "--------enable htmm--------"
     ${DIR}/bench_scripts/set_htmm_memcg.sh htmm $$ enable
 	# 迁移线程就启动了
-	echo "--------set node size--------"
+	# echo "--------set node size--------"
     ${DIR}/bench_scripts/set_mem_size.sh htmm 1 ${DRAM_SIZE}
 	${DIR}/bench_scripts/set_mem_size.sh htmm 0 ${DRAM_SIZE}
 
@@ -100,10 +106,10 @@ function func_main() {
         cat /proc/vmstat | grep -e thp -e htmm -e pgmig > ${LOG_DIR}/before_vmstat.log 
 	    cat /proc/meminfo >> ${LOG_DIR}/before_vmstat.log 
 
-		echo "--------after read run launch_bench--------"
+		# echo "--------after read run launch_bench--------"
 
         ${TIME} -f "execution time %e (s)" \
-         ${DIR}/bin/launch_bench ${BENCH_RUN} 2>&1 \
+         ${PINNING} ${DIR}/bin/launch_bench ${BENCH_RUN} 2>&1 \
             | tee ${LOG_DIR}/output${i}.log 
 
         cat /proc/vmstat | grep -e thp -e htmm -e pgmig > ${LOG_DIR}/after_vmstat.log

@@ -1,5 +1,7 @@
 cat /sys/kernel/debug/tracing/trace 
 
+关闭超线程echo off > /sys/devices/system/cpu/smt/control 
+
 make -j56 && make modules_install && make install
 
 ./perf stat -e dtlb_store_misses.walk_pending,dtlb_load_misses.walk_pending,dTLB-store-misses,cycle_activity.stalls_total

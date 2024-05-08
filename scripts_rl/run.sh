@@ -22,7 +22,7 @@ for BENCH in ${BENCHMARKS};
 do
     for NR in ${DRAM_SIZE};
     do
-        ./bench_scripts/run_node.sh -B ${BENCH} -R ${NR} -V ${NR}-v33-huge
+        ./bench_scripts/run_node.sh -B ${BENCH} -R ${NR} -V ${NR}-v36-huge
         sleep 120
     done
 done
