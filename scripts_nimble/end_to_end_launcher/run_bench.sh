@@ -7,7 +7,7 @@ else
 	export CPUS=1
 fi
 
-PROJECT_LOC="/home/xmu/Documents/yi/scripts_nimble/end_to_end_launcher"
+PROJECT_LOC="/home/ssd/yi/scripts_nimble/end_to_end_launcher"
 
 if [[ "x${BENCH}" == "xdata-caching" || "x${BENCH}" == "xmemcached-user"  ]]; then
 LAUNCHER="${PROJECT_LOC}/launcher --dumpstats_signal --dumpstats_period ${STATS_PERIOD}"
@@ -19,7 +19,7 @@ PERF="perf"
 PERF_EVENTS="cycles,instructions,itlb_misses.miss_causes_a_walk,itlb_misses.walk_duration,dtlb_load_misses.miss_causes_a_walk,dtlb_load_misses.walk_duration,dtlb_store_misses.miss_causes_a_walk,dtlb_store_misses.walk_duration"
 #PERF_EVENTS="cycles,instructions,iTLB-loads,iTLB-load-misses,itlb_misses.miss_causes_a_walk,itlb_misses.walk_duration,dTLB-loads,dTLB-load-misses,dtlb_load_misses.miss_causes_a_walk,dtlb_load_misses.walk_duration,dTLB-stores,dTLB-store-misses,dtlb_store_misses.miss_causes_a_walk,dtlb_store_misses.walk_duration"
 
-FLAMEGRAPH_LOC="/home/xmu/Documents/yi/tools/FlameGraph"
+FLAMEGRAPH_LOC="/home/ssd/yi/tools/FlameGraph"
 
 PERF_CMD="${PERF} stat -e ${PERF_EVENTS}"
 

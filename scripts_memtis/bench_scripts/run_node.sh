@@ -10,7 +10,7 @@ MEM_NODES=($(ls /sys/devices/system/node | grep node | awk -F 'node' '{print $NF
 
 CGROUP_NAME="htmm"
 ###### update DIR!
-DIR=/home/xmu/Documents/yi/scripts_memtis
+DIR=/home/ssd/yi/scripts_memtis
 
 TOP_NAME=""
 CONFIG_PERF=off

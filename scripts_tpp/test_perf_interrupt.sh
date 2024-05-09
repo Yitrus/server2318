@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BIN=/home/xmu/Documents/yi/workload/XSBench/openmp-threading
+BIN=/home/ssd/yi/workload/XSBench/openmp-threading
 BENCH_RUN="numactl -N 0 --membind=0,2 ${BIN}/XSBench -t 20 -g 13000 -p 3000000"
 PID=""
 

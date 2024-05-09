@@ -1,10 +1,10 @@
 #!/bin/bash
 
-DIR=/home/xmu/Documents/yi/scripts_tpp
-BIN=/home/xmu/Documents/yi/workload/XSBench/openmp-threading
+DIR=/home/ssd/yi/scripts_tpp
+BIN=/home/ssd/yi/workload/XSBench/openmp-threading
 BENCH_RUN="numactl --membind=0,2 ${BIN}/XSBench -t 20 -g 130000 -p 30000000"
 BENCH_NAME="XSBench"
-# BIN=/home/xmu/Documents/yi/workload/gapbs
+# BIN=/home/ssd/yi/workload/gapbs
 # BENCH_RUN="${BIN}/bc -f ${BIN}/kron.sg"
 # BENCH_NAME="gapbs-DRAM"
 CMD_NAME="XSBench"

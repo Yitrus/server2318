@@ -17,14 +17,13 @@ pgrep -f XSBench | xargs ps -p
 
 dmesg -w | grep -E 'BEFORE|AFTER' 
 
-sudo mount /dev/sda /mnt/mydrive
-
 切换clone分支git clone -b sosp-submission(某个分支) https://xxx.git
 
 sudo ndctl destroy-namespace --force namespace1.0
 sudo ndctl destroy-namespace -f namespace0.0
 
 df -h 查看目前挂载情况
+sudo mount /dev/sda /mnt/mydrive
 mount /dev/vdb1 /mnt/data 挂载我一般挂hdd
 umount /mnt/pmem1 把fs实验的删除
 lsof /mnt/pmem1 删除不成功，查看相关进程，kill -9 PID

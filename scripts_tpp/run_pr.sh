@@ -1,4 +1,4 @@
-#/home/xmu/Documents/yi/workload/gapbs/tc -f /home/xmu/Documents/yi/workload/gapbs/benchmark/graphs/twitter.sg -i1000 -t1e-4 -n20
+#/home/ssd/yi/workload/gapbs/tc -f /home/ssd/yi/workload/gapbs/benchmark/graphs/twitter.sg -i1000 -t1e-4 -n20
 # tc接收的图不是这个Input graph is directed but tc requires undirected，得自己找一个，缓缓吧
 
 #!/bin/bash
@@ -6,9 +6,9 @@
 # 12.3G 2:1 1:1 1:2 按照GB设置每次DRAM 8G 6G 4G
 # 实际情况，由于空间预留，每次需要多给10个G
 
-DIR=/home/xmu/Documents/yi/scripts_tpp
-BIN=/home/xmu/playground/yi/workloads/gapbs
-GRAPH_DIR=/home/xmu/playground/yi/workloads/gapbs/benchmark/graphs/
+DIR=/home/ssd/yi/scripts_tpp
+BIN=/home/ssd/yi/workloads/gapbs
+GRAPH_DIR=/home/ssd/yi/workloads/gapbs/benchmark/graphs/
 BENCH_RUN="${BIN}/pr -f ${GRAPH_DIR}/twitter.sg -i1000 -t1e-4 -n20"
 DATE=""
 VER=""

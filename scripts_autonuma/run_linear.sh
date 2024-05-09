@@ -3,8 +3,8 @@
 # 这个workload大小2:1, 1:1, 1:2, 45G,34G,23G
 # 实际情况，由于空间预留，每次需要多给11个G
 
-DIR=/home/xmu/Documents/yi/scripts_autonuma
-BIN=/home/xmu/Documents/yi/workload/liblinear-multicore-2.47
+DIR=/home/ssd/yi/scripts_autonuma
+BIN=/home/ssd/yi/workload/liblinear-multicore-2.47
 BENCH_RUN="numactl --membind=0,2 ${BIN}/train -s 6 -m 20 ${BIN}/datasets/kdd12"
 DATE=""
 VER=""

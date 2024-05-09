@@ -2,7 +2,7 @@
 
 CGROUP_NAME="htmm"
 ###### update DIR!
-DIR=/home/xmu/Documents/yi/scripts_rl
+DIR=/home/ssd/yi/scripts_rl
 
 TOP_NAME=""
 CONFIG_PERF=off
