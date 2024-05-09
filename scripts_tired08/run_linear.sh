@@ -14,7 +14,7 @@ BENCH_NAME="liblinear"
 
 function func_prepare() {
     killall train
-    # 内核要开启的
+
 	echo 1 > /sys/kernel/mm/numa/demotion_enabled
     ## enable numa balancing for promotion
     echo 2 > /proc/sys/kernel/numa_balancing

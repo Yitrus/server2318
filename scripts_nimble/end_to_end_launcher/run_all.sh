@@ -79,7 +79,6 @@ if test ${SCAN_DIVISOR} -gt 0 ;  then
 sudo sysctl vm/scan_divisor=${SCAN_DIVISOR}
 fi
 
-
 for i in $(seq 1 ${NR_RUNS});
 do
 	for MEM_SIZE in ${MEM_SIZE_LIST};
