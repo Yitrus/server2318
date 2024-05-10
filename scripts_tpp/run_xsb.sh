@@ -40,7 +40,7 @@ function func_main() {
     cat /proc/vmstat | grep -e thp -e pgmig >> ${LOG_DIR}/before_vmstat.log 
 	cat /proc/meminfo >>  ${LOG_DIR}/before_vmstat.log 
 
-    # 对于机器学习要让他可以输出到这里
+    ${DIR}/mem.sh ${LOG_DIR} &
     ${TIME} -f "execution time %e (s)" \
     ${BENCH_RUN} >> ${LOG_DIR}/output.log 
 
@@ -48,6 +48,7 @@ function func_main() {
 	cat /proc/meminfo >>  ${LOG_DIR}/after_vmstat.log    
 
     dmesg -c > ${LOG_DIR}/dmesg.txt
+    sudo killall mem.sh
     killall ${CMD_NAME}
 }
 
@@ -55,7 +56,7 @@ function func_main() {
 
 for i in {1..2};
 do
-	VER="8G-${i}"
+	VER="cxl-${i}"
 	func_prepare
 	func_main
 done

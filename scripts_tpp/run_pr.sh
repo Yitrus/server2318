@@ -1,6 +1,3 @@
-#/home/ssd/yi/workload/gapbs/tc -f /home/ssd/yi/workload/gapbs/benchmark/graphs/twitter.sg -i1000 -t1e-4 -n20
-# tc接收的图不是这个Input graph is directed but tc requires undirected，得自己找一个，缓缓吧
-
 #!/bin/bash
 
 # 12.3G 2:1 1:1 1:2 按照GB设置每次DRAM 8G 6G 4G
@@ -38,13 +35,14 @@ function func_main() {
     cat /proc/vmstat | grep -e thp -e pgmig >> ${LOG_DIR}/before_vmstat.log 
 	cat /proc/meminfo >>  ${LOG_DIR}/before_vmstat.log 
 
-    # 对于机器学习要让他可以输出到这里
+    ${DIR}/mem.sh ${LOG_DIR} &
     ${TIME} -f "execution time %e (s)" \
     ${BENCH_RUN} 2>&1 | tee ${LOG_DIR}/output.log 
 
     cat /proc/vmstat | grep -e thp -e pgmig >> ${LOG_DIR}/after_vmstat.log
 	cat /proc/meminfo >>  ${LOG_DIR}/after_vmstat.log    
 
+    sudo killall mem.sh
     dmesg -c > ${LOG_DIR}/dmesg.txt
 }
 
@@ -53,7 +51,7 @@ function func_main() {
 # 测量2次看看稳定否
 for i in {1..2};
 do
-	VER="8G-${i}"
+	VER="cxl-${i}"
 	func_prepare
 	func_main
 done
