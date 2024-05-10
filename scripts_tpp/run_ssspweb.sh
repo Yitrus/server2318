@@ -1,7 +1,7 @@
 DIR=/home/ssd/yi/scripts_tpp
 BIN=/home/ssd/yi/workloads/gapbs
 GRAPH_DIR=/home/ssd/yi/workloads/gapbs/benchmark/graphs/
-BENCH_RUN="numactl --membind=0,2 ${BIN}/sssp -f ${GRAPH_DIR}/web.sg"
+BENCH_RUN="numactl --membind=0,2 ${BIN}/sssp -f ${GRAPH_DIR}/web.wsg"
 DATE=""
 VER=""
 PID=""
