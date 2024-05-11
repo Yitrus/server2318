@@ -28,8 +28,7 @@ function func_main() {
     cat /proc/vmstat | grep -e thp -e pgmig >> ${LOG_DIR}/before_vmstat.log 
 	cat /proc/meminfo >>  ${LOG_DIR}/before_vmstat.log 
 
-    # 对于机器学习要让他可以输出到这里
-    ${DIR}/mem.sh ${LOG_DIR} &
+    # ${DIR}/mem.sh ${LOG_DIR} &
     ${TIME} -f "execution time %e (s)" \
     ${BENCH_RUN} 2>&1 | tee ${LOG_DIR}/output.log 
 
@@ -44,7 +43,7 @@ function func_main() {
 # 测量2次看看稳定否
 for i in {1..2};
 do
-	VER="kron-cxl-${i}"
+	VER="kron-${i}"
 	func_prepare
 	func_main
 done

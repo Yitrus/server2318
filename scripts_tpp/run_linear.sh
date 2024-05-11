@@ -28,22 +28,6 @@ function func_prepare() {
     LOG_DIR=${DIR}/results/${BENCH_NAME}/${VER}
 }
 
-# 不用
-# function func_collaction(){
-#     PID=$(pgrep -o train)
-#     echo "---------Collaction ${PID}------------"
-
-#     perf record -F 1 -o ${LOG_DIR}/perf.data -a -g & 
-#     perf_pid=$(pgrep -o -f "perf record")
-#     while kill -0 "${PID}" >/dev/null 2>&1
-#     do
-#         cat /proc/vmstat | grep pgmigrate_su >> ${LOG_DIR}/pgmig.txt
-#         numastat -m | grep -e Mem -e Dir -e PageTab -e Write -e FileP -e AnonP >> ${LOG_DIR}/numa_use.txt  
-#         sleep 5 
-#     done
-#     kill -SIGINT "$perf_pid"
-# }
-
 function func_main() {
     TIME="/usr/bin/time"
     echo "Date: ${DATE}"
@@ -51,19 +35,13 @@ function func_main() {
     cat /proc/vmstat | grep -e thp -e pgmig >> ${LOG_DIR}/before_vmstat.log 
 	cat /proc/meminfo >>  ${LOG_DIR}/before_vmstat.log 
 
-    ${DIR}/mem.sh ${LOG_DIR} &
     ${TIME} -f "execution time %e (s)" \
     ${BENCH_RUN} 2>&1 | tee ${LOG_DIR}/output.log 
-    # &
-    # func_collaction
 
     cat /proc/vmstat | grep -e thp -e pgmig >> ${LOG_DIR}/after_vmstat.log
 	cat /proc/meminfo >>  ${LOG_DIR}/after_vmstat.log    
 
     dmesg -c > ${LOG_DIR}/dmesg.txt
-    sudo killall mem.sh
-    # sleep 120
-    # killall perf
 }
 
 ################################ Main ##################################
@@ -71,7 +49,7 @@ function func_main() {
 # 测量2次看看稳定否
 for i in {1..2};
 do
-	VER="cxl012-${i}"
+	VER="G-${i}"
 	func_prepare
 	func_main
 done

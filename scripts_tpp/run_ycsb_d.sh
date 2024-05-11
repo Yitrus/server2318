@@ -1,30 +1,22 @@
 #!/bin/bash
 
 DIR=/home/ssd/yi/scripts_tpp
-BIN=/home/ssd/yi/workloads/XSBench/openmp-threading
-BENCH_RUN="numactl --membind=0,2 ${BIN}/XSBench -t 20 -g 130000 -p 30000000"
-BENCH_NAME="XSBench"
-CMD_NAME="xsbench"
+BIN=/home/ssd/yi/workloads/ycsb-0.15.0
+BENCH_RUN="numactl --membind=0,2 ${BIN}/bin/ycsb run memcached -s -P ${BIN}/workloads/workloadd -p "memcached.hosts=127.0.0.1" -p "memcached.port=11211" -p recordcount=250000000 -p operationcount=125000000 -threads 64"
+BENCH_NAME="ycsb_d"
 DATE=""
 VER=""
 PID=""
 LOG_DIR=""
 
 function func_prepare() {
-    echo 1 > /sys/kernel/mm/numa/demotion_enabled
+	echo 1 > /sys/kernel/mm/numa/demotion_enabled
     echo 3 > /proc/sys/kernel/numa_balancing
 
 	DATE=$(date +%Y%m%d%H%M)
-    # make directory for results
+
     mkdir -p ${DIR}/results/${BENCH_NAME}/${VER}
     LOG_DIR=${DIR}/results/${BENCH_NAME}/${VER}
-}
-
-function func_collaction(){
-    sleep 10
-    PID=$(pgrep -o ${CMD_NAME})
-    echo "---------Collaction ${PID}------------"
-    perf mem record --pid=${PID} --phys-data
 }
 
 function func_main() {
@@ -43,7 +35,6 @@ function func_main() {
 
     dmesg -c > ${LOG_DIR}/dmesg.txt
     # sudo killall mem.sh
-    killall ${CMD_NAME}
 }
 
 ################################ Main ##################################

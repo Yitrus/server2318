@@ -35,14 +35,14 @@ function func_main() {
     cat /proc/vmstat | grep -e thp -e pgmig >> ${LOG_DIR}/before_vmstat.log 
 	cat /proc/meminfo >>  ${LOG_DIR}/before_vmstat.log 
 
-    ${DIR}/mem.sh ${LOG_DIR} &
+    # ${DIR}/mem.sh ${LOG_DIR} &
     ${TIME} -f "execution time %e (s)" \
     ${BENCH_RUN} 2>&1 | tee ${LOG_DIR}/output.log 
 
     cat /proc/vmstat | grep -e thp -e pgmig >> ${LOG_DIR}/after_vmstat.log
 	cat /proc/meminfo >>  ${LOG_DIR}/after_vmstat.log    
 
-    sudo killall mem.sh
+    # sudo killall mem.sh
     dmesg -c > ${LOG_DIR}/dmesg.txt
 }
 
@@ -51,7 +51,7 @@ function func_main() {
 # 测量2次看看稳定否
 for i in {1..2};
 do
-	VER="cxl-${i}"
+	VER="G-${i}"
 	func_prepare
 	func_main
 done
