@@ -22,7 +22,8 @@ for BENCH in ${BENCHMARKS};
 do
     for NR in ${DRAM_SIZE};
     do
-        ./bench_scripts/run_node.sh -B ${BENCH} -R ${NR} -V ${NR}-v36-huge
+        ./bench_scripts/run_node.sh -B ${BENCH} -R ${NR} -V ${NR}-v40-huge-1
+        killall run.py
         sleep 120
     done
 done
