@@ -18,7 +18,7 @@ function func_memtis_setting() {
     echo 2 | tee /sys/kernel/mm/htmm/htmm_mode
     echo 4 | tee /sys/kernel/mm/htmm/htmm_gamma
     ##  cpu cap (per mille) for ksampled 这个内核中已经默认写了，被我取消了
-    # echo 30 | tee /sys/kernel/mm/htmm/ksampled_soft_cpu_quota
+    echo 30 | tee /sys/kernel/mm/htmm/ksampled_soft_cpu_quota
 
 	# echo "--------set htmm mode and gamma--------"
 

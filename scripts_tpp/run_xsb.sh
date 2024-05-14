@@ -2,7 +2,7 @@
 
 DIR=/home/ssd/yi/scripts_tpp
 BIN=/home/ssd/yi/workloads/XSBench/openmp-threading
-BENCH_RUN="numactl --membind=0,2 ${BIN}/XSBench -t 20 -g 130000 -p 30000000"
+BENCH_RUN="numactl --membind=0,1 ${BIN}/XSBench -t 20 -g 130000 -p 30000000"
 BENCH_NAME="XSBench"
 CMD_NAME="xsbench"
 DATE=""
@@ -11,8 +11,10 @@ PID=""
 LOG_DIR=""
 
 function func_prepare() {
-    echo 1 > /sys/kernel/mm/numa/demotion_enabled
-    echo 3 > /proc/sys/kernel/numa_balancing
+    # echo 1 > /sys/kernel/mm/numa/demotion_enabled
+    # echo 3 > /proc/sys/kernel/numa_balancing
+
+    echo 3 > /proc/sys/vm/drop_caches
 
 	DATE=$(date +%Y%m%d%H%M)
     # make directory for results
@@ -34,7 +36,7 @@ function func_main() {
     cat /proc/vmstat | grep -e thp -e pgmig >> ${LOG_DIR}/before_vmstat.log 
 	cat /proc/meminfo >>  ${LOG_DIR}/before_vmstat.log 
 
-    # ${DIR}/mem.sh ${LOG_DIR} &
+    ${DIR}/mem.sh ${LOG_DIR} &
     ${TIME} -f "execution time %e (s)" \
     ${BENCH_RUN} >> ${LOG_DIR}/output.log 
 
@@ -42,15 +44,16 @@ function func_main() {
 	cat /proc/meminfo >>  ${LOG_DIR}/after_vmstat.log    
 
     dmesg -c > ${LOG_DIR}/dmesg.txt
-    # sudo killall mem.sh
+    sudo killall mem.sh
     killall ${CMD_NAME}
 }
 
 ################################ Main ##################################
 
-for i in {1..2};
-do
-	VER="G-${i}"
+# for i in {1..2};
+# do
+# 	VER="G-${i}"
+    VER="static2"
 	func_prepare
 	func_main
-done
+# done
