@@ -67,7 +67,7 @@ function func_prepare() {
     # killall perf
     # modprobe msr
 	# swapoff -a 
-    echo 3 > /proc/sys/vm/drop_caches
+    # echo 3 > /proc/sys/vm/drop_caches
     free
 
 	# disable automatic numa balancing
@@ -139,7 +139,7 @@ function func_main() {
     ${DIR}/bench_scripts/set_htmm_memcg.sh htmm $$ enable
 
     ${DIR}/bench_scripts/set_mem_size.sh htmm 0 ${DRAM_SIZE}
-    ${DIR}/bench_scripts/set_mem_size.sh htmm 2 70GB
+    # ${DIR}/bench_scripts/set_mem_size.sh htmm 2 70GB
 
     # ${DIR}/bench_scripts/memory_stat.sh ${LOG_DIR} 
     
