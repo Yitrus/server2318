@@ -5,7 +5,7 @@
 
 DIR=/home/ssd/yi/scripts_multiclock
 BIN=/home/ssd/yi/workloads/liblinear-multicore-2.47
-BENCH_RUN="numactl --membind=0,2 ${BIN}/train -s 6 -m 20 ${BIN}/datasets/kdd12"
+BENCH_RUN="numactl --cpunodebind=0 ${BIN}/train -s 6 -m 20 ${BIN}/datasets/kdd12"
 DATE=""
 VER=""
 PID=""
@@ -49,9 +49,9 @@ function func_main() {
 ################################ Main ##################################
 
 # 测量2次看看稳定否
-for i in {1..2};
-do
-	VER="1-2"
+# for i in {1..2};
+# do
+	VER="2-1"
 	func_prepare
 	func_main
-done
+# done
