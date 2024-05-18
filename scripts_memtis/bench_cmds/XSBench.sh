@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BIN=/home/ssd/yi/workload/XSBench/openmp-threading
+BIN=/home/ssd/yi/workloads/XSBench/openmp-threading
 BENCH_RUN="${BIN}/XSBench -t 20 -g 130000 -p 30000000"
 #BENCH_DRAM=""
 

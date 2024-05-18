@@ -1,8 +1,8 @@
 #!/bin/bash
 
-BENCHMARKS="bc" 
+BENCHMARKS="bfs" 
 # DRAM_SIZE="5GB 14GB 31GB 40GB 47GB 55GB"
-DRAM_SIZE="14GB 21811MB 28GB"
+DRAM_SIZE="39GB 62157MB"
 dmesg -c 
 
 for BENCH in ${BENCHMARKS};
@@ -12,7 +12,7 @@ do
         # for i in {1..2};
         # do
 	    # ./bench_scripts/run_balance.sh -B ${BENCH} -V "xx_${i}"
-        ./bench_scripts/run_node.sh -B ${BENCH} -R ${NR} -V "${NR}-2" # -${i}
+        ./bench_scripts/run_node.sh -B ${BENCH} -R ${NR} -V "${NR}" # -${i}
         # rm kdd12*
         # done
     done

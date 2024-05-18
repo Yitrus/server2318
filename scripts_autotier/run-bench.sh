@@ -582,6 +582,8 @@ function func_main() {
 		info "$(date)"
 
 		date > ${LOG_DIR}/real_time.log
+		cat /proc/vmstat | grep -e thp -e pgmig >> ${LOG_DIR}/real_time.log
+		cat /proc/meminfo >>  ${LOG_DIR}/real_time.log
 
 		# Run Benchmark
 		${TIME} -f "execution_time %e (s)" \
@@ -589,6 +591,8 @@ function func_main() {
 			| tee ${LOG_DIR}/output.log
 
 		date >> ${LOG_DIR}/real_time.log
+		cat /proc/vmstat | grep -e thp -e pgmig >> ${LOG_DIR}/real_time.log
+		cat /proc/meminfo >>  ${LOG_DIR}/real_time.log
 
 		if [[ -n ${MONITOR} && $ITER -eq 1 ]]; then
 			func_monitor_end
