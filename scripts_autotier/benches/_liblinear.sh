@@ -1,5 +1,5 @@
 #!/bin/bash
-BENCH_BIN=/home/ssd/yi/workload/liblinear-multicore-2.47
+BENCH_BIN=/home/ssd/yi/workloads/liblinear-multicore-2.47
 
 MAX_THREADS=$(grep -c processor /proc/cpuinfo)
 BENCH_RUN=""

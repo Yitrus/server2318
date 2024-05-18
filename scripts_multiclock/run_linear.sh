@@ -4,7 +4,7 @@
 # 实际情况，由于空间预留，每次需要多给11个G
 
 DIR=/home/ssd/yi/scripts_multiclock
-BIN=/home/ssd/yi/workload/liblinear-multicore-2.47
+BIN=/home/ssd/yi/workloads/liblinear-multicore-2.47
 BENCH_RUN="numactl --membind=0,2 ${BIN}/train -s 6 -m 20 ${BIN}/datasets/kdd12"
 DATE=""
 VER=""
@@ -51,7 +51,7 @@ function func_main() {
 # 测量2次看看稳定否
 for i in {1..2};
 do
-	VER="45G-${i}"
+	VER="1-2"
 	func_prepare
 	func_main
 done

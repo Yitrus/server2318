@@ -44,7 +44,7 @@ function func_main() {
 # for i in {1..2};
 # do
 # 	VER="static-${i}"
-    VER="1-2"
+    VER="1-1"
 	func_prepare
 	func_main
 # done
