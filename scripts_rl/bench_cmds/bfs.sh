@@ -2,7 +2,7 @@
 
 ######## changes the below path
 BIN=/home/ssd/yi/workload/gapbs
-GRAPH_DIR=/home/ssd/yi/workload/gapbs/benchmark
+GRAPH_DIR=/home/ssd/yi/workloads/gapbs/benchmark
 
 BENCH_RUN="${BIN}/bfs -f ${GRAPH_DIR}/kron.sg -n 20"
 

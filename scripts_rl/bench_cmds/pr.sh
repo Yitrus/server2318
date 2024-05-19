@@ -1,10 +1,8 @@
 #!/bin/bash
 
-# 12.3G 2:1 1:1 1:2 按照GB设置每次DRAM 8G 6G 4G
-
 ######## changes the below path
-BIN=/home/xmu/playground/yi/workloads/gapbs
-GRAPH_DIR=/home/xmu/playground/yi/workloads/gapbs/benchmark/graphs/
+BIN=/home/ssd/yi/workloads/gapbs
+GRAPH_DIR=/home/ssd/yi/workloads/gapbs/benchmark/graphs
 
 BENCH_RUN="${BIN}/pr -f ${GRAPH_DIR}/twitter.sg -i1000 -t1e-4 -n20"
 #BENCH_DRAM=""
