@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BENCHMARKS="ycsbc ycsbf ycsbd ycsbe"  # train
+BENCHMARKS="ycsbf ycsbe"  # train
 # DRAM_SIZE="23GB" 4198
 DRAM_SIZE="4198MB"
 dmesg -c 
@@ -22,7 +22,7 @@ for BENCH in ${BENCHMARKS};
 do
     for NR in ${DRAM_SIZE};
     do
-        ./bench_scripts/run_node.sh -B ${BENCH} -R ${NR} -V ${NR}-v41-2
+        ./bench_scripts/run_node.sh -B ${BENCH} -R ${NR} -V ${NR}-v41-fast
         # killall run.py
         sleep 20
     done
