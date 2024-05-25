@@ -2,7 +2,7 @@
 
 DIR=/home/ssd/yi/scripts_tpp
 BIN=/home/ssd/yi/workloads/XSBench/openmp-threading
-BENCH_RUN="numactl --cpunodebind=0 --membind=0 ${BIN}/XSBench -t 20 -g 130000 -p 30000000"
+BENCH_RUN="${BIN}/XSBench -t 20 -g 130000 -p 30000000" #numactl --cpunodebind=0 --membind=0 
 BENCH_NAME="XSBench"
 CMD_NAME="xsbench"
 DATE=""
@@ -33,17 +33,17 @@ function func_main() {
     TIME="/usr/bin/time"
     echo "Date: ${DATE}"
 
-    cat /proc/vmstat | grep -e thp -e pgmig >> ${LOG_DIR}/before_vmstat.log 
+    cat /proc/vmstat | grep -e thp -e pgmig > ${LOG_DIR}/before_vmstat.log 
 	cat /proc/meminfo >>  ${LOG_DIR}/before_vmstat.log 
 
     # ${DIR}/mem.sh ${LOG_DIR} &
     ${TIME} -f "execution time %e (s)" \
     ${BENCH_RUN} >> ${LOG_DIR}/output.log 
 
-    cat /proc/vmstat | grep -e thp -e pgmig >> ${LOG_DIR}/after_vmstat.log
+    cat /proc/vmstat | grep -e thp -e pgmig > ${LOG_DIR}/after_vmstat.log
 	cat /proc/meminfo >>  ${LOG_DIR}/after_vmstat.log    
 
-    dmesg -c > ${LOG_DIR}/dmesg.txt
+    # dmesg -c > ${LOG_DIR}/dmesg.txt
     # sudo killall mem.sh
     # killall ${CMD_NAME}
 }
@@ -53,7 +53,7 @@ function func_main() {
 # for i in {1..2};
 # do
 # 	VER="G-${i}"
-    VER="static-damon"
+    VER="static-damon3"
 	func_prepare
 	func_main
 # done

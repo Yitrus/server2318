@@ -1,8 +1,14 @@
-numactl --cpunodebind=1 damo record --monitoring_nr_regions_range 4456448 17825792 --monitoring_intervals 100 10000 1000 --target_pid 53208
+https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/
+conda activate base
 
-sudo damo report heats --heatmap 图片名
+damo record  --monitoring_intervals 10000 1000000 1000000 --monitoring_nr_regions_range 8912896 17820000 --target_pid 5737
+
+(2ms->10sm采一次，1s的数据算一个聚合，1s拆分聚合看看)
+sudo damo report heats --address_range 0 50000000000  --heatmap testV2.png 
+sudo damo report heats --heatmap testV2.png 
 
 xsb：69632
+--damos_sz_region 4096 8192 这个就是不行，区域不够，偷懒了
 
 https://download.pytorch.org/whl/nightly/rocm5.1.1/torchrec-2022.12.2-py3-none-any.whl
 
