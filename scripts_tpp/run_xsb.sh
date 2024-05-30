@@ -53,7 +53,7 @@ function func_main() {
 # for i in {1..2};
 # do
 # 	VER="G-${i}"
-    VER="static-damon3"
+    VER="static-damon5"
 	func_prepare
 	func_main
 # done

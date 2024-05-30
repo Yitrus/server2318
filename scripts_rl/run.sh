@@ -1,8 +1,8 @@
 #!/bin/bash
 
-BENCHMARKS="ycsbf ycsbe"  # train
+BENCHMARKS="masim"  # train
 # DRAM_SIZE="23GB" 4198
-DRAM_SIZE="4198MB"
+DRAM_SIZE="16GB"
 dmesg -c 
 
 # for BENCH in ${BENCHMARKS};

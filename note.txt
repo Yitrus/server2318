@@ -1,11 +1,19 @@
-https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/
+
 conda activate base
 
-damo record  --monitoring_intervals 10000 1000000 1000000 --monitoring_nr_regions_range 8912896 17820000 --target_pid 5737
+sudo damo record $(pidof masim)
 
-(2ms->10sm采一次，1s的数据算一个聚合，1s拆分聚合看看)
+damo record  --monitoring_intervals 1000000 20000000 120000000 --monitoring_nr_regions_range 1114112 8912896  --target_pid 8594
+
+damo record  --monitoring_intervals 100000 5000000 120000000 --monitoring_nr_regions_range 2228224 4456112 --target_pid 103298 (moc)
+
+damo record  --monitoring_intervals 200000 10000000 120000000 --monitoring_nr_regions_range 1114112 8912896 --target_pid 101631(cc)
+
+damo record  --monitoring_intervals 500000 20000000 120000000 --monitoring_nr_regions_range 1114112 8912896  --target_pid 89647 (XSBench)
+
+(2ms->500sm(1s)采一次，20s的数据算一个聚合，2min拆分聚合看看)
 sudo damo report heats --address_range 0 50000000000  --heatmap testV2.png 
-sudo damo report heats --heatmap testV2.png 
+sudo damo report heats --heatmap liblinear.png 
 
 xsb：69632
 --damos_sz_region 4096 8192 这个就是不行，区域不够，偷懒了

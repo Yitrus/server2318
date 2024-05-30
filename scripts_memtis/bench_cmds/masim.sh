@@ -1,6 +1,6 @@
 #!/bin/bash
 
-######## changes the below path
+######## changes the below path complex.cfg
 # numactl --membind=2 /home/ssd/yi/tools/masim//masim /home/ssd/yi/tools/masim/configs/default
 BIN=/home/ssd/yi/tools/masim/
 

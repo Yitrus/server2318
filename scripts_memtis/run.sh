@@ -1,8 +1,8 @@
 #!/bin/bash
 
-BENCHMARKS="ycsbc ycsbf ycsbd ycsbe" 
+BENCHMARKS="masim" 
 # DRAM_SIZE="5GB 14GB 31GB 40GB 47GB 55GB"
-DRAM_SIZE="4198MB"
+DRAM_SIZE="16GB"
 dmesg -c 
 
 for BENCH in ${BENCHMARKS};
