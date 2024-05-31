@@ -1,0 +1,433 @@
+run pytorch ...
+
+OPENMP DISPLAY ENVIRONMENT BEGIN
+  _OPENMP = '201511'
+  OMP_DYNAMIC = 'FALSE'
+  OMP_NESTED = 'FALSE'
+  OMP_NUM_THREADS = '4'
+  OMP_SCHEDULE = 'DYNAMIC'
+  OMP_PROC_BIND = 'FALSE'
+  OMP_PLACES = ''
+  OMP_STACKSIZE = '0'
+  OMP_WAIT_POLICY = 'PASSIVE'
+  OMP_THREAD_LIMIT = '4294967295'
+  OMP_MAX_ACTIVE_LEVELS = '1'
+  OMP_CANCELLATION = 'FALSE'
+  OMP_DEFAULT_DEVICE = '0'
+  OMP_MAX_TASK_PRIORITY = '0'
+  OMP_DISPLAY_AFFINITY = 'TRUE'
+  OMP_AFFINITY_FORMAT = 'level %L thread %i affinity %A'
+  OMP_ALLOCATOR = 'omp_default_mem_alloc'
+  OMP_TARGET_OFFLOAD = 'DEFAULT'
+  GOMP_CPU_AFFINITY = ''
+  GOMP_STACKSIZE = '0'
+  GOMP_SPINCOUNT = '300000'
+OPENMP DISPLAY ENVIRONMENT END
+
+OPENMP DISPLAY ENVIRONMENT BEGIN
+   _OPENMP='201611'
+  [host] KMP_ABORT_DELAY='0'
+  [host] KMP_ADAPTIVE_LOCK_PROPS='1,1024'
+  [host] KMP_ALIGN_ALLOC='64'
+  [host] KMP_ALL_THREADPRIVATE='448'
+  [host] KMP_ATOMIC_MODE='2'
+  [host] KMP_BLOCKTIME='200'
+  [host] KMP_CPUINFO_FILE: value is not defined
+  [host] KMP_DETERMINISTIC_REDUCTION='FALSE'
+  [host] KMP_DEVICE_THREAD_LIMIT='2147483647'
+  [host] KMP_DISP_NUM_BUFFERS='7'
+  [host] KMP_DUPLICATE_LIB_OK='FALSE'
+  [host] KMP_ENABLE_TASK_THROTTLING='TRUE'
+  [host] KMP_FORCE_MONOTONIC_DYNAMIC_SCHEDULE='FALSE'
+  [host] KMP_FORCE_REDUCTION: value is not defined
+  [host] KMP_FOREIGN_THREADS_THREADPRIVATE='TRUE'
+  [host] KMP_FORKJOIN_BARRIER='2,2'
+  [host] KMP_FORKJOIN_BARRIER_PATTERN='hyper,hyper'
+  [host] KMP_FORKJOIN_FRAMES='TRUE'
+  [host] KMP_FORKJOIN_FRAMES_MODE='3'
+  [host] KMP_GTID_MODE='3'
+  [host] KMP_HANDLE_SIGNALS='FALSE'
+  [host] KMP_HOT_TEAMS_MAX_LEVEL='1'
+  [host] KMP_HOT_TEAMS_MODE='0'
+  [host] KMP_INIT_AT_FORK='TRUE'
+  [host] KMP_ITT_PREPARE_DELAY='0'
+  [host] KMP_LIBRARY='throughput'
+  [host] KMP_LOCK_KIND='queuing'
+  [host] KMP_MALLOC_POOL_INCR='1M'
+  [host] KMP_MWAIT_HINTS='0'
+  [host] KMP_NESTING_MODE=0
+  [host] KMP_NUM_LOCKS_IN_BLOCK='1'
+  [host] KMP_PLAIN_BARRIER='2,2'
+  [host] KMP_PLAIN_BARRIER_PATTERN='hyper,hyper'
+  [host] KMP_REDUCTION_BARRIER='1,1'
+  [host] KMP_REDUCTION_BARRIER_PATTERN='hyper,hyper'
+  [host] KMP_SCHEDULE='static,balanced;guided,iterative'
+  [host] KMP_SETTINGS='FALSE'
+  [host] KMP_SPIN_BACKOFF_PARAMS='4096,100'
+  [host] KMP_STACKOFFSET='64'
+  [host] KMP_STACKPAD='0'
+  [host] KMP_STACKSIZE='8M'
+  [host] KMP_STORAGE_MAP='FALSE'
+  [host] KMP_TASKING='2'
+  [host] KMP_TASKLOOP_MIN_TASKS='0'
+  [host] KMP_TASK_STEALING_CONSTRAINT='1'
+  [host] KMP_TEAMS_PROC_BIND='spread'
+  [host] KMP_TEAMS_THREAD_LIMIT='112'
+  [host] KMP_TOPOLOGY_METHOD='all'
+  [host] KMP_TPAUSE='0'
+  [host] KMP_USER_LEVEL_MWAIT='FALSE'
+  [host] KMP_USE_YIELD='1'
+  [host] KMP_VERSION='FALSE'
+  [host] KMP_WARNINGS='TRUE'
+  [host] LIBOMP_NUM_HIDDEN_HELPER_THREADS='8'
+  [host] LIBOMP_USE_HIDDEN_HELPER_TASK='TRUE'
+  [host] OMP_AFFINITY_FORMAT='OMP: pid %P tid %i thread %n bound to OS proc set {%A}'
+  [host] OMP_ALLOCATOR='omp_default_mem_alloc'
+  [host] OMP_CANCELLATION='FALSE'
+  [host] OMP_DEFAULT_DEVICE='0'
+  [host] OMP_DISPLAY_AFFINITY='TRUE'
+  [host] OMP_DISPLAY_ENV='VERBOSE'
+  [host] OMP_DYNAMIC='FALSE'
+  [host] OMP_MAX_ACTIVE_LEVELS='1'
+  [host] OMP_MAX_TASK_PRIORITY='0'
+  [host] OMP_NESTED: deprecated; max-active-levels-var=1
+  [host] OMP_NUM_TEAMS='0'
+  [host] OMP_NUM_THREADS='4'
+  [host] OMP_PLACES='cores'
+  [host] OMP_PROC_BIND='intel'
+  [host] OMP_SCHEDULE='static'
+  [host] OMP_STACKSIZE='8M'
+  [host] OMP_TARGET_OFFLOAD=DEFAULT
+  [host] OMP_TEAMS_THREAD_LIMIT='0'
+  [host] OMP_THREAD_LIMIT='2147483647'
+  [host] OMP_TOOL='enabled'
+  [host] OMP_TOOL_LIBRARIES: value is not defined
+  [host] OMP_TOOL_VERBOSE_INIT: value is not defined
+  [host] OMP_WAIT_POLICY='PASSIVE'
+  [host] KMP_AFFINITY='noverbose,warnings,respect,granularity=core,compact,0,0'
+OPENMP DISPLAY ENVIRONMENT END
+
+
+/home/ssd/anaconda3/lib/python3.11/site-packages/torch/utils/data/dataloader.py:556: UserWarning: This DataLoader will create 16 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+OMP: pid 24654 tid 24654 thread 0 bound to OS proc set {0,56}
+OMP: pid 24654 tid 24815 thread 1 bound to OS proc set {0,56}
+OMP: pid 24654 tid 24817 thread 3 bound to OS proc set {4,60}
+OMP: pid 24654 tid 24816 thread 2 bound to OS proc set {4,60}
+/home/ssd/yi/workloads/dlrm/dlrm_data_pytorch.py:328: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /opt/conda/conda-bld/pytorch_1716450547754/work/torch/csrc/utils/tensor_new.cpp:278.)
+  X_int = torch.log(torch.tensor(transposed_data[0], dtype=torch.float) + 1)
+world size: 1, current rank: 0, local rank: 0
+Using CPU...
+Reading pre-processed data=/home/ssd/yi/workloads/dlrm/input/kaggleAdDisplayChallenge_processed.npz
+Sparse fea = 26, Dense fea = 13
+Defined train indices...
+Randomized indices across days ...
+Split data according to indices...
+Reading pre-processed data=/home/ssd/yi/workloads/dlrm/input/kaggleAdDisplayChallenge_processed.npz
+Sparse fea = 26, Dense fea = 13
+Defined test indices...
+Randomized indices across days ...
+Split data according to indices...
+time/loss/accuracy (if enabled):
+Finished training it 1024/306969 of epoch 0, 11.97 ms/it, loss 0.518740
+Finished training it 2048/306969 of epoch 0, 11.76 ms/it, loss 0.504359
+Finished training it 3072/306969 of epoch 0, 11.63 ms/it, loss 0.498425
+Finished training it 4096/306969 of epoch 0, 11.30 ms/it, loss 0.487468
+Finished training it 5120/306969 of epoch 0, 11.42 ms/it, loss 0.486634
+Finished training it 6144/306969 of epoch 0, 11.48 ms/it, loss 0.481702
+Finished training it 7168/306969 of epoch 0, 11.39 ms/it, loss 0.477167
+Finished training it 8192/306969 of epoch 0, 11.46 ms/it, loss 0.476702
+Finished training it 9216/306969 of epoch 0, 11.46 ms/it, loss 0.474232
+Finished training it 10240/306969 of epoch 0, 11.24 ms/it, loss 0.472099
+Finished training it 11264/306969 of epoch 0, 11.42 ms/it, loss 0.470385
+Finished training it 12288/306969 of epoch 0, 11.47 ms/it, loss 0.466317
+Finished training it 13312/306969 of epoch 0, 11.49 ms/it, loss 0.472073
+Finished training it 14336/306969 of epoch 0, 11.39 ms/it, loss 0.468531
+Finished training it 15360/306969 of epoch 0, 11.52 ms/it, loss 0.466387
+Finished training it 16384/306969 of epoch 0, 11.23 ms/it, loss 0.466651
+Finished training it 17408/306969 of epoch 0, 11.26 ms/it, loss 0.465321
+Finished training it 18432/306969 of epoch 0, 11.39 ms/it, loss 0.467052
+Finished training it 19456/306969 of epoch 0, 11.45 ms/it, loss 0.465342
+Finished training it 20480/306969 of epoch 0, 11.52 ms/it, loss 0.465237
+Finished training it 21504/306969 of epoch 0, 11.35 ms/it, loss 0.465513
+Finished training it 22528/306969 of epoch 0, 11.16 ms/it, loss 0.464127
+Finished training it 23552/306969 of epoch 0, 11.33 ms/it, loss 0.467099
+Finished training it 24576/306969 of epoch 0, 11.54 ms/it, loss 0.462236
+Finished training it 25600/306969 of epoch 0, 11.51 ms/it, loss 0.461251
+Finished training it 26624/306969 of epoch 0, 11.50 ms/it, loss 0.461921
+Finished training it 27648/306969 of epoch 0, 11.35 ms/it, loss 0.459767
+Finished training it 28672/306969 of epoch 0, 11.23 ms/it, loss 0.462233
+Finished training it 29696/306969 of epoch 0, 11.34 ms/it, loss 0.463616
+Finished training it 30720/306969 of epoch 0, 11.53 ms/it, loss 0.462126
+Finished training it 31744/306969 of epoch 0, 11.28 ms/it, loss 0.463024
+Finished training it 32768/306969 of epoch 0, 11.44 ms/it, loss 0.462314
+Finished training it 33792/306969 of epoch 0, 11.21 ms/it, loss 0.459941
+Finished training it 34816/306969 of epoch 0, 11.33 ms/it, loss 0.458503
+Finished training it 35840/306969 of epoch 0, 11.45 ms/it, loss 0.462651
+Finished training it 36864/306969 of epoch 0, 11.53 ms/it, loss 0.459592
+Finished training it 37888/306969 of epoch 0, 11.44 ms/it, loss 0.458482
+Finished training it 38912/306969 of epoch 0, 11.45 ms/it, loss 0.461389
+Finished training it 39936/306969 of epoch 0, 11.23 ms/it, loss 0.459944
+Finished training it 40960/306969 of epoch 0, 11.41 ms/it, loss 0.459341
+Finished training it 41984/306969 of epoch 0, 11.43 ms/it, loss 0.458976
+Finished training it 43008/306969 of epoch 0, 11.52 ms/it, loss 0.458317
+Finished training it 44032/306969 of epoch 0, 11.45 ms/it, loss 0.459639
+Finished training it 45056/306969 of epoch 0, 11.10 ms/it, loss 0.460025
+Finished training it 46080/306969 of epoch 0, 11.31 ms/it, loss 0.458611
+Finished training it 47104/306969 of epoch 0, 11.42 ms/it, loss 0.460800
+Finished training it 48128/306969 of epoch 0, 11.45 ms/it, loss 0.459701
+Finished training it 49152/306969 of epoch 0, 11.39 ms/it, loss 0.455729
+Finished training it 50176/306969 of epoch 0, 11.16 ms/it, loss 0.457702
+Finished training it 51200/306969 of epoch 0, 11.27 ms/it, loss 0.459180
+Finished training it 52224/306969 of epoch 0, 11.52 ms/it, loss 0.459793
+Finished training it 53248/306969 of epoch 0, 11.44 ms/it, loss 0.458514
+Finished training it 54272/306969 of epoch 0, 11.45 ms/it, loss 0.458395
+Finished training it 55296/306969 of epoch 0, 11.18 ms/it, loss 0.457914
+Finished training it 56320/306969 of epoch 0, 11.38 ms/it, loss 0.457204
+Finished training it 57344/306969 of epoch 0, 11.52 ms/it, loss 0.455150
+Finished training it 58368/306969 of epoch 0, 11.38 ms/it, loss 0.455076
+Finished training it 59392/306969 of epoch 0, 11.23 ms/it, loss 0.456919
+Finished training it 60416/306969 of epoch 0, 11.36 ms/it, loss 0.456851
+Finished training it 61440/306969 of epoch 0, 11.47 ms/it, loss 0.459128
+Finished training it 62464/306969 of epoch 0, 11.51 ms/it, loss 0.456883
+Finished training it 63488/306969 of epoch 0, 11.10 ms/it, loss 0.456369
+Finished training it 64512/306969 of epoch 0, 11.32 ms/it, loss 0.458366
+Finished training it 65536/306969 of epoch 0, 11.50 ms/it, loss 0.459672
+Finished training it 66560/306969 of epoch 0, 11.44 ms/it, loss 0.456783
+Finished training it 67584/306969 of epoch 0, 11.17 ms/it, loss 0.454874
+Finished training it 68608/306969 of epoch 0, 11.33 ms/it, loss 0.456116
+Finished training it 69632/306969 of epoch 0, 11.45 ms/it, loss 0.456099
+Finished training it 70656/306969 of epoch 0, 11.44 ms/it, loss 0.455647
+Finished training it 71680/306969 of epoch 0, 11.10 ms/it, loss 0.457400
+Finished training it 72704/306969 of epoch 0, 11.33 ms/it, loss 0.453790
+Finished training it 73728/306969 of epoch 0, 11.52 ms/it, loss 0.455689
+Finished training it 74752/306969 of epoch 0, 11.44 ms/it, loss 0.454969
+Finished training it 75776/306969 of epoch 0, 11.13 ms/it, loss 0.455246
+Finished training it 76800/306969 of epoch 0, 11.34 ms/it, loss 0.455348
+Finished training it 77824/306969 of epoch 0, 11.52 ms/it, loss 0.455710
+Finished training it 78848/306969 of epoch 0, 11.40 ms/it, loss 0.454721
+Finished training it 79872/306969 of epoch 0, 11.12 ms/it, loss 0.454368
+Finished training it 80896/306969 of epoch 0, 11.18 ms/it, loss 0.454529
+Finished training it 81920/306969 of epoch 0, 11.51 ms/it, loss 0.455626
+Finished training it 82944/306969 of epoch 0, 11.49 ms/it, loss 0.453792
+Finished training it 83968/306969 of epoch 0, 11.16 ms/it, loss 0.453155
+Finished training it 84992/306969 of epoch 0, 11.39 ms/it, loss 0.453731
+Finished training it 86016/306969 of epoch 0, 11.51 ms/it, loss 0.455766
+Finished training it 87040/306969 of epoch 0, 11.41 ms/it, loss 0.454447
+Finished training it 88064/306969 of epoch 0, 11.38 ms/it, loss 0.452645
+Finished training it 89088/306969 of epoch 0, 11.17 ms/it, loss 0.454482
+Finished training it 90112/306969 of epoch 0, 11.52 ms/it, loss 0.453654
+Finished training it 91136/306969 of epoch 0, 11.50 ms/it, loss 0.453582
+Finished training it 92160/306969 of epoch 0, 11.38 ms/it, loss 0.455449
+Finished training it 93184/306969 of epoch 0, 11.22 ms/it, loss 0.454625
+Finished training it 94208/306969 of epoch 0, 11.41 ms/it, loss 0.453894
+Finished training it 95232/306969 of epoch 0, 11.40 ms/it, loss 0.451833
+Finished training it 96256/306969 of epoch 0, 11.34 ms/it, loss 0.452614
+Finished training it 97280/306969 of epoch 0, 11.11 ms/it, loss 0.452419
+Finished training it 98304/306969 of epoch 0, 11.40 ms/it, loss 0.451489
+Finished training it 99328/306969 of epoch 0, 11.45 ms/it, loss 0.454123
+Finished training it 100352/306969 of epoch 0, 11.34 ms/it, loss 0.453095
+Finished training it 101376/306969 of epoch 0, 11.37 ms/it, loss 0.452965
+Finished training it 102400/306969 of epoch 0, 11.11 ms/it, loss 0.453804
+Finished training it 103424/306969 of epoch 0, 11.46 ms/it, loss 0.454358
+Finished training it 104448/306969 of epoch 0, 11.43 ms/it, loss 0.454232
+Finished training it 105472/306969 of epoch 0, 11.45 ms/it, loss 0.454201
+Finished training it 106496/306969 of epoch 0, 11.17 ms/it, loss 0.452039
+Finished training it 107520/306969 of epoch 0, 11.28 ms/it, loss 0.452264
+Finished training it 108544/306969 of epoch 0, 11.52 ms/it, loss 0.452600
+Finished training it 109568/306969 of epoch 0, 11.36 ms/it, loss 0.452292
+Finished training it 110592/306969 of epoch 0, 11.22 ms/it, loss 0.452965
+Finished training it 111616/306969 of epoch 0, 11.40 ms/it, loss 0.454907
+Finished training it 112640/306969 of epoch 0, 11.39 ms/it, loss 0.454525
+Finished training it 113664/306969 of epoch 0, 11.36 ms/it, loss 0.453689
+Finished training it 114688/306969 of epoch 0, 11.07 ms/it, loss 0.451718
+Finished training it 115712/306969 of epoch 0, 11.53 ms/it, loss 0.451094
+Finished training it 116736/306969 of epoch 0, 11.48 ms/it, loss 0.453578
+Finished training it 117760/306969 of epoch 0, 11.14 ms/it, loss 0.450803
+Finished training it 118784/306969 of epoch 0, 11.31 ms/it, loss 0.453152
+Finished training it 119808/306969 of epoch 0, 11.45 ms/it, loss 0.454850
+Finished training it 120832/306969 of epoch 0, 11.49 ms/it, loss 0.449495
+Finished training it 121856/306969 of epoch 0, 11.05 ms/it, loss 0.451732
+Finished training it 122880/306969 of epoch 0, 11.38 ms/it, loss 0.452325
+Finished training it 123904/306969 of epoch 0, 11.42 ms/it, loss 0.455175
+Finished training it 124928/306969 of epoch 0, 11.48 ms/it, loss 0.451417
+Finished training it 125952/306969 of epoch 0, 11.17 ms/it, loss 0.453831
+Finished training it 126976/306969 of epoch 0, 11.40 ms/it, loss 0.454482
+Finished training it 128000/306969 of epoch 0, 11.52 ms/it, loss 0.450870
+Finished training it 129024/306969 of epoch 0, 11.32 ms/it, loss 0.452471
+Finished training it 130048/306969 of epoch 0, 11.21 ms/it, loss 0.454689
+Finished training it 131072/306969 of epoch 0, 11.41 ms/it, loss 0.453316
+Finished training it 132096/306969 of epoch 0, 11.52 ms/it, loss 0.453291
+Finished training it 133120/306969 of epoch 0, 11.28 ms/it, loss 0.450679
+Finished training it 134144/306969 of epoch 0, 11.19 ms/it, loss 0.450992
+Finished training it 135168/306969 of epoch 0, 11.43 ms/it, loss 0.449164
+Finished training it 136192/306969 of epoch 0, 11.52 ms/it, loss 0.452299
+Finished training it 137216/306969 of epoch 0, 11.04 ms/it, loss 0.451861
+Finished training it 138240/306969 of epoch 0, 11.31 ms/it, loss 0.452820
+Finished training it 139264/306969 of epoch 0, 11.44 ms/it, loss 0.452221
+Finished training it 140288/306969 of epoch 0, 11.43 ms/it, loss 0.448082
+Finished training it 141312/306969 of epoch 0, 11.13 ms/it, loss 0.451715
+Finished training it 142336/306969 of epoch 0, 11.39 ms/it, loss 0.448741
+Finished training it 143360/306969 of epoch 0, 11.48 ms/it, loss 0.450691
+Finished training it 144384/306969 of epoch 0, 11.49 ms/it, loss 0.450865
+Finished training it 145408/306969 of epoch 0, 11.25 ms/it, loss 0.453299
+Finished training it 146432/306969 of epoch 0, 11.18 ms/it, loss 0.449171
+Finished training it 147456/306969 of epoch 0, 11.44 ms/it, loss 0.449828
+Finished training it 148480/306969 of epoch 0, 11.52 ms/it, loss 0.448485
+Finished training it 149504/306969 of epoch 0, 11.45 ms/it, loss 0.449372
+Finished training it 150528/306969 of epoch 0, 11.12 ms/it, loss 0.450861
+Finished training it 151552/306969 of epoch 0, 11.49 ms/it, loss 0.447610
+Finished training it 152576/306969 of epoch 0, 11.47 ms/it, loss 0.448475
+Finished training it 153600/306969 of epoch 0, 11.17 ms/it, loss 0.450512
+Finished training it 154624/306969 of epoch 0, 11.39 ms/it, loss 0.449655
+Finished training it 155648/306969 of epoch 0, 11.38 ms/it, loss 0.449798
+Finished training it 156672/306969 of epoch 0, 11.45 ms/it, loss 0.449583
+Finished training it 157696/306969 of epoch 0, 11.37 ms/it, loss 0.447533
+Finished training it 158720/306969 of epoch 0, 11.18 ms/it, loss 0.450711
+Finished training it 159744/306969 of epoch 0, 11.47 ms/it, loss 0.449914
+Finished training it 160768/306969 of epoch 0, 11.44 ms/it, loss 0.450555
+Finished training it 161792/306969 of epoch 0, 11.17 ms/it, loss 0.451733
+Finished training it 162816/306969 of epoch 0, 11.32 ms/it, loss 0.452042
+Finished training it 163840/306969 of epoch 0, 11.50 ms/it, loss 0.451546
+Finished training it 164864/306969 of epoch 0, 11.44 ms/it, loss 0.450650
+Finished training it 165888/306969 of epoch 0, 11.04 ms/it, loss 0.450793
+Finished training it 166912/306969 of epoch 0, 11.33 ms/it, loss 0.451632
+Finished training it 167936/306969 of epoch 0, 11.52 ms/it, loss 0.452206
+Finished training it 168960/306969 of epoch 0, 11.50 ms/it, loss 0.448877
+Finished training it 169984/306969 of epoch 0, 11.17 ms/it, loss 0.450588
+Finished training it 171008/306969 of epoch 0, 11.36 ms/it, loss 0.447007
+Finished training it 172032/306969 of epoch 0, 11.45 ms/it, loss 0.449086
+Finished training it 173056/306969 of epoch 0, 11.43 ms/it, loss 0.451807
+Finished training it 174080/306969 of epoch 0, 11.18 ms/it, loss 0.449655
+Finished training it 175104/306969 of epoch 0, 11.31 ms/it, loss 0.449438
+Finished training it 176128/306969 of epoch 0, 11.51 ms/it, loss 0.449204
+Finished training it 177152/306969 of epoch 0, 11.43 ms/it, loss 0.446455
+Finished training it 178176/306969 of epoch 0, 11.20 ms/it, loss 0.448279
+Finished training it 179200/306969 of epoch 0, 11.41 ms/it, loss 0.449104
+Finished training it 180224/306969 of epoch 0, 11.44 ms/it, loss 0.450794
+Finished training it 181248/306969 of epoch 0, 11.42 ms/it, loss 0.451597
+Finished training it 182272/306969 of epoch 0, 11.13 ms/it, loss 0.451232
+Finished training it 183296/306969 of epoch 0, 11.33 ms/it, loss 0.449831
+Finished training it 184320/306969 of epoch 0, 11.52 ms/it, loss 0.450408
+Finished training it 185344/306969 of epoch 0, 11.43 ms/it, loss 0.451613
+Finished training it 186368/306969 of epoch 0, 11.14 ms/it, loss 0.449211
+Finished training it 187392/306969 of epoch 0, 11.34 ms/it, loss 0.450555
+Finished training it 188416/306969 of epoch 0, 11.43 ms/it, loss 0.447239
+Finished training it 189440/306969 of epoch 0, 11.39 ms/it, loss 0.453156
+Finished training it 190464/306969 of epoch 0, 11.15 ms/it, loss 0.450010
+Finished training it 191488/306969 of epoch 0, 11.30 ms/it, loss 0.448721
+Finished training it 192512/306969 of epoch 0, 11.51 ms/it, loss 0.446325
+Finished training it 193536/306969 of epoch 0, 11.37 ms/it, loss 0.449907
+Finished training it 194560/306969 of epoch 0, 11.17 ms/it, loss 0.449647
+Finished training it 195584/306969 of epoch 0, 11.47 ms/it, loss 0.452554
+Finished training it 196608/306969 of epoch 0, 11.42 ms/it, loss 0.449607
+Finished training it 197632/306969 of epoch 0, 11.14 ms/it, loss 0.449984
+Finished training it 198656/306969 of epoch 0, 11.27 ms/it, loss 0.448806
+Finished training it 199680/306969 of epoch 0, 11.48 ms/it, loss 0.451965
+Finished training it 200704/306969 of epoch 0, 11.39 ms/it, loss 0.449286
+Finished training it 201728/306969 of epoch 0, 11.13 ms/it, loss 0.450004
+Finished training it 202752/306969 of epoch 0, 11.46 ms/it, loss 0.448307
+Finished training it 203776/306969 of epoch 0, 11.46 ms/it, loss 0.448216
+Finished training it 204800/306969 of epoch 0, 11.14 ms/it, loss 0.447278
+Finished training it 205824/306969 of epoch 0, 11.31 ms/it, loss 0.449416
+Finished training it 206848/306969 of epoch 0, 11.43 ms/it, loss 0.447205
+Finished training it 207872/306969 of epoch 0, 11.54 ms/it, loss 0.448682
+Finished training it 208896/306969 of epoch 0, 11.09 ms/it, loss 0.449814
+Finished training it 209920/306969 of epoch 0, 11.32 ms/it, loss 0.447733
+Finished training it 210944/306969 of epoch 0, 11.45 ms/it, loss 0.448476
+Finished training it 211968/306969 of epoch 0, 11.51 ms/it, loss 0.447702
+Finished training it 212992/306969 of epoch 0, 11.10 ms/it, loss 0.447066
+Finished training it 214016/306969 of epoch 0, 11.31 ms/it, loss 0.448244
+Finished training it 215040/306969 of epoch 0, 11.36 ms/it, loss 0.447634
+Finished training it 216064/306969 of epoch 0, 11.53 ms/it, loss 0.447097
+Finished training it 217088/306969 of epoch 0, 11.10 ms/it, loss 0.448619
+Finished training it 218112/306969 of epoch 0, 11.40 ms/it, loss 0.448558
+Finished training it 219136/306969 of epoch 0, 11.43 ms/it, loss 0.448276
+Finished training it 220160/306969 of epoch 0, 11.51 ms/it, loss 0.447050
+Finished training it 221184/306969 of epoch 0, 11.19 ms/it, loss 0.445606
+Finished training it 222208/306969 of epoch 0, 11.34 ms/it, loss 0.449484
+Finished training it 223232/306969 of epoch 0, 11.41 ms/it, loss 0.449297
+Finished training it 224256/306969 of epoch 0, 11.44 ms/it, loss 0.449536
+Finished training it 225280/306969 of epoch 0, 11.42 ms/it, loss 0.450834
+Finished training it 226304/306969 of epoch 0, 11.06 ms/it, loss 0.446027
+Finished training it 227328/306969 of epoch 0, 11.38 ms/it, loss 0.450334
+Finished training it 228352/306969 of epoch 0, 11.45 ms/it, loss 0.449581
+Finished training it 229376/306969 of epoch 0, 11.32 ms/it, loss 0.447894
+Finished training it 230400/306969 of epoch 0, 11.12 ms/it, loss 0.447353
+Finished training it 231424/306969 of epoch 0, 11.36 ms/it, loss 0.447407
+Finished training it 232448/306969 of epoch 0, 11.51 ms/it, loss 0.448789
+Finished training it 233472/306969 of epoch 0, 11.16 ms/it, loss 0.450428
+Finished training it 234496/306969 of epoch 0, 11.30 ms/it, loss 0.448639
+Finished training it 235520/306969 of epoch 0, 11.44 ms/it, loss 0.449107
+Finished training it 236544/306969 of epoch 0, 11.29 ms/it, loss 0.451186
+Finished training it 237568/306969 of epoch 0, 11.17 ms/it, loss 0.447088
+Finished training it 238592/306969 of epoch 0, 11.40 ms/it, loss 0.448870
+Finished training it 239616/306969 of epoch 0, 11.44 ms/it, loss 0.451480
+Finished training it 240640/306969 of epoch 0, 11.15 ms/it, loss 0.448079
+Finished training it 241664/306969 of epoch 0, 11.37 ms/it, loss 0.446029
+Finished training it 242688/306969 of epoch 0, 11.43 ms/it, loss 0.448054
+Finished training it 243712/306969 of epoch 0, 11.49 ms/it, loss 0.447981
+Finished training it 244736/306969 of epoch 0, 11.15 ms/it, loss 0.448642
+Finished training it 245760/306969 of epoch 0, 11.33 ms/it, loss 0.447770
+Finished training it 246784/306969 of epoch 0, 11.44 ms/it, loss 0.446298
+Finished training it 247808/306969 of epoch 0, 11.40 ms/it, loss 0.446281
+Finished training it 248832/306969 of epoch 0, 11.14 ms/it, loss 0.447495
+Finished training it 249856/306969 of epoch 0, 11.39 ms/it, loss 0.449424
+Finished training it 250880/306969 of epoch 0, 11.48 ms/it, loss 0.448149
+Finished training it 251904/306969 of epoch 0, 11.48 ms/it, loss 0.448568
+Finished training it 252928/306969 of epoch 0, 11.36 ms/it, loss 0.446333
+Finished training it 253952/306969 of epoch 0, 11.18 ms/it, loss 0.446407
+Finished training it 254976/306969 of epoch 0, 11.34 ms/it, loss 0.448010
+Finished training it 256000/306969 of epoch 0, 11.45 ms/it, loss 0.449523
+Finished training it 257024/306969 of epoch 0, 11.43 ms/it, loss 0.447604
+Finished training it 258048/306969 of epoch 0, 11.41 ms/it, loss 0.446548
+Finished training it 259072/306969 of epoch 0, 11.18 ms/it, loss 0.445627
+Finished training it 260096/306969 of epoch 0, 11.37 ms/it, loss 0.446674
+Finished training it 261120/306969 of epoch 0, 11.49 ms/it, loss 0.448460
+Finished training it 262144/306969 of epoch 0, 11.37 ms/it, loss 0.447448
+Finished training it 263168/306969 of epoch 0, 11.44 ms/it, loss 0.449375
+Finished training it 264192/306969 of epoch 0, 11.13 ms/it, loss 0.449036
+Finished training it 265216/306969 of epoch 0, 11.26 ms/it, loss 0.446247
+Finished training it 266240/306969 of epoch 0, 11.48 ms/it, loss 0.446311
+Finished training it 267264/306969 of epoch 0, 11.27 ms/it, loss 0.449144
+Finished training it 268288/306969 of epoch 0, 11.18 ms/it, loss 0.448648
+Finished training it 269312/306969 of epoch 0, 11.35 ms/it, loss 0.445730
+Finished training it 270336/306969 of epoch 0, 11.41 ms/it, loss 0.448402
+Finished training it 271360/306969 of epoch 0, 11.37 ms/it, loss 0.444515
+Finished training it 272384/306969 of epoch 0, 11.12 ms/it, loss 0.447765
+Finished training it 273408/306969 of epoch 0, 11.30 ms/it, loss 0.447027
+Finished training it 274432/306969 of epoch 0, 11.44 ms/it, loss 0.447628
+Finished training it 275456/306969 of epoch 0, 11.49 ms/it, loss 0.448795
+Finished training it 276480/306969 of epoch 0, 11.08 ms/it, loss 0.447209
+Finished training it 277504/306969 of epoch 0, 11.40 ms/it, loss 0.444600
+Finished training it 278528/306969 of epoch 0, 11.51 ms/it, loss 0.450332
+Finished training it 279552/306969 of epoch 0, 11.42 ms/it, loss 0.450199
+Finished training it 280576/306969 of epoch 0, 11.07 ms/it, loss 0.447766
+Finished training it 281600/306969 of epoch 0, 11.39 ms/it, loss 0.445779
+Finished training it 282624/306969 of epoch 0, 11.38 ms/it, loss 0.445596
+Finished training it 283648/306969 of epoch 0, 11.40 ms/it, loss 0.448247
+Finished training it 284672/306969 of epoch 0, 11.08 ms/it, loss 0.446713
+Finished training it 285696/306969 of epoch 0, 11.30 ms/it, loss 0.446601
+Finished training it 286720/306969 of epoch 0, 11.45 ms/it, loss 0.449083
+Finished training it 287744/306969 of epoch 0, 11.39 ms/it, loss 0.444939
+Finished training it 288768/306969 of epoch 0, 11.18 ms/it, loss 0.446263
+Finished training it 289792/306969 of epoch 0, 11.39 ms/it, loss 0.445503
+Finished training it 290816/306969 of epoch 0, 11.39 ms/it, loss 0.448934
+Finished training it 291840/306969 of epoch 0, 11.45 ms/it, loss 0.445134
+Finished training it 292864/306969 of epoch 0, 11.40 ms/it, loss 0.447384
+Finished training it 293888/306969 of epoch 0, 11.21 ms/it, loss 0.448013
+Finished training it 294912/306969 of epoch 0, 11.42 ms/it, loss 0.446382
+Finished training it 295936/306969 of epoch 0, 11.45 ms/it, loss 0.447064
+Finished training it 296960/306969 of epoch 0, 11.51 ms/it, loss 0.447418
+Finished training it 297984/306969 of epoch 0, 11.32 ms/it, loss 0.450234
+Finished training it 299008/306969 of epoch 0, 11.25 ms/it, loss 0.449916
+Finished training it 300032/306969 of epoch 0, 11.41 ms/it, loss 0.446749
+Finished training it 301056/306969 of epoch 0, 11.48 ms/it, loss 0.446306
+Finished training it 302080/306969 of epoch 0, 11.41 ms/it, loss 0.445930
+Finished training it 303104/306969 of epoch 0, 11.14 ms/it, loss 0.447295
+Finished training it 304128/306969 of epoch 0, 11.33 ms/it, loss 0.447709
+Finished training it 305152/306969 of epoch 0, 11.50 ms/it, loss 0.444825
+Finished training it 306176/306969 of epoch 0, 11.46 ms/it, loss 0.446615
+Finished training it 306969/306969 of epoch 0, 11.17 ms/it, loss 0.447560
+done
+execution_time 5076.17 (s)
