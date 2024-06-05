@@ -1,5 +1,6 @@
 
 conda activate base
+conda deactivate
 
 sudo damo record $(pidof masim)
 
@@ -13,7 +14,7 @@ damo record  --monitoring_intervals 500000 20000000 120000000 --monitoring_nr_re
 
 (2ms->500sm(1s)采一次，20s的数据算一个聚合，2min拆分聚合看看)
 sudo damo report heats --address_range 0 50000000000  --heatmap testV2.png 
-sudo damo report heats --heatmap liblinear.png 
+sudo damo report heats --heatmap s_onehot.png 
 
 xsb：69632
 --damos_sz_region 4096 8192 这个就是不行，区域不够，偷懒了

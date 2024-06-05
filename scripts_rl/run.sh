@@ -1,7 +1,7 @@
 #!/bin/bash
 
-BENCHMARKS="dlrm" 
-DRAM_SIZE="36GB 48GB"
+BENCHMARKS="masim_s7" 
+DRAM_SIZE="16GB"
 dmesg -c 
 
 # for BENCH in ${BENCHMARKS};
@@ -21,7 +21,7 @@ for BENCH in ${BENCHMARKS};
 do
     for NR in ${DRAM_SIZE};
     do
-        ./bench_scripts/run_node.sh -B ${BENCH} -R ${NR} -V ${NR}-v41
+        ./bench_scripts/run_node.sh -B ${BENCH} -R ${NR} -V ${NR}-v41-1
         # killall run.py
         sleep 20
     done

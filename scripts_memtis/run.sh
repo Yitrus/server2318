@@ -1,7 +1,7 @@
 #!/bin/bash
 
-BENCHMARKS="dlrm" 
-DRAM_SIZE="24GB 36GB 48GB"
+BENCHMARKS="masim_s7" 
+DRAM_SIZE="16GB"
 # DRAM_SIZE="16GB"
 dmesg -c 
 
