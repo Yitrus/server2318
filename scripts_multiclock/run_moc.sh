@@ -41,7 +41,7 @@ function func_main() {
 # for i in {1..2};
 # do
 # 	VER="G-${i}"
-    VER="2-1"
+    VER="effi"
 	func_prepare
 	func_main
 # done

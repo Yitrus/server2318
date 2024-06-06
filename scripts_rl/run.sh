@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BENCHMARKS="masim_s7" 
+BENCHMARKS="masim_s8" 
 DRAM_SIZE="16GB"
 dmesg -c 
 

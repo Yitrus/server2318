@@ -1,12 +1,12 @@
 DIR=/home/ssd/yi/scripts_multiclock
 BIN=/home/ssd/yi/tools/masim
 
-BENCH_RUN="numactl --membind=0,2 ${BIN}/masim ${BIN}/configs/s7_avgstag.cfg"
+BENCH_RUN="numactl --membind=0,2 ${BIN}/masim ${BIN}/configs/s5_shortstag.cfg"
 DATE=""
 VER=""
 PID=""
 LOG_DIR=""
-BENCH_NAME="masim_s7" 
+BENCH_NAME="masim_s5" 
 
 function func_prepare() {
     echo 3 > /proc/sys/vm/drop_caches
@@ -40,7 +40,7 @@ function func_main() {
 # for i in {1..2};
 # do
 	# VER="static-kron-${i}"
-    VER="1"
+    VER="2"
 	func_prepare
 	func_main
 # done
