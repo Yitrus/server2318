@@ -1,6 +1,6 @@
 DIR=/home/ssd/yi/scripts_multiclock
 BIN=/home/ssd/yi/workloads/dlrm
-BENCH_RUN="${BIN}/dlrm_s_criteo_kaggle.sh"
+BENCH_RUN="numactl --cpunodebind=0 ${BIN}/dlrm_s_criteo_kaggle.sh"
 DATE=""
 VER=""
 PID=""

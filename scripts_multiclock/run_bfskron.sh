@@ -1,7 +1,7 @@
 DIR=/home/ssd/yi/scripts_multiclock
 BIN=/home/ssd/yi/workloads/gapbs
 GRAPH_DIR=/home/ssd/yi/workloads/gapbs/benchmark/graphs
-BENCH_RUN="numactl --membind=0,1,2 ${BIN}/bfs -f ${GRAPH_DIR}/kron.sg -n20"
+BENCH_RUN="numactl --cpunodebind=0 ${BIN}/bfs -f ${GRAPH_DIR}/kron.sg -n20"
 DATE=""
 VER=""
 PID=""

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BENCHMARKS="masim_s8" 
+BENCHMARKS="masim_s1" 
 DRAM_SIZE="16GB"
 # DRAM_SIZE="16GB"
 dmesg -c 
@@ -12,7 +12,7 @@ do
         # for i in {1..2};
         # do
 	    # ./bench_scripts/run_balance.sh -B ${BENCH} -V "xx_${i}"
-        ./bench_scripts/run_node.sh -B ${BENCH} -R ${NR} -V "${NR}" # -${i}
+        ./bench_scripts/run_node.sh -B ${BENCH} -R ${NR} -V "${NR}-4" # -${i}
         # rm kdd12*
         # done
     done
