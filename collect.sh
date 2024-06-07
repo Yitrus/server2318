@@ -10,7 +10,7 @@ do
         break
     fi
 
-    cat /proc/vmstat | grep -e pgmig >> /home/ssd/yi/scripts_multiclock/results/masim_s1/3/migrate.txt  
+    cat /proc/vmstat | grep -e pgmig >> /home/ssd/yi/scripts_multiclock/results/masim_s6/1/migrate.txt  
     # numastat -p $(pgrep masim) >> /home/ssd/yi/migrate.txt  
     python test_ratio.py
     rm perf.data

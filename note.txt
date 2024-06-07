@@ -19,10 +19,6 @@ sudo damo report heats --heatmap s_onehot.png
 xsb：69632
 --damos_sz_region 4096 8192 这个就是不行，区域不够，偷懒了
 
-https://download.pytorch.org/whl/nightly/rocm5.1.1/torchrec-2022.12.2-py3-none-any.whl
-
-https://download.pytorch.org/whl/nightly/cpu/torchrec-0.8.0.dev20240330%2Bcpu-py3-none-any.whl
-
 /home/ssd/yi/workloads/ycsb-0.15.0/bin/ycsb load memcached -s -P /home/ssd/yi/workloads/ycsb-0.15.0/workloads/workloada -p "memcached.hosts=127.0.0.1" -p "memcached.port=11211" -p recordcount=1000000000 -threads 112 >> outRun.ycsb.load
 
 echo 3 > /proc/sys/vm/drop_caches
@@ -40,7 +36,7 @@ perf script record --data --phys-data --pid=${PID} -F 1 -e mem-loads,mem-stores 
 看cpu开销
 sudo perf record -F 50 -a -g  # 哎呀不要pid，这还怎么看看其他进程的消耗--pid 6970
 
-sudo perf script | ./tools/FlameGraph/stackcollapse-perf.pl | ./tools/FlameGraph/flamegraph.pl > perf.svg
+sudo perf script | ./tools/FlameGraph/stackcollapse-perf.pl | ./tools/FlameGraph/flamegraph.pl > /home/ssd/yi/scripts_multiclock/results/masim_s2/2/perf.svg
 
 pgrep -f XSBench | xargs ps -p
 
