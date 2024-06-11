@@ -12,7 +12,7 @@ do
         # for i in {1..2};
         # do
 	    # ./bench_scripts/run_balance.sh -B ${BENCH} -V "xx_${i}"
-        ./bench_scripts/run_node.sh -B ${BENCH} -R ${NR} -V "${NR}-4" # -${i}
+        ./bench_scripts/run_node.sh -B ${BENCH} -R ${NR} -V "3" # -${i}
         # rm kdd12*
         # done
     done

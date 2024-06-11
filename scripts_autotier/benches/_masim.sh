@@ -22,7 +22,7 @@ fi
 
 # case ${BENCH_SIZE} in
 #     "kdd12")
-        BENCH_RUN+="${BENCH_BIN}/masim ${BENCH_BIN}/configs/s7_avgstag.cfg"
+        BENCH_RUN+="${BENCH_BIN}/masim ${BENCH_BIN}/configs/s6.cfg"
     #     ;;
     # *)
 # 	echo "ERROR: Retry with available SIZE. refer to benches/_liblinear.sh"
