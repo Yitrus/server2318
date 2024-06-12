@@ -37,7 +37,7 @@ perf script record --data --phys-data --pid=${PID} -F 1 -e mem-loads,mem-stores 
 看cpu开销
 sudo perf record -F 50 -a -g  # 哎呀不要pid，这还怎么看看其他进程的消耗--pid 6970
 
-sudo perf script | ./tools/FlameGraph/stackcollapse-perf.pl | ./tools/FlameGraph/flamegraph.pl > /home/ssd/yi/scripts_multiclock/results/masim_s2/2/perf.svg
+sudo perf script | ./tools/FlameGraph/stackcollapse-perf.pl | ./tools/FlameGraph/flamegraph.pl > /home/ssd/yi/perf_at_s3.svg
 
 pgrep -f XSBench | xargs ps -p
 
