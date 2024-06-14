@@ -27,7 +27,7 @@ def read_sample(file_path):
 if __name__ == "__main__":
     os.system('./reward.sh')
     hit_ratio = read_sample('./main.txt')
-    with open("/home/ssd/yi/static/s6/hit_ratio.txt", "a") as file:
+    with open("/home/ssd/yi/hit_ratio.txt", "a") as file:
         file.write(hit_ratio + "\n")
               
 
