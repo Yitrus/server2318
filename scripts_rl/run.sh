@@ -1,7 +1,9 @@
 #!/bin/bash
 
-BENCHMARKS="XSBench" 
-DRAM_SIZE="14GB"
+BENCHMARKS="masim_s1 masim_s2 masim_s3 masim_s4 masim_s5 masim_s6" 
+# BENCHMARKS="train" 
+# DRAM_SIZE="46592MB"
+DRAM_SIZE="16GB"
 dmesg -c 
 
 # for BENCH in ${BENCHMARKS};
@@ -21,7 +23,7 @@ for BENCH in ${BENCHMARKS};
 do
     for NR in ${DRAM_SIZE};
     do
-        ./bench_scripts/run_node.sh -B ${BENCH} -R ${NR} -V v41-3
+        ./bench_scripts/run_node.sh -B ${BENCH} -R ${NR} -V v41-newtrain
         # killall run.py
         sleep 20
     done
