@@ -21,5 +21,6 @@ do
     # cat /sys/fs/cgroup/htmm/memory.stat | grep -e anon_thp -e anon >> ${TARGET}/memory_stat.txt
     # numastat -m | grep -e Mem -e Dir -e PageTab -e Write -e FileP -e AnonP >> ${TARGET}/numa_use.txt  # 新添加的，看看每个节点容量变化
     # 时间原本1s
+    cat /proc/vmstat | grep -e pgmigrate_su -e thp_split_ -e thp_migration_spl >> ${TARGET}/pgmig.txt
     
 done
