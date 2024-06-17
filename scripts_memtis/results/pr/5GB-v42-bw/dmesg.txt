@@ -1,0 +1,68 @@
+[  945.455061] pebs disable
+[  945.455066] BUG: kernel NULL pointer dereference, address: 0000000000000000
+[  945.455070] #PF: supervisor read access in kernel mode
+[  945.455072] #PF: error_code(0x0000) - not-present page
+[  945.455073] PGD 0 P4D 0 
+[  945.455076] Oops: 0000 [#1] SMP NOPTI
+[  945.455079] CPU: 56 PID: 6093 Comm: kill_ksampled Tainted: G           OE     5.15.19-htmm #1
+[  945.455082] Hardware name: Dell Inc. PowerEdge R750/0K8F35, BIOS 1.10.2 03/03/2023
+[  945.455084] RIP: 0010:ksamplingd_exit+0x40/0x70
+[  945.455091] Code: 74 10 e8 83 e4 d9 ff 48 c7 05 b0 d9 ae 01 00 00 00 00 48 c7 c7 43 79 3a 9f 45 31 e4 e8 b4 2f 89 00 31 db 48 8b 05 90 d9 ae 01 <4a> 8b 04 20 48 8b 3c 18 48 85 ff 74 05 e8 0e b9 f1 ff 48 83 c3 08
+[  945.455093] RSP: 0018:ffffb46621717f10 EFLAGS: 00010246
+[  945.455095] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000000
+[  945.455097] RDX: 0000000000000000 RSI: ffff96443fd20980 RDI: ffff96443fd20980
+[  945.455098] RBP: ffffb46621717f20 R08: 0000000000000000 R09: 0000000000000001
+[  945.455099] R10: 0000000000000000 R11: ffffb46621717ce8 R12: 0000000000000000
+[  945.455100] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[  945.455101] FS:  00007fb7d9aa4500(0000) GS:ffff96443fd00000(0000) knlGS:0000000000000000
+[  945.455103] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  945.455105] CR2: 0000000000000000 CR3: 000000014f654002 CR4: 0000000000770ee0
+[  945.455106] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[  945.455107] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[  945.455108] PKRU: 55555554
+[  945.455109] Call Trace:
+[  945.455110]  <TASK>
+[  945.455112]  __x64_sys_htmm_end+0x9/0x10
+[  945.455119]  do_syscall_64+0x37/0xb0
+[  945.455124]  entry_SYSCALL_64_after_hwframe+0x44/0xae
+[  945.455128] RIP: 0033:0x7fb7d95ca539
+[  945.455131] Code: 00 f3 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 1f f9 2c 00 f7 d8 64 89 01 48
+[  945.455133] RSP: 002b:00007fffc1365688 EFLAGS: 00000246 ORIG_RAX: 00000000000001c2
+[  945.455135] RAX: ffffffffffffffda RBX: 0000000000000000 RCX: 00007fb7d95ca539
+[  945.455136] RDX: 0000000000000000 RSI: 00007fb7d989c8c0 RDI: 00000000ffffffff
+[  945.455137] RBP: 000055acf64009a0 R08: 0000000000000000 R09: 000055acf64009a0
+[  945.455138] R10: 0000000000000000 R11: 0000000000000246 R12: 000055acf6400860
+[  945.455139] R13: 00007fffc1365790 R14: 0000000000000000 R15: 0000000000000000
+[  945.455141]  </TASK>
+[  945.455142] Modules linked in: kmem intel_rapl_msr intel_rapl_common device_dax dax_pmem i10nm_edac nd_pmem dax_pmem_core xt_tcpudp xt_mark xt_conntrack xt_MASQUERADE nf_conntrack_netlink xfrm_user xfrm_algo xt_addrtype br_netfilter bridge stp llc socwatch2_15(OE) vtsspp(OE) sep5(OE) socperf3(OE) nf_tables nfnetlink ip6table_nat ip6table_filter ip6_tables iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 iptable_filter bpfilter pax(OE) uio_pci_generic uio overlay cuse rdma_ucm(OE) rdma_cm(OE) iw_cm(OE) ib_ipoib(OE) ib_cm(OE) ib_umad(OE) mlx5_ib(OE) mlx5_core(OE) mlxdevm(OE) ib_uverbs(OE) ib_core(OE) mlxfw(OE) psample tls mlx_compat(OE) pci_hyperv_intf nls_iso8859_1 x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm drm_kms_helper cec drm ipmi_ssif crct10dif_pclmul crc32_pclmul ghash_clmulni_intel aesni_intel cdc_ether crypto_simd usbnet cryptd binfmt_misc i2c_algo_bit rapl mii fb_sys_fops mei_me syscopyarea acpi_ipmi sysfillrect ipmi_si intel_cstate mei wmi_bmof
+[  945.455194]  sysimgblt efi_pstore intel_pch_thermal ipmi_devintf ipmi_msghandler nfit acpi_power_meter mac_hid sch_fq_codel knem(OE) parport_pc ppdev lp parport ip_tables x_tables autofs4 megaraid_sas tg3 ahci libahci wmi
+[  945.455209] CR2: 0000000000000000
+[  945.455211] ---[ end trace 63b264baa124f31c ]---
+[  945.467494] RIP: 0010:ksamplingd_exit+0x40/0x70
+[  945.467499] Code: 74 10 e8 83 e4 d9 ff 48 c7 05 b0 d9 ae 01 00 00 00 00 48 c7 c7 43 79 3a 9f 45 31 e4 e8 b4 2f 89 00 31 db 48 8b 05 90 d9 ae 01 <4a> 8b 04 20 48 8b 3c 18 48 85 ff 74 05 e8 0e b9 f1 ff 48 83 c3 08
+[  945.467501] RSP: 0018:ffffb46621717f10 EFLAGS: 00010246
+[  945.467504] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000000
+[  945.467505] RDX: 0000000000000000 RSI: ffff96443fd20980 RDI: ffff96443fd20980
+[  945.467506] RBP: ffffb46621717f20 R08: 0000000000000000 R09: 0000000000000001
+[  945.467507] R10: 0000000000000000 R11: ffffb46621717ce8 R12: 0000000000000000
+[  945.467509] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+[  945.467510] FS:  00007fb7d9aa4500(0000) GS:ffff96443fd00000(0000) knlGS:0000000000000000
+[  945.467512] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  945.467513] CR2: 0000000000000000 CR3: 000000014f654002 CR4: 0000000000770ee0
+[  945.467515] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[  945.467516] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[  945.467517] PKRU: 55555554
+[  945.543848] pebs_init
+[  947.696884] perf: interrupt took too long (2507 > 2500), lowering kernel.perf_event_max_sample_rate to 79750
+[  949.117212] perf: interrupt took too long (3137 > 3133), lowering kernel.perf_event_max_sample_rate to 63750
+[  949.498884] total_accesses: 1 max_dram_hits: 0 cur_hits: 1 
+[  953.640357] total_accesses: 1 max_dram_hits: 0 cur_hits: 1 
+[  954.887046] perf: interrupt took too long (3946 > 3921), lowering kernel.perf_event_max_sample_rate to 50500
+[  956.044026] perf: interrupt took too long (4945 > 4932), lowering kernel.perf_event_max_sample_rate to 40250
+[  957.784772] perf: interrupt took too long (6205 > 6181), lowering kernel.perf_event_max_sample_rate to 32000
+[  964.107485] perf: interrupt took too long (7772 > 7756), lowering kernel.perf_event_max_sample_rate to 25500
+[ 1041.523340] total_accesses: 1999998 max_dram_hits: 1462512 cur_hits: 1999998 
+[ 1138.482110] total_accesses: 2999999 max_dram_hits: 2292258 cur_hits: 2999999 
+[ 1198.027205] nr_sampled: 5354374, nr_throttled: 101918, nr_lost: 0
+[ 1198.027211] total runtime: 7321918880 ns, total cputime: 252408000 us, cpu usage: 29
+[ 1198.027218] pebs disable
