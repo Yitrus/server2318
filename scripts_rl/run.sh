@@ -3,8 +3,8 @@
 # BENCHMARKS="XSBencch cc" 
 # BENCHMARKS="train" 
 # DRAM_SIZE="18637MB 31027MB 46592MB 62157MB"
-BENCHMARKS="pr"
-DRAM_SIZE="17101MB"
+BENCHMARKS="sssp"
+DRAM_SIZE="12800MB" 
 dmesg -c 
 
 # for BENCH in ${BENCHMARKS};
@@ -26,7 +26,7 @@ for BENCH in ${BENCHMARKS};
 do
     for NR in ${DRAM_SIZE};
     do
-        ./bench_scripts/run_node.sh -B ${BENCH} -R ${NR} -V ${NR}-v42-bw2
+        ./bench_scripts/run_node.sh -B ${BENCH} -R ${NR} -V ${NR}-v42-bw4
         killall -9 pcm-memory
         sleep 10
     done
