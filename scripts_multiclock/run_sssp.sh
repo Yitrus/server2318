@@ -29,6 +29,7 @@ function func_main() {
     cat /proc/vmstat | grep -e thp -e pgmig >> ${LOG_DIR}/before_vmstat.log 
 	cat /proc/meminfo >>  ${LOG_DIR}/before_vmstat.log 
 
+    ./memory_stat.sh ${LOG_DIR} &
     ${TIME} -f "execution time %e (s)" \
     ${BENCH_RUN} 2>&1 | tee ${LOG_DIR}/output.log 
 
@@ -36,6 +37,7 @@ function func_main() {
 	cat /proc/meminfo >>  ${LOG_DIR}/after_vmstat.log    
 
     dmesg -c > ${LOG_DIR}/dmesg.txt
+    killall -9 memory_stat.sh
 }
 
 ################################ Main ##################################
@@ -44,8 +46,9 @@ function func_main() {
 # for i in {1..2};
 # do
 # 	VER="static-${i}"
-    VER="2-1"
+    VER="1-4"
 	func_prepare
 	func_main
+    killall -9 pcm-memory
 # done
 

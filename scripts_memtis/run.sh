@@ -1,8 +1,8 @@
 #!/bin/bash
 
-BENCHMARKS="XSBench" 
+BENCHMARKS="sssp" 
 # DRAM_SIZE="14746MB"
-DRAM_SIZE="14GB"
+DRAM_SIZE="21811MB"
 dmesg -c 
 
 for BENCH in ${BENCHMARKS};
