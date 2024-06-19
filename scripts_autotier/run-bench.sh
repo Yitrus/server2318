@@ -586,13 +586,16 @@ function func_main() {
 		cat /proc/meminfo >>  ${LOG_DIR}/real_time.log
 
 		# Run Benchmark
+		./memory_stat.sh ${LOG_DIR} &
 		${TIME} -f "execution_time %e (s)" \
 			${PERF} ${NUMACTL} ${BENCH_RUN} 2>&1 \
 			| tee ${LOG_DIR}/output.log
 
 		date >> ${LOG_DIR}/real_time.log
+		killall -9 memory_stat.sh
 		cat /proc/vmstat | grep -e thp -e pgmig >> ${LOG_DIR}/real_time.log
 		cat /proc/meminfo >>  ${LOG_DIR}/real_time.log
+		killall -9 pcm-memory
 
 		if [[ -n ${MONITOR} && $ITER -eq 1 ]]; then
 			func_monitor_end
