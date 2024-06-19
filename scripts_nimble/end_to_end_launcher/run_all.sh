@@ -6,12 +6,12 @@ export STATS_PERIOD=5
 export MOVE_HOT_AND_COLD_PAGES=no
 export SHRINK_PAGE_LISTS=yes
 export FORCE_NO_MIGRATION=no
-export NR_RUNS=2
+export NR_RUNS=1
 export MIGRATION_BATCH_SIZE=8
 export MIGRATION_MT=4
 export PREFER_FAST_NODE=no
 
-export BENCH_SIZE="70GB"
+export BENCH_SIZE="69GB"
 
 #MEM_SIZE="16GB"
 # MEM_SIZE="45GB"
@@ -29,7 +29,7 @@ RES_FOLDER="${MEM_SIZE}-${MIGRATION_MT}-threads"
 #BENCHMARK_LIST="556.psp 559.pmniGhost 560.pilbdc 563.pswim 570.pbt graph500-omp"
 #BENCHMARK_LIST="570.pbt graph500-omp"
 # BENCHMARK_LIST="graph500-omp"
-BENCHMARK_LIST="liblinear"
+BENCHMARK_LIST="xsb"
 #BENCHMARK_LIST="551.ppalm"
 #BENCHMARK_LIST="570.pbt"
 #BENCHMARK_LIST="556.psp"
@@ -126,7 +126,8 @@ do
 						if [ "${SCHEME}" == "all-remote-access" ]; then
 							export NO_MIGRATION=yes
 							sudo sysctl vm.sysctl_enable_thp_migration=1
-
+							
+							# ./memory_stat.sh ${RES_FOLDER}/${BENCH} &
 							./run_bench.sh ${THREAD};
 						fi
 
@@ -134,6 +135,7 @@ do
 							export NO_MIGRATION=yes
 							sudo sysctl vm.sysctl_enable_thp_migration=1
 
+							# ./memory_stat.sh ${RES_FOLDER}/${BENCH} &
 							./run_bench.sh ${THREAD};
 						fi
 
@@ -149,29 +151,35 @@ do
 							export NO_MIGRATION=no
 							sudo sysctl vm.sysctl_enable_thp_migration=1
 
+							# ./memory_stat.sh ${RES_FOLDER}/${BENCH} &
 							./run_bench.sh ${THREAD};
 						fi
 						if [ "${SCHEME}" == "opt-migration" ] || [ "${SCHEME}" == "concur-only-opt-migration" ]; then
 							export NO_MIGRATION=no
 							sudo sysctl vm.sysctl_enable_thp_migration=1
 
+							# ./memory_stat.sh ${RES_FOLDER}/${BENCH} &
 							./run_bench.sh ${THREAD};
 						fi
 						if [ "${SCHEME}" == "exchange-pages" ] || [ "${SCHEME}" == "basic-exchange-pages" ] || [ "${SCHEME}" == "concur-only-exchange-pages" ]; then
 							export NO_MIGRATION=no
 							sudo sysctl vm.sysctl_enable_thp_migration=1
 
+							# ./memory_stat.sh ${RES_FOLDER}/${BENCH} &
 							./run_bench.sh ${THREAD};
 						fi
 						if [ "${SCHEME}" == "non-thp-exchange-pages" ]; then
 							export NO_MIGRATION=no
 
 							sudo sysctl vm.sysctl_enable_thp_migration=0
+							# ./memory_stat.sh ${RES_FOLDER}/${BENCH} &
 							./run_bench.sh ${THREAD};
 							sudo sysctl vm.sysctl_enable_thp_migration=1
 						fi
 
 						sleep 5
+						# killall -9 memory_stat.sh
+						# killall -9 pcm-memory
 						./create_die_stacked_mem.sh remove
 
 					done # MEMHOG
