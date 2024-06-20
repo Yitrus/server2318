@@ -7,7 +7,7 @@ GRAPH_DIR=/home/ssd/yi/workloads/gapbs/benchmark/graphs/
 BENCH_RUN="${BIN}/sssp -f ${GRAPH_DIR}/web.wsg"
 
 DATE=""
-VER="1-2"
+VER="2-1"
 PID=""
 LOG_DIR=""
 BENCH_NAME="sssp" 
