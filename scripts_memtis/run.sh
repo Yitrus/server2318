@@ -1,8 +1,8 @@
 #!/bin/bash
 
-BENCHMARKS="sssp" 
+BENCHMARKS="moc" 
 # DRAM_SIZE="14746MB"
-DRAM_SIZE="21811MB"
+DRAM_SIZE="3400MB"
 dmesg -c 
 
 for BENCH in ${BENCHMARKS};
