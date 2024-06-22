@@ -1,13 +1,13 @@
 #!/bin/bash
 
-DIR=/home/ssd/yi/scripts_atonuma
+DIR=/home/ssd/yi/scripts_autonuma
 
 BIN=/home/ssd/yi/workloads/gapbs
 GRAPH_DIR=/home/ssd/yi/workloads/gapbs/benchmark/graphs/
 BENCH_RUN="numactl --cpunodebind=0 --membind=0,2 ${BIN}/pr -f ${GRAPH_DIR}/twitter.sg -i1000 -t1e-4 -n20"
 
 DATE=""
-VER="1-4"
+VER="2-1"
 PID=""
 LOG_DIR=""
 BENCH_NAME="pr" 

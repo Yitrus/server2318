@@ -6,7 +6,7 @@ BENCH_RUN="${BIN}/SimpleMOC -t 56"
 BENCH_NAME="SimpleMOC"
 
 DATE=""
-VER="1-4"
+VER="2-1"
 PID=""
 LOG_DIR=""
 
@@ -36,7 +36,7 @@ function func_main() {
     cat /proc/vmstat | grep -e thp -e pgmig >> ${LOG_DIR}/before_vmstat.log 
 	cat /proc/meminfo >>  ${LOG_DIR}/before_vmstat.log 
 
-    ./memory_stat.sh ${LOG_DIR} &
+    # ./memory_stat.sh ${LOG_DIR} &
     ${TIME} -f "execution time %e (s)" \
     ${BENCH_RUN} >> ${LOG_DIR}/output.log 
 
@@ -44,8 +44,8 @@ function func_main() {
 	cat /proc/meminfo >>  ${LOG_DIR}/after_vmstat.log    
 
     dmesg -c > ${LOG_DIR}/dmesg.txt
-    killall -9 memory_stat.sh
-	killall -9 pcm-memory
+    # killall -9 memory_stat.sh
+	# killall -9 pcm-memory
 }
 
 ################################ Main ##################################

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DIR=/home/ssd/yi/scripts_atonuma
+DIR=/home/ssd/yi/scripts_autonuma
 
 BIN=/home/ssd/yi/workloads/dlrm
 BENCH_RUN="numactl --cpunodebind=0 --membind=0,2 ${BIN}/dlrm_s_criteo_kaggle.sh"

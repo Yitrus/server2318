@@ -12,6 +12,11 @@ daxctl reconfigure-device dax3.0 --mode=system-ram
 conda activate base
 conda deactivate
 
+看cpu开销
+sudo perf record -F 50 -a -g  # 哎呀不要pid，这还怎么看看其他进程的消耗--pid 6970
+
+sudo perf script | ./tools/FlameGraph/stackcollapse-perf.pl | ./tools/FlameGraph/flamegraph.pl > /home/ssd/yi/perf_at_s3.svg
+
 sudo damo record $(pidof masim)
 
 damo record  --monitoring_intervals 1000000 20000000 120000000 --monitoring_nr_regions_range 1114112 8912896  --target_pid 8594
@@ -42,11 +47,6 @@ make -j56 && make modules_install && make install
 ./perf stat -e dtlb_store_misses.walk_pending,dtlb_load_misses.walk_pending,dTLB-store-misses,cycle_activity.stalls_total
 
 perf script record --data --phys-data --pid=${PID} -F 1 -e mem-loads,mem-stores -o ${TARGET}/perf.data # 这个没用采不到物理地址
-
-看cpu开销
-sudo perf record -F 50 -a -g  # 哎呀不要pid，这还怎么看看其他进程的消耗--pid 6970
-
-sudo perf script | ./tools/FlameGraph/stackcollapse-perf.pl | ./tools/FlameGraph/flamegraph.pl > /home/ssd/yi/perf_at_s3.svg
 
 pgrep -f XSBench | xargs ps -p
 
@@ -85,4 +85,3 @@ mpich 库:
 ndctl create-namespace --mode=devdax --map=mem --size=30G --region=1
 ndctl create-namespace --mode=devdax --map=mem --size=30G --region=0
 daxctl reconfigure-device dax1.0 --mode=system-ram
-

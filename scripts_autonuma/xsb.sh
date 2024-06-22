@@ -1,13 +1,13 @@
 #!/bin/bash
 
-DIR=/home/ssd/yi/scripts_atonuma
+DIR=/home/ssd/yi/scripts_autonuma
 
 BIN=/home/ssd/yi/workloads/XSBench/openmp-threading
 BENCH_RUN="numactl --cpunodebind=0 --membind=0,2 ${BIN}/XSBench -t 20 -g 130000 -p 30000000" 
 BENCH_NAME="XSBench"
 
 DATE=""
-VER="1-4"
+VER="1-4-2"
 PID=""
 LOG_DIR=""
 
@@ -30,7 +30,7 @@ function func_main() {
     cat /proc/vmstat | grep -e thp -e pgmig >> ${LOG_DIR}/before_vmstat.log 
 	cat /proc/meminfo >>  ${LOG_DIR}/before_vmstat.log 
 
-    # ./memory_stat.sh ${LOG_DIR} &
+    ./memory_stat.sh ${LOG_DIR} &
     ${TIME} -f "execution time %e (s)" \
     ${BENCH_RUN} 2>&1 | tee ${LOG_DIR}/output.log 
 
@@ -38,8 +38,8 @@ function func_main() {
 	cat /proc/meminfo >>  ${LOG_DIR}/after_vmstat.log    
 
     dmesg -c > ${LOG_DIR}/dmesg.txt
-    # killall -9 memory_stat.sh
-	# killall -9 pcm-memory
+    killall -9 memory_stat.sh
+	killall -9 pcm-memory
 }
 
 ################################ Main ##################################

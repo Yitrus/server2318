@@ -1,13 +1,13 @@
 #!/bin/bash
 
-DIR=/home/ssd/yi/scripts_atonuma
+DIR=/home/ssd/yi/scripts_autonuma
 
 BIN=/home/ssd/yi/workloads/SimpleMOC/src
 BENCH_RUN="numactl --cpunodebind=0 --membind=0,2 numactl --membind=0,1 ${BIN}/SimpleMOC -t 56"
 
 BENCH_NAME="SimpleMOC"
 DATE=""
-VER="1-2"
+VER="2-1"
 PID=""
 LOG_DIR=""
 
