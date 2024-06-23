@@ -11,7 +11,7 @@ export MIGRATION_BATCH_SIZE=8
 export MIGRATION_MT=4
 export PREFER_FAST_NODE=no
 
-export BENCH_SIZE="69GB"
+export BENCH_SIZE="32GB"
 
 #MEM_SIZE="16GB"
 # MEM_SIZE="45GB"
@@ -29,7 +29,7 @@ RES_FOLDER="${MEM_SIZE}-${MIGRATION_MT}-threads"
 #BENCHMARK_LIST="556.psp 559.pmniGhost 560.pilbdc 563.pswim 570.pbt graph500-omp"
 #BENCHMARK_LIST="570.pbt graph500-omp"
 # BENCHMARK_LIST="graph500-omp"
-BENCHMARK_LIST="xsb"
+BENCHMARK_LIST="masim"
 #BENCHMARK_LIST="551.ppalm"
 #BENCHMARK_LIST="570.pbt"
 #BENCHMARK_LIST="556.psp"
@@ -53,7 +53,7 @@ BENCHMARK_LIST="xsb"
 PAGE_REPLACEMENT_SCHEMES="opt-migration"
 
 #MEM_SIZE_LIST="unlimited"
-MEM_SIZE_LIST="23 34 45"
+MEM_SIZE_LIST="16"
 #$(seq 4 4 28)
 
 #export NO_MIGRATE=""
