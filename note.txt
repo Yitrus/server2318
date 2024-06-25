@@ -9,6 +9,8 @@ sudo daxctl reconfigure-device dax0.0 --mode=system-ram
 daxctl reconfigure-device dax2.0 --mode=system-ram
 daxctl reconfigure-device dax3.0 --mode=system-ram
 
+echo 3 > /proc/sys/vm/drop_caches #跑内存数据库之前
+
 conda activate base
 conda deactivate
 
@@ -31,12 +33,9 @@ damo record  --monitoring_intervals 500000 20000000 120000000 --monitoring_nr_re
 sudo damo report heats --address_range 0 50000000000  --heatmap testV2.png 
 sudo damo report heats --heatmap s_onehot.png 
 
-xsb：69632
 --damos_sz_region 4096 8192 这个就是不行，区域不够，偷懒了
 
 /home/ssd/yi/workloads/ycsb-0.15.0/bin/ycsb load memcached -s -P /home/ssd/yi/workloads/ycsb-0.15.0/workloads/workloada -p "memcached.hosts=127.0.0.1" -p "memcached.port=11211" -p recordcount=1000000000 -threads 112 >> outRun.ycsb.load
-
-echo 3 > /proc/sys/vm/drop_caches
 
 cat /sys/kernel/debug/tracing/trace 
 
