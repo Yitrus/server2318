@@ -55,10 +55,10 @@ function func_memtis_setting() {
 	echo "disabled" | tee /sys/kernel/mm/htmm/htmm_cxl_mode
     fi
 
-	echo "never" | tee /sys/kernel/mm/transparent_hugepage/enabled
-    # echo "always" | tee /sys/kernel/mm/transparent_hugepage/enabled
+	# echo "never" | tee /sys/kernel/mm/transparent_hugepage/enabled
+    echo "always" | tee /sys/kernel/mm/transparent_hugepage/enabled
 	# 它控制内核是否应该积极使用内存压缩来提供更多的大页面可用
-    # echo "always" | tee /sys/kernel/mm/transparent_hugepage/defrag
+    echo "always" | tee /sys/kernel/mm/transparent_hugepage/defrag
 }
 
 function func_prepare() {
@@ -149,7 +149,7 @@ function func_main() {
     cat /proc/vmstat | grep -e thp -e htmm -e pgmig > ${LOG_DIR}/before_vmstat${i}.log 
 	cat /proc/meminfo >> ${LOG_DIR}/before_vmstat${i}.log 
 
-    ${DIR}/bench_scripts/memory_stat.sh ${LOG_DIR} &
+    # ${DIR}/bench_scripts/memory_stat.sh ${LOG_DIR} &
     ${TIME} -f "execution time %e (s)" \
         ${PINNING} ${DIR}/bin/launch_bench ${BENCH_RUN} 2>&1 \
         | tee ${LOG_DIR}/output${i}.log 
@@ -160,7 +160,7 @@ function func_main() {
         # ${DIR}/bench_scripts/perf_all.sh ${LOG_DIR} ${TOP_NAME}
    
     # wait $(pgrep -o ${TOP_NAME})
-    sudo killall -9 memory_stat.sh
+    # sudo killall -9 memory_stat.sh
     cleanup
 }
 

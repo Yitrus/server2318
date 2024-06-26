@@ -27,23 +27,23 @@
 
 ycsb-0.15.0/bin/ycsb load memcached -s -P ycsb-0.15.0/workloads/workloada -p "memcached.hosts=127.0.0.1" -p "memcached.port=11211" -p recordcount=1000000000 -threads 64 >> outRun.ycsb.load
 
-./scripts_autonuma/ycsb_a.sh
-./scripts_tpp/ycsb_a.sh
+# ./scripts_autonuma/ycsb_a.sh
+# ./scripts_tpp/ycsb_a.sh
 
-./scripts_autonuma/ycsb_b.sh
-./scripts_tpp/ycsb_b.sh
+# ./scripts_autonuma/ycsb_b.sh
+# ./scripts_tpp/ycsb_b.sh
 
-./scripts_autonuma/ycsb_c.sh
-./scripts_tpp/ycsb_c.sh
+# ./scripts_autonuma/ycsb_c.sh
+# ./scripts_tpp/ycsb_c.sh
 
-./scripts_autonuma/ycsb_f.sh
-./scripts_tpp/ycsb_f.sh
+# ./scripts_autonuma/ycsb_f.sh
+# ./scripts_tpp/ycsb_f.sh
 
-./scripts_autonuma/ycsb_d.sh
-./scripts_tpp/ycsb_d.sh
+# ./scripts_autonuma/ycsb_d.sh
+# ./scripts_tpp/ycsb_d.sh
 
-./scripts_autonuma/ycsb_e.sh
-./scripts_tpp/ycsb_e.sh
+# ./scripts_autonuma/ycsb_e.sh
+# ./scripts_tpp/ycsb_e.sh
 
 # ./scripts_at08/ycsb_a.sh
 # ./scripts_at08/ycsb_b.sh
@@ -51,3 +51,10 @@ ycsb-0.15.0/bin/ycsb load memcached -s -P ycsb-0.15.0/workloads/workloada -p "me
 # ./scripts_at08/ycsb_f.sh
 # ./scripts_at08/ycsb_d.sh
 # ./scripts_at08/ycsb_e.sh
+
+./scripts_multiclock/ycsb_a.sh
+./scripts_multiclock/ycsb_b.sh
+./scripts_multiclock/ycsb_c.sh
+./scripts_multiclock/ycsb_f.sh
+./scripts_multiclock/ycsb_d.sh
+./scripts_multiclock/ycsb_e.sh

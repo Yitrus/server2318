@@ -1,0 +1,58 @@
+[ 1293.082698] nr_sampled: 105, nr_throttled: 0, nr_lost: 0
+[ 1293.082711] total runtime: 143937113 ns, total cputime: 104764000 us, cpu usage: 1
+[ 1293.082727] pebs disable
+[ 1293.157268] pebs_init
+[ 1297.938827] perf: interrupt took too long (3503 > 2500), lowering kernel.perf_event_max_sample_rate to 57000
+[ 1306.108655] perf: interrupt took too long (5660 > 4378), lowering kernel.perf_event_max_sample_rate to 35250
+[ 1322.330482] ------------[ cut here ]------------
+[ 1322.330517] mem_cgroup_update_lru_size(00000000c40b3bda, 1, -512): lru_size -512
+[ 1322.330656] WARNING: CPU: 60 PID: 7281 at mm/memcontrol.c:1301 mem_cgroup_update_lru_size+0x8c/0x90
+[ 1322.330702] Modules linked in: kmem intel_rapl_msr intel_rapl_common device_dax dax_pmem i10nm_edac dax_pmem_core nd_pmem xt_tcpudp xt_mark xt_conntrack xt_MASQUERADE nf_conntrack_netlink xfrm_user xfrm_algo xt_addrtype br_netfilter bridge stp llc socwatch2_15(OE) vtsspp(OE) sep5(OE) socperf3(OE) nf_tables nfnetlink ip6table_nat ip6table_filter ip6_tables iptable_nat nf_nat nf_conntrack pax(OE) nf_defrag_ipv6 nf_defrag_ipv4 iptable_filter bpfilter uio_pci_generic uio overlay cuse rdma_ucm(OE) rdma_cm(OE) iw_cm(OE) ib_ipoib(OE) ib_cm(OE) ib_umad(OE) mlx5_ib(OE) mlx5_core(OE) mlxdevm(OE) ib_uverbs(OE) ib_core(OE) mlxfw(OE) psample tls mlx_compat(OE) pci_hyperv_intf nls_iso8859_1 x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm drm_kms_helper cec crct10dif_pclmul crc32_pclmul ghash_clmulni_intel ipmi_ssif drm aesni_intel crypto_simd cryptd binfmt_misc rapl cdc_ether usbnet intel_cstate mii wmi_bmof acpi_ipmi i2c_algo_bit fb_sys_fops mei_me ipmi_si syscopyarea mei efi_pstore
+[ 1322.331052]  sysfillrect sysimgblt ipmi_devintf intel_pch_thermal ipmi_msghandler nfit acpi_power_meter mac_hid sch_fq_codel knem(OE) parport_pc ppdev lp parport ip_tables x_tables autofs4 megaraid_sas tg3 ahci libahci wmi
+[ 1322.331081] CPU: 60 PID: 7281 Comm: kmigraterd2 Tainted: G      D    OE     5.15.19-htmm #1
+[ 1322.331093] Hardware name: Dell Inc. PowerEdge R750/0K8F35, BIOS 1.10.2 03/03/2023
+[ 1322.331096] RIP: 0010:mem_cgroup_update_lru_size+0x8c/0x90
+[ 1322.331100] Code: 00 00 00 00 00 00 eb d5 41 89 c8 48 89 fa 89 f1 48 c7 c7 3e 5a 9a a0 48 c7 c6 80 f4 63 a0 c6 05 04 35 5f 01 01 e8 84 c2 d8 ff <0f> 0b eb cc 0f 1f 44 00 00 55 48 89 e5 41 54 53 49 89 f4 48 85 ff
+[ 1322.331104] RSP: 0018:ffffb6a9a2b4fd50 EFLAGS: 00010086
+[ 1322.331109] RAX: 0000000000000000 RBX: 00000000fffffe00 RCX: 0000000000000027
+[ 1322.331111] RDX: 0000000000000000 RSI: ffff958bffda0980 RDI: ffff958bffda0988
+[ 1322.331113] RBP: ffffb6a9a2b4fd60 R08: 0000000000000000 R09: 0000000000000001
+[ 1322.331115] R10: ffffb6a9a2b4fdf0 R11: ffffb6a9a2b4fb18 R12: ffff959cc0000858
+[ 1322.331117] R13: ffffb6a9a2b4fdd0 R14: ffffb6a9a2b4fdd0 R15: ffffee520c6f0000
+[ 1322.331119] FS:  0000000000000000(0000) GS:ffff958bffd80000(0000) knlGS:0000000000000000
+[ 1322.331121] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 1322.331123] CR2: 00007f807800bc50 CR3: 000000010c82e002 CR4: 0000000000770ee0
+[ 1322.331126] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 1322.331129] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 1322.331131] PKRU: 55555554
+[ 1322.331133] Call Trace:
+[ 1322.331136]  <TASK>
+[ 1322.331168]  deferred_split_scan_for_htmm+0x387/0x720
+[ 1322.331221]  kmigraterd_promotion+0xd9/0x7b0
+[ 1322.331228]  ? finish_task_switch+0xaa/0x290
+[ 1322.331260]  ? kmigraterd_promotion+0x7b0/0x7b0
+[ 1322.331263]  kmigraterd+0x33/0x40
+[ 1322.331269]  kthread+0x12d/0x150
+[ 1322.331293]  ? set_kthread_struct+0x40/0x40
+[ 1322.331299]  ret_from_fork+0x1f/0x30
+[ 1322.331319]  </TASK>
+[ 1322.331321] ---[ end trace 16bcdabd1ad70fe2 ]---
+[ 1336.707562] perf: interrupt took too long (7278 > 7075), lowering kernel.perf_event_max_sample_rate to 27250
+[ 1344.920730] perf: interrupt took too long (9981 > 9097), lowering kernel.perf_event_max_sample_rate to 20000
+[ 1368.174402] perf: interrupt took too long (12748 > 12476), lowering kernel.perf_event_max_sample_rate to 15500
+[ 1385.571340] perf: interrupt took too long (18312 > 15935), lowering kernel.perf_event_max_sample_rate to 10750
+[ 1416.557959] perf: interrupt took too long (25224 > 22890), lowering kernel.perf_event_max_sample_rate to 7750
+[ 1479.565979] perf: interrupt took too long (32065 > 31530), lowering kernel.perf_event_max_sample_rate to 6000
+[ 1502.826035] perf: interrupt took too long (40270 > 40081), lowering kernel.perf_event_max_sample_rate to 4750
+[ 1655.324179] perf: interrupt took too long (52812 > 50337), lowering kernel.perf_event_max_sample_rate to 3750
+[ 1709.736611] perf: interrupt took too long (67038 > 66015), lowering kernel.perf_event_max_sample_rate to 2750
+[ 1771.853251] perf: interrupt took too long (85110 > 83797), lowering kernel.perf_event_max_sample_rate to 2250
+[ 1864.992072] perf: interrupt took too long (107249 > 106387), lowering kernel.perf_event_max_sample_rate to 1750
+[ 1989.567326] perf: interrupt took too long (134950 > 134061), lowering kernel.perf_event_max_sample_rate to 1250
+[ 2597.731592] INFO: NMI handler (perf_event_nmi_handler) took too long to run: 1.126 msecs
+[ 3032.175691] perf: interrupt took too long (169086 > 168687), lowering kernel.perf_event_max_sample_rate to 1000
+[ 3377.240180] perf: interrupt took too long (213270 > 211357), lowering kernel.perf_event_max_sample_rate to 750
+[ 5086.235668] perf: interrupt took too long (267242 > 266587), lowering kernel.perf_event_max_sample_rate to 500
+[18635.558487] nr_sampled: 156, nr_throttled: 0, nr_lost: 0
+[18635.558494] total runtime: 266049170600 ns, total cputime: 162538816 us, cpu usage: 1636
+[18635.558502] pebs disable
