@@ -120,7 +120,7 @@ BENCH="canneal-mt"
 fi
 
 sync
-echo 3 | sudo tee /proc/sys/vm/drop_caches
+# echo 3 | sudo tee /proc/sys/vm/drop_caches
 
 # if [[ "x${SCHEME}" != "xall-local-access" ]] && [[ "x${MEMHOG_THREADS}" != "x0" ]]; then
 # sudo insmod /home/yanzi/tools/kernel-mod-ubench/pref-test.ko nthreads=${MEMHOG_THREADS}
