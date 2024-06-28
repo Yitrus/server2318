@@ -6,7 +6,7 @@ BENCH_RUN="${BIN}/SimpleMOC -t 56"
 BENCH_NAME="SimpleMOC"
 
 DATE=""
-VER="2-1"
+VER="1-8"
 PID=""
 LOG_DIR=""
 

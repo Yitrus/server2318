@@ -6,7 +6,7 @@ BENCH_RUN="${BIN}/XSBench -t 20 -g 130000 -p 30000000" #numactl --cpunodebind=0 
 BENCH_NAME="XSBench"
 
 DATE=""
-VER="2-1"
+VER="1-8"
 PID=""
 LOG_DIR=""
 

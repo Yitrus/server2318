@@ -7,7 +7,7 @@ BENCH_RUN="numactl --cpunodebind=0 --membind=0,2 numactl --membind=0,1 ${BIN}/Si
 
 BENCH_NAME="SimpleMOC"
 DATE=""
-VER="2-1"
+VER="1-8"
 PID=""
 LOG_DIR=""
 

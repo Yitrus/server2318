@@ -7,7 +7,7 @@ GRAPH_DIR=/home/ssd/yi/workloads/gapbs/benchmark/graphs/
 BENCH_RUN="numactl --cpunodebind=0 --membind=0,2 ${BIN}/cc -f ${GRAPH_DIR}/urand30.sg -n20"
 
 DATE=""
-VER="2-1"
+VER="1-8"
 PID=""
 LOG_DIR=""
 BENCH_NAME="cc" 
