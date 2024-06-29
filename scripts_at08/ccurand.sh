@@ -7,7 +7,7 @@ GRAPH_DIR=/home/ssd/yi/workloads/gapbs/benchmark/graphs/
 BENCH_RUN="${BIN}/cc -f ${GRAPH_DIR}/urand30.sg -n20"
 
 DATE=""
-VER="1-4"
+VER="1-16"
 PID=""
 LOG_DIR=""
 BENCH_NAME="cc" 
@@ -42,7 +42,7 @@ function func_main() {
     cat /proc/vmstat | grep -e thp -e pgmig >> ${LOG_DIR}/before_vmstat.log 
 	cat /proc/meminfo >>  ${LOG_DIR}/before_vmstat.log 
 
-    ./memory_stat.sh ${LOG_DIR} &
+    # ./memory_stat.sh ${LOG_DIR} &
     ${TIME} -f "execution time %e (s)" \
     ${BENCH_RUN} 2>&1 | tee ${LOG_DIR}/output.log 
 
@@ -50,8 +50,8 @@ function func_main() {
 	cat /proc/meminfo >>  ${LOG_DIR}/after_vmstat.log    
 
     dmesg -c > ${LOG_DIR}/dmesg.txt
-    killall -9 memory_stat.sh
-	killall -9 pcm-memory
+    # killall -9 memory_stat.sh
+	# killall -9 pcm-memory
 }
 
 ################################ Main ##################################

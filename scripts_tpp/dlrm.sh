@@ -6,7 +6,7 @@ BIN=/home/ssd/yi/workloads/dlrm
 BENCH_RUN="${BIN}/dlrm_s_criteo_kaggle.sh"
 
 DATE=""
-VER="1-16"
+VER="1-8"
 PID=""
 LOG_DIR=""
 BENCH_NAME="dlrm" 

@@ -108,7 +108,7 @@ function func_main() {
 
 		# echo "--------after read run launch_bench--------"
 
-		${DIR}/bench_scripts/memory_stat.sh ${LOG_DIR} &
+		# ${DIR}/bench_scripts/memory_stat.sh ${LOG_DIR} &
         ${TIME} -f "execution time %e (s)" \
          ${PINNING} ${DIR}/bin/launch_bench ${BENCH_RUN} 2>&1 \
             | tee ${LOG_DIR}/output${i}.log 
@@ -117,7 +117,7 @@ function func_main() {
 	    cat /proc/meminfo >>  ${LOG_DIR}/after_vmstat.log
     # done 
         # ${DIR}/bench_scripts/perf_all.sh ${LOG_DIR} ${TOP_NAME}
-		killall -9 memory_stat.sh
+		# killall -9 memory_stat.sh
     # wait $(pgrep -o ${TOP_NAME})
     cleanup
 }
