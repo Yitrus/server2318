@@ -3,10 +3,10 @@
 # ./scripts_autonuma/ccurand.sh 
 # ./scripts_autonuma/xsb.sh 
 # ./scripts_tpp/ccurand.sh 
-# ./scripts_tpp/xsb.sh 
+./scripts_tpp/xsb.sh 
 
-./scripts_autonuma/dlrm.sh 
-./scripts_tpp/dlrm.sh 
+# ./scripts_autonuma/dlrm.sh 
+# ./scripts_tpp/dlrm.sh 
 
 # ./scripts_autonuma/ssspweb.sh 
 # ./scripts_tpp/ssspweb.sh 
